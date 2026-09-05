@@ -1,0 +1,83 @@
+---
+title: "Local Development"
+description: "Run the ReconAI harness and Next.js app locally — scripts, optional Prisma, empty-env fallbacks."
+---
+
+ReconAI is two packages: a framework-agnostic `harness/` engine and the `next-shadcn-admin-dashboard/` app (thin API + UI + worker). An empty `.env.local` is enough for the demo — Redis, OpenAI, Razorpay, and Postgres are all optional.
+
+## Quick start
+
+```bash
+# core — fully testable with empty env
+cd harness
+npm i
+npm test
+npm run batch          # prints measured summary
+npm run test:cov       # coverage gate
+
+# dashboard
+cd ../next-shadcn-admin-dashboard
+cp .env.example .env.local
+npm i
+npm run dev            # http://localhost:3000
+```
+
+Expected batch shape (labeled synthetic set, locked by tests):
+
+```
+records=81 · sources=4 · matched=66 · partial=2 · unresolved=13
+resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
+```
+
+## Harness scripts
+
+Run from `harness/`:
+
+| Script | Command | What it does |
+| --- | --- | --- |
+| Tests | `npm test` | Vitest unit + integration suite |
+| Coverage | `npm run test:cov` | Vitest with coverage gate |
+| Batch | `npm run batch` | Run the labeled 81-record close; print measured summary |
+| Gen batch | `npm run gen-batch` | Generate a synthetic batch fixture |
+| Agent | `npm run agent` | CLI agent driver over close tools |
+| Bench | `npm run bench` | Throughput / timing benchmark |
+
+The harness has **zero runtime dependencies**. It is consumed by the app as `controller-harness` via `file:../harness`.
+
+## App scripts
+
+Run from `next-shadcn-admin-dashboard/`:
+
+| Script | Command | What it does |
+| --- | --- | --- |
+| Dev | `npm run dev` | Next.js on port 3000 (Turbopack) |
+| Build | `npm run build` | Production Next.js build |
+| Worker | `npm run worker` | BullMQ consumer (idle-safe without `REDIS_URL`; consumes when set) |
+| Ops verify | `npm run verify:ops` | Honesty / ops smoke checks used in CI |
+
+Related: `npm run verify:reconcile` for reconcile-path verification; `npm test` for app unit tests.
+
+## Optional Prisma
+
+Durable Postgres is optional. When you want it:
+
+```bash
+cd next-shadcn-admin-dashboard
+# set DATABASE_URL in .env.local
+npx prisma db push
+# or apply SQL under supabase/
+```
+
+Schema: `prisma/schema.prisma` (mirrors `harness/src/core/types.ts`).
+
+## Empty env works
+
+| Layer | Without credentials |
+| --- | --- |
+| Close runs | In-process synchronous path (no BullMQ) |
+| Judge / chat | HeuristicJudge + n-gram similarity |
+| Run store | In-memory demo store |
+| Razorpay | CSV upload + seeded 81-record batch |
+| Auth / DB | Seed / demo paths |
+
+See [Deployment](/guides/deployment) for the full env table and Vercel setup.

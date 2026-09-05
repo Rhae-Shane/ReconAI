@@ -1,0 +1,373 @@
+// Prisma schema for ReconAI — AI Finance Controller (settlement reconciliation).
+//
+// This replaces the template's "Reactor Design Tool" schema (designs / busbars /
+// stock / winding) which had nothing to do with this project. The domain here is
+// financial reconciliation: deterministic matching first, AI-assisted judgement for
+// ambiguous cases, human review for uncertain ones, and a complete, auditable close
+// run — exactly as defined in `harness/src/core/types.ts` (the authority).
+//
+// Money is stored as integer **paise**, signed (+ inflow / - outflow), in `BigInt`
+// columns so large settlements never overflow a 32-bit int.
+//
+// Apply to Postgres with `npx prisma db push`. Idempotency follows the harness rule:
+// one record is uniquely identified by (source + sourceRef) within a run.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/* ------------------------------------------------------------------ */
+/* Enums (mirror harness/src/core/types.ts)                           */
+/* ------------------------------------------------------------------ */
+
+enum SourceKind {
+  razorpay_gateway @map("razorpay-gateway")
+  bank_utr         @map("bank-utr")
+  erp_orders       @map("erp-orders")
+  gst_invoices     @map("gst-invoices")
+}
+
+enum RecordKind {
+  PAYMENT
+  SETTLEMENT
+  REFUND
+  FEE
+  INVOICE
+  CHARGEBACK
+  ADJUSTMENT
+}
+
+enum MatchMethod {
+  EXACT
+  NORMALIZED
+  JUDGED
+  NETTED
+}
+
+enum MatchType {
+  EXACT
+  NORMALIZED
+  FEE_NETTED
+  REFUND_NETTED
+  ADJUSTMENT_NETTED
+  PARTIAL
+  FUZZY
+  AI_RESOLVED
+  UNRESOLVED
+}
+
+enum ReasonCode {
+  NO_KEY
+  AMOUNT_MISMATCH
+  PARTIAL_FLAP
+  DATE_SKEW
+  LOW_CONFIDENCE
+  DUPLICATE
+  UNKNOWN_SOURCE
+}
+
+enum RunStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum ExceptionStatus {
+  OPEN
+  REVIEWED
+  OVERRIDDEN
+  RESOLVED
+}
+
+enum SettlementStatus {
+  EXPECTED
+  RECEIVED
+  MISSING
+  RECONCILED
+}
+
+enum ActorType {
+  AGENT
+  SYSTEM
+  USER
+}
+
+enum AuditAction {
+  INGEST
+  MATCH
+  JUDGE
+  SETTLE
+  FORECAST
+  TAX
+  EXCEPTION
+  CLOSE
+}
+
+/* ------------------------------------------------------------------ */
+/* Core                                                                 */
+/* ------------------------------------------------------------------ */
+
+/// One reconciliation run: ingest -> reconcile -> judge -> settle -> forecast
+/// -> tax -> exceptions -> close report.
+model CloseRun {
+  id         String     @id @default(dbgenerated("gen_random_uuid()"))
+  batchId    String?    @map("batch_id")
+  status     RunStatus  @default(PENDING)
+  startedAt  DateTime   @default(now()) @map("started_at")
+  finishedAt DateTime?  @map("finished_at")
+  createdAt  DateTime   @default(now()) @map("created_at")
+
+  records     FinRecord[]
+  groups      MatchGroup[]
+  exceptions  Exception[]
+  audit       AuditEvent[]
+  settlements Settlement[]
+  forecast    ForecastDatum[]
+  taxMatches  TaxLineMatch[]
+  report      CloseReport?
+
+  /// Full engine snapshot (records, groups, exceptions, totals) so the cockpit can hydrate
+  /// after a process restart without reconstructing every relational child table first.
+  dataset     Json?
+
+  @@index([status])
+  @@index([startedAt])
+  @@map("close_runs")
+}
+
+/// A normalized finance record (one row from a raw export). `sourceRef` is the
+/// per-source idempotency key; `valueDate` is the ISO value date.
+model FinRecord {
+  id          String     @id
+  runId       String     @map("run_id")
+  source      SourceKind
+  kind        RecordKind
+  sourceName  String?    @map("source_name")
+  sourceRef   String     @map("source_ref")
+  valueDate   DateTime   @map("value_date")
+  amountPaise BigInt     @map("amount_paise") // signed: + inflow, - outflow
+  currency    String     @default("INR")
+  counterparty String?
+  description String?
+  /// Bank UTR — shared by gateway + bank rows; primary cross-source key.
+  utr         String?
+  /// Gateway payment ref (pay_...) — shared by gateway + erp rows.
+  gatewayRef  String?    @map("gateway_ref")
+  /// ERP order ref (ORD-...) — shared by erp + gst rows.
+  orderRef    String?    @map("order_ref")
+  /// Tax (GST/IGST) charged ON a gateway fee, paise, magnitude (>= 0). FEE records.
+  feeTaxPaise BigInt?    @map("fee_tax_paise")
+  /// Original raw row, preserved verbatim.
+  raw         Json?
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  links MatchLink[]
+
+  /// Idempotency: same (source, sourceRef) is a duplicate within a run.
+  @@unique([runId, source, sourceRef])
+  @@index([runId, utr])
+  @@index([runId, gatewayRef])
+  @@index([runId, orderRef])
+  @@map("fin_records")
+}
+
+/// A set of records judged to be one underlying money movement.
+model MatchGroup {
+  id          String      @id
+  runId       String      @map("run_id")
+  key         String
+  method      MatchMethod
+  /// Explicit decision label — the primary deliverable of the reconciler.
+  matchType   MatchType   @map("match_type")
+  confidence  Float
+  reason      String
+  amountPaise BigInt      @map("amount_paise")
+  valueDate   DateTime?   @map("value_date")
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  links MatchLink[]
+  netting Netting?
+
+  @@index([runId])
+  @@map("match_groups")
+}
+
+/// One record's membership inside a match group, with the explainable decision.
+model MatchLink {
+  id        String     @id
+  groupId   String     @map("group_id")
+  recordId  String     @map("record_id")
+  matchedOn String     @map("matched_on") // "utr" | "gatewayRef" | "orderRef" | "normalizedRef" | "judge"
+  matchType MatchType? @map("match_type")
+
+  group  MatchGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  record FinRecord  @relation(fields: [recordId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, recordId])
+  @@index([recordId])
+  @@map("match_links")
+}
+
+/// The exact settlement mathematics behind a netted match (review P0). All paise:
+///   netExpected = gross - gatewayFee - taxOnFee - refund + adjustment
+///   variance    = actualSettlement - netExpected   (~0 when the net balances)
+model Netting {
+  id                    String  @id @default(dbgenerated("gen_random_uuid()"))
+  groupId               String  @unique @map("group_id")
+  grossPaise            BigInt  @map("gross_paise")
+  feePaise              BigInt  @map("fee_paise")
+  taxOnFeePaise         BigInt  @map("tax_on_fee_paise")
+  refundPaise           BigInt  @map("refund_paise")
+  adjustmentPaise       BigInt  @map("adjustment_paise") // signed, +/-
+  netExpectedPaise      BigInt  @map("net_expected_paise")
+  actualSettlementPaise BigInt  @map("actual_settlement_paise")
+  variancePaise         BigInt  @map("variance_paise")
+
+  group MatchGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@map("nettings")
+}
+
+/// A settlement leg delivering cash against one or more match groups.
+model Settlement {
+  id          String           @id
+  runId       String           @map("run_id")
+  groupKeys   Json             @map("group_keys") // string[]
+  settledAt   DateTime?        @map("settled_at")
+  amountPaise BigInt           @map("amount_paise")
+  utr         String?
+  status      SettlementStatus @default(EXPECTED)
+  lagDays     Int?             @map("lag_days")
+  lines       Json? // SettlementLine[]
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+  @@map("settlements")
+}
+
+/// One forward cash projection point (7-day cash forecast).
+model ForecastDatum {
+  id            String   @id
+  runId         String   @map("run_id")
+  date          DateTime
+  balancePaise  BigInt   @map("balance_paise")
+  deltaPaise    BigInt   @map("delta_paise")
+  confidence    Float
+  reconciledIn  Boolean  @map("reconciled_in")
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, date])
+  @@map("forecast")
+}
+
+/// GST/HSN + ledger taxonomy catalog.
+model TaxCategory {
+  id          String  @id @default(dbgenerated("gen_random_uuid()"))
+  code        String  @unique // HSN or GL code
+  label       String
+  description String?
+
+  @@map("tax_categories")
+}
+
+/// A record classified against a tax category (RULE or JUDGED).
+model TaxLineMatch {
+  id            String   @id
+  runId         String   @map("run_id")
+  recordId      String   @map("record_id")
+  categoryId    String?  @map("category_id")
+  categoryCode  String?  @map("category_code")
+  categoryLabel String?  @map("category_label")
+  matchedBy     String   @map("matched_by") // "RULE" | "JUDGED"
+  confidence    Float
+  reason        String
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+  @@map("tax_line_matches")
+}
+
+/// Append-only honest exception ledger record — never deleted quietly.
+model Exception {
+  id               String          @id
+  runId            String          @map("run_id")
+  recordId         String?         @map("record_id")
+  recordJson       Json            @map("record_json")
+  reasonCode       ReasonCode      @map("reason_code")
+  rationale        String
+  candidateIds     Json            @map("candidate_ids") // string[]
+  status           ExceptionStatus @default(OPEN)
+  /// Review-P1 enrichment: how this residual was classed / why it varies.
+  matchType        MatchType?      @map("match_type")
+  confidence       Float?
+  expectedPaise    BigInt?         @map("expected_paise")
+  actualPaise      BigInt?         @map("actual_paise")
+  variancePaise    BigInt?         @map("variance_paise")
+  feePaise         BigInt?         @map("fee_paise")
+  adjustmentPaise  BigInt?         @map("adjustment_paise")
+  refundPaise      BigInt?         @map("refund_paise")
+  aiReasoning      String?         @map("ai_reasoning")
+  reviewerDecision String?         @map("reviewer_decision")
+  createdAt        DateTime        @default(now()) @map("created_at")
+  resolvedAt       DateTime?       @map("resolved_at")
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, status])
+  @@map("exceptions")
+}
+
+/// Append-only audit trail around reconciliation & exception handling.
+model AuditEvent {
+  id        String      @id
+  runId     String      @map("run_id")
+  actorType ActorType   @map("actor_type")
+  actorId   String      @map("actor_id")
+  action    AuditAction
+  recordId  String?     @map("record_id")
+  detail    Json?
+  createdAt DateTime    @default(now()) @map("created_at")
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, createdAt])
+  @@map("audit_events")
+}
+
+/// The terminal deliverable of a close run. Structured summary payloads are kept
+/// as JSON alongside the normalized relational tables above.
+model CloseReport {
+  id            String   @id @default(dbgenerated("gen_random_uuid()"))
+  runId         String   @unique @map("run_id")
+  generatedAt   DateTime @default(now()) @map("generated_at")
+  totals        Json
+  breakdown     Json
+  unresolved    Json
+  perSource      Json     @map("per_source")
+  precision      Float?
+  recall         Float?
+  judge          Json?
+  confidenceBins Json?    @map("confidence_bins")
+  auditCount    Int?     @map("audit_count")
+
+  run CloseRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@map("close_reports")
+}
+
+/// Per-tenant finance settings (tolerances, thresholds — SPEC §5).
+model FinanceConfig {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("finance_configs")
+}

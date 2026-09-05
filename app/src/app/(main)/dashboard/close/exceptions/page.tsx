@@ -259,19 +259,22 @@ export default function ExceptionsPage() {
 
   useEffect(() => {
     void Promise.all([
-      fetch("/api/close/exceptions").then((r) => r.json() as Promise<{ exceptions?: ExceptionRecord[] }>),
-      fetch("/api/close/runs").then((r) => r.json() as Promise<{ runs?: Array<{ id: string; status: string }> }>),
-    ]).then(async ([excBody, runsBody]) => {
-      setExceptions(excBody.exceptions ?? []);
-      const done = (runsBody.runs ?? []).filter((r) => r.status === "DONE");
-      const reports = await Promise.all(
-        done.map((r) =>
-          fetch(`/api/close/runs/${r.id}/report`)
-            .then((res) => res.json() as Promise<{ unresolved?: UnresolvedLine[] }>)
-            .catch(() => ({ unresolved: [] as UnresolvedLine[] })),
-        ),
-      );
-      setUnresolved(reports.flatMap((p) => p.unresolved ?? []));
+      fetch("/api/close/exceptions?runId=run_today").then(
+        (r) => r.json() as Promise<{ exceptions?: ExceptionRecord[] }>,
+      ),
+      fetch("/api/close/runs/run_today/report")
+        .then((res) => res.json() as Promise<{ unresolved?: UnresolvedLine[]; exceptions?: ExceptionRecord[] }>)
+        .catch(() => ({ unresolved: [] as UnresolvedLine[], exceptions: [] as ExceptionRecord[] })),
+    ]).then(([excBody, report]) => {
+      const live = excBody.exceptions ?? [];
+      // Prefer live ledger; fall back to report.exceptions when the list endpoint is empty
+      // but the rebuilt report still carries the honest residual set.
+      const merged =
+        live.length > 0
+          ? live
+          : (report.exceptions ?? []).filter((e) => e.status === "OPEN" || e.status === "REVIEWED");
+      setExceptions(merged);
+      setUnresolved(report.unresolved ?? []);
     });
   }, []);
 

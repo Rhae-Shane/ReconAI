@@ -56,7 +56,7 @@ export default async function CloseCockpitPage() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <QuickStat icon={CalendarClock} label="Schedule" value="Daily 18:00 IST" />
         <QuickStat icon={ShieldCheck} label="Resolve threshold" value="0.70" />
-        <QuickStat icon={GitBranch} label="Sources" value="Razorpay · Stripe · PayU · bank · GST" />
+        <QuickStat icon={GitBranch} label="Sources" value="Gateway · Bank · ERP · GST" />
       </div>
 
       <Card>

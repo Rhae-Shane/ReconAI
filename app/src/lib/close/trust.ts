@@ -56,10 +56,10 @@ function invariantsHold(run: RunDetail): boolean {
   return true;
 }
 
-/** Live trust snapshot from the latest DONE close run (seeded batch when present). */
+/** Live trust snapshot from `run_today` when present, else the latest DONE close run. */
 export function getTrustSnapshot(): TrustSnapshot {
   const runs = listRuns().filter((r) => r.status === "DONE");
-  const latest = runs[0];
+  const latest = runs.find((r) => r.id === "run_today") ?? runs[0];
   if (!latest) {
     return {
       runId: null,

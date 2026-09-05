@@ -420,8 +420,72 @@ function toMeta(
 /* ------------------------------------------------------------------ */
 
 function seed() {
-  // Intentionally empty: the cockpit hydrates `run_today` from the Razorpay ledger
-  // via `ensureLiveClose()`. Synthetic batches stay in `buildDataset` for tests only.
+  // Intentionally empty: `ensureLiveClose()` hydrates `run_today` from Prisma or the
+  // documented synthetic demo batch. Unit tests call `buildDataset` / `putRunState` directly.
+}
+
+/**
+ * Honesty repair: every unmatched record must have a live exception. Older persisted
+ * runs sometimes had residual report rows without a ledger entry — that produced the
+ * "CLOSE VERIFIED + Needs human review" contradiction.
+ */
+export function repairDataset(dataset: Dataset, runId: string): Dataset {
+  const matchedIds = new Set<string>();
+  for (const g of dataset.groups) {
+    if (g.confidence >= DEFAULT_FINANCE_CONFIG.resolveThreshold) {
+      for (const link of g.links) matchedIds.add(link.recordId);
+    }
+  }
+  const have = new Set(dataset.exceptions.map((e) => e.recordId).filter(Boolean) as string[]);
+  const additions: ExceptionRecord[] = [];
+  let ei = dataset.exceptions.length;
+  const ts = new Date().toISOString();
+  for (const rec of dataset.records) {
+    if (matchedIds.has(rec.id) || have.has(rec.id)) continue;
+    const code: ReasonCode = "NO_KEY";
+    additions.push({
+      id: `exc_repair_${ei++}`,
+      runId,
+      recordId: rec.id,
+      recordJson: { ...rec.raw, ref: rec.sourceRef },
+      reasonCode: code,
+      rationale: "Unmatched residual — filed on load so the exception ledger stays the source of truth.",
+      candidateIds: [],
+      status: "OPEN",
+      createdAt: ts,
+      resolutionStatus: "OPEN",
+      critical: false,
+      confidence: defaultExceptionConfidence(code),
+      expectedPaise: Math.abs(rec.amountPaise),
+      actualPaise: 0,
+      variancePaise: Math.abs(rec.amountPaise),
+    });
+  }
+  if (additions.length === 0) return dataset;
+  const exceptions = [...dataset.exceptions, ...additions];
+  return {
+    ...dataset,
+    exceptions,
+    totals: { ...dataset.totals, exceptions: exceptions.length },
+  };
+}
+
+/** Documented zero-infra demo close (deterministic `buildDataset`). */
+export function seedDemoClose(startedAt = Date.now()): CloseRunMeta {
+  const runId = "run_today";
+  const dataset = repairDataset(buildDataset(runId, startedAt), runId);
+  const meta = toMeta(runId, "DONE", dataset.totals, startedAt, startedAt);
+  runs.set(runId, { meta, dataset });
+  return meta;
+}
+
+/** Finish a stub RUNNING run with the synthetic demo dataset (no Redis worker). */
+export function completeSyntheticRun(runId: string, startedAt = Date.now()): CloseRunMeta {
+  const dataset = repairDataset(buildDataset(runId, startedAt), runId);
+  const meta = toMeta(runId, "DONE", dataset.totals, startedAt, Date.now());
+  runs.set(runId, { meta, dataset });
+  aliasAsToday(runId);
+  return meta;
 }
 
 function computeProgress(state: RunState) {
@@ -896,6 +960,35 @@ export async function getReportFromStore(runId: string): Promise<CloseReport | n
   if (local) return local;
 
   try {
+    const { loadCloseRunFromPrisma } = await import("./prisma-store");
+    const fromDb = await loadCloseRunFromPrisma(runId);
+    if (fromDb && fromDb.records.length > 0) {
+      const dataset = repairDataset(
+        {
+          records: fromDb.records,
+          groups: fromDb.groups,
+          flaps: fromDb.flaps,
+          exceptions: fromDb.exceptions,
+          settlements: fromDb.settlements,
+          forecast: fromDb.forecast,
+          taxMatches: fromDb.taxMatches,
+          audit: fromDb.audit,
+          sources: fromDb.sources,
+          totals: fromDb.meta.totals,
+          groundedRecords: fromDb.groups.length,
+        },
+        runId,
+      );
+      const started = new Date(fromDb.meta.startedAt).getTime();
+      const finished = fromDb.meta.finishedAt ? new Date(fromDb.meta.finishedAt).getTime() : Date.now();
+      putRunState(runId, dataset, started, finished);
+      return getReport(runId);
+    }
+  } catch {
+    // fall through
+  }
+
+  try {
     const { loadCloseReportFromPrisma } = await import("./prisma-store");
     const fromDb = await loadCloseReportFromPrisma(runId);
     if (fromDb) return fromDb;
@@ -1252,15 +1345,36 @@ export function aliasAsToday(fromRunId: string): void {
 
 export async function ensureLiveClose(): Promise<void> {
   if (runs.get("run_today")?.dataset) return;
+
+  // Opt-in only: synthetic `buildDataset` is for tests / offline demos — never the default.
+  // Production cockpit reads Postgres (`close_runs.dataset`) from Razorpay sync / CSV upload.
+  if (process.env.CLOSE_DEMO_SEED === "force") {
+    if (process.env.VITEST || process.env.NODE_ENV === "test") return;
+    seedDemoClose();
+    return;
+  }
+
   try {
     const { loadPreferredLiveRun } = await import("./prisma-store");
     const loaded = await loadPreferredLiveRun();
-    if (!loaded) return;
-    runs.set(loaded.meta.id, { meta: loaded.meta, dataset: loaded.dataset });
-    aliasAsToday(loaded.meta.id);
+    if (loaded) {
+      const repaired = repairDataset(loaded.dataset, loaded.meta.id === "run_today" ? "run_today" : loaded.meta.id);
+      runs.set(loaded.meta.id, {
+        meta: {
+          ...loaded.meta,
+          totals: repaired.totals,
+          status: loaded.meta.status === "RUNNING" && repaired.records.length ? "DONE" : loaded.meta.status,
+          finishedAt: loaded.meta.finishedAt ?? new Date().toISOString(),
+        },
+        dataset: repaired,
+      });
+      aliasAsToday(loaded.meta.id);
+      return;
+    }
   } catch {
     // ledger optional in unit tests
   }
+  // No synthetic fallback — empty cockpit until Razorpay sync / CSV upload writes to DB.
 }
 
 /**

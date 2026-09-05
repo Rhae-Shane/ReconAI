@@ -1,8 +1,10 @@
+import { ensureLiveClose } from "@/lib/close/store";
 import { getTrustSnapshot } from "@/lib/close/trust";
 
 import { TrustBoard } from "./_components/trust-board";
 
-export default function TrustPage() {
+export default async function TrustPage() {
+  await ensureLiveClose();
   const snap = getTrustSnapshot();
 
   return (

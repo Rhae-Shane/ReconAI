@@ -1,0 +1,61 @@
+---
+title: "Close Loop Overview"
+description: "Close Cockpit UI routes — runs, exceptions, settlement Q&A, forecast, tax, metrics, and trust."
+---
+
+The Close Cockpit is the operator surface for ReconAI’s monthly close loop: reconcile, settle, forecast, tax-match, and file honest exceptions. All screens live under `/dashboard/close`.
+
+## UI map
+
+| Screen | Route | Purpose |
+| --- | --- | --- |
+| Close Cockpit | `/dashboard/close` | Start runs, upload CSV, Razorpay sync, schedule, run list + KPIs |
+| Run Detail | `/dashboard/close/[runId]` | Match-rate bars, confidence, reconciliation grid, why-chips, progress |
+| Exceptions | `/dashboard/close/exceptions` | Reason-coded residual list; resolve / override with audit |
+| Settlement Q&A | `/dashboard/close/settlement` | Cited chat over settled ledger + aging / journal periods |
+| Forecast | `/dashboard/close/forecast` | 7-day cash band from settlement-lag distribution |
+| Tax | `/dashboard/close/tax` | GST / ITC match views and tax match table |
+| Metrics | `/dashboard/close/metrics` | Deterministic vs AI-resolved health over demo runs |
+| Trust | `/dashboard/close/trust` | Measured trust board — matched / partial / human-review stay visible |
+
+## Close Cockpit (`/dashboard/close`)
+
+Entry point for the loop:
+
+- **Start run** — `POST /api/close/runs` (in-process or BullMQ when Redis + worker are up)
+- **Upload** — drop payments / settlements / invoices CSV
+- **Razorpay sync** — pull test-mode data and flush webhook inbox
+- **Schedule / failed runs** — recurring close + recovery panels
+- **Trust strip** — quick honesty signal before diving into a run
+
+## Run Detail (`/dashboard/close/[runId]`)
+
+Deep dive on one close:
+
+- Determinism KPIs and confidence distribution
+- Reconciliation grid with match method (e.g. `exact:utr`)
+- Trace / progress while the graph is running
+- Finalize emits the `CloseReport` via `POST /api/close/runs/[id]`
+
+## Exceptions (`/dashboard/close/exceptions`)
+
+Honest residual queue. Every line has a reason code (`NO_KEY`, `AMOUNT_MISMATCH`, `PARTIAL_FLAP`, `DATE_SKEW`, `LOW_CONFIDENCE`, `DUPLICATE`) and rationale. Resolutions are audited; exceptions are never deleted.
+
+## Settlement, Forecast, Tax
+
+| Route | What you show |
+| --- | --- |
+| `/dashboard/close/settlement` | Ask questions; answers cite matched records |
+| `/dashboard/close/forecast` | Next 7 days projected from matched settlement lags |
+| `/dashboard/close/tax` | Invoice ↔ GSTR-2B style matching and ITC summary |
+
+## Metrics & Trust
+
+| Route | What you show |
+| --- | --- |
+| `/dashboard/close/metrics` | How much volume cleared without an LLM call (`/api/metrics`) |
+| `/dashboard/close/trust` | Measured outcomes board — nothing cherry-picked |
+
+## Related APIs
+
+Close, exceptions, agents, and Razorpay routes that back these screens are listed in the [API Overview](/api-reference/overview). For a walkthrough narrative, see the [2-Minute Demo](/guides/demo-script).

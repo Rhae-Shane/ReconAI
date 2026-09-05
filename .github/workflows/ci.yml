@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  harness:
+    name: harness — test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: harness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: harness/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  app:
+    name: app — lint, test, build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: next-shadcn-admin-dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            next-shadcn-admin-dashboard/package-lock.json
+            harness/package-lock.json
+      - name: Install harness (file: dependency)
+        working-directory: harness
+        run: npm ci
+      - run: npm ci
+      - run: npx biome check .
+      - run: npx tsc --noEmit
+      - run: npx vitest run
+      - run: npm run verify:ops
+      - run: npx next build

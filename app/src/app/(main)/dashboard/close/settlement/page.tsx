@@ -23,7 +23,7 @@ export default async function SettlementPage() {
 
       <JournalPeriods />
 
-      <div className="min-h-0 flex-1 rounded-xl border bg-card">
+      <div className="flex min-h-[480px] flex-1 flex-col overflow-hidden rounded-xl border bg-card">
         <SettlementChat />
       </div>
     </div>

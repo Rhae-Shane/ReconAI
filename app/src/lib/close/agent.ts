@@ -1,5 +1,5 @@
 import { createOpenAI } from "@ai-sdk/openai";
-import { streamText, type ToolSet } from "ai";
+import { stepCountIs, streamText, type ToolSet } from "ai";
 
 import { ClaudeJudge } from "./claude-judge";
 import { getFinanceConfig } from "./config";
@@ -111,11 +111,15 @@ export async function streamCloseChat(
   }
 
   try {
+    // Default stopWhen is stepCountIs(1), which ends after the first tool call with no
+    // narrated answer. Allow a short tool loop so the model can call settlement tools,
+    // then write the reply the chat UI streams.
     const result = streamText({
       model: createOpenAI({ apiKey: openaiKey() })(AGENT_MODEL),
       system: SYSTEM_PROMPT,
       messages: messages.map((m) => ({ role: m.role, content: m.content })),
       tools: toAiTools(runId),
+      stopWhen: stepCountIs(5),
     });
     return { stream: result.textStream.pipeThrough(encoderStream()), usedFallback: false };
   } catch {

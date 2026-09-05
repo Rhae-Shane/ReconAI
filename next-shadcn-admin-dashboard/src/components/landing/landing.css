@@ -1,0 +1,244 @@
+/* Display font for landing. Color tokens live on .mc-landing / dashboard theme so Light/Dark still work. */
+@theme inline {
+  --font-display: var(--font-space-grotesk), var(--font-mc-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Landing tokens — scoped so the dashboard theme is unchanged. */
+.mc-landing {
+  color-scheme: dark;
+  --mc-bg: #0a0a0a;
+  --mc-fg: #fafafa;
+  --mc-muted: #a1a1a1;
+  --mc-subtle: #6b6b6b;
+  --mc-border: #1f1f1f;
+  --mc-surface: #111111;
+  --mc-elevated: #171717;
+  --mc-accent: #e8613c;
+  --mc-accent-2: #c94e2e;
+  --mc-accent-glow: rgba(232, 97, 60, 0.4);
+  --mc-accent-light: rgba(232, 97, 60, 0.15);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --muted-foreground: #a1a1a1;
+  --primary: #e8613c;
+  --primary-foreground: #fff;
+  --border: #1f1f1f;
+  --card: #111111;
+  --accent: #e8613c;
+  --foreground-muted: #a1a1a1;
+  --foreground-subtle: #6b6b6b;
+  --border-subtle: #171717;
+  --border-hover: #2a2a2a;
+  --surface: #111111;
+  --surface-elevated: #171717;
+  --surface-hover: #1a1a1a;
+  --accent-hover: #d95530;
+  --accent-light: rgba(232, 97, 60, 0.15);
+  --accent-glow: rgba(232, 97, 60, 0.4);
+  --gradient-accent: linear-gradient(135deg, #e8613c 0%, #d95530 100%);
+  min-height: 100dvh;
+  background: var(--mc-bg);
+  color: var(--mc-fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  --font-mc-display: var(--font-space-grotesk);
+}
+
+.mc-landing .font-display {
+  font-family: var(--font-mc-display), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.mc-muted {
+  color: var(--mc-muted);
+}
+.mc-subtle {
+  color: var(--mc-subtle);
+}
+
+@keyframes mc-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes mc-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mc-fade {
+  animation: mc-fade-in 0.5s ease-out forwards;
+  opacity: 0;
+}
+.mc-delay-1 {
+  animation-delay: 100ms;
+}
+.mc-delay-2 {
+  animation-delay: 200ms;
+}
+.mc-delay-3 {
+  animation-delay: 300ms;
+}
+.mc-delay-5 {
+  animation-delay: 500ms;
+}
+
+.mc-marquee {
+  animation: mc-marquee 28s linear infinite;
+}
+
+.mc-btn-coral {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(232, 97, 60, 0.9) 0%, rgba(201, 78, 46, 0.8) 100%);
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+.mc-btn-coral:hover {
+  transform: scale(1.02);
+}
+.mc-btn-coral::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  background: radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%);
+}
+.mc-btn-coral::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+}
+
+.mc-btn-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(8px);
+  color: var(--mc-fg);
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s;
+}
+.mc-btn-glass:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(17, 17, 17, 0.8);
+}
+
+.mc-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.25rem 1rem 0.25rem 0.25rem;
+  background: linear-gradient(180deg, rgba(24, 24, 24, 0.95) 0%, rgba(14, 14, 14, 0.95) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-fade,
+  .mc-marquee {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.mc-landing .animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
+.mc-landing .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.mc-landing .animate-marquee { animation: marquee 25s linear infinite; }
+.mc-landing .animation-delay-100 { animation-delay: 100ms; }
+.mc-landing .animation-delay-200 { animation-delay: 200ms; }
+.mc-landing .animation-delay-300 { animation-delay: 300ms; }
+.mc-landing .animation-delay-400 { animation-delay: 400ms; }
+.mc-landing .animation-delay-500 { animation-delay: 500ms; }
+.mc-landing .animation-delay-600 { animation-delay: 600ms; }
+.mc-landing .link-underline { position: relative; }
+.mc-landing .link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.mc-landing .link-underline:hover::after { width: 100%; }
+.mc-landing .glass {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.mc-landing .mc-login-input {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #1f1f1f;
+  background: #111111;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #fafafa;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.mc-landing .mc-login-input:hover {
+  border-color: #2a2a2a;
+}
+.mc-landing .mc-login-input:focus {
+  border-color: #6b6b6b;
+}
+.mc-landing .mc-login-input::placeholder {
+  color: #6b6b6b;
+}
+.mc-landing .mc-login-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-landing .animate-fade-in,
+  .mc-landing .animate-marquee {
+    animation: none !important;
+    opacity: 1;
+  }
+}

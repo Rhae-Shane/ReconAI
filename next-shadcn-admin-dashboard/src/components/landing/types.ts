@@ -1,0 +1,21 @@
+export type LandingContent = {
+  name: string;
+  badge: string;
+  headline: string;
+  headlineMuted: string;
+  subhead: string;
+  loginHref: string;
+  marquee: string[];
+  featuresTitle: string;
+  featuresSub: string;
+  features: { title: string; description: string }[];
+  howTitle: string;
+  howSub: string;
+  steps: { num: string; title: string; body: string }[];
+  snippetFile: string;
+  snippet: string;
+  faqs: { q: string; a: string }[];
+  ctaTitle: string;
+  ctaBody: string;
+  footerBlurb: string;
+};

@@ -1,0 +1,96 @@
+---
+title: "Razorpay Integration"
+description: "Test keys, sync API, webhooks (payment.captured, refund.processed, settlement.processed), and HMAC verification."
+---
+
+When Razorpay is unset, the close loop stays on CSV upload and the synthetic 81-record batch. With **test-mode** keys, you can pull live payments/settlements/refunds and ingest Dashboard webhooks into the close inbox.
+
+## Test keys
+
+From Razorpay Dashboard → **API Keys** (Test mode) and **Webhooks**. Set server-only env vars in `.env.local` (never `NEXT_PUBLIC_`):
+
+| Variable | Purpose |
+| --- | --- |
+| `RAZORPAY_KEY_ID` | Test key id (`rzp_test_...`) |
+| `RAZORPAY_KEY_SECRET` | Test key secret |
+| `RAZORPAY_WEBHOOK_SECRET` | HMAC secret for webhook signature verification |
+
+```bash
+# next-shadcn-admin-dashboard/.env.local
+RAZORPAY_KEY_ID=rzp_test_...
+RAZORPAY_KEY_SECRET=
+RAZORPAY_WEBHOOK_SECRET=
+```
+
+`GET /api/health` reports `checks.razorpay: true` when key id + secret are present. `GET /api/close/razorpay/sync` returns `{ configured, inbox, mode }` without leaking secrets (`mode` is `test` / `live` / `unknown`).
+
+## Sync — pull + flush inbox
+
+```
+POST /api/close/razorpay/sync
+```
+
+Pulls payments, settlements, and refunds from Razorpay (when configured) and flushes the webhook inbox into a close run. Requires `owner` or `accountant`.
+
+```bash
+curl -X POST https://<host>/api/close/razorpay/sync \
+  -H "Cookie: <session>"
+```
+
+| Outcome | Status | Meaning |
+| --- | --- | --- |
+| Success | `201` | Close run created; body includes `runId`, `counts`, `mode` |
+| Unconfigured | `503` | Missing `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` |
+| Empty | `400` | No payments, settlements, refunds, or inbox rows to reconcile |
+
+You can also trigger sync from the Close Cockpit Razorpay card at `/dashboard/close`.
+
+## Webhooks — HMAC-verified ingest
+
+```
+POST /api/webhooks/razorpay
+```
+
+Point Razorpay Dashboard → Webhooks (test mode) at:
+
+```
+https://<your-domain>/api/webhooks/razorpay
+```
+
+### Events to subscribe
+
+| Event | Mapped into close inbox |
+| --- | --- |
+| `payment.captured` | Payment records |
+| `refund.processed` | Refund records |
+| `settlement.processed` | Settlement records |
+
+### Signature verification
+
+The handler reads the raw body and verifies `X-Razorpay-Signature` against `RAZORPAY_WEBHOOK_SECRET` (HMAC). Invalid signatures return `401 { error: "invalid_signature" }`.
+
+```bash
+# Razorpay sends:
+# Header: X-Razorpay-Signature: <hmac>
+# Body:   JSON event payload
+```
+
+Successful ingest returns:
+
+```json
+{
+  "received": true,
+  "verified": true,
+  "event": "payment.captured",
+  "records": 1,
+  "inboxAdded": 1
+}
+```
+
+Webhook rows sit in the inbox until you flush them with `POST /api/close/razorpay/sync`.
+
+## Production notes
+
+- Keep keys in **test** mode until go-live review (see [Deployment](/guides/deployment) checklist).
+- Webhook secret in env must match Dashboard → Webhooks.
+- Unsigned or wrong-secret requests are rejected — there is no “skip HMAC” path when a secret is configured.

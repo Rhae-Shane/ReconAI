@@ -1,0 +1,77 @@
+---
+title: "Exceptions"
+description: "Honest ReasonCode ledger, UnresolvedLine expected vs actual, and resolve via API or UI."
+---
+
+Unresolved work is never silently dropped. Every leftover record gets a
+structured `ReasonCode`, a human rationale, and (when known) an expected vs
+actual paise split. That list is the trust surface of a close — not an
+afterthought.
+
+Core types: `ExceptionRecord`, `UnresolvedLine`, `ReasonCode` in
+`harness/src/core/types.ts`. Store: `ExceptionLedger` in
+`harness/src/core/exception.ts`.
+
+## ReasonCode
+
+| ReasonCode | Meaning |
+| ---------- | ------- |
+| `NO_KEY` | No usable reference key (orphan / no cross-source join) |
+| `AMOUNT_MISMATCH` | Key matches but amounts differ beyond tolerance (and netting did not explain it) |
+| `PARTIAL_FLAP` | Some signals matched, not enough to resolve |
+| `DATE_SKEW` | Amount matched but value date outside the configured window |
+| `LOW_CONFIDENCE` | Judge could not reach `resolveThreshold` |
+| `DUPLICATE` | Idempotency collision on `(source, sourceRef)` or content-duplicate hygiene hit |
+| `UNKNOWN_SOURCE` | Unrecognised `SourceKind` |
+
+Exceptions also carry optional enrichment: `matchType`, `confidence`,
+`expectedPaise` / `actualPaise` / `variancePaise`, fee/refund/adjustment
+components, and optional `aiReasoning`.
+
+## Honest Exception List
+
+Principles:
+
+- **Append-only** — records are never deleted; status moves instead.
+- **Always coded** — every unresolved item has a `ReasonCode` + rationale.
+- **Visible on close** — `CloseReport.exceptions` and `unresolved[]` still
+  surface open items after the close control finalizes.
+- **Integrity over vanity** — empty-because-hidden fails the product bar.
+
+Statuses on `ExceptionRecord`: `OPEN` → `REVIEWED` | `OVERRIDDEN` | `RESOLVED`.
+
+## UnresolvedLine
+
+The close report breaks each unresolved record the way a finance team reads
+it:
+
+| Field | Meaning |
+| ----- | ------- |
+| `recordId` | Record being reconciled (invoice / payment / gateway, etc.) |
+| `ref` | Human key (e.g. `INV-1234`, `pay_19`) |
+| `expectedPaise` | What we expected (invoice / payment amount) |
+| `actualPaise` | Settlement (or best near-match) actually present |
+| `differencePaise` | `expected − actual` (positive = shortfall) |
+| `reason` | `ReasonCode` for why it did not resolve cleanly |
+| `confidence` | Resolver confidence in the diagnosis (0..1) |
+| `status` | `NEEDS_REVIEW` or `RESOLVED` |
+
+## Resolve Via API Or UI
+
+Accountants resolve without deleting history.
+
+| Surface | Path |
+| ------- | ---- |
+| List / filter | `GET /api/close/exceptions?reasonCode=&status=&runId=` |
+| Resolve / override | `POST /api/close/exceptions/:id/resolve` |
+| Evidence | `GET` / `POST /api/close/exceptions/:id/evidence` |
+| UI | `/dashboard/close/exceptions` |
+
+Resolve body:
+
+```json
+{ "status": "RESOLVED", "note": "Matched to bank UTR after statement re-import" }
+```
+
+Allowed statuses: `REVIEWED`, `OVERRIDDEN`, `RESOLVED`. Each change is
+audited. Role gate: owner / accountant.

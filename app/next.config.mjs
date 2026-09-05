@@ -6,9 +6,6 @@ const appRoot = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Vercel project root is the monorepo root; emit `.next` there so the platform
-  // finds serverless output. Locally keep `.next` inside `app/`.
-  distDir: process.env.VERCEL ? "../.next" : ".next",
   reactCompiler: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

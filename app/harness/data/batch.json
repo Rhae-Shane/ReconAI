@@ -1,0 +1,1050 @@
+{
+  "id": "batch-42-81",
+  "sources": [
+    {
+      "source": "razorpay-gateway",
+      "rows": [
+        {
+          "paymentId": "pay_1",
+          "orderId": "ORD-1",
+          "utr": "UTR1001",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "card",
+          "description": "Brightway Traders"
+        },
+        {
+          "paymentId": "pay_2",
+          "orderId": "ORD-2",
+          "utr": "UTR1002",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "card",
+          "description": "Zenith Foods"
+        },
+        {
+          "paymentId": "pay_3",
+          "orderId": "ORD-3",
+          "utr": "UTR1003",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "method": "card",
+          "description": "Northwind Exports"
+        },
+        {
+          "paymentId": "pay_4",
+          "orderId": "ORD-4",
+          "utr": "UTR1004",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "method": "card",
+          "description": "Cloudline Tech Pvt Ltd"
+        },
+        {
+          "paymentId": "pay_5",
+          "orderId": "ORD-5",
+          "utr": "UTR1005",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "customer": "Fresco Bakers",
+          "method": "card",
+          "description": "Fresco Bakers"
+        },
+        {
+          "paymentId": "pay_6",
+          "orderId": "ORD-6",
+          "utr": "UTR1006",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "method": "card",
+          "description": "Kites Retail"
+        },
+        {
+          "paymentId": "pay_7",
+          "orderId": "ORD-7",
+          "utr": "UTR1007",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "method": "card",
+          "description": "Summit Logistics"
+        },
+        {
+          "paymentId": "pay_8",
+          "orderId": "ORD-8",
+          "utr": "UTR1008",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "customer": "Orbit Media Works",
+          "method": "card",
+          "description": "Orbit Media Works"
+        },
+        {
+          "paymentId": "pay_9",
+          "orderId": "ORD-9",
+          "utr": "UTR1009",
+          "amount": 43408.26,
+          "date": "2026-08-14",
+          "customer": "GreenLeaf Organics",
+          "method": "card",
+          "description": "GreenLeaf Organics"
+        },
+        {
+          "paymentId": "pay_10",
+          "orderId": "ORD-10",
+          "utr": "UTR1010",
+          "amount": 24143.54,
+          "date": "2026-08-15",
+          "customer": "Acme Retail Pvt Ltd",
+          "method": "card",
+          "description": "Acme Retail Pvt Ltd"
+        },
+        {
+          "paymentId": "pay_11",
+          "orderId": "ORD-11",
+          "utr": "UTR001011",
+          "amount": 11497.1,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "upi",
+          "description": "Brightway Traders"
+        },
+        {
+          "paymentId": "pay_12",
+          "orderId": "ORD-12",
+          "utr": "UTR1012",
+          "amount": 35518.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "card",
+          "description": "Zenith Foods"
+        },
+        {
+          "paymentId": "pay_13",
+          "orderId": "ORD-13",
+          "utr": "UTR1013",
+          "amount": 30338.03,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "method": "card",
+          "description": "Northwind Exports"
+        },
+        {
+          "paymentId": "payNS16",
+          "orderId": "ORD-NS16",
+          "utr": "UTR2016",
+          "amount": 100,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "method": "card",
+          "description": "Kites Retail"
+        },
+        {
+          "kind": "FEE",
+          "feeRef": "feeNS16",
+          "paymentId": "payNS16",
+          "orderId": "ORD-NS16",
+          "utr": "UTR2016",
+          "amount": -1.77,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "method": "tdr",
+          "description": "gateway fee on payNS16"
+        },
+        {
+          "paymentId": "payNS17",
+          "orderId": "ORD-NS17",
+          "utr": "UTR2017",
+          "amount": 100,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "method": "card",
+          "description": "Summit Logistics"
+        },
+        {
+          "kind": "FEE",
+          "feeRef": "feeNS17",
+          "paymentId": "payNS17",
+          "orderId": "ORD-NS17",
+          "utr": "UTR2017",
+          "amount": -1.77,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "method": "tdr",
+          "description": "gateway fee on payNS17"
+        },
+        {
+          "paymentId": "payNS18",
+          "orderId": "ORD-NS18",
+          "utr": "UTR2018",
+          "amount": 100,
+          "date": "2026-08-14",
+          "customer": "Orbit Media Works",
+          "method": "card",
+          "description": "Orbit Media Works"
+        },
+        {
+          "kind": "FEE",
+          "feeRef": "feeNS18",
+          "paymentId": "payNS18",
+          "orderId": "ORD-NS18",
+          "utr": "UTR2018",
+          "amount": -2.5,
+          "date": "2026-08-14",
+          "customer": "Orbit Media Works",
+          "method": "tdr",
+          "description": "gateway fee on payNS18"
+        },
+        {
+          "paymentId": "pay_14",
+          "orderId": "ORD-14",
+          "utr": "UTR1014",
+          "amount": 11289.04,
+          "date": "2026-08-14",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "method": "card",
+          "description": "Cloudline Tech Pvt Ltd"
+        },
+        {
+          "paymentId": "pay_15",
+          "orderId": "ORD-15",
+          "utr": "UTR1015",
+          "amount": 8325.85,
+          "date": "2026-08-14",
+          "customer": "Fresco Bakers",
+          "method": "card",
+          "description": "Fresco Bakers"
+        },
+        {
+          "paymentId": "payGST",
+          "orderId": "ORD-GST",
+          "utr": "UTRGST",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "Acme Retail Pvt Ltd",
+          "method": "card",
+          "description": "Acme Retail Pvt Ltd"
+        },
+        {
+          "kind": "FEE",
+          "feeRef": "feeGST",
+          "paymentId": "payGST",
+          "orderId": "ORD-GST",
+          "utr": "UTRGST",
+          "amount": -150,
+          "feeTaxPaise": 2700,
+          "date": "2026-08-14",
+          "customer": "Acme Retail Pvt Ltd",
+          "method": "tdr",
+          "description": "gateway fee + GST on payGST"
+        },
+        {
+          "paymentId": "payREFN",
+          "orderId": "ORD-REF-NET",
+          "utr": "UTRREFN",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "card",
+          "description": "Brightway Traders"
+        },
+        {
+          "kind": "REFUND",
+          "paymentId": "payREFN_R",
+          "orderId": "ORD-REF-NET",
+          "utr": "UTRREFN",
+          "amount": -2000,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "refund",
+          "description": "refund on ORD-REF-NET"
+        },
+        {
+          "paymentId": "payADJN",
+          "orderId": "ORD-ADJ-NET",
+          "utr": "UTRADJN",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "card",
+          "description": "Zenith Foods"
+        },
+        {
+          "kind": "ADJUSTMENT",
+          "paymentId": "payADJN_A",
+          "orderId": "ORD-ADJ-NET",
+          "utr": "UTRADJN",
+          "amount": 2000,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "adjustment",
+          "description": "late-fee adjustment on ORD-ADJ-NET"
+        },
+        {
+          "paymentId": "payPART",
+          "orderId": "ORD-PART",
+          "utr": "UTRPART",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "method": "card",
+          "description": "Northwind Exports"
+        },
+        {
+          "paymentId": "payDUP",
+          "orderId": "ORD-DUP",
+          "utr": "UTRDUP",
+          "amount": 5000,
+          "date": "2026-08-14",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "method": "card",
+          "description": "Cloudline Tech Pvt Ltd"
+        },
+        {
+          "paymentId": "payXA",
+          "orderId": "ORD-XA",
+          "utr": "UTRXA",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "CrossAlpha Retail",
+          "method": "card",
+          "description": "CrossAlpha Retail"
+        },
+        {
+          "paymentId": "payXB",
+          "orderId": "ORD-XB",
+          "utr": "UTRXB",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "customer": "CrossBeta Traders",
+          "method": "card",
+          "description": "CrossBeta Traders"
+        }
+      ]
+    },
+    {
+      "source": "bank-utr",
+      "rows": [
+        {
+          "utr": "UTR1001",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "settlement UTR1001"
+        },
+        {
+          "utr": "UTR1002",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "settlement UTR1002"
+        },
+        {
+          "utr": "UTR1003",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "counterparty": "Northwind Exports",
+          "narration": "settlement UTR1003"
+        },
+        {
+          "utr": "UTR1004",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "settlement UTR1004"
+        },
+        {
+          "utr": "UTR1005",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "counterparty": "Fresco Bakers",
+          "narration": "settlement UTR1005"
+        },
+        {
+          "utr": "UTR1006",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "counterparty": "Kites Retail",
+          "narration": "settlement UTR1006"
+        },
+        {
+          "utr": "UTR1007",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "counterparty": "Summit Logistics",
+          "narration": "settlement UTR1007"
+        },
+        {
+          "utr": "UTR1008",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "counterparty": "Orbit Media Works",
+          "narration": "settlement UTR1008"
+        },
+        {
+          "utr": "UTR1009",
+          "amount": 43408.26,
+          "date": "2026-08-14",
+          "counterparty": "GreenLeaf Organics",
+          "narration": "settlement UTR1009"
+        },
+        {
+          "utr": "UTR1010",
+          "amount": 24143.54,
+          "date": "2026-08-15",
+          "counterparty": "Acme Retail Pvt Ltd",
+          "narration": "settlement UTR1010"
+        },
+        {
+          "utr": "UTR1011",
+          "amount": 11496.8,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "settlement UTR1011"
+        },
+        {
+          "utr": "UTR1012",
+          "amount": 35517.94,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "settlement UTR1012"
+        },
+        {
+          "utr": "UTR1013",
+          "amount": 30337.73,
+          "date": "2026-08-14",
+          "counterparty": "Northwind Exports",
+          "narration": "settlement UTR1013"
+        },
+        {
+          "utr": "UTR2016",
+          "orderId": "ORD-NS16",
+          "amount": 98.23,
+          "date": "2026-08-14",
+          "counterparty": "Kites Retail",
+          "narration": "net settlement UTR2016"
+        },
+        {
+          "utr": "UTR2017",
+          "orderId": "ORD-NS17",
+          "amount": 98.23,
+          "date": "2026-08-14",
+          "counterparty": "Summit Logistics",
+          "narration": "net settlement UTR2017"
+        },
+        {
+          "utr": "UTR2018",
+          "orderId": "ORD-NS18",
+          "amount": 97.5,
+          "date": "2026-08-14",
+          "counterparty": "Orbit Media Works",
+          "narration": "net settlement UTR2018"
+        },
+        {
+          "utr": "UTR1014",
+          "amount": 11287.04,
+          "date": "2026-08-14",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "settlement UTR1014"
+        },
+        {
+          "utr": "UTR1015",
+          "amount": 8323.85,
+          "date": "2026-08-14",
+          "counterparty": "Fresco Bakers",
+          "narration": "settlement UTR1015"
+        },
+        {
+          "utr": "UTR1001DUP",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "duplicate settlement row"
+        },
+        {
+          "utr": "UTR1002DUP",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "duplicate settlement row"
+        },
+        {
+          "utr": "UTR9001",
+          "amount": 43408.26,
+          "date": "2026-08-13",
+          "counterparty": "GreenLeaf Organics",
+          "narration": "near-duplicate A"
+        },
+        {
+          "utr": "UTR9002",
+          "amount": 43408.06,
+          "date": "2026-08-14",
+          "counterparty": "Unrelated Ventures",
+          "narration": "near-duplicate B"
+        },
+        {
+          "utr": "UTR8001",
+          "amount": 123.45,
+          "date": "2026-08-13",
+          "counterparty": "Acme Retail Pvt Ltd",
+          "narration": "unmatched collection"
+        },
+        {
+          "utr": "UTR8002",
+          "amount": 678.9,
+          "date": "2026-08-13",
+          "counterparty": "Brightway Traders",
+          "narration": "unmatched collection"
+        },
+        {
+          "utr": "UTR8003",
+          "amount": 1112.22,
+          "date": "2026-08-13",
+          "counterparty": "Zenith Foods",
+          "narration": "unmatched collection"
+        },
+        {
+          "utr": "UTR8004",
+          "amount": 3456.78,
+          "date": "2026-08-13",
+          "counterparty": "Northwind Exports",
+          "narration": "unmatched collection"
+        },
+        {
+          "utr": "UTRGST",
+          "orderId": "ORD-GST",
+          "amount": 9823,
+          "date": "2026-08-14",
+          "counterparty": "Acme Retail Pvt Ltd",
+          "narration": "net settlement UTRGST"
+        },
+        {
+          "utr": "UTRREFN",
+          "amount": 8000,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "net settlement UTRREFN (gross − refund)"
+        },
+        {
+          "utr": "UTRADJN",
+          "amount": 12000,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "net settlement UTRADJN (gross + adjustment)"
+        },
+        {
+          "utr": "UTRPART",
+          "amount": 6000,
+          "date": "2026-08-14",
+          "counterparty": "Northwind Exports",
+          "narration": "partial settlement UTRPART"
+        },
+        {
+          "utr": "UTRDUP",
+          "amount": 5000,
+          "date": "2026-08-14",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "settlement UTRDUP"
+        },
+        {
+          "utr": "UTRDUPB",
+          "amount": 5000,
+          "date": "2026-08-14",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "duplicate settlement row"
+        },
+        {
+          "utr": "UTRXA",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "counterparty": "CrossAlpha Retail",
+          "narration": "settlement UTRXA"
+        },
+        {
+          "utr": "UTRXB",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "counterparty": "CrossBeta Traders",
+          "narration": "settlement UTRXB"
+        }
+      ]
+    },
+    {
+      "source": "erp-orders",
+      "rows": [
+        {
+          "orderId": "ORD-1",
+          "paymentId": "pay_1",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-2",
+          "paymentId": "pay_2",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-3",
+          "paymentId": "pay_3",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-4",
+          "paymentId": "pay_4",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-5",
+          "paymentId": "pay_5",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "customer": "Fresco Bakers",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-6",
+          "paymentId": "pay_6",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-7",
+          "paymentId": "pay_7",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "item": "Sale of goods"
+        },
+        {
+          "orderId": "ORD-8",
+          "paymentId": "pay_8",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "customer": "Orbit Media Works",
+          "item": "Sale of goods"
+        }
+      ]
+    },
+    {
+      "source": "gst-invoices",
+      "rows": [
+        {
+          "invoiceNo": "INV-1",
+          "orderId": "ORD-1",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "buyer": "Brightway Traders",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-2",
+          "orderId": "ORD-2",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "buyer": "Zenith Foods",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-3",
+          "orderId": "ORD-3",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "buyer": "Northwind Exports",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-4",
+          "orderId": "ORD-4",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "buyer": "Cloudline Tech Pvt Ltd",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-5",
+          "orderId": "ORD-5",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "buyer": "Fresco Bakers",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-6",
+          "orderId": "ORD-6",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "buyer": "Kites Retail",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-XA",
+          "orderId": "ORD-XA",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "buyer": "CrossAlpha Retail",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        {
+          "invoiceNo": "INV-XB",
+          "orderId": "ORD-XB",
+          "amount": 10000,
+          "date": "2026-08-14",
+          "buyer": "CrossBeta Traders",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        }
+      ]
+    }
+  ],
+  "labels": {
+    "rec:razorpay-gateway:pay_1": {
+      "expectedGroupKey": "M1",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1001": {
+      "expectedGroupKey": "M1",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-1": {
+      "expectedGroupKey": "M1",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-1": {
+      "expectedGroupKey": "M1",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_2": {
+      "expectedGroupKey": "M2",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1002": {
+      "expectedGroupKey": "M2",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-2": {
+      "expectedGroupKey": "M2",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-2": {
+      "expectedGroupKey": "M2",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_3": {
+      "expectedGroupKey": "M3",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1003": {
+      "expectedGroupKey": "M3",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-3": {
+      "expectedGroupKey": "M3",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-3": {
+      "expectedGroupKey": "M3",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_4": {
+      "expectedGroupKey": "M4",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1004": {
+      "expectedGroupKey": "M4",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-4": {
+      "expectedGroupKey": "M4",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-4": {
+      "expectedGroupKey": "M4",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_5": {
+      "expectedGroupKey": "M5",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1005": {
+      "expectedGroupKey": "M5",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-5": {
+      "expectedGroupKey": "M5",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-5": {
+      "expectedGroupKey": "M5",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_6": {
+      "expectedGroupKey": "M6",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1006": {
+      "expectedGroupKey": "M6",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-6": {
+      "expectedGroupKey": "M6",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-6": {
+      "expectedGroupKey": "M6",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_7": {
+      "expectedGroupKey": "M7",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1007": {
+      "expectedGroupKey": "M7",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-7": {
+      "expectedGroupKey": "M7",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_8": {
+      "expectedGroupKey": "M8",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1008": {
+      "expectedGroupKey": "M8",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:erp-orders:ORD-8": {
+      "expectedGroupKey": "M8",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_9": {
+      "expectedGroupKey": "M9",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1009": {
+      "expectedGroupKey": "M9",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_10": {
+      "expectedGroupKey": "M10",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1010": {
+      "expectedGroupKey": "M10",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_11": {
+      "expectedGroupKey": "M11",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1011": {
+      "expectedGroupKey": "M11",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_12": {
+      "expectedGroupKey": "M12",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1012": {
+      "expectedGroupKey": "M12",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_13": {
+      "expectedGroupKey": "M13",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR1013": {
+      "expectedGroupKey": "M13",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payNS16": {
+      "expectedGroupKey": "MN16",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:feeNS16": {
+      "expectedGroupKey": "MN16",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR2016": {
+      "expectedGroupKey": "MN16",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payNS17": {
+      "expectedGroupKey": "MN17",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:feeNS17": {
+      "expectedGroupKey": "MN17",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR2017": {
+      "expectedGroupKey": "MN17",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payNS18": {
+      "expectedGroupKey": "MN18",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:feeNS18": {
+      "expectedGroupKey": "MN18",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTR2018": {
+      "expectedGroupKey": "MN18",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:pay_14": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR1014": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:razorpay-gateway:pay_15": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR1015": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR1001DUP": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR1002DUP": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR9001": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR9002": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR8001": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR8002": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR8003": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTR8004": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:razorpay-gateway:payGST": {
+      "expectedGroupKey": "MGST",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:feeGST": {
+      "expectedGroupKey": "MGST",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRGST": {
+      "expectedGroupKey": "MGST",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payREFN": {
+      "expectedGroupKey": "MREFN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payREFN_R": {
+      "expectedGroupKey": "MREFN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRREFN": {
+      "expectedGroupKey": "MREFN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payADJN": {
+      "expectedGroupKey": "MADJN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payADJN_A": {
+      "expectedGroupKey": "MADJN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRADJN": {
+      "expectedGroupKey": "MADJN",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payPART": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:bank-utr:UTRPART": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:razorpay-gateway:payDUP": {
+      "expectedGroupKey": "MDUP",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRDUP": {
+      "expectedGroupKey": "MDUP",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRDUPB": {
+      "expectedGroupKey": null,
+      "expectedStatus": "EXCEPTION"
+    },
+    "rec:razorpay-gateway:payXA": {
+      "expectedGroupKey": "MFA",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRXA": {
+      "expectedGroupKey": "MFA",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-XA": {
+      "expectedGroupKey": "MFA",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:razorpay-gateway:payXB": {
+      "expectedGroupKey": "MFB",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:bank-utr:UTRXB": {
+      "expectedGroupKey": "MFB",
+      "expectedStatus": "MATCHED"
+    },
+    "rec:gst-invoices:INV-XB": {
+      "expectedGroupKey": "MFB",
+      "expectedStatus": "MATCHED"
+    }
+  }
+}

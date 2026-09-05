@@ -1,0 +1,130 @@
+{
+  "name": "controller-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Framework-agnostic core engine for the AI Finance Controller (reconcile, settle, forecast, tax, audit, close). Zero runtime dependencies.",
+  "scripts": {
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "build": "tsc -p tsconfig.build.json",
+    "batch": "tsx src/cli/run-batch.ts",
+    "agent": "tsx src/cli/agent-driver.ts",
+    "gen-batch": "tsx src/cli/generate-batch.ts",
+    "bench": "tsx src/cli/benchmark.ts",
+    "benchmark": "tsx src/cli/benchmark.ts"
+  },
+  "exports": {
+    "./control/approval": {
+      "types": "./dist/control/approval.d.ts",
+      "default": "./dist/control/approval.js"
+    },
+    "./control/audit-chain": {
+      "types": "./dist/control/audit-chain.d.ts",
+      "default": "./dist/control/audit-chain.js"
+    },
+    "./control/materiality": {
+      "types": "./dist/control/materiality.d.ts",
+      "default": "./dist/control/materiality.js"
+    },
+    "./control/policy": {
+      "types": "./dist/control/policy.d.ts",
+      "default": "./dist/control/policy.js"
+    },
+    "./control/sod": {
+      "types": "./dist/control/sod.d.ts",
+      "default": "./dist/control/sod.js"
+    },
+    "./core/adversarial": {
+      "types": "./dist/core/adversarial.d.ts",
+      "default": "./dist/core/adversarial.js"
+    },
+    "./core/allocation": {
+      "types": "./dist/core/allocation.d.ts",
+      "default": "./dist/core/allocation.js"
+    },
+    "./core/audit": {
+      "types": "./dist/core/audit.d.ts",
+      "default": "./dist/core/audit.js"
+    },
+    "./core/close": {
+      "types": "./dist/core/close.d.ts",
+      "default": "./dist/core/close.js"
+    },
+    "./core/compiler": {
+      "types": "./dist/core/compiler.d.ts",
+      "default": "./dist/core/compiler.js"
+    },
+    "./core/config": {
+      "types": "./dist/core/config.d.ts",
+      "default": "./dist/core/config.js"
+    },
+    "./core/dataset": {
+      "types": "./dist/core/dataset.d.ts",
+      "default": "./dist/core/dataset.js"
+    },
+    "./core/dsl": {
+      "types": "./dist/core/dsl.d.ts",
+      "default": "./dist/core/dsl.js"
+    },
+    "./core/evaluation": {
+      "types": "./dist/core/evaluation.d.ts",
+      "default": "./dist/core/evaluation.js"
+    },
+    "./core/exception": {
+      "types": "./dist/core/exception.d.ts",
+      "default": "./dist/core/exception.js"
+    },
+    "./core/explain": {
+      "types": "./dist/core/explain.d.ts",
+      "default": "./dist/core/explain.js"
+    },
+    "./core/forecast": {
+      "types": "./dist/core/forecast.d.ts",
+      "default": "./dist/core/forecast.js"
+    },
+    "./core/ingest": {
+      "types": "./dist/core/ingest.d.ts",
+      "default": "./dist/core/ingest.js"
+    },
+    "./core/judge": {
+      "types": "./dist/core/judge.d.ts",
+      "default": "./dist/core/judge.js"
+    },
+    "./core/ledger": {
+      "types": "./dist/core/ledger.d.ts",
+      "default": "./dist/core/ledger.js"
+    },
+    "./core/model": {
+      "types": "./dist/core/model.d.ts",
+      "default": "./dist/core/model.js"
+    },
+    "./core/reconcile": {
+      "types": "./dist/core/reconcile.d.ts",
+      "default": "./dist/core/reconcile.js"
+    },
+    "./core/semantic": {
+      "types": "./dist/core/semantic.d.ts",
+      "default": "./dist/core/semantic.js"
+    },
+    "./core/settle": {
+      "types": "./dist/core/settle.d.ts",
+      "default": "./dist/core/settle.js"
+    },
+    "./core/tax": {
+      "types": "./dist/core/tax.d.ts",
+      "default": "./dist/core/tax.js"
+    },
+    "./core/types": {
+      "types": "./dist/core/types.d.ts",
+      "default": "./dist/core/types.js"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.8"
+  }
+}

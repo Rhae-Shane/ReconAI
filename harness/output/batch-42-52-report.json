@@ -1,0 +1,4585 @@
+{
+  "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+  "generatedAt": "2026-08-21T09:01:04.575Z",
+  "batchId": "batch-42-52",
+  "totals": {
+    "records": 52,
+    "sources": 4,
+    "matched": 40,
+    "resolvedPct": 76.92,
+    "exceptionCount": 12,
+    "groups": 13
+  },
+  "breakdown": {
+    "records": 52,
+    "matched": 40,
+    "partial": 2,
+    "unresolved": 10,
+    "matchRate": 0.7692307692307693
+  },
+  "unresolved": [
+    {
+      "recordId": "rec:razorpay-gateway:pay_14",
+      "ref": "pay_14",
+      "expectedPaise": 1128904,
+      "actualPaise": 0,
+      "differencePaise": 1128904,
+      "reason": "AMOUNT_MISMATCH",
+      "confidence": 0.9,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:razorpay-gateway:pay_15",
+      "ref": "pay_15",
+      "expectedPaise": 832585,
+      "actualPaise": 0,
+      "differencePaise": 832585,
+      "reason": "AMOUNT_MISMATCH",
+      "confidence": 0.9,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR1001DUP",
+      "ref": "UTR1001DUP",
+      "expectedPaise": 3045408,
+      "actualPaise": 3045408,
+      "differencePaise": 0,
+      "reason": "DUPLICATE",
+      "confidence": 0.95,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR1002DUP",
+      "ref": "UTR1002DUP",
+      "expectedPaise": 2296624,
+      "actualPaise": 2296624,
+      "differencePaise": 0,
+      "reason": "DUPLICATE",
+      "confidence": 0.95,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR1014",
+      "ref": "UTR1014",
+      "expectedPaise": 1128704,
+      "actualPaise": 0,
+      "differencePaise": 1128704,
+      "reason": "AMOUNT_MISMATCH",
+      "confidence": 0.9,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR1015",
+      "ref": "UTR1015",
+      "expectedPaise": 832385,
+      "actualPaise": 0,
+      "differencePaise": 832385,
+      "reason": "AMOUNT_MISMATCH",
+      "confidence": 0.9,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR8001",
+      "ref": "UTR8001",
+      "expectedPaise": 12345,
+      "actualPaise": 0,
+      "differencePaise": 12345,
+      "reason": "NO_KEY",
+      "confidence": 0.5,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR8002",
+      "ref": "UTR8002",
+      "expectedPaise": 67890,
+      "actualPaise": 0,
+      "differencePaise": 67890,
+      "reason": "NO_KEY",
+      "confidence": 0.5,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR8003",
+      "ref": "UTR8003",
+      "expectedPaise": 111222,
+      "actualPaise": 0,
+      "differencePaise": 111222,
+      "reason": "NO_KEY",
+      "confidence": 0.5,
+      "status": "NEEDS_REVIEW"
+    },
+    {
+      "recordId": "rec:bank-utr:UTR8004",
+      "ref": "UTR8004",
+      "expectedPaise": 345678,
+      "actualPaise": 0,
+      "differencePaise": 345678,
+      "reason": "NO_KEY",
+      "confidence": 0.5,
+      "status": "NEEDS_REVIEW"
+    }
+  ],
+  "perSource": [
+    {
+      "source": "razorpay-gateway",
+      "total": 15,
+      "matched": 13,
+      "matchRate": 0.8666666666666667,
+      "exceptionCount": 2
+    },
+    {
+      "source": "bank-utr",
+      "total": 23,
+      "matched": 13,
+      "matchRate": 0.5652173913043478,
+      "exceptionCount": 10
+    },
+    {
+      "source": "erp-orders",
+      "total": 8,
+      "matched": 8,
+      "matchRate": 1,
+      "exceptionCount": 0
+    },
+    {
+      "source": "gst-invoices",
+      "total": 6,
+      "matched": 6,
+      "matchRate": 1,
+      "exceptionCount": 0
+    }
+  ],
+  "precision": 1,
+  "recall": 1,
+  "judge": {
+    "candidates": 6,
+    "resolved": 0,
+    "lowConfidence": 1
+  },
+  "exceptions": [
+    {
+      "id": "exc-abfd204c-4d51-4931-aabb-e87c53114c81",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR1001DUP",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR1001DUP",
+        "source": "bank-utr",
+        "sourceRef": "UTR1001DUP",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "duplicate settlement row",
+        "utr": "UTR1001DUP"
+      },
+      "reasonCode": "DUPLICATE",
+      "rationale": "content-duplicate of rec:bank-utr:UTR1001 (same source/amount/date/counterparty)",
+      "candidateIds": [
+        "rec:bank-utr:UTR1001"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.561Z"
+    },
+    {
+      "id": "exc-f40229d3-c20c-4c10-8bcd-77b2df635f94",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR1002DUP",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR1002DUP",
+        "source": "bank-utr",
+        "sourceRef": "UTR1002DUP",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "duplicate settlement row",
+        "utr": "UTR1002DUP"
+      },
+      "reasonCode": "DUPLICATE",
+      "rationale": "content-duplicate of rec:bank-utr:UTR1002 (same source/amount/date/counterparty)",
+      "candidateIds": [
+        "rec:bank-utr:UTR1002"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.561Z"
+    },
+    {
+      "id": "exc-219905bf-96fe-42d4-b1c6-229ab52d67b2",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:razorpay-gateway:pay_14",
+      "recordJson": {
+        "id": "rec:razorpay-gateway:pay_14",
+        "source": "razorpay-gateway",
+        "sourceRef": "pay_14",
+        "ts": "2026-08-14",
+        "amountPaise": 1128904,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "Cloudline Tech Pvt Ltd",
+        "utr": "UTR1014",
+        "gatewayRef": "pay_14",
+        "orderRef": "ORD-14"
+      },
+      "reasonCode": "AMOUNT_MISMATCH",
+      "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+      "candidateIds": [
+        "rec:bank-utr:UTR1014",
+        "rec:razorpay-gateway:pay_15",
+        "rec:bank-utr:UTR1015"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-b0d2fedc-2115-49e3-90c2-c4c85ff4f68d",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR1014",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR1014",
+        "source": "bank-utr",
+        "sourceRef": "UTR1014",
+        "ts": "2026-08-14",
+        "amountPaise": 1128704,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "settlement UTR1014",
+        "utr": "UTR1014"
+      },
+      "reasonCode": "AMOUNT_MISMATCH",
+      "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+      "candidateIds": [
+        "rec:razorpay-gateway:pay_14",
+        "rec:razorpay-gateway:pay_15",
+        "rec:bank-utr:UTR1015"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-4803d329-a207-469e-96b3-45713178edab",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:razorpay-gateway:pay_15",
+      "recordJson": {
+        "id": "rec:razorpay-gateway:pay_15",
+        "source": "razorpay-gateway",
+        "sourceRef": "pay_15",
+        "ts": "2026-08-14",
+        "amountPaise": 832585,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "Fresco Bakers",
+        "utr": "UTR1015",
+        "gatewayRef": "pay_15",
+        "orderRef": "ORD-15"
+      },
+      "reasonCode": "AMOUNT_MISMATCH",
+      "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+      "candidateIds": [
+        "rec:razorpay-gateway:pay_14",
+        "rec:bank-utr:UTR1014",
+        "rec:bank-utr:UTR1015"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-c50f471f-14bf-4953-b383-35accb0a22f8",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR1015",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR1015",
+        "source": "bank-utr",
+        "sourceRef": "UTR1015",
+        "ts": "2026-08-14",
+        "amountPaise": 832385,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "settlement UTR1015",
+        "utr": "UTR1015"
+      },
+      "reasonCode": "AMOUNT_MISMATCH",
+      "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+      "candidateIds": [
+        "rec:razorpay-gateway:pay_14",
+        "rec:bank-utr:UTR1014",
+        "rec:razorpay-gateway:pay_15"
+      ],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-4478d3bd-a508-4f3f-a1a2-b4b313fb4ce4",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR9001",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR9001",
+        "source": "bank-utr",
+        "sourceRef": "UTR9001",
+        "ts": "2026-08-13",
+        "amountPaise": 4340826,
+        "currency": "INR",
+        "counterparty": "GreenLeaf Organics",
+        "description": "near-duplicate A",
+        "utr": "UTR9001"
+      },
+      "reasonCode": "PARTIAL_FLAP",
+      "rationale": "heuristic:candidate(rec:razorpay-gateway:pay_9) amountDiff=0 dateOk=true cpyOk=true refOk=false hint=residual",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-8fa8bf20-2774-4264-94f3-9e0ccd84c794",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR9002",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR9002",
+        "source": "bank-utr",
+        "sourceRef": "UTR9002",
+        "ts": "2026-08-14",
+        "amountPaise": 4340806,
+        "currency": "INR",
+        "counterparty": "Unrelated Ventures",
+        "description": "near-duplicate B",
+        "utr": "UTR9002"
+      },
+      "reasonCode": "LOW_CONFIDENCE",
+      "rationale": "heuristic:candidate(rec:razorpay-gateway:pay_9) amountDiff=20 dateOk=true cpyOk=false refOk=false hint=residual",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-0b10cba2-9839-4a25-bb2b-7e57b90513c4",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR8001",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR8001",
+        "source": "bank-utr",
+        "sourceRef": "UTR8001",
+        "ts": "2026-08-13",
+        "amountPaise": 12345,
+        "currency": "INR",
+        "counterparty": "Acme Retail Pvt Ltd",
+        "description": "unmatched collection",
+        "utr": "UTR8001"
+      },
+      "reasonCode": "NO_KEY",
+      "rationale": "no usable reference key and no near-amount candidate (orphan)",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-426c1ca6-f4e8-4a33-a749-7c450755821c",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR8002",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR8002",
+        "source": "bank-utr",
+        "sourceRef": "UTR8002",
+        "ts": "2026-08-13",
+        "amountPaise": 67890,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "unmatched collection",
+        "utr": "UTR8002"
+      },
+      "reasonCode": "NO_KEY",
+      "rationale": "no usable reference key and no near-amount candidate (orphan)",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-c6b73be5-b524-457e-beff-9861e3c0d175",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR8003",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR8003",
+        "source": "bank-utr",
+        "sourceRef": "UTR8003",
+        "ts": "2026-08-13",
+        "amountPaise": 111222,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "unmatched collection",
+        "utr": "UTR8003"
+      },
+      "reasonCode": "NO_KEY",
+      "rationale": "no usable reference key and no near-amount candidate (orphan)",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    },
+    {
+      "id": "exc-1b9df6d6-20b1-4568-8cbc-bf97860d7dc2",
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "recordId": "rec:bank-utr:UTR8004",
+      "recordJson": {
+        "id": "rec:bank-utr:UTR8004",
+        "source": "bank-utr",
+        "sourceRef": "UTR8004",
+        "ts": "2026-08-13",
+        "amountPaise": 345678,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "unmatched collection",
+        "utr": "UTR8004"
+      },
+      "reasonCode": "NO_KEY",
+      "rationale": "no usable reference key and no near-amount candidate (orphan)",
+      "candidateIds": [],
+      "status": "OPEN",
+      "createdAt": "2026-08-21T09:01:04.564Z"
+    }
+  ],
+  "auditCount": 141,
+  "__ctx": {
+    "groups": [
+      {
+        "id": "grp-rec:bank-utr:UTR1001-rec:erp-orders:ORD-1-rec:gst-invoices:INV-1-rec:razorpay-gateway:pay_1",
+        "key": "utr:UTR1001",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 3045408,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_1",
+          "rec:bank-utr:UTR1001",
+          "rec:erp-orders:ORD-1",
+          "rec:gst-invoices:INV-1"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_1",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1001",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-1",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-1",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1002-rec:erp-orders:ORD-2-rec:gst-invoices:INV-2-rec:razorpay-gateway:pay_2",
+        "key": "utr:UTR1002",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 2296624,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_2",
+          "rec:bank-utr:UTR1002",
+          "rec:erp-orders:ORD-2",
+          "rec:gst-invoices:INV-2"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_2",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1002",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-2",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-2",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1003-rec:erp-orders:ORD-3-rec:gst-invoices:INV-3-rec:razorpay-gateway:pay_3",
+        "key": "utr:UTR1003",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 4277083,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_3",
+          "rec:bank-utr:UTR1003",
+          "rec:erp-orders:ORD-3",
+          "rec:gst-invoices:INV-3"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_3",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1003",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-3",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-3",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1004-rec:erp-orders:ORD-4-rec:gst-invoices:INV-4-rec:razorpay-gateway:pay_4",
+        "key": "utr:UTR1004",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 3381697,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_4",
+          "rec:bank-utr:UTR1004",
+          "rec:erp-orders:ORD-4",
+          "rec:gst-invoices:INV-4"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_4",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1004",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-4",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-4",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1005-rec:erp-orders:ORD-5-rec:gst-invoices:INV-5-rec:razorpay-gateway:pay_5",
+        "key": "utr:UTR1005",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 956588,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_5",
+          "rec:bank-utr:UTR1005",
+          "rec:erp-orders:ORD-5",
+          "rec:gst-invoices:INV-5"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_5",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1005",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-5",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-5",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1006-rec:erp-orders:ORD-6-rec:gst-invoices:INV-6-rec:razorpay-gateway:pay_6",
+        "key": "utr:UTR1006",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (4 records)",
+        "amountPaise": 2680303,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_6",
+          "rec:bank-utr:UTR1006",
+          "rec:erp-orders:ORD-6",
+          "rec:gst-invoices:INV-6"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_6",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1006",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-6",
+            "matchedOn": "ref"
+          },
+          {
+            "recordId": "rec:gst-invoices:INV-6",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1007-rec:erp-orders:ORD-7-rec:razorpay-gateway:pay_7",
+        "key": "utr:UTR1007",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (3 records)",
+        "amountPaise": 1438817,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_7",
+          "rec:bank-utr:UTR1007",
+          "rec:erp-orders:ORD-7"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_7",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1007",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-7",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1008-rec:erp-orders:ORD-8-rec:razorpay-gateway:pay_8",
+        "key": "utr:UTR1008",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (3 records)",
+        "amountPaise": 3161249,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_8",
+          "rec:bank-utr:UTR1008",
+          "rec:erp-orders:ORD-8"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_8",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1008",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:erp-orders:ORD-8",
+            "matchedOn": "ref"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1009-rec:razorpay-gateway:pay_9",
+        "key": "utr:UTR1009",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (2 records)",
+        "amountPaise": 4340826,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_9",
+          "rec:bank-utr:UTR1009"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_9",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1009",
+            "matchedOn": "utr"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1010-rec:razorpay-gateway:pay_10",
+        "key": "utr:UTR1010",
+        "method": "EXACT",
+        "confidence": 1,
+        "reason": "exact:key (2 records)",
+        "amountPaise": 2414354,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_10",
+          "rec:bank-utr:UTR1010"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_10",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1010",
+            "matchedOn": "utr"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1012-rec:razorpay-gateway:pay_12",
+        "key": "utr:UTR1012",
+        "method": "EXACT",
+        "confidence": 0.98,
+        "reason": "exact:key (2 records)",
+        "amountPaise": 3551824,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_12",
+          "rec:bank-utr:UTR1012"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_12",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1012",
+            "matchedOn": "utr"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1013-rec:razorpay-gateway:pay_13",
+        "key": "utr:UTR1013",
+        "method": "EXACT",
+        "confidence": 0.98,
+        "reason": "exact:key (2 records)",
+        "amountPaise": 3033803,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_13",
+          "rec:bank-utr:UTR1013"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_13",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1013",
+            "matchedOn": "utr"
+          }
+        ]
+      },
+      {
+        "id": "grp-rec:bank-utr:UTR1011-rec:razorpay-gateway:pay_11",
+        "key": "utr:UTR001011",
+        "method": "NORMALIZED",
+        "confidence": 0.95,
+        "reason": "normalized:key (2 records)",
+        "amountPaise": 1149710,
+        "recordIds": [
+          "rec:razorpay-gateway:pay_11",
+          "rec:bank-utr:UTR1011"
+        ],
+        "links": [
+          {
+            "recordId": "rec:razorpay-gateway:pay_11",
+            "matchedOn": "utr"
+          },
+          {
+            "recordId": "rec:bank-utr:UTR1011",
+            "matchedOn": "utr"
+          }
+        ]
+      }
+    ],
+    "records": [
+      {
+        "id": "rec:razorpay-gateway:pay_1",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_1",
+          "orderId": "ORD-1",
+          "utr": "UTR1001",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "card",
+          "description": "Brightway Traders"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_1",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "Brightway Traders",
+        "utr": "UTR1001",
+        "gatewayRef": "pay_1",
+        "orderRef": "ORD-1"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_2",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_2",
+          "orderId": "ORD-2",
+          "utr": "UTR1002",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "card",
+          "description": "Zenith Foods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_2",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "Zenith Foods",
+        "utr": "UTR1002",
+        "gatewayRef": "pay_2",
+        "orderRef": "ORD-2"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_3",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_3",
+          "orderId": "ORD-3",
+          "utr": "UTR1003",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "method": "card",
+          "description": "Northwind Exports"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_3",
+        "ts": "2026-08-14",
+        "amountPaise": 4277083,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "Northwind Exports",
+        "utr": "UTR1003",
+        "gatewayRef": "pay_3",
+        "orderRef": "ORD-3"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_4",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_4",
+          "orderId": "ORD-4",
+          "utr": "UTR1004",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "method": "card",
+          "description": "Cloudline Tech Pvt Ltd"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_4",
+        "ts": "2026-08-13",
+        "amountPaise": 3381697,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "Cloudline Tech Pvt Ltd",
+        "utr": "UTR1004",
+        "gatewayRef": "pay_4",
+        "orderRef": "ORD-4"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_5",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_5",
+          "orderId": "ORD-5",
+          "utr": "UTR1005",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "customer": "Fresco Bakers",
+          "method": "card",
+          "description": "Fresco Bakers"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_5",
+        "ts": "2026-08-15",
+        "amountPaise": 956588,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "Fresco Bakers",
+        "utr": "UTR1005",
+        "gatewayRef": "pay_5",
+        "orderRef": "ORD-5"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_6",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_6",
+          "orderId": "ORD-6",
+          "utr": "UTR1006",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "method": "card",
+          "description": "Kites Retail"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_6",
+        "ts": "2026-08-14",
+        "amountPaise": 2680303,
+        "currency": "INR",
+        "counterparty": "Kites Retail",
+        "description": "Kites Retail",
+        "utr": "UTR1006",
+        "gatewayRef": "pay_6",
+        "orderRef": "ORD-6"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_7",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_7",
+          "orderId": "ORD-7",
+          "utr": "UTR1007",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "method": "card",
+          "description": "Summit Logistics"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_7",
+        "ts": "2026-08-14",
+        "amountPaise": 1438817,
+        "currency": "INR",
+        "counterparty": "Summit Logistics",
+        "description": "Summit Logistics",
+        "utr": "UTR1007",
+        "gatewayRef": "pay_7",
+        "orderRef": "ORD-7"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_8",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_8",
+          "orderId": "ORD-8",
+          "utr": "UTR1008",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "customer": "Orbit Media Works",
+          "method": "card",
+          "description": "Orbit Media Works"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_8",
+        "ts": "2026-08-13",
+        "amountPaise": 3161249,
+        "currency": "INR",
+        "counterparty": "Orbit Media Works",
+        "description": "Orbit Media Works",
+        "utr": "UTR1008",
+        "gatewayRef": "pay_8",
+        "orderRef": "ORD-8"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_9",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_9",
+          "orderId": "ORD-9",
+          "utr": "UTR1009",
+          "amount": 43408.26,
+          "date": "2026-08-14",
+          "customer": "GreenLeaf Organics",
+          "method": "card",
+          "description": "GreenLeaf Organics"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_9",
+        "ts": "2026-08-14",
+        "amountPaise": 4340826,
+        "currency": "INR",
+        "counterparty": "GreenLeaf Organics",
+        "description": "GreenLeaf Organics",
+        "utr": "UTR1009",
+        "gatewayRef": "pay_9",
+        "orderRef": "ORD-9"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_10",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_10",
+          "orderId": "ORD-10",
+          "utr": "UTR1010",
+          "amount": 24143.54,
+          "date": "2026-08-15",
+          "customer": "Acme Retail Pvt Ltd",
+          "method": "card",
+          "description": "Acme Retail Pvt Ltd"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_10",
+        "ts": "2026-08-15",
+        "amountPaise": 2414354,
+        "currency": "INR",
+        "counterparty": "Acme Retail Pvt Ltd",
+        "description": "Acme Retail Pvt Ltd",
+        "utr": "UTR1010",
+        "gatewayRef": "pay_10",
+        "orderRef": "ORD-10"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_11",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_11",
+          "orderId": "ORD-11",
+          "utr": "UTR001011",
+          "amount": 11497.1,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "method": "upi",
+          "description": "Brightway Traders"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_11",
+        "ts": "2026-08-14",
+        "amountPaise": 1149710,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "Brightway Traders",
+        "utr": "UTR001011",
+        "gatewayRef": "pay_11",
+        "orderRef": "ORD-11"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_12",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_12",
+          "orderId": "ORD-12",
+          "utr": "UTR1012",
+          "amount": 35518.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "method": "card",
+          "description": "Zenith Foods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_12",
+        "ts": "2026-08-14",
+        "amountPaise": 3551824,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "Zenith Foods",
+        "utr": "UTR1012",
+        "gatewayRef": "pay_12",
+        "orderRef": "ORD-12"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_13",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_13",
+          "orderId": "ORD-13",
+          "utr": "UTR1013",
+          "amount": 30338.03,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "method": "card",
+          "description": "Northwind Exports"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_13",
+        "ts": "2026-08-14",
+        "amountPaise": 3033803,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "Northwind Exports",
+        "utr": "UTR1013",
+        "gatewayRef": "pay_13",
+        "orderRef": "ORD-13"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_14",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_14",
+          "orderId": "ORD-14",
+          "utr": "UTR1014",
+          "amount": 11289.04,
+          "date": "2026-08-14",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "method": "card",
+          "description": "Cloudline Tech Pvt Ltd"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_14",
+        "ts": "2026-08-14",
+        "amountPaise": 1128904,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "Cloudline Tech Pvt Ltd",
+        "utr": "UTR1014",
+        "gatewayRef": "pay_14",
+        "orderRef": "ORD-14"
+      },
+      {
+        "id": "rec:razorpay-gateway:pay_15",
+        "source": "razorpay-gateway",
+        "raw": {
+          "paymentId": "pay_15",
+          "orderId": "ORD-15",
+          "utr": "UTR1015",
+          "amount": 8325.85,
+          "date": "2026-08-14",
+          "customer": "Fresco Bakers",
+          "method": "card",
+          "description": "Fresco Bakers"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "pay_15",
+        "ts": "2026-08-14",
+        "amountPaise": 832585,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "Fresco Bakers",
+        "utr": "UTR1015",
+        "gatewayRef": "pay_15",
+        "orderRef": "ORD-15"
+      },
+      {
+        "id": "rec:bank-utr:UTR1001",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1001",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "settlement UTR1001"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1001",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "settlement UTR1001",
+        "utr": "UTR1001"
+      },
+      {
+        "id": "rec:bank-utr:UTR1002",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1002",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "settlement UTR1002"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1002",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "settlement UTR1002",
+        "utr": "UTR1002"
+      },
+      {
+        "id": "rec:bank-utr:UTR1003",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1003",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "counterparty": "Northwind Exports",
+          "narration": "settlement UTR1003"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1003",
+        "ts": "2026-08-14",
+        "amountPaise": 4277083,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "settlement UTR1003",
+        "utr": "UTR1003"
+      },
+      {
+        "id": "rec:bank-utr:UTR1004",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1004",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "settlement UTR1004"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1004",
+        "ts": "2026-08-13",
+        "amountPaise": 3381697,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "settlement UTR1004",
+        "utr": "UTR1004"
+      },
+      {
+        "id": "rec:bank-utr:UTR1005",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1005",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "counterparty": "Fresco Bakers",
+          "narration": "settlement UTR1005"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1005",
+        "ts": "2026-08-15",
+        "amountPaise": 956588,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "settlement UTR1005",
+        "utr": "UTR1005"
+      },
+      {
+        "id": "rec:bank-utr:UTR1006",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1006",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "counterparty": "Kites Retail",
+          "narration": "settlement UTR1006"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1006",
+        "ts": "2026-08-14",
+        "amountPaise": 2680303,
+        "currency": "INR",
+        "counterparty": "Kites Retail",
+        "description": "settlement UTR1006",
+        "utr": "UTR1006"
+      },
+      {
+        "id": "rec:bank-utr:UTR1007",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1007",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "counterparty": "Summit Logistics",
+          "narration": "settlement UTR1007"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1007",
+        "ts": "2026-08-14",
+        "amountPaise": 1438817,
+        "currency": "INR",
+        "counterparty": "Summit Logistics",
+        "description": "settlement UTR1007",
+        "utr": "UTR1007"
+      },
+      {
+        "id": "rec:bank-utr:UTR1008",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1008",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "counterparty": "Orbit Media Works",
+          "narration": "settlement UTR1008"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1008",
+        "ts": "2026-08-13",
+        "amountPaise": 3161249,
+        "currency": "INR",
+        "counterparty": "Orbit Media Works",
+        "description": "settlement UTR1008",
+        "utr": "UTR1008"
+      },
+      {
+        "id": "rec:bank-utr:UTR1009",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1009",
+          "amount": 43408.26,
+          "date": "2026-08-14",
+          "counterparty": "GreenLeaf Organics",
+          "narration": "settlement UTR1009"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1009",
+        "ts": "2026-08-14",
+        "amountPaise": 4340826,
+        "currency": "INR",
+        "counterparty": "GreenLeaf Organics",
+        "description": "settlement UTR1009",
+        "utr": "UTR1009"
+      },
+      {
+        "id": "rec:bank-utr:UTR1010",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1010",
+          "amount": 24143.54,
+          "date": "2026-08-15",
+          "counterparty": "Acme Retail Pvt Ltd",
+          "narration": "settlement UTR1010"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1010",
+        "ts": "2026-08-15",
+        "amountPaise": 2414354,
+        "currency": "INR",
+        "counterparty": "Acme Retail Pvt Ltd",
+        "description": "settlement UTR1010",
+        "utr": "UTR1010"
+      },
+      {
+        "id": "rec:bank-utr:UTR1011",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1011",
+          "amount": 11496.8,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "settlement UTR1011"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1011",
+        "ts": "2026-08-14",
+        "amountPaise": 1149680,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "settlement UTR1011",
+        "utr": "UTR1011"
+      },
+      {
+        "id": "rec:bank-utr:UTR1012",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1012",
+          "amount": 35517.94,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "settlement UTR1012"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1012",
+        "ts": "2026-08-14",
+        "amountPaise": 3551794,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "settlement UTR1012",
+        "utr": "UTR1012"
+      },
+      {
+        "id": "rec:bank-utr:UTR1013",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1013",
+          "amount": 30337.73,
+          "date": "2026-08-14",
+          "counterparty": "Northwind Exports",
+          "narration": "settlement UTR1013"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1013",
+        "ts": "2026-08-14",
+        "amountPaise": 3033773,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "settlement UTR1013",
+        "utr": "UTR1013"
+      },
+      {
+        "id": "rec:bank-utr:UTR1014",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1014",
+          "amount": 11287.04,
+          "date": "2026-08-14",
+          "counterparty": "Cloudline Tech Pvt Ltd",
+          "narration": "settlement UTR1014"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1014",
+        "ts": "2026-08-14",
+        "amountPaise": 1128704,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "settlement UTR1014",
+        "utr": "UTR1014"
+      },
+      {
+        "id": "rec:bank-utr:UTR1015",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1015",
+          "amount": 8323.85,
+          "date": "2026-08-14",
+          "counterparty": "Fresco Bakers",
+          "narration": "settlement UTR1015"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1015",
+        "ts": "2026-08-14",
+        "amountPaise": 832385,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "settlement UTR1015",
+        "utr": "UTR1015"
+      },
+      {
+        "id": "rec:bank-utr:UTR1001DUP",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1001DUP",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "counterparty": "Brightway Traders",
+          "narration": "duplicate settlement row"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1001DUP",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "duplicate settlement row",
+        "utr": "UTR1001DUP"
+      },
+      {
+        "id": "rec:bank-utr:UTR1002DUP",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR1002DUP",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "counterparty": "Zenith Foods",
+          "narration": "duplicate settlement row"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR1002DUP",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "duplicate settlement row",
+        "utr": "UTR1002DUP"
+      },
+      {
+        "id": "rec:bank-utr:UTR9001",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR9001",
+          "amount": 43408.26,
+          "date": "2026-08-13",
+          "counterparty": "GreenLeaf Organics",
+          "narration": "near-duplicate A"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR9001",
+        "ts": "2026-08-13",
+        "amountPaise": 4340826,
+        "currency": "INR",
+        "counterparty": "GreenLeaf Organics",
+        "description": "near-duplicate A",
+        "utr": "UTR9001"
+      },
+      {
+        "id": "rec:bank-utr:UTR9002",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR9002",
+          "amount": 43408.06,
+          "date": "2026-08-14",
+          "counterparty": "Unrelated Ventures",
+          "narration": "near-duplicate B"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR9002",
+        "ts": "2026-08-14",
+        "amountPaise": 4340806,
+        "currency": "INR",
+        "counterparty": "Unrelated Ventures",
+        "description": "near-duplicate B",
+        "utr": "UTR9002"
+      },
+      {
+        "id": "rec:bank-utr:UTR8001",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR8001",
+          "amount": 123.45,
+          "date": "2026-08-13",
+          "counterparty": "Acme Retail Pvt Ltd",
+          "narration": "unmatched collection"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR8001",
+        "ts": "2026-08-13",
+        "amountPaise": 12345,
+        "currency": "INR",
+        "counterparty": "Acme Retail Pvt Ltd",
+        "description": "unmatched collection",
+        "utr": "UTR8001"
+      },
+      {
+        "id": "rec:bank-utr:UTR8002",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR8002",
+          "amount": 678.9,
+          "date": "2026-08-13",
+          "counterparty": "Brightway Traders",
+          "narration": "unmatched collection"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR8002",
+        "ts": "2026-08-13",
+        "amountPaise": 67890,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "unmatched collection",
+        "utr": "UTR8002"
+      },
+      {
+        "id": "rec:bank-utr:UTR8003",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR8003",
+          "amount": 1112.22,
+          "date": "2026-08-13",
+          "counterparty": "Zenith Foods",
+          "narration": "unmatched collection"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR8003",
+        "ts": "2026-08-13",
+        "amountPaise": 111222,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "unmatched collection",
+        "utr": "UTR8003"
+      },
+      {
+        "id": "rec:bank-utr:UTR8004",
+        "source": "bank-utr",
+        "raw": {
+          "utr": "UTR8004",
+          "amount": 3456.78,
+          "date": "2026-08-13",
+          "counterparty": "Northwind Exports",
+          "narration": "unmatched collection"
+        },
+        "kind": "SETTLEMENT",
+        "sourceRef": "UTR8004",
+        "ts": "2026-08-13",
+        "amountPaise": 345678,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "unmatched collection",
+        "utr": "UTR8004"
+      },
+      {
+        "id": "rec:erp-orders:ORD-1",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-1",
+          "paymentId": "pay_1",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "customer": "Brightway Traders",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-1",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_1",
+        "orderRef": "ORD-1"
+      },
+      {
+        "id": "rec:erp-orders:ORD-2",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-2",
+          "paymentId": "pay_2",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "customer": "Zenith Foods",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-2",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_2",
+        "orderRef": "ORD-2"
+      },
+      {
+        "id": "rec:erp-orders:ORD-3",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-3",
+          "paymentId": "pay_3",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "customer": "Northwind Exports",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-3",
+        "ts": "2026-08-14",
+        "amountPaise": 4277083,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_3",
+        "orderRef": "ORD-3"
+      },
+      {
+        "id": "rec:erp-orders:ORD-4",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-4",
+          "paymentId": "pay_4",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "customer": "Cloudline Tech Pvt Ltd",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-4",
+        "ts": "2026-08-13",
+        "amountPaise": 3381697,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_4",
+        "orderRef": "ORD-4"
+      },
+      {
+        "id": "rec:erp-orders:ORD-5",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-5",
+          "paymentId": "pay_5",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "customer": "Fresco Bakers",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-5",
+        "ts": "2026-08-15",
+        "amountPaise": 956588,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_5",
+        "orderRef": "ORD-5"
+      },
+      {
+        "id": "rec:erp-orders:ORD-6",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-6",
+          "paymentId": "pay_6",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "customer": "Kites Retail",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-6",
+        "ts": "2026-08-14",
+        "amountPaise": 2680303,
+        "currency": "INR",
+        "counterparty": "Kites Retail",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_6",
+        "orderRef": "ORD-6"
+      },
+      {
+        "id": "rec:erp-orders:ORD-7",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-7",
+          "paymentId": "pay_7",
+          "amount": 14388.17,
+          "date": "2026-08-14",
+          "customer": "Summit Logistics",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-7",
+        "ts": "2026-08-14",
+        "amountPaise": 1438817,
+        "currency": "INR",
+        "counterparty": "Summit Logistics",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_7",
+        "orderRef": "ORD-7"
+      },
+      {
+        "id": "rec:erp-orders:ORD-8",
+        "source": "erp-orders",
+        "raw": {
+          "orderId": "ORD-8",
+          "paymentId": "pay_8",
+          "amount": 31612.49,
+          "date": "2026-08-13",
+          "customer": "Orbit Media Works",
+          "item": "Sale of goods"
+        },
+        "kind": "PAYMENT",
+        "sourceRef": "ORD-8",
+        "ts": "2026-08-13",
+        "amountPaise": 3161249,
+        "currency": "INR",
+        "counterparty": "Orbit Media Works",
+        "description": "Sale of goods",
+        "gatewayRef": "pay_8",
+        "orderRef": "ORD-8"
+      },
+      {
+        "id": "rec:gst-invoices:INV-1",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-1",
+          "orderId": "ORD-1",
+          "amount": 30454.08,
+          "date": "2026-08-14",
+          "buyer": "Brightway Traders",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-1",
+        "ts": "2026-08-14",
+        "amountPaise": 3045408,
+        "currency": "INR",
+        "counterparty": "Brightway Traders",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-1"
+      },
+      {
+        "id": "rec:gst-invoices:INV-2",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-2",
+          "orderId": "ORD-2",
+          "amount": 22966.24,
+          "date": "2026-08-14",
+          "buyer": "Zenith Foods",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-2",
+        "ts": "2026-08-14",
+        "amountPaise": 2296624,
+        "currency": "INR",
+        "counterparty": "Zenith Foods",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-2"
+      },
+      {
+        "id": "rec:gst-invoices:INV-3",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-3",
+          "orderId": "ORD-3",
+          "amount": 42770.83,
+          "date": "2026-08-14",
+          "buyer": "Northwind Exports",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-3",
+        "ts": "2026-08-14",
+        "amountPaise": 4277083,
+        "currency": "INR",
+        "counterparty": "Northwind Exports",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-3"
+      },
+      {
+        "id": "rec:gst-invoices:INV-4",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-4",
+          "orderId": "ORD-4",
+          "amount": 33816.97,
+          "date": "2026-08-13",
+          "buyer": "Cloudline Tech Pvt Ltd",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-4",
+        "ts": "2026-08-13",
+        "amountPaise": 3381697,
+        "currency": "INR",
+        "counterparty": "Cloudline Tech Pvt Ltd",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-4"
+      },
+      {
+        "id": "rec:gst-invoices:INV-5",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-5",
+          "orderId": "ORD-5",
+          "amount": 9565.88,
+          "date": "2026-08-15",
+          "buyer": "Fresco Bakers",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-5",
+        "ts": "2026-08-15",
+        "amountPaise": 956588,
+        "currency": "INR",
+        "counterparty": "Fresco Bakers",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-5"
+      },
+      {
+        "id": "rec:gst-invoices:INV-6",
+        "source": "gst-invoices",
+        "raw": {
+          "invoiceNo": "INV-6",
+          "orderId": "ORD-6",
+          "amount": 26803.03,
+          "date": "2026-08-14",
+          "buyer": "Kites Retail",
+          "hsn": "998212",
+          "description": "Hardware: laptop & peripherals"
+        },
+        "kind": "INVOICE",
+        "sourceRef": "INV-6",
+        "ts": "2026-08-14",
+        "amountPaise": 2680303,
+        "currency": "INR",
+        "counterparty": "Kites Retail",
+        "description": "Hardware: laptop & peripherals",
+        "orderRef": "ORD-6"
+      }
+    ],
+    "settlements": [
+      {
+        "id": "set-5da3c442-fef3-46cd-aa1b-3e8ce9557d4a",
+        "groupKeys": [
+          "utr:UTR1001"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 3045408,
+        "utr": "UTR1001",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1001-rec:erp-orders:ORD-1-rec:gst-invoices:INV-1-rec:razorpay-gateway:pay_1",
+            "amountPaise": 3045408
+          }
+        ]
+      },
+      {
+        "id": "set-fd29c17d-9d59-49a6-b01c-445e4c75064e",
+        "groupKeys": [
+          "utr:UTR1002"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 2296624,
+        "utr": "UTR1002",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1002-rec:erp-orders:ORD-2-rec:gst-invoices:INV-2-rec:razorpay-gateway:pay_2",
+            "amountPaise": 2296624
+          }
+        ]
+      },
+      {
+        "id": "set-3191cddb-95eb-4809-b880-36c2cd4a000f",
+        "groupKeys": [
+          "utr:UTR1003"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 4277083,
+        "utr": "UTR1003",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1003-rec:erp-orders:ORD-3-rec:gst-invoices:INV-3-rec:razorpay-gateway:pay_3",
+            "amountPaise": 4277083
+          }
+        ]
+      },
+      {
+        "id": "set-50fe92f0-848f-4e2c-a41f-f4249d14aed6",
+        "groupKeys": [
+          "utr:UTR1004"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 3381697,
+        "utr": "UTR1004",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1004-rec:erp-orders:ORD-4-rec:gst-invoices:INV-4-rec:razorpay-gateway:pay_4",
+            "amountPaise": 3381697
+          }
+        ]
+      },
+      {
+        "id": "set-c6f124de-6093-4420-8632-1cdd5870294b",
+        "groupKeys": [
+          "utr:UTR1005"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 956588,
+        "utr": "UTR1005",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1005-rec:erp-orders:ORD-5-rec:gst-invoices:INV-5-rec:razorpay-gateway:pay_5",
+            "amountPaise": 956588
+          }
+        ]
+      },
+      {
+        "id": "set-bc64e44c-9284-4725-a65f-c2b710cb5c33",
+        "groupKeys": [
+          "utr:UTR1006"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 2680303,
+        "utr": "UTR1006",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1006-rec:erp-orders:ORD-6-rec:gst-invoices:INV-6-rec:razorpay-gateway:pay_6",
+            "amountPaise": 2680303
+          }
+        ]
+      },
+      {
+        "id": "set-4d220567-9bb6-499a-aba5-c1fad476dcb9",
+        "groupKeys": [
+          "utr:UTR1007"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 1438817,
+        "utr": "UTR1007",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1007-rec:erp-orders:ORD-7-rec:razorpay-gateway:pay_7",
+            "amountPaise": 1438817
+          }
+        ]
+      },
+      {
+        "id": "set-233e02d0-428a-46f6-9995-4700910e6a93",
+        "groupKeys": [
+          "utr:UTR1008"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 3161249,
+        "utr": "UTR1008",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1008-rec:erp-orders:ORD-8-rec:razorpay-gateway:pay_8",
+            "amountPaise": 3161249
+          }
+        ]
+      },
+      {
+        "id": "set-afb8d79b-1958-45ef-a58b-85ec002007bc",
+        "groupKeys": [
+          "utr:UTR1009"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 4340826,
+        "utr": "UTR1009",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1009-rec:razorpay-gateway:pay_9",
+            "amountPaise": 4340826
+          }
+        ]
+      },
+      {
+        "id": "set-25ce138a-ca62-4a54-b39f-1b1138593706",
+        "groupKeys": [
+          "utr:UTR1010"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 2414354,
+        "utr": "UTR1010",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1010-rec:razorpay-gateway:pay_10",
+            "amountPaise": 2414354
+          }
+        ]
+      },
+      {
+        "id": "set-9d137b3d-26f3-4b71-9bda-b44a58b19800",
+        "groupKeys": [
+          "utr:UTR1012"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 3551824,
+        "utr": "UTR1012",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1012-rec:razorpay-gateway:pay_12",
+            "amountPaise": 3551824
+          }
+        ]
+      },
+      {
+        "id": "set-2149978d-0869-42c2-bda9-21c551f43b1f",
+        "groupKeys": [
+          "utr:UTR1013"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 3033803,
+        "utr": "UTR1013",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1013-rec:razorpay-gateway:pay_13",
+            "amountPaise": 3033803
+          }
+        ]
+      },
+      {
+        "id": "set-a66e7de0-3301-4d1b-8228-6db7729334f9",
+        "groupKeys": [
+          "utr:UTR001011"
+        ],
+        "settledAt": "2026-08-14",
+        "amountPaise": 1149710,
+        "utr": "UTR001011",
+        "status": "RECONCILED",
+        "lagDays": 1,
+        "lines": [
+          {
+            "groupId": "grp-rec:bank-utr:UTR1011-rec:razorpay-gateway:pay_11",
+            "amountPaise": 1149710
+          }
+        ]
+      }
+    ],
+    "forecast": [
+      {
+        "date": "2026-08-22",
+        "balancePaise": 5104041,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-23",
+        "balancePaise": 10208082,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-24",
+        "balancePaise": 15312123,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-25",
+        "balancePaise": 20416164,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-26",
+        "balancePaise": 25520205,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-27",
+        "balancePaise": 30624246,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      },
+      {
+        "date": "2026-08-28",
+        "balancePaise": 35728287,
+        "deltaPaise": 5104041,
+        "confidence": 0.9,
+        "reconciledIn": true
+      }
+    ],
+    "taxMatches": [
+      {
+        "recordId": "rec:razorpay-gateway:pay_1",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_2",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_3",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_4",
+        "categoryCode": "998313",
+        "categoryLabel": "Subscription / Software Services",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998313 (Subscription / Software Services)"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_5",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_6",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_7",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_8",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_9",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_10",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_11",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_12",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_13",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_14",
+        "categoryCode": "998313",
+        "categoryLabel": "Subscription / Software Services",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998313 (Subscription / Software Services)"
+      },
+      {
+        "recordId": "rec:razorpay-gateway:pay_15",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1001",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1002",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1003",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1004",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1005",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1006",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1007",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1008",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1009",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1010",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1011",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1012",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1013",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1014",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1015",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1001DUP",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR1002DUP",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR9001",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR9002",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR8001",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR8002",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR8003",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:bank-utr:UTR8004",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-1",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-2",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-3",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-4",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-5",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-6",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-7",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:erp-orders:ORD-8",
+        "categoryCode": null,
+        "matchedBy": "JUDGED",
+        "confidence": 0.3,
+        "reason": "no rule match; judge could not attribute a category"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-1",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-2",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-3",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-4",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-5",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      },
+      {
+        "recordId": "rec:gst-invoices:INV-6",
+        "categoryCode": "998212",
+        "categoryLabel": "Hardware / Equipment",
+        "matchedBy": "RULE",
+        "confidence": 0.95,
+        "reason": "rule:998212 (Hardware / Equipment)"
+      }
+    ],
+    "audit": {
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "events": [
+        {
+          "id": "aud-ddffbcd1-a9eb-4499-95dc-805eacab8d81",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_1",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-9cd081bb-a2ac-439f-bdd9-645db8f44032",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_2",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-6e4793be-c08a-4af8-b00a-5f7470be415c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_3",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-4d245f72-ee8e-4d8a-b185-14069d94f6e4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_4",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-2c57b517-38bc-4c3d-b632-075fb66ba439",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_5",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-aace3f86-aa54-40d8-b082-6c487df5b1ba",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_6",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f887a321-e6e3-4271-8de1-bf14ad2dc2f1",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_7",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-0903479a-c11f-408f-9df9-eb6b71181587",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_8",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-eed9abb3-b77a-4e96-b4c2-43e4969266f4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_9",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-d51799d5-161a-46ae-a467-135b967e4b6c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_10",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-cbf26348-d9e4-4329-9aac-0a5b176f6591",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_11",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-0ee81b2c-557b-4337-b07c-55c550bcd395",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_12",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-1fad39c4-cd9e-44ab-ae62-02a8632f2d8d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_13",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-5b52e0cc-2571-4234-9432-1bf65298dcad",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_14",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-a1137394-6019-499d-9366-d31c0d48be22",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:razorpay-gateway:pay_15",
+          "detail": {
+            "source": "razorpay-gateway"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-13ea374f-9239-4c2b-9d08-b262da27e2ff",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1001",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f3059cb2-ebfc-4791-b949-c1044d7ed934",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1002",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-9ef26093-55b7-47ec-b327-9faf80cd350d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1003",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-c84edd48-633c-476e-8ba8-2cce19c4a41b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1004",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-290333ad-ac00-43f4-aeda-aece28ebc2b5",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1005",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-6d511818-ca35-4612-89a2-a02022ae79b4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1006",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f9a2ef4b-a828-4d33-9dee-6304d758b0f6",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1007",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-8661b40c-b6dd-4f8e-b9ad-b2e8ca9394a3",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1008",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-7c7ecae1-6801-4af5-a4b3-44ffe88d14ec",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1009",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-61e45287-858d-4c28-84ff-1a34029f6daa",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1010",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-8143842d-866e-4e52-ad63-41a57b03e027",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1011",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-5bc903ca-fbd2-467d-a5ab-b0af79c0ebe7",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1012",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-805f50d5-c44b-4d4e-acf9-01f3599faa4e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1013",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-6930acd4-97bd-48eb-ae07-3cec4885b215",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1014",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-5f73c231-ef9a-42e5-9364-50b71c0ec563",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1015",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-a5fe0f5a-28c1-43c2-a17a-be9cbf77b876",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1001DUP",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-fa70f541-9c7d-4f41-a481-4cc7960426c0",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR1002DUP",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-dbc76f3f-a805-451c-98ae-a60d0d68da9b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR9001",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-3637e505-528b-4ca1-9d89-612bffbd429c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR9002",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-477279ec-1d2e-4062-9d17-c31e3fc757aa",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR8001",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-6c533cfb-73c5-4c1c-a869-ada024fff905",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR8002",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-2dc13b7f-8fbb-4b0e-9941-21f841debfaa",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR8003",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-8f8bd338-6196-411e-a212-147d3d41fa44",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:bank-utr:UTR8004",
+          "detail": {
+            "source": "bank-utr"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-3f44180c-2ef8-4879-87a5-baf87d331c4b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-1",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-3554984a-cbf6-4495-92de-7bf19c9e1105",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-2",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-dfc3c153-a0d3-4e75-914e-11c4df01c94c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-3",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-8f7e4371-ac29-4cc7-bb54-e44357d8ad89",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-4",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-222e4a8d-1c60-41f4-8c75-add4d27c4d33",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-5",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-117ac5fb-e9a2-45f6-bc13-c8bc9971de34",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-6",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-275f8da5-35e4-4e88-b596-eba492e90047",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-7",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-4d615bf8-6cfb-4e42-b1e5-8deb736e73d4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:erp-orders:ORD-8",
+          "detail": {
+            "source": "erp-orders"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-b29e7cbb-de7c-4282-a64f-5d6e591bed7e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-1",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-523cf053-64f4-4b7f-96c0-9ce40f7571fb",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-2",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-b4e7086e-0310-44c4-8b64-fa5497d09ea9",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-3",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f1b45a1e-3d41-40f2-8d71-8ab472407c32",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-4",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-eb97cb52-7a33-41dc-8ab6-d042592f5750",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-5",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f8516362-83a3-488d-a318-ba6397e9f05b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "INGEST",
+          "recordId": "rec:gst-invoices:INV-6",
+          "detail": {
+            "source": "gst-invoices"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-a2e56f1c-e948-49a3-b6f3-b1ddbfb3cbfb",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR1001DUP",
+          "detail": {
+            "code": "DUPLICATE"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-b90529fa-54c9-4084-a1f2-b5ca9a37ca1b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR1002DUP",
+          "detail": {
+            "code": "DUPLICATE"
+          },
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "aud-f66ee106-382c-4c9e-bab1-9a051f574deb",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "MATCH",
+          "recordId": "rec:razorpay-gateway:pay_14",
+          "detail": {
+            "method": "EXACT",
+            "status": "conflicted"
+          },
+          "createdAt": "2026-08-21T09:01:04.563Z"
+        },
+        {
+          "id": "aud-dfa702fd-9681-4772-9654-86b703de0fc6",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:razorpay-gateway:pay_14",
+          "detail": {
+            "code": "AMOUNT_MISMATCH"
+          },
+          "createdAt": "2026-08-21T09:01:04.563Z"
+        },
+        {
+          "id": "aud-8ed47549-e882-45a1-817d-0c3403dfaa5e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "MATCH",
+          "recordId": "rec:bank-utr:UTR1014",
+          "detail": {
+            "method": "EXACT",
+            "status": "conflicted"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-d14e777a-1a59-4fcc-8185-02d1e6ac4ec2",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR1014",
+          "detail": {
+            "code": "AMOUNT_MISMATCH"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-2a29a26e-d6f3-41c3-a900-5cee5bc951e4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "MATCH",
+          "recordId": "rec:razorpay-gateway:pay_15",
+          "detail": {
+            "method": "EXACT",
+            "status": "conflicted"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-34e5faca-30c9-4417-8e59-6b4734f76f14",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:razorpay-gateway:pay_15",
+          "detail": {
+            "code": "AMOUNT_MISMATCH"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-a84a09b8-41ed-452b-a14c-b2dd546105d0",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "MATCH",
+          "recordId": "rec:bank-utr:UTR1015",
+          "detail": {
+            "method": "EXACT",
+            "status": "conflicted"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-aa39333a-9316-4543-95fb-3d841f5d4d36",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR1015",
+          "detail": {
+            "code": "AMOUNT_MISMATCH"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-8aca0844-af7d-4456-9358-1290f687cae1",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR9001",
+          "detail": {
+            "candidates": 3,
+            "confidence": 0.65,
+            "reasonCode": "PARTIAL_FLAP"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-0e2a2af4-f8b0-4d22-9ebb-706b4003037c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR9001",
+          "detail": {
+            "code": "PARTIAL_FLAP"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-d99b6b23-29e4-4830-8e33-1ab03ec9eed7",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR9002",
+          "detail": {
+            "candidates": 3,
+            "confidence": 0.5,
+            "reasonCode": "LOW_CONFIDENCE"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-b3206a8a-423c-4c76-9180-ee9376c1a42d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR9002",
+          "detail": {
+            "code": "LOW_CONFIDENCE"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-9a482b7f-8e88-4a94-b309-2e01cac1a5ab",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR8001",
+          "detail": {
+            "candidates": 0,
+            "confidence": 0,
+            "reasonCode": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-fb343227-d772-4b06-b165-8a3a138a88f8",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR8001",
+          "detail": {
+            "code": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-928965bc-df4d-43eb-8702-f7f132ea5c7b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR8002",
+          "detail": {
+            "candidates": 0,
+            "confidence": 0,
+            "reasonCode": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-c3ad8d31-8fb1-47d3-89aa-26599df14208",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR8002",
+          "detail": {
+            "code": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-df4a8fdf-9230-4589-bb57-f4ee6b219f99",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR8003",
+          "detail": {
+            "candidates": 0,
+            "confidence": 0,
+            "reasonCode": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-0cc1d6be-b642-462d-be22-58396d867aae",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR8003",
+          "detail": {
+            "code": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-c38deab9-8350-43ac-8a37-5003d0dfc017",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "JUDGE",
+          "recordId": "rec:bank-utr:UTR8004",
+          "detail": {
+            "candidates": 0,
+            "confidence": 0,
+            "reasonCode": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-98707cd6-dc11-4b5b-9cbe-3935802fa033",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "EXCEPTION",
+          "recordId": "rec:bank-utr:UTR8004",
+          "detail": {
+            "code": "NO_KEY"
+          },
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "aud-50e77fb4-e0cb-4659-a315-0914f3cd0110",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1001",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-c2c5ef41-7bac-4d7d-8024-5b579e17ba57",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1002",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-53affb2a-23f6-4e59-a3c4-3ce8e039607e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1003",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-94eb1032-eec4-4795-887f-a13abc992419",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1004",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-e9a52a0c-f50f-4816-a250-ad6bcedf9696",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1005",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-6b932cea-65d0-4ef1-b2e3-b6186c3bdcaa",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1006",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-bd98fa61-56a7-4d40-997d-9b28726dbf26",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1007",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-5e143e85-afd2-4366-a777-7cda971e0ff0",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1008",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-5067c101-d207-4714-9576-4ad73a7d535e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1009",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-8ec00c01-9713-4f12-b7e6-6b0a7a1f39ed",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1010",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-6c3fb161-7a5b-448e-a656-50097a360b77",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1012",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-3176a32e-c32c-4a44-ab3f-8be78ccaf1d4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR1013",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-250e1ad7-f9d5-46f6-9b57-ac90896112c6",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "SETTLE",
+          "detail": {
+            "utr": "UTR001011",
+            "lagDays": 1
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-76d24d25-2d5c-47ef-83b2-162c0b09af7e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "FORECAST",
+          "detail": {
+            "windowDays": 7,
+            "matchedLags": 13
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-699138ab-411f-4a74-a47f-cc49e9864722",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_1",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-a4ceef53-d9f2-48ad-bc7c-c8d9dc1c1e85",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_2",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-2f9d099f-5757-4e4b-8b22-3c465652690d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_3",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-900669c0-015b-4506-879b-1a83f0dadddb",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_4",
+          "detail": {
+            "code": "998313",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-766a3412-d6f6-4a4b-9c80-51c84734ac97",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_5",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-c4684e2e-d89e-4f21-a1a1-74b4a2b32259",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_6",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-ff12148a-20ca-4f36-a090-c69b20d2b1cc",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_7",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-1bad8a30-4058-49cd-9e15-11414ff4a7dc",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_8",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-add8fc38-0d55-4af6-b83e-52e692b81f41",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_9",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-8253e47e-53e1-4511-af7f-f5fdc7fc968b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_10",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-58507828-478f-45fd-9820-799b11a5e7ae",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_11",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-6260577c-b87e-4dcb-9032-22fc6a4cc0c5",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_12",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-a2f9d8c4-9ef5-44c1-babf-70ddca38e663",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_13",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-f940c5c9-9f2d-4eb1-9505-c3302f89402b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_14",
+          "detail": {
+            "code": "998313",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-de1fd770-0ea1-454e-b3a1-634cc9169d55",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:razorpay-gateway:pay_15",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-1607c223-9ae2-419f-9c3b-313071f5d075",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1001",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-5b08466c-ec8e-4ce8-bc1e-1ef85f11c3fa",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1002",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-b5fca7a9-b21b-4a87-a753-9612f2abf974",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1003",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-308d31cd-9c34-42ed-913b-e03b9e01b69a",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1004",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-621eba84-95d2-4b62-90e3-987822876ada",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1005",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-fb158ee1-6965-4aa2-9808-672cb0a85af0",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1006",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-9be34d3e-75eb-44fd-87c3-7685c671b3da",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1007",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-65f34470-0b31-4a15-a0b3-81d7e2e9134d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1008",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-f7bc09f6-fe5a-46c7-8cd7-3cde085378d0",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1009",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-f5769b97-9c68-4b06-8d0d-8b34bf004f35",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1010",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-37d59f57-2ecf-4451-bf5c-a8eff8386549",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1011",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-111b56b6-acb6-43e2-88ca-7d34ccddee55",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1012",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-423977ce-5d29-42fc-8f80-e5718b922911",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1013",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-4d965fea-b2f9-4287-b022-959805396e56",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1014",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-abf0d826-4772-4b8b-8172-03d991521d62",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1015",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-f7b4004b-d77d-43d6-a0d1-b990185c781d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1001DUP",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.565Z"
+        },
+        {
+          "id": "aud-b681ab60-c35b-4c2c-9ec3-65c9baf77a62",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR1002DUP",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-6d549e9a-b53d-47d6-8613-b4883e9c5ac9",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR9001",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-612d5a07-99ff-43a5-8fef-181ada6ba34e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR9002",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-8e71e6a4-82c5-49ce-90b9-e4467d25dff1",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR8001",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-2bb4adee-9db4-4f00-9e85-350851a793d3",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR8002",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-6a190b0b-965b-4d4e-a682-22a38b0a598a",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR8003",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-48ec8327-9fa1-4e13-818d-d1575b0f6c1d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:bank-utr:UTR8004",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-db263705-40ab-40b5-9a17-58184ceaf422",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-1",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-070f06a8-b487-40f9-85dd-668ec1a8cdcf",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-2",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-6e69d19d-5196-449c-a509-0b2b94296c85",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-3",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-188ba059-2204-4760-927d-83f44306778b",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-4",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-10efe224-6b06-4c41-adbd-aaf89cc019a2",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-5",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-8b9075c0-f3ee-4774-bf92-5331b41e57b7",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-6",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-eacf65b2-b3d8-4b41-a2c0-e57188bba535",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-7",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-fb7436db-474d-4630-87af-55a4e8baa64e",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:erp-orders:ORD-8",
+          "detail": {
+            "code": null,
+            "by": "JUDGED"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-05cd8f1f-1baa-48b4-9141-a60aa5e33c8f",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-1",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-d09c39b5-0963-48ad-832c-3fe3e2241cca",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-2",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-eb7efa1c-46c8-4d4f-89d9-befaa4f8dfc4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-3",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-3f492567-5ec5-4ffe-8d91-a0c9cc8cc6d3",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-4",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-ed127898-ca6c-4d4d-a1c1-738abdfe1e94",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-5",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-40c53c97-7680-48f0-bd97-abaf190983e9",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "TAX",
+          "recordId": "rec:gst-invoices:INV-6",
+          "detail": {
+            "code": "998212",
+            "by": "RULE"
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        },
+        {
+          "id": "aud-ffeb5f99-fbe5-46ec-af87-cc29aaf7431a",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "actorType": "SYSTEM",
+          "actorId": "harness",
+          "action": "CLOSE",
+          "detail": {
+            "records": 52,
+            "groups": 13
+          },
+          "createdAt": "2026-08-21T09:01:04.566Z"
+        }
+      ]
+    },
+    "ledger": {
+      "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+      "items": [
+        {
+          "id": "exc-abfd204c-4d51-4931-aabb-e87c53114c81",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR1001DUP",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR1001DUP",
+            "source": "bank-utr",
+            "sourceRef": "UTR1001DUP",
+            "ts": "2026-08-14",
+            "amountPaise": 3045408,
+            "currency": "INR",
+            "counterparty": "Brightway Traders",
+            "description": "duplicate settlement row",
+            "utr": "UTR1001DUP"
+          },
+          "reasonCode": "DUPLICATE",
+          "rationale": "content-duplicate of rec:bank-utr:UTR1001 (same source/amount/date/counterparty)",
+          "candidateIds": [
+            "rec:bank-utr:UTR1001"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "exc-f40229d3-c20c-4c10-8bcd-77b2df635f94",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR1002DUP",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR1002DUP",
+            "source": "bank-utr",
+            "sourceRef": "UTR1002DUP",
+            "ts": "2026-08-14",
+            "amountPaise": 2296624,
+            "currency": "INR",
+            "counterparty": "Zenith Foods",
+            "description": "duplicate settlement row",
+            "utr": "UTR1002DUP"
+          },
+          "reasonCode": "DUPLICATE",
+          "rationale": "content-duplicate of rec:bank-utr:UTR1002 (same source/amount/date/counterparty)",
+          "candidateIds": [
+            "rec:bank-utr:UTR1002"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.561Z"
+        },
+        {
+          "id": "exc-219905bf-96fe-42d4-b1c6-229ab52d67b2",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:razorpay-gateway:pay_14",
+          "recordJson": {
+            "id": "rec:razorpay-gateway:pay_14",
+            "source": "razorpay-gateway",
+            "sourceRef": "pay_14",
+            "ts": "2026-08-14",
+            "amountPaise": 1128904,
+            "currency": "INR",
+            "counterparty": "Cloudline Tech Pvt Ltd",
+            "description": "Cloudline Tech Pvt Ltd",
+            "utr": "UTR1014",
+            "gatewayRef": "pay_14",
+            "orderRef": "ORD-14"
+          },
+          "reasonCode": "AMOUNT_MISMATCH",
+          "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+          "candidateIds": [
+            "rec:bank-utr:UTR1014",
+            "rec:razorpay-gateway:pay_15",
+            "rec:bank-utr:UTR1015"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-b0d2fedc-2115-49e3-90c2-c4c85ff4f68d",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR1014",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR1014",
+            "source": "bank-utr",
+            "sourceRef": "UTR1014",
+            "ts": "2026-08-14",
+            "amountPaise": 1128704,
+            "currency": "INR",
+            "counterparty": "Cloudline Tech Pvt Ltd",
+            "description": "settlement UTR1014",
+            "utr": "UTR1014"
+          },
+          "reasonCode": "AMOUNT_MISMATCH",
+          "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+          "candidateIds": [
+            "rec:razorpay-gateway:pay_14",
+            "rec:razorpay-gateway:pay_15",
+            "rec:bank-utr:UTR1015"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-4803d329-a207-469e-96b3-45713178edab",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:razorpay-gateway:pay_15",
+          "recordJson": {
+            "id": "rec:razorpay-gateway:pay_15",
+            "source": "razorpay-gateway",
+            "sourceRef": "pay_15",
+            "ts": "2026-08-14",
+            "amountPaise": 832585,
+            "currency": "INR",
+            "counterparty": "Fresco Bakers",
+            "description": "Fresco Bakers",
+            "utr": "UTR1015",
+            "gatewayRef": "pay_15",
+            "orderRef": "ORD-15"
+          },
+          "reasonCode": "AMOUNT_MISMATCH",
+          "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+          "candidateIds": [
+            "rec:razorpay-gateway:pay_14",
+            "rec:bank-utr:UTR1014",
+            "rec:bank-utr:UTR1015"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-c50f471f-14bf-4953-b383-35accb0a22f8",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR1015",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR1015",
+            "source": "bank-utr",
+            "sourceRef": "UTR1015",
+            "ts": "2026-08-14",
+            "amountPaise": 832385,
+            "currency": "INR",
+            "counterparty": "Fresco Bakers",
+            "description": "settlement UTR1015",
+            "utr": "UTR1015"
+          },
+          "reasonCode": "AMOUNT_MISMATCH",
+          "rationale": "records share a key but amounts differ beyond ₹0.50 tolerance",
+          "candidateIds": [
+            "rec:razorpay-gateway:pay_14",
+            "rec:bank-utr:UTR1014",
+            "rec:razorpay-gateway:pay_15"
+          ],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-4478d3bd-a508-4f3f-a1a2-b4b313fb4ce4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR9001",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR9001",
+            "source": "bank-utr",
+            "sourceRef": "UTR9001",
+            "ts": "2026-08-13",
+            "amountPaise": 4340826,
+            "currency": "INR",
+            "counterparty": "GreenLeaf Organics",
+            "description": "near-duplicate A",
+            "utr": "UTR9001"
+          },
+          "reasonCode": "PARTIAL_FLAP",
+          "rationale": "heuristic:candidate(rec:razorpay-gateway:pay_9) amountDiff=0 dateOk=true cpyOk=true refOk=false hint=residual",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-8fa8bf20-2774-4264-94f3-9e0ccd84c794",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR9002",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR9002",
+            "source": "bank-utr",
+            "sourceRef": "UTR9002",
+            "ts": "2026-08-14",
+            "amountPaise": 4340806,
+            "currency": "INR",
+            "counterparty": "Unrelated Ventures",
+            "description": "near-duplicate B",
+            "utr": "UTR9002"
+          },
+          "reasonCode": "LOW_CONFIDENCE",
+          "rationale": "heuristic:candidate(rec:razorpay-gateway:pay_9) amountDiff=20 dateOk=true cpyOk=false refOk=false hint=residual",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-0b10cba2-9839-4a25-bb2b-7e57b90513c4",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR8001",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR8001",
+            "source": "bank-utr",
+            "sourceRef": "UTR8001",
+            "ts": "2026-08-13",
+            "amountPaise": 12345,
+            "currency": "INR",
+            "counterparty": "Acme Retail Pvt Ltd",
+            "description": "unmatched collection",
+            "utr": "UTR8001"
+          },
+          "reasonCode": "NO_KEY",
+          "rationale": "no usable reference key and no near-amount candidate (orphan)",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-426c1ca6-f4e8-4a33-a749-7c450755821c",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR8002",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR8002",
+            "source": "bank-utr",
+            "sourceRef": "UTR8002",
+            "ts": "2026-08-13",
+            "amountPaise": 67890,
+            "currency": "INR",
+            "counterparty": "Brightway Traders",
+            "description": "unmatched collection",
+            "utr": "UTR8002"
+          },
+          "reasonCode": "NO_KEY",
+          "rationale": "no usable reference key and no near-amount candidate (orphan)",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-c6b73be5-b524-457e-beff-9861e3c0d175",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR8003",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR8003",
+            "source": "bank-utr",
+            "sourceRef": "UTR8003",
+            "ts": "2026-08-13",
+            "amountPaise": 111222,
+            "currency": "INR",
+            "counterparty": "Zenith Foods",
+            "description": "unmatched collection",
+            "utr": "UTR8003"
+          },
+          "reasonCode": "NO_KEY",
+          "rationale": "no usable reference key and no near-amount candidate (orphan)",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        },
+        {
+          "id": "exc-1b9df6d6-20b1-4568-8cbc-bf97860d7dc2",
+          "runId": "run-c90b07f4-ee1c-4159-9259-76f9e4dc0c85",
+          "recordId": "rec:bank-utr:UTR8004",
+          "recordJson": {
+            "id": "rec:bank-utr:UTR8004",
+            "source": "bank-utr",
+            "sourceRef": "UTR8004",
+            "ts": "2026-08-13",
+            "amountPaise": 345678,
+            "currency": "INR",
+            "counterparty": "Northwind Exports",
+            "description": "unmatched collection",
+            "utr": "UTR8004"
+          },
+          "reasonCode": "NO_KEY",
+          "rationale": "no usable reference key and no near-amount candidate (orphan)",
+          "candidateIds": [],
+          "status": "OPEN",
+          "createdAt": "2026-08-21T09:01:04.564Z"
+        }
+      ]
+    }
+  }
+}

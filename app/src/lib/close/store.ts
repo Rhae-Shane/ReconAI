@@ -794,41 +794,185 @@ export function getTaxMatches(runId: string): TaxLineMatch[] {
   return run?.taxMatches ?? [];
 }
 
+const MONTH_INDEX: Record<string, number> = {
+  jan: 0,
+  january: 0,
+  feb: 1,
+  february: 1,
+  mar: 2,
+  march: 2,
+  apr: 3,
+  april: 3,
+  may: 4,
+  jun: 5,
+  june: 5,
+  jul: 6,
+  july: 6,
+  aug: 7,
+  august: 7,
+  sep: 8,
+  sept: 8,
+  september: 8,
+  oct: 9,
+  october: 9,
+  nov: 10,
+  november: 10,
+  dec: 11,
+  december: 11,
+};
+
+function dayKey(iso: string): string {
+  return iso.slice(0, 10);
+}
+
+function formatInr(paise: number): string {
+  return `₹${(paise / 100).toLocaleString("en-IN")}`;
+}
+
+function formatDayLabel(isoDay: string): string {
+  const d = new Date(`${isoDay}T00:00:00.000Z`);
+  if (Number.isNaN(d.getTime())) return isoDay;
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+}
+
+function citeLines(rows: { utrNumber?: string; amountPaise: number }[], limit = 12): string {
+  const parts = rows
+    .map((s) => (s.utrNumber ? `${s.utrNumber} (${formatInr(s.amountPaise)})` : formatInr(s.amountPaise)))
+    .filter(Boolean);
+  if (parts.length === 0) return "(no UTR listed)";
+  if (parts.length <= limit) return parts.join(", ");
+  return `${parts.slice(0, limit).join(", ")}, … (+${parts.length - limit} more)`;
+}
+
+function groupSettlementsByDay<T extends { settledAt: string; amountPaise: number; utrNumber?: string }>(
+  settled: T[],
+): Array<{ day: string; rows: T[]; totalPaise: number }> {
+  const map = new Map<string, T[]>();
+  for (const s of settled) {
+    const day = dayKey(s.settledAt);
+    const bucket = map.get(day);
+    if (bucket) bucket.push(s);
+    else map.set(day, [s]);
+  }
+  return [...map.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([day, rows]) => ({
+      day,
+      rows,
+      totalPaise: rows.reduce((a, s) => a + s.amountPaise, 0),
+    }));
+}
+
+/** Parse a calendar day from free text (ISO, "14 Aug", "Aug 14", optional year). */
+export function parseSettlementQueryDay(query: string, fallbackYear?: number): string | null {
+  const iso = query.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
+  if (iso) return iso[1];
+
+  const months = Object.keys(MONTH_INDEX).join("|");
+  const dayMonth = query.match(new RegExp(`\\b(\\d{1,2})\\s+(${months})(?:\\s+(20\\d{2}))?\\b`, "i"));
+  if (dayMonth) {
+    const day = Number(dayMonth[1]);
+    const month = MONTH_INDEX[dayMonth[2].toLowerCase()];
+    const year = dayMonth[3] ? Number(dayMonth[3]) : (fallbackYear ?? new Date().getUTCFullYear());
+    if (month !== undefined && day >= 1 && day <= 31) {
+      return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    }
+  }
+
+  const monthDay = query.match(new RegExp(`\\b(${months})\\s+(\\d{1,2})(?:\\s*,?\\s*(20\\d{2}))?\\b`, "i"));
+  if (monthDay) {
+    const month = MONTH_INDEX[monthDay[1].toLowerCase()];
+    const day = Number(monthDay[2]);
+    const year = monthDay[3] ? Number(monthDay[3]) : (fallbackYear ?? new Date().getUTCFullYear());
+    if (month !== undefined && day >= 1 && day <= 31) {
+      return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    }
+  }
+
+  return null;
+}
+
 /**
  * Deterministic natural-language response over the settled ledger. Used as the engine-backed
- * answer source when no OpenAI API key is configured (the model only ever adds narration on top
- * of numbers computed here).
+ * answer source for settlement Q&A (the model only ever adds narration on top of numbers
+ * computed here).
  */
 export function settlementQuery(runId: string, query: string): string {
   const run = getRun(runId);
   if (!run) return "No completed run to query. Start a close run first.";
   const settled = run.settlements.filter((s) => s.status === "RECEIVED" || s.status === "RECONCILED");
   const q = query.toLowerCase();
+  const byDay = groupSettlementsByDay(settled);
+  const availableDays = byDay.map((b) => b.day);
+  const yearHint = availableDays[0] ? Number(availableDays[0].slice(0, 4)) : undefined;
+  const askedDay = parseSettlementQueryDay(query, yearHint);
 
-  if (q.includes("utr") && q.includes("14")) {
-    const on14 = settled.filter((s) => new Date(s.settledAt).getDate() === 14);
-    if (on14.length === 0) return "No settlements recorded on the 14th in the current batch window.";
-    return `On 14 Aug, ${on14.length} settlements were received: UTCs ${on14
-      .map((s) => s.utrNumber)
-      .filter(Boolean)
-      .join(", ")} totalling ₹${(on14.reduce((a, s) => a + s.amountPaise, 0) / 100).toLocaleString("en-IN")}.`;
+  const summaryTail =
+    availableDays.length > 0
+      ? ` Available settled dates: ${availableDays.map(formatDayLabel).join(", ")}.`
+      : " No settled lines are on the ledger yet.";
+
+  if (settled.length === 0) {
+    return "No RECEIVED/RECONCILED settlements are on the ledger for this close run.";
   }
 
-  if (q.includes("how many") || q.includes("count")) {
-    return `${settled.length} settlements are recorded as RECEIVED/RECONCILED across the close run, totalling ₹${(
-      settled.reduce((a, s) => a + s.amountPaise, 0) / 100
-    ).toLocaleString("en-IN")}, with an average settlement lag of ${(
+  if (askedDay) {
+    const onDay = settled.filter((s) => dayKey(s.settledAt) === askedDay);
+    if (onDay.length === 0) {
+      return `No settlements recorded on ${formatDayLabel(askedDay)}.${summaryTail}`;
+    }
+    const total = onDay.reduce((a, s) => a + s.amountPaise, 0);
+    return `On ${formatDayLabel(askedDay)}, ${onDay.length} settlement(s) totalling ${formatInr(total)}: ${citeLines(onDay)}.`;
+  }
+
+  if (
+    q.includes("date") ||
+    q.includes("dates") ||
+    q.includes("which day") ||
+    q.includes("what day") ||
+    (q.includes("list") && (q.includes("day") || q.includes("when")))
+  ) {
+    const lines = byDay.map(
+      (b) =>
+        `${formatDayLabel(b.day)} (${b.day}): ${b.rows.length} UTR(s) · ${formatInr(b.totalPaise)} — ${citeLines(b.rows, 6)}`,
+    );
+    return `${settled.length} settled line(s) across ${byDay.length} day(s):\n${lines.join("\n")}`;
+  }
+
+  if (q.includes("daily") || q.includes("per day") || q.includes("by day") || q.includes("totals")) {
+    const lines = byDay.map((b) => `${formatDayLabel(b.day)}: ${b.rows.length} · ${formatInr(b.totalPaise)}`);
+    const grand = settled.reduce((a, s) => a + s.amountPaise, 0);
+    return `Daily settlement totals (${formatInr(grand)} across ${settled.length} lines):\n${lines.join("\n")}`;
+  }
+
+  if (
+    (q.includes("utr") || q.includes("utrs")) &&
+    (q.includes("list") || q.includes("all") || q.includes("which") || q.includes("show"))
+  ) {
+    return `${settled.length} settled UTR(s) totalling ${formatInr(
+      settled.reduce((a, s) => a + s.amountPaise, 0),
+    )}: ${citeLines(settled, 20)}.${summaryTail}`;
+  }
+
+  if (q.includes("how many") || q.includes("count") || q.includes("recorded")) {
+    return `${settled.length} settlements are recorded as RECEIVED/RECONCILED across the close run, totalling ${formatInr(
+      settled.reduce((a, s) => a + s.amountPaise, 0),
+    )}, with an average settlement lag of ${(
       settled.reduce((a, s) => a + (s.lagDays ?? 1), 0) / Math.max(1, settled.length)
-    ).toFixed(1)} day(s).`;
+    ).toFixed(1)} day(s).${summaryTail}`;
   }
 
   if (q.includes("lag") || q.includes("delay")) {
     const lags = settled.map((s) => s.lagDays ?? 1);
     const avg = lags.reduce((a, b) => a + b, 0) / Math.max(1, lags.length);
-    return `Average settlement lag is ${avg.toFixed(1)} day(s). ${(lags.filter((l) => l === 0).length / Math.max(1, lags.length)) * 100}% of settlements arrived same-day (D+0).`;
+    const sameDayPct = (lags.filter((l) => l === 0).length / Math.max(1, lags.length)) * 100;
+    return `Average settlement lag is ${avg.toFixed(1)} day(s). ${sameDayPct.toFixed(0)}% of settlements arrived same-day (D+0).${summaryTail}`;
   }
 
-  return `I can reason over ${settled.length} settled lines for this close run. Ask me about specific UTRs, settlement lag, or daily totals and I will cite the matched records.`;
+  // Default: always return concrete ledger facts so the chat model cannot invent vagueness.
+  return `${settled.length} settled line(s) totalling ${formatInr(
+    settled.reduce((a, s) => a + s.amountPaise, 0),
+  )} across ${byDay.length} day(s).${summaryTail} Sample UTRs: ${citeLines(settled, 8)}.`;
 }
 
 // Hours since a run finished (for the exception auto-flag drill).

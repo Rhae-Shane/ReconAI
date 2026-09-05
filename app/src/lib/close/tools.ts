@@ -149,7 +149,7 @@ const toolDefs = [
   defineTool({
     name: "settlementQuery",
     description:
-      "Natural-language query over the settled ledger. Answers are computed by the engine over matched records.",
+      "Natural-language query over the settled ledger. Use for UTRs, settlement dates, daily totals, counts, and lag. Answers are computed by the engine over matched records.",
     inputSchema: settlementQuerySchema,
     execute: async (input, ctx) => {
       return { answer: settlementQuery(ctx.runId ?? "run_today", input.query) };

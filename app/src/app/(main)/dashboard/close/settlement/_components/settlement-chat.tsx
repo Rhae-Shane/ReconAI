@@ -16,8 +16,8 @@ interface ChatItem {
 }
 
 const SUGGESTIONS = [
-  "Which UTRs settled on 14 Aug?",
-  "How many settlements are recorded?",
+  "List all settlement dates",
+  "List settled UTRs with amounts",
   "What is the average settlement lag?",
 ];
 
@@ -27,7 +27,8 @@ function newId() {
 
 function TypingDots() {
   return (
-    <span className="inline-flex items-center gap-1 py-0.5" aria-label="Assistant is typing">
+    <span className="inline-flex items-center gap-1 py-0.5" role="status">
+      <span className="sr-only">Assistant is typing</span>
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
@@ -93,9 +94,7 @@ export function SettlementChat() {
           if (done) break;
           acc += decoder.decode(value, { stream: true });
           const snapshot = acc;
-          setMessages((prev) =>
-            prev.map((m) => (m.id === assistantId ? { ...m, content: snapshot } : m)),
-          );
+          setMessages((prev) => prev.map((m) => (m.id === assistantId ? { ...m, content: snapshot } : m)));
         }
       }
 
@@ -114,9 +113,7 @@ export function SettlementChat() {
     } catch {
       setMessages((prev) =>
         prev.map((m) =>
-          m.id === assistantId
-            ? { ...m, content: "Sorry, I couldn't reach the settlement engine." }
-            : m,
+          m.id === assistantId ? { ...m, content: "Sorry, I couldn't reach the settlement engine." } : m,
         ),
       );
     } finally {
@@ -142,7 +139,7 @@ export function SettlementChat() {
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[min(80%,36rem)] rounded-xl px-3 py-2 text-sm leading-relaxed break-words whitespace-pre-wrap ${
+                    className={`max-w-[min(80%,36rem)] whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm leading-relaxed ${
                       m.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
                     }`}
                   >

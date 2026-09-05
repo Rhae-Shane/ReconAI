@@ -2,9 +2,8 @@ import { createOpenAI } from "@ai-sdk/openai";
 import { stepCountIs, streamText, type ToolSet } from "ai";
 
 import { ClaudeJudge } from "./claude-judge";
-import { getFinanceConfig } from "./config";
 import { openaiKey } from "./openai-embeddings";
-import { getRun, listExceptions, settlementQuery } from "./store";
+import { getRun, settlementQuery } from "./store";
 import { closeTools } from "./tools";
 
 /**
@@ -49,10 +48,25 @@ export function getAgentTools() {
   return toAiTools("run_today");
 }
 
-const SYSTEM_PROMPT = `You are the finance controller. You reconcile, settle, forecast and match tax.
-You never guess a match - you assign confidence and file exceptions when you are not sure.
-The decisive numbers are computed by the engine, not by you. Use the provided tools to act;
-discuss freely, but never assert a match or resolve an exception except via a tool.`;
+/** Settlement Q&A only needs the ledger query tool — keeps the model from wandering. */
+function toSettlementChatTools(runId: string): ToolSet {
+  const t = closeTools.find((tool) => tool.name === "settlementQuery");
+  if (!t) return {};
+  return {
+    settlementQuery: {
+      description:
+        "Query the settled ledger for UTRs, settlement dates, daily totals, counts, and lag. Pass the user's question (or a clear rewrite). Always call this before answering.",
+      inputSchema: t.inputSchema,
+      execute: (input: unknown) => t.execute(input as never, { runId }),
+    },
+  } as unknown as ToolSet;
+}
+
+const SETTLEMENT_CHAT_PROMPT = `You are the settlement analyst for the settled ledger.
+ALWAYS call settlementQuery before answering — pass the user's question (or a clear rewrite like "list all settlement dates").
+Base your reply on the tool's answer. Cite UTRs, dates, and amounts from the tool result.
+Do not invent settlements. If a requested date has no rows, list the available settled dates from the tool.
+Keep replies concise and factual.`;
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -65,13 +79,8 @@ export interface ChatMessage {
  */
 function fallbackAnswer(runId: string, prompt: string): string {
   const run = getRun(runId);
-  const prefix = "[engine] ";
-  if (!run) return `${prefix}No completed run to query. Start a close run first.`;
-  const open = listExceptions({ runId, status: "OPEN" }).length;
-  const ledger = settlementQuery(runId, prompt);
-  return `${prefix}${ledger} Across the latest close run, ${run.meta.totals.records} records were processed with ${run.meta.totals.resolvedPct.toFixed(
-    1,
-  )}% resolved (${open} exception(s) still open, threshold ${getFinanceConfig().resolveThreshold}). Ask about UTRs, settlement lag, or daily totals and I will cite matched records.`;
+  if (!run) return "[engine] No completed run to query. Start a close run first.";
+  return `[engine] ${settlementQuery(runId, prompt)}`;
 }
 
 const encoder = new TextEncoder();
@@ -112,13 +121,13 @@ export async function streamCloseChat(
 
   try {
     // Default stopWhen is stepCountIs(1), which ends after the first tool call with no
-    // narrated answer. Allow a short tool loop so the model can call settlement tools,
+    // narrated answer. Allow a short tool loop so the model can call settlementQuery,
     // then write the reply the chat UI streams.
     const result = streamText({
       model: createOpenAI({ apiKey: openaiKey() })(AGENT_MODEL),
-      system: SYSTEM_PROMPT,
+      system: SETTLEMENT_CHAT_PROMPT,
       messages: messages.map((m) => ({ role: m.role, content: m.content })),
-      tools: toAiTools(runId),
+      tools: toSettlementChatTools(runId),
       stopWhen: stepCountIs(5),
     });
     return { stream: result.textStream.pipeThrough(encoderStream()), usedFallback: false };

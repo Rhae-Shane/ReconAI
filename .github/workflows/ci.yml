@@ -38,7 +38,7 @@ jobs:
           cache-dependency-path: |
             app/package-lock.json
             harness/package-lock.json
-      - name: Install harness (file: dependency)
+      - name: "Install harness (file dependency)"
         working-directory: harness
         run: npm ci
       - run: npm ci

@@ -1,0 +1,72 @@
+---
+title: "2-Minute Demo"
+description: "Honesty-first walkthrough: measured batch numbers, Close Cockpit, exceptions, and grounded forecast."
+---
+
+ReconAI demos the finance close the way a controller actually works — deterministic matches first, explicit residuals, and an honest exception list. Nothing is silently dropped.
+
+## The honesty moment
+
+Matches are reproducible. Residuals get **confidence** + **reason**. Anything below threshold is filed with a reason code — never silently dropped:
+
+| Reason code | Meaning |
+| --- | --- |
+| `NO_KEY` | No join key across sources |
+| `AMOUNT_MISMATCH` | Amounts do not reconcile |
+| `PARTIAL_FLAP` | Partial / flap match |
+| `DATE_SKEW` | Date window mismatch |
+| `LOW_CONFIDENCE` | Residual below confidence threshold |
+| `DUPLICATE` | Duplicate candidate |
+
+## Script (≈2 minutes)
+
+### 1. Measured batch (not a slide)
+
+```bash
+cd harness
+npm run batch
+```
+
+Show the locked baseline:
+
+```
+records=81 · sources=4 · matched=66 · partial=2 · unresolved=13
+resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
+```
+
+Precision and recall are grounded in labels — measured, not assumed.
+
+### 2. Close Cockpit
+
+Open `/dashboard/close`. Start a run. KPIs climb as the engine reconciles payments, settlements, and invoices.
+
+### 3. Run Detail
+
+Open `/dashboard/close/[runId]`:
+
+- Match-rate bars and confidence distribution
+- Reconciliation grid
+- Click a match → why-chip (e.g. `exact:utr`, conf `0.99`)
+
+### 4. Exception List
+
+Open `/dashboard/close/exceptions`:
+
+- Reason codes + rationale on every open line
+- Agent can file `LOW_CONFIDENCE` live
+- Resolve / override is audited — exceptions are never deleted
+
+### 5. Settlement Q&A + Forecast
+
+- **Settlement** (`/dashboard/close/settlement`) — cited answers over matched records
+- **Forecast** (`/dashboard/close/forecast`) — 7-day cash band grounded in matched settlement lags
+
+## Talking points
+
+| Pillar | One-liner |
+| --- | --- |
+| FinanceCore chokepoint | One audited funnel; rules first, model only for residual |
+| Deterministic-first | Reproducible matches; confidence + reason everywhere |
+| Measured, not assumed | Ground-truth labels → match rate, precision, recall |
+| Honest exceptions | Structured reason codes; zero silent drops |
+| Graceful ops | Redis / OpenAI / Razorpay optional; in-process fallback |

@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: next-shadcn-admin-dashboard
+        working-directory: app
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,7 +36,7 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: |
-            next-shadcn-admin-dashboard/package-lock.json
+            app/package-lock.json
             harness/package-lock.json
       - name: Install harness (file: dependency)
         working-directory: harness

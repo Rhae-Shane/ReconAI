@@ -35,7 +35,7 @@ ReconAI/
 │   ├── src/core/                 # ingest, reconcile, judge, settle, forecast, tax, …
 │   ├── src/cli/                  # gen-batch, batch, agent, benchmark
 │   └── tests/                    # Vitest unit + integration
-├── next-shadcn-admin-dashboard/  # Next.js app — thin API + UI + worker
+├── app/                          # Next.js app — thin API + UI + worker
 ├── README.md
 ├── DEPLOYMENT.md
 ├── architecture.md
@@ -57,7 +57,7 @@ npm run benchmark      # CloseEngine wall-time at 100 / 1K / 10K (real hrtime)
 npm run test:cov       # coverage gate
 
 # dashboard
-cd ../next-shadcn-admin-dashboard
+cd ../app
 cp .env.example .env.local
 npm i
 npm run benchmark      # same harness benchmark via npm --prefix ../harness
@@ -105,11 +105,10 @@ Default: in-process closes (zero infra). With `REDIS_URL`: BullMQ queue + `npm r
 LangGraph checkpointer. See [DEPLOYMENT.md](./DEPLOYMENT.md) for env tables and Vercel setup.
 
 ```bash
-cd next-shadcn-admin-dashboard
+cd app
 npm run worker    # idle-safe without REDIS_URL; consumes when set
 ```
 
 ## License
 
-See `next-shadcn-admin-dashboard/LICENSE` for the dashboard template license. Project code is provided
-for the Razorpay hackathon track unless otherwise noted.
+MIT — Copyright © 2026 Rhae-Shane / ReconAI. See [`app/LICENSE`](./app/LICENSE).

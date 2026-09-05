@@ -9,7 +9,7 @@ forecast; tax-map; close with an **honest** exception list.
 datasets / CSV / Razorpay sync / webhooks
         │
         ▼
-┌─────────────────── next-shadcn-admin-dashboard ───────────────────┐
+┌─────────────────── app ───────────────────┐
 │  UI (Close Cockpit, Run Detail, Exceptions, Settlement, Forecast) │
 │  API routes  ·  optional BullMQ worker  ·  LangGraph close graph  │
 └──────────────────────────────┬────────────────────────────────────┘
@@ -25,7 +25,7 @@ datasets / CSV / Razorpay sync / webhooks
 |---|---|---|
 | Core engine | `harness/src/core/` | Framework-free TypeScript; zero runtime deps |
 | CLI / bench | `harness/src/cli/` | `batch`, `gen-batch`, `agent`, `bench` |
-| App UI + API | `next-shadcn-admin-dashboard/` | Thin Next.js surface over the harness |
+| App UI + API | `app/` | Thin Next.js surface over the harness |
 | Ops | `src/lib/ops/`, `src/worker/` | Redis, BullMQ, rate limit, durable worker |
 
 ## FinanceCore pipeline

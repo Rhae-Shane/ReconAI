@@ -1,6 +1,6 @@
 {
-  "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
-  "generatedAt": "2026-09-05T05:04:06.975Z",
+  "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
+  "generatedAt": "2026-09-05T10:19:24.084Z",
   "batchId": "batch-42-81",
   "totals": {
     "records": 81,
@@ -188,8 +188,8 @@
   },
   "exceptions": [
     {
-      "id": "exc-b5ba19fb-bbe6-4c01-bd9e-39416198371f",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-aaea0f4e-7df2-45cc-9334-7d6ac7ca0feb",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR1001DUP",
       "recordJson": {
         "id": "rec:bank-utr:UTR1001DUP",
@@ -213,11 +213,13 @@
       "actualPaise": 3045408,
       "variancePaise": 0,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.961Z"
+      "createdAt": "2026-09-05T10:19:24.070Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-8f9dbbf4-2d67-4d6c-bece-d2bb573805e6",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-4539d16e-5ece-47be-bb3f-2afcb408ad4b",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR1002DUP",
       "recordJson": {
         "id": "rec:bank-utr:UTR1002DUP",
@@ -241,11 +243,13 @@
       "actualPaise": 2296624,
       "variancePaise": 0,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.961Z"
+      "createdAt": "2026-09-05T10:19:24.070Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-c0475155-f848-4e73-af50-5bd213e55030",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-8b662abd-9f6b-4858-8126-75d40587e771",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTRDUPB",
       "recordJson": {
         "id": "rec:bank-utr:UTRDUPB",
@@ -269,11 +273,13 @@
       "actualPaise": 500000,
       "variancePaise": 0,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.962Z"
+      "createdAt": "2026-09-05T10:19:24.070Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-f8a0407a-0eaa-4bab-851c-d56b6bdf4289",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-19e2766b-f5ee-4dac-ab4f-6b75795e62d9",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:razorpay-gateway:pay_14",
       "recordJson": {
         "id": "rec:razorpay-gateway:pay_14",
@@ -303,11 +309,13 @@
       "actualPaise": 0,
       "variancePaise": 1128904,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.965Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-596315cc-fa3b-43e6-9336-1dee2398bd91",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-d1261a0e-faf5-4249-918f-d9ebe3f5747b",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR1014",
       "recordJson": {
         "id": "rec:bank-utr:UTR1014",
@@ -335,11 +343,13 @@
       "actualPaise": 0,
       "variancePaise": 1128704,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-860fa642-610f-4adb-b0f9-66962a909c30",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-49b24144-36c4-4509-9345-31dd1522a2f7",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:razorpay-gateway:pay_15",
       "recordJson": {
         "id": "rec:razorpay-gateway:pay_15",
@@ -369,11 +379,13 @@
       "actualPaise": 0,
       "variancePaise": 832585,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-9b4afe8e-ed40-4fd5-9cea-2891edf81c00",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-43586605-e9aa-451d-af4e-855a458042e8",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR1015",
       "recordJson": {
         "id": "rec:bank-utr:UTR1015",
@@ -401,11 +413,13 @@
       "actualPaise": 0,
       "variancePaise": 832385,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-b4e58cdc-2e80-4206-bd04-2d00333a9ab4",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-a4192620-bd7a-433e-a6ab-c54bb112057d",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:razorpay-gateway:payPART",
       "recordJson": {
         "id": "rec:razorpay-gateway:payPART",
@@ -435,11 +449,13 @@
       "actualPaise": 0,
       "variancePaise": 1000000,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-45975baa-015b-467d-be64-0e608ca4c37c",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-68b9f85e-7c82-4fc1-9ca4-e83c86107974",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTRPART",
       "recordJson": {
         "id": "rec:bank-utr:UTRPART",
@@ -467,11 +483,13 @@
       "actualPaise": 0,
       "variancePaise": 600000,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.074Z",
+      "resolutionStatus": "OPEN",
+      "critical": true
     },
     {
-      "id": "exc-80f9925d-ab0c-434a-b28f-52863b19ca29",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-8264a84c-749a-49af-a79a-328edacaded7",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR9001",
       "recordJson": {
         "id": "rec:bank-utr:UTR9001",
@@ -491,11 +509,13 @@
       "confidence": 0.65,
       "expectedPaise": 4340826,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     },
     {
-      "id": "exc-d65de36b-5a6c-4781-87e1-9d9ee34308a0",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-9bac3e66-45b5-40c3-98a7-3fbb3304421b",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR9002",
       "recordJson": {
         "id": "rec:bank-utr:UTR9002",
@@ -515,11 +535,13 @@
       "confidence": 0.5,
       "expectedPaise": 4340806,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.966Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     },
     {
-      "id": "exc-96ba9deb-0dad-4bda-9bc6-66480df95a73",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-5831fe29-fb57-4710-8402-b7edea8653ab",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR8001",
       "recordJson": {
         "id": "rec:bank-utr:UTR8001",
@@ -539,11 +561,13 @@
       "confidence": 0.5,
       "expectedPaise": 12345,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.967Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     },
     {
-      "id": "exc-727fc208-16a5-492f-8f97-d6efbf5a4ea6",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-42c5937d-dee3-435c-93c1-09898377dc26",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR8002",
       "recordJson": {
         "id": "rec:bank-utr:UTR8002",
@@ -563,11 +587,13 @@
       "confidence": 0.5,
       "expectedPaise": 67890,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.967Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     },
     {
-      "id": "exc-7154b622-cc34-440a-a822-501c18bbe9bb",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-f75184d6-da1a-4a38-9cf5-594c5195b5af",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR8003",
       "recordJson": {
         "id": "rec:bank-utr:UTR8003",
@@ -587,11 +613,13 @@
       "confidence": 0.5,
       "expectedPaise": 111222,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.967Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     },
     {
-      "id": "exc-863ccab4-116d-457c-8d1f-d2da2c6a8821",
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "id": "exc-a2858dec-74fc-4c14-8eca-a5c4a4a99f31",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "recordId": "rec:bank-utr:UTR8004",
       "recordJson": {
         "id": "rec:bank-utr:UTR8004",
@@ -611,7 +639,9 @@
       "confidence": 0.5,
       "expectedPaise": 345678,
       "status": "OPEN",
-      "createdAt": "2026-09-05T05:04:06.967Z"
+      "createdAt": "2026-09-05T10:19:24.075Z",
+      "resolutionStatus": "OPEN",
+      "critical": false
     }
   ],
   "auditCount": 213,
@@ -3106,7 +3136,7 @@
     ],
     "settlements": [
       {
-        "id": "set-8b221def-2380-497e-997c-270cfdb642d2",
+        "id": "set-7643a188-9b5b-45be-a52d-0775333bb419",
         "groupKeys": [
           "utr:UTR1001"
         ],
@@ -3123,7 +3153,7 @@
         ]
       },
       {
-        "id": "set-dbabcc39-8ac8-47cf-b722-4944f912da19",
+        "id": "set-630dc1a1-2dee-4b37-9f0e-db2708c507d1",
         "groupKeys": [
           "utr:UTR1002"
         ],
@@ -3140,7 +3170,7 @@
         ]
       },
       {
-        "id": "set-360841b8-8b80-4ebd-a92f-2368d6328b03",
+        "id": "set-57a32f0f-1430-4b39-910f-b50cdbbaf228",
         "groupKeys": [
           "utr:UTR1003"
         ],
@@ -3157,7 +3187,7 @@
         ]
       },
       {
-        "id": "set-6a825c22-34e1-4c04-810c-2a2c477b49d0",
+        "id": "set-712f8aab-b717-4e24-b5a3-e5145685696c",
         "groupKeys": [
           "utr:UTR1004"
         ],
@@ -3174,7 +3204,7 @@
         ]
       },
       {
-        "id": "set-91a27c9d-574f-40ae-a36a-caa5cfb1d81e",
+        "id": "set-0ee1e993-ca71-4eb6-a87b-d9bb005eb7e4",
         "groupKeys": [
           "utr:UTR1005"
         ],
@@ -3191,7 +3221,7 @@
         ]
       },
       {
-        "id": "set-75c419cd-159d-414c-a42a-d2e7a84b704a",
+        "id": "set-974ea52b-364b-46dd-a35c-527cc120ba8c",
         "groupKeys": [
           "utr:UTR1006"
         ],
@@ -3208,7 +3238,7 @@
         ]
       },
       {
-        "id": "set-274c9667-c547-40f4-ae7b-20acf356adfe",
+        "id": "set-1c3124b8-a2cf-48ca-b547-dc2dfb5fc7cc",
         "groupKeys": [
           "utr:UTR1007"
         ],
@@ -3225,7 +3255,7 @@
         ]
       },
       {
-        "id": "set-3fe5921c-dc5b-4236-99d1-9affa9889746",
+        "id": "set-e49be455-64aa-4f55-ba7e-7f04d67d5aeb",
         "groupKeys": [
           "utr:UTR1008"
         ],
@@ -3242,7 +3272,7 @@
         ]
       },
       {
-        "id": "set-929dd3d4-77c2-468e-a263-fd862f7cf541",
+        "id": "set-a5716198-6da9-4380-826b-6afa6eb048b0",
         "groupKeys": [
           "utr:UTR1009"
         ],
@@ -3259,7 +3289,7 @@
         ]
       },
       {
-        "id": "set-07982de6-bb89-457a-970c-c652071d41b5",
+        "id": "set-8618dcd2-5535-4f7b-b1e8-2428e4238e3a",
         "groupKeys": [
           "utr:UTR1010"
         ],
@@ -3276,7 +3306,7 @@
         ]
       },
       {
-        "id": "set-290afbae-bbc0-4b8f-ac50-b206ef6e1de7",
+        "id": "set-45c31ea6-b3c8-4f43-b4b3-59f6f7bc5852",
         "groupKeys": [
           "utr:UTR1012"
         ],
@@ -3293,7 +3323,7 @@
         ]
       },
       {
-        "id": "set-12c5118b-23ab-4ac8-8e59-6cb54dc6dc5a",
+        "id": "set-c2691ad9-d368-4bee-ac71-cc0a732cde31",
         "groupKeys": [
           "utr:UTR1013"
         ],
@@ -3310,7 +3340,7 @@
         ]
       },
       {
-        "id": "set-dda828d6-ff90-425b-96fa-ae2cce372251",
+        "id": "set-617daf4a-134c-4527-a63a-104be6e52cee",
         "groupKeys": [
           "utr:UTR2016"
         ],
@@ -3327,7 +3357,7 @@
         ]
       },
       {
-        "id": "set-eab83806-f675-41b6-a514-4f0a0c6cb3c5",
+        "id": "set-0042f400-dcf2-4880-9100-bf86ac1e22ea",
         "groupKeys": [
           "utr:UTR2017"
         ],
@@ -3344,7 +3374,7 @@
         ]
       },
       {
-        "id": "set-69334b14-b41f-453c-8f72-e18365597647",
+        "id": "set-08f81383-65c9-4b85-ac66-ad84be8e38e7",
         "groupKeys": [
           "utr:UTR2018"
         ],
@@ -3361,7 +3391,7 @@
         ]
       },
       {
-        "id": "set-8a75d5dd-8d4c-4f53-ae5c-15935141b01f",
+        "id": "set-7a2e6bb4-823d-4eb8-97d3-b6e1a5e15629",
         "groupKeys": [
           "utr:UTRGST"
         ],
@@ -3378,7 +3408,7 @@
         ]
       },
       {
-        "id": "set-a7d65444-e18b-4b1e-8d98-64e7da2910ee",
+        "id": "set-24ee1621-097d-4b1b-b58e-042a6d6ff216",
         "groupKeys": [
           "utr:UTRREFN"
         ],
@@ -3395,7 +3425,7 @@
         ]
       },
       {
-        "id": "set-4c722ae7-a1f0-4de9-94eb-7b870d54cdcd",
+        "id": "set-57441449-9ace-43a6-8551-a273b31cd20a",
         "groupKeys": [
           "utr:UTRADJN"
         ],
@@ -3412,7 +3442,7 @@
         ]
       },
       {
-        "id": "set-b74c1276-9830-4de6-a3bb-4ce065b573ec",
+        "id": "set-d47e725e-b337-47a4-b58a-b36216720ef9",
         "groupKeys": [
           "utr:UTRDUP"
         ],
@@ -3429,7 +3459,7 @@
         ]
       },
       {
-        "id": "set-fa30facf-8003-4a7e-b006-2ff221bf58e0",
+        "id": "set-9623dbb6-6779-4232-8c01-06aef3da2232",
         "groupKeys": [
           "utr:UTRXA"
         ],
@@ -3446,7 +3476,7 @@
         ]
       },
       {
-        "id": "set-25deb927-b014-481e-9c93-a3b56828ed2a",
+        "id": "set-3365dc90-1a54-43e3-8cb7-feacb7d6eb48",
         "groupKeys": [
           "utr:UTRXB"
         ],
@@ -3463,7 +3493,7 @@
         ]
       },
       {
-        "id": "set-9ca0fb96-8c76-4d0c-aca5-319c04aa7bad",
+        "id": "set-b691ffbe-e5b2-4720-81ae-739475436269",
         "groupKeys": [
           "utr:UTR001011"
         ],
@@ -4112,11 +4142,11 @@
       }
     ],
     "audit": {
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "events": [
         {
-          "id": "aud-148a256e-45c3-4dc5-80cb-e937f4c9f83e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-4f438fad-444f-4627-a6be-50c81a808a52",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4124,11 +4154,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.069Z"
         },
         {
-          "id": "aud-03e4fbad-d3f6-4f0c-93c7-2d7e517cad78",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5eade8ba-b2e9-4a93-9730-95dcb4da1f39",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4136,11 +4166,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-aaf2bd1f-9ddf-4399-b6ee-2aba11702668",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-750ac684-c5bb-43b3-892f-1e0f629aebe7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4148,11 +4178,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-f757101b-3f93-4d86-9137-fb8ad196fc2f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-1937f8b4-5ca9-4890-8244-409a841b9d3f",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4160,11 +4190,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-a078ff79-5c51-4210-a980-e75ea34ef264",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6aed9004-33e0-4be5-8654-0fcae76d2091",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4172,11 +4202,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-7e6f3ab3-0962-42b3-aba9-74f83781861c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f33d572d-ff2c-4773-a9ba-07b93765b43c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4184,11 +4214,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2339e3da-f179-4104-b7a8-9961b352adb3",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-dbb8bb55-56b1-42b5-9775-39c7bcb0d4df",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4196,11 +4226,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-ee54018c-1136-4209-a1d1-bbdadc0a9f26",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5338756e-9d00-4a8e-815b-8dd8ca492155",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4208,11 +4238,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-4d2523b8-809c-44dd-a3fd-d972bfec293c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6fca3f00-0015-4e2e-9326-8ae09d73898a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4220,11 +4250,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e95a6126-e7e4-4da6-941d-43bf4206d9c2",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-bb5cd1c4-804b-411f-b8e7-a21215eab86a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4232,11 +4262,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-9c2bc9cb-8ae0-49d2-91ae-1b671a0d4d26",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f811bb9b-94e3-40c9-b498-297d67d59428",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4244,11 +4274,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-32c0f24a-cf25-4711-b1ba-f5dd221858b8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-faa51cff-7e14-4aec-84d5-a1ea85393a11",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4256,11 +4286,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-9d087061-fc18-424a-8a1b-69d4fc98c249",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-7549459d-5735-46ea-8cc2-557de70cf0f7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4268,11 +4298,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-695a154f-9b91-4193-bab1-a1fe88ad83a7",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8ce4a6b3-bd61-4667-8366-c713750aa586",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4280,11 +4310,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-d6b1f88b-8056-4a45-adc5-62be56dae0bb",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3da81528-ef4d-4914-83d9-fc3b2d6ba739",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4292,11 +4322,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-bea5fe5e-3961-49e1-9b5c-b97f58f85a00",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3cf9901f-d735-4f5e-a856-f62ce22a2e43",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4304,11 +4334,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-d136f1ed-c02e-479a-b221-c56d30f7d6c5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-28e36c8a-3dad-40e8-91d1-09607f2fc85e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4316,11 +4346,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-dba81847-f538-4e70-86d9-2d178f011047",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-47b3ab41-fe77-4dd6-bf21-c0bfee0517d0",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4328,11 +4358,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-062dd22b-f30b-4d00-b3c3-420991628451",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-beb07559-750b-442c-9c00-c6d9ffbbb51b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4340,11 +4370,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-782c089e-c6f4-45d5-ac08-6fc84b62c6c3",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0e429981-d7c8-4d66-86da-8479a25ef032",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4352,11 +4382,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e5c80f80-37a2-4baf-b5a3-32deae21a272",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b3d8023f-006f-44c1-a97d-00d732a3e63d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4364,11 +4394,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-ddf2c6c9-5eed-42c1-858f-4648a81da3c1",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-544268cd-eec6-4075-b883-7c3929bacdd0",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4376,11 +4406,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-1020ac9a-3274-49ba-8201-f2349123e73c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a75ff096-3c00-4996-929e-695be7d6a179",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4388,11 +4418,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-c12679a0-df1c-43b1-858b-48ca633e06ec",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d30ddd0a-b038-4dbc-aa22-2ec237b581b4",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4400,11 +4430,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-5bb21037-3c19-4a93-b387-8022cbef5f4e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-92f594e1-9667-4394-9f21-9c2254d049c4",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4412,11 +4442,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-4dcf45d7-27df-4cbe-a193-220fc0dea0dc",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-456b4e7f-eef8-46a1-b4dd-fc0b8b235210",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4424,11 +4454,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-eee8fdac-0d49-4363-b260-6e07cbbf2135",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f44fbb12-8a89-446e-af2e-f974b503075c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4436,11 +4466,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-093ed231-8a23-444e-9760-7900078bc32e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-af05ae49-bdbe-4d31-9da0-ec119fe7e035",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4448,11 +4478,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-ce34a247-a5fd-4ec7-aa9c-38445de24e96",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b2a08a94-1ff3-4340-8477-f676887c2136",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4460,11 +4490,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-98c694a9-c4af-405b-9dc2-7558566fe76a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3ab42251-8c00-438b-a2bf-19b87b8b0f09",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4472,11 +4502,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-161ea1df-a817-4e05-9ce8-1037e088796a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a650f479-4515-401c-98d8-207622c5fccf",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4484,11 +4514,11 @@
           "detail": {
             "source": "razorpay-gateway"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-4ebbd195-304e-4a68-9d7a-eb0955582869",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3fd2c92e-27ff-4169-a418-9d6091bea0ad",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4496,11 +4526,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-db0e9d06-e185-4dd4-9731-17293b1becf9",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-77368a35-078b-470e-a782-f8fd10b1daa8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4508,11 +4538,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-383be8f8-3234-4d2f-ae6d-26b6b2e2dbce",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9a98df01-7a2a-4a2a-807a-f422499f9978",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4520,11 +4550,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e6bda607-501d-44fc-a5ce-cbbcb05943ca",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-056720bd-76b8-4bc7-b0d5-7f6fdfa7540f",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4532,11 +4562,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-c3e3dfad-8de4-42a8-8fb1-58451e36e2ea",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b43e299c-1800-410a-a41e-2d2396f840b4",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4544,11 +4574,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-ca9e235c-7565-4699-9d43-e842fd563b9e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e93a1009-b9d2-448d-807f-ce8ad84ae07a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4556,11 +4586,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2459c088-2978-4ad4-a089-ca712a31f920",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-4d708ed7-6b01-4a08-a02f-6a5b961e62a5",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4568,11 +4598,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-0e59dd42-3e0e-4c8e-8fc2-66777977896f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5f5a2038-e348-4ef7-9db6-32168d97da64",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4580,11 +4610,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-7b6c8327-e423-4133-9e9b-ed268a708caa",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-28231825-a26e-4f2f-911c-0ed34c5bbb3e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4592,11 +4622,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-b79edeb0-f34f-43f8-80f6-fa2a348c816f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-54af78f2-3ae6-4aa0-b3ab-96cd584dac51",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4604,11 +4634,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-097be95a-5794-4518-bd47-14f6ef7093f8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-aa40c421-c315-40e5-9ca5-1ee8479f2ab8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4616,11 +4646,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-8cf48a7a-d587-46c3-9f82-c01404a9075b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ae367790-d1e0-4df7-b544-5bdf4e70dc96",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4628,11 +4658,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-a66b1d98-13ca-49fb-9ee9-5ef87136ccff",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ff58c5c3-3e71-4b05-afdc-02a8777eb736",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4640,11 +4670,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-ee2713b1-287f-4452-8ef6-9bc91edf6c03",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6c471abc-60b2-4f2f-9ed4-1663e7b9cedd",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4652,11 +4682,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-94a667ac-f213-448b-bbeb-e096e28bfec2",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-24c4597f-53b3-4082-a6b1-7bd126e8d35d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4664,11 +4694,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-d178f7f9-8e65-4857-86a3-a88191f4b132",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-61f31662-556f-464d-a75b-075c8db04482",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4676,11 +4706,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2763cddd-c1e2-47cd-9f35-174129e0c7e8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a197571e-b955-4be4-8927-cb396c6ad771",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4688,11 +4718,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-42a9756b-9e1d-409a-9771-47aedda930b5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-81491f9f-b359-416c-8951-64a64b9a5dad",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4700,11 +4730,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-5f2a8ac7-3ad4-4124-8830-1caf7843740f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e60897ef-d331-4d9b-b267-e146419b3045",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4712,11 +4742,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-03d9eef1-60cc-41e6-a98f-3791fae30796",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-46d64bf4-e41e-46b3-9379-ccfe4fa08587",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4724,11 +4754,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2a246020-f299-4c06-b8ba-e47aee707d65",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-25cd9fff-c1e9-4a3f-9d79-db77541389b1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4736,11 +4766,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-bf356fae-edb4-4639-9203-baaa1ce7bf5c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e5a421a9-fc88-4792-94da-1b0f45c452f1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4748,11 +4778,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-6bc03f0f-eb2a-4548-b913-cd7774e225c0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b1e2a6c6-3820-4ee2-a95b-621dbadfc321",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4760,11 +4790,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-73978bdb-767f-4ed5-8d32-314a0c9ef7a3",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-64f9efe2-e246-4ff2-9292-f565a7b708c8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4772,11 +4802,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-73863cbf-1cb7-4e38-9d22-965e28a05553",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-86c45f04-a26f-4b1d-a606-e1ba23dd28c8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4784,11 +4814,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2f4940bf-0b77-4251-9266-779bde6298a7",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-991d069e-dab5-4200-83e5-192d4ac73b44",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4796,11 +4826,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-28e81bd8-b8d9-4e2f-9b7d-8ba67ca7fd8d",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f065e57d-0137-44e4-890b-b2f2d837d818",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4808,11 +4838,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-cdf4b5d1-e0e3-4999-b9aa-e86d1645bd30",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b1daa363-8400-4356-89e5-f47008eb9db7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4820,11 +4850,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-cfe9d65f-f37b-498f-8bef-bb39450dc811",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a77757f1-6db7-4d7b-bf7c-9da30908c976",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4832,11 +4862,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-05d75dfa-527c-43c2-b71f-d862b329f381",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-2ef5565e-7a04-4467-bc31-477f4cdf54ce",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4844,11 +4874,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-9214a374-6c14-4bd9-bd51-7bd55bfde008",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d9f0a39b-d89c-47e7-8e23-2bef4c89e9aa",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4856,11 +4886,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-dd285ea1-ad20-4896-8371-f3cb103eb907",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-50dbd0ad-30df-4d17-be26-dd422f662d8d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4868,11 +4898,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e05bfe76-19ec-4077-b6d0-8cc6dc534ade",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0f78d510-83fd-48f5-8853-8730cd8b35c8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4880,11 +4910,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-c7ddf3d3-5b60-433f-917d-b3b4ccbed3b5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3d09f840-396f-4b4e-b5c8-a8ccca4c457e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4892,11 +4922,11 @@
           "detail": {
             "source": "bank-utr"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-3d03bf81-0212-4ddc-b161-cbf7bbcd8cba",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-951bdf16-94b9-4217-a2cb-ad9ccca0f774",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4904,11 +4934,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-89f8d98a-635c-4d83-9b39-e1567fedee8e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d7836b5e-6d75-4a42-a97d-f2746b768d31",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4916,11 +4946,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-65a98b32-546a-4a3c-b14c-fbb8723ea9ef",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-10d37852-8664-45a0-b0ed-48bba2d43241",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4928,11 +4958,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-94264cb8-e933-4be9-bbb5-7baa8736c8f0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-da5e668b-8023-40f2-8088-b7d77a8acf2c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4940,11 +4970,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e36fde9e-0b67-47d2-b208-d7b155c16457",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-759692a7-6288-466d-96fe-c0b3564152e1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4952,11 +4982,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-6d2302e4-2ee5-446f-87d1-813a49b72e0f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6ab8d438-1258-47ff-a6ef-8b7d9e437812",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4964,11 +4994,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-e6439e38-0f27-4fb5-abc3-4b4d923d5664",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d9879219-c1ef-47a6-a71b-dbedd0672389",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4976,11 +5006,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-9de98940-fd71-443c-b8cc-e7c3d872f560",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b3123e8c-0cd5-4bab-9e65-7dca720abcdd",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -4988,11 +5018,11 @@
           "detail": {
             "source": "erp-orders"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-879f0dd2-f475-45c9-a3b2-17d5751094e1",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-055e522f-5e98-4cfa-88d5-a45170624825",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5000,11 +5030,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-4d4142a7-ea7c-461e-a016-ae6cc237dd7a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-c30e85c3-6016-4313-b800-46c2337c9484",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5012,11 +5042,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-a8d46827-b109-486d-876a-767535fff9f8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-330f727b-c870-4845-a16a-9061cfcdd251",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5024,11 +5054,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-4fa64cdf-f5ae-48ef-bc4a-06241a5e1225",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-cfff0a5f-a855-4209-8263-9e10b28d7716",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5036,11 +5066,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2026861f-e2f0-42d3-aa6b-1f1934f3adf5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6f281b58-a3d4-4cf0-9a8d-61b34f7fb601",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5048,11 +5078,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-5d0e259f-64bc-48eb-a2f0-c3b3e07447d6",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3cabbc53-2545-4de6-90c2-22bfb9c2dfb7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5060,11 +5090,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-c3dfb22d-f034-4bcc-b390-fa08bbcf394d",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5d562b8b-156f-4e8e-9f10-2ab533a44a8e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5072,11 +5102,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-0c987921-c27b-4032-aaca-17ab632c3a84",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-059b0405-6781-49f4-acd9-3a00bd992158",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "INGEST",
@@ -5084,11 +5114,11 @@
           "detail": {
             "source": "gst-invoices"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-43fdf9c9-5c88-4cf1-9178-031940434ca9",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-28ec95e6-390a-4b7d-9805-b94a73a3a966",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5096,11 +5126,11 @@
           "detail": {
             "code": "DUPLICATE"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-51b40369-ec96-4de1-a4cb-e3598e488c92",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-59b5ca3a-b5ae-4f56-a107-6980f219e474",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5108,11 +5138,11 @@
           "detail": {
             "code": "DUPLICATE"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-2cf41e62-e072-46e4-b86d-1328307d5350",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5493ddb0-82a3-49af-aac9-08e0d288f8a2",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5120,11 +5150,11 @@
           "detail": {
             "code": "DUPLICATE"
           },
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z"
         },
         {
-          "id": "aud-8c0f70ef-a4cb-4a6e-bacd-9cdf25f03b03",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8a467d2b-1d77-419c-a689-71e8d056e874",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5133,11 +5163,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.965Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-50e67f80-58f3-4697-b5b3-b365533cee62",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-14b10805-18db-49be-99b5-c3c606ac7548",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5145,11 +5175,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.965Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-90e3996c-9c5c-4b96-953e-212b6ec384bc",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8f991cb3-b7d5-4475-9c46-1629be6fdd49",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5158,11 +5188,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.965Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-d8bc5683-0b7c-41af-9c8f-223c027c2f00",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5f450f84-3555-43b6-8695-0641c69727fd",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5170,11 +5200,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.965Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-396252c7-af9d-441d-8d44-52c7380d9943",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-97f08129-43ac-4535-8b58-e78324e07565",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5183,11 +5213,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-9833088d-70c1-4976-b03c-fe24e41b023e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-cac09b8f-6280-4e07-9cb1-80d0eb29262a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5195,11 +5225,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-0eb8c293-8dea-495a-bd50-8629569ae55b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-002fbd2d-5f1e-4284-898b-b1be930e97d2",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5208,11 +5238,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-2a25c07b-807d-49cc-99ac-d1b513cc0f77",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3a8cb7cc-0137-4848-828a-9165b14d4bc3",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5220,11 +5250,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-9e8093c9-6eba-4aca-b7ff-07ae6b518775",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5361ff19-2a86-4219-ba10-6147f7225d89",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5233,11 +5263,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-8c564624-a4cb-42cc-9478-6acd21264a06",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-70ea43f6-ac04-4c60-8410-29558660a73e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5245,11 +5275,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-874c3a74-f5aa-4315-940d-f40374c52081",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a5302ba6-179c-4073-bb62-89f595104e64",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "MATCH",
@@ -5258,11 +5288,11 @@
             "method": "EXACT",
             "status": "conflicted"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-23519288-c957-47f4-b079-ae300e03d7e7",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9da20789-2931-46ac-9e48-6e8ed2a67399",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5270,11 +5300,11 @@
           "detail": {
             "code": "AMOUNT_MISMATCH"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z"
         },
         {
-          "id": "aud-73c9ae87-5811-4230-8752-7b34b4a93495",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0981652c-de4e-4689-9cbf-ac52c7b70b9f",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5284,11 +5314,11 @@
             "confidence": 0.65,
             "reasonCode": "PARTIAL_FLAP"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-d5811d83-f523-4095-88db-a680cf4cc819",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8e26fe1a-dca7-426e-b11f-616875d7c718",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5296,11 +5326,11 @@
           "detail": {
             "code": "PARTIAL_FLAP"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-8678375b-1b94-4a59-ae1d-ff5cc4a3811a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-74516448-a3c0-4945-9108-3afacde18f7b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5310,11 +5340,11 @@
             "confidence": 0.5,
             "reasonCode": "LOW_CONFIDENCE"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-8922c065-24f7-4a3c-99ee-ffe46b7aef3e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-27a11ef8-bc9c-42da-81f7-e499e1936eac",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5322,11 +5352,11 @@
           "detail": {
             "code": "LOW_CONFIDENCE"
           },
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-97f10553-8720-4307-b66a-a8b2e18a11fa",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-7f7a68e0-126e-41b4-a158-d86902f5ece4",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5336,11 +5366,11 @@
             "confidence": 0,
             "reasonCode": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-ac654082-4abf-4093-9e3c-797c12355cd5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5a3ba6d3-78b0-4c87-a09a-10323bd3769a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5348,11 +5378,11 @@
           "detail": {
             "code": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-5b921304-4e7b-436b-be6d-1a7e3d1548d4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-4377a52b-8bc7-4a02-93a5-b8722a356cf5",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5362,11 +5392,11 @@
             "confidence": 0,
             "reasonCode": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-bb395b78-da6d-45ab-995f-93ae6299aced",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-93d00695-81b7-4f26-a476-5900b73e7991",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5374,11 +5404,11 @@
           "detail": {
             "code": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-ad436fb2-4a84-48d3-a40b-6c7e91d3efb5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-410a39fa-ba14-44bc-ae84-84894117ffaa",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5388,11 +5418,11 @@
             "confidence": 0,
             "reasonCode": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-2033594d-ffb0-4449-9430-bee0763aedf5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0f105a9e-a083-45b4-86a5-012c938f62c6",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5400,11 +5430,11 @@
           "detail": {
             "code": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-c47cb017-18c2-4770-baea-baaaa7249138",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f20aa7ce-21fc-477a-8bc9-531947cc61c0",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "JUDGE",
@@ -5414,11 +5444,11 @@
             "confidence": 0,
             "reasonCode": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-9ff82d22-c8a8-4881-8fa9-ffa9d9857559",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6d7f775a-8117-41ad-a3f0-2df554dad3b9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "EXCEPTION",
@@ -5426,11 +5456,11 @@
           "detail": {
             "code": "NO_KEY"
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-665ad9e6-572d-4632-9e85-f7809b42b442",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f1ef70ab-0ef7-43c5-a666-ceacd5052280",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5438,11 +5468,11 @@
             "utr": "UTR1001",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-04b5d0ee-daa5-4fe8-a9c9-410a2b0e898e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b327dd0b-86a6-4aea-b99e-8908d5e54107",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5450,11 +5480,11 @@
             "utr": "UTR1002",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-194d31e0-fa12-4cc2-84a7-7590de8cdaab",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ea519eaa-3f7b-4c74-a385-95e9a7878aa8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5462,11 +5492,11 @@
             "utr": "UTR1003",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-35467742-aa5a-4df9-8c96-2e077294ff4f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-00ad6a0a-0bf2-49b7-807a-6adfaed8457a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5474,11 +5504,11 @@
             "utr": "UTR1004",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-777e6e56-b05b-4ef0-81b1-b67fb8ce20c9",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5c019165-d8c4-4223-9e87-3b7885d75b24",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5486,11 +5516,11 @@
             "utr": "UTR1005",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-846caf2a-54ec-4ec9-b3fa-7a82594cc1e5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e83fd9c9-86e5-4a57-bc22-b6fbc4cfd229",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5498,11 +5528,11 @@
             "utr": "UTR1006",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-2bd7a14b-04eb-45f4-8984-2553f16b5476",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-33fd3e93-d875-49a3-ab27-8160574977fb",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5510,11 +5540,11 @@
             "utr": "UTR1007",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-35465c6d-a657-4a9a-98dc-1c2fdfe3b290",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-37d2287e-3b4d-46a3-aa5d-07b63d0934c7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5522,11 +5552,11 @@
             "utr": "UTR1008",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-36cc7c6b-2810-4855-8c7d-aef8fb0ab646",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d2ee357e-0ff4-49eb-9b3d-963ec62f7554",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5534,11 +5564,11 @@
             "utr": "UTR1009",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-50ccafd1-b370-4fc5-85c6-e441bfc26552",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9e503f39-2ded-4a9c-85a7-db561ed9b10a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5546,11 +5576,11 @@
             "utr": "UTR1010",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-0fb035a1-ace4-44e6-9274-8dc4a7efb54a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-47705860-41b1-49fc-8759-d8cfaae3fb53",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5558,11 +5588,11 @@
             "utr": "UTR1012",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-0ee0f82b-348e-4aea-99ea-99cbaef9cb42",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a86aed84-d219-4328-8673-db4a72835dc9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5570,11 +5600,11 @@
             "utr": "UTR1013",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-692bdc85-4109-4fde-91aa-432c7eb839db",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-96883ff3-7423-4481-af52-01c84bb1a00d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5582,11 +5612,11 @@
             "utr": "UTR2016",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-4dcc550d-3802-449c-b9ae-a075c696f5c8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6776db0d-e64f-43c0-93a5-a5c30b63efbc",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5594,11 +5624,11 @@
             "utr": "UTR2017",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-43b976ce-38b9-4c90-85d7-1be4601666f5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-598d512c-ace8-4127-880e-69da10f6953b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5606,11 +5636,11 @@
             "utr": "UTR2018",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-330fc5d6-ed29-424b-a82b-f26a5b551e16",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-1e89ed2d-9c98-4d69-a493-6f3843a1b3ee",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5618,11 +5648,11 @@
             "utr": "UTRGST",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-f8a0be93-e49d-4d42-bd91-de13575001f3",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-04b17095-140f-473e-b999-b5f8e89b165b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5630,11 +5660,11 @@
             "utr": "UTRREFN",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-67a3c521-361e-4039-8e68-7b9c0c9470c1",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ff004db4-b010-4c21-95ed-c225d32c8e13",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5642,11 +5672,11 @@
             "utr": "UTRADJN",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-8a0104f2-c1ce-432a-854f-f38027dd9fa4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8e37879b-a5e9-4e03-969b-761e27cdcec8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5654,11 +5684,11 @@
             "utr": "UTRDUP",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-1bdc7109-8e9e-4ee6-acb3-fab13bbdcd5c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-748401b7-1023-4b7e-9228-ddc530e827c1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5666,11 +5696,11 @@
             "utr": "UTRXA",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-b9d47927-1009-45af-8882-8149b2837c8d",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-19721c62-0e56-4222-9401-ebe5df3757af",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5678,11 +5708,11 @@
             "utr": "UTRXB",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-85c4ca52-33d8-4d66-9b56-1fcb2b33644b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-83a9dc60-112d-4532-bedf-ef77effadb34",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "SETTLE",
@@ -5690,11 +5720,11 @@
             "utr": "UTR001011",
             "lagDays": 1
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-76e22467-fd45-4fca-9b5b-7582b3b2b5e4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9b1a5dca-b6d0-4425-84b5-7580fed2e449",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "FORECAST",
@@ -5702,11 +5732,11 @@
             "windowDays": 7,
             "matchedLags": 22
           },
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z"
         },
         {
-          "id": "aud-384b5cc7-f15d-4302-8557-9a61c192fbf4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f52b3a3f-919e-4d77-b07a-d30557ad6d37",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5715,11 +5745,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-6f6d17dc-df13-4385-b997-37f01f88d8a5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b7815da3-1237-4525-9648-3e8e5c75ce2d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5728,11 +5758,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-ae4d3153-c10d-4d48-b92a-c3826da26a0d",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-af2b1b23-6aa7-4a73-9dc3-25ae58ce9ea4",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5741,11 +5771,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-c8777200-01d5-4f61-a05b-691259ca2245",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-1b2a8121-5d8b-4232-b60d-2bb1a0085a04",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5754,11 +5784,11 @@
             "code": "998313",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-12afd74c-4a3f-4864-bfb3-596546c32732",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-81c18980-3bfb-44e9-a86e-2abc3d5deaed",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5767,11 +5797,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-b652ebd9-2679-417f-ba35-434ef61f9c21",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e2681e30-8618-46ae-b650-c8354f64325e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5780,11 +5810,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f254c571-18e4-49a9-86f0-9a885dc865fe",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-26080148-25fc-4926-834c-8989a2119564",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5793,11 +5823,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-d623c0e1-fbe3-4ff8-b1c3-a9fc3fe3792e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-4cc3d8ab-ba84-408e-91b1-db6fcb02bde2",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5806,11 +5836,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-8df33ae6-a195-4786-8c24-46691f815e0b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-29dee6ce-06a8-4bb8-85c0-8a05bf129b5e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5819,11 +5849,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-9ec6f031-97dc-4dfa-adb8-0d68c66730db",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9f2a7c74-c44c-4496-a92b-537e406576ea",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5832,11 +5862,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-80207b64-9ce5-40b1-baca-5a0f73785724",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-7b6194b2-57f8-4472-b804-9f962c8149f6",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5845,11 +5875,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-3e6022a7-b228-4de4-9ace-cf06de5569dd",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-64e3d877-5b19-4942-8a3b-11ade44407d8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5858,11 +5888,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f4aee30f-bdb7-411e-942e-1f99e65fd830",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-00a622c5-1056-428c-81af-c7336dbefe36",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5871,11 +5901,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-40e1f23f-35f5-4c4e-bea9-7adc63402062",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b9ed5ce7-7e41-4499-96c8-a0aa6db69f3f",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5884,11 +5914,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-39bef96c-6968-48b3-a908-d33c9a3350c0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-03abe3c7-eab9-4d7c-8f81-8eee3964264e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5897,11 +5927,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-e37a7666-1eb0-4df4-bfb5-9c7d67025b56",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ea9ca3bf-9aef-4fe0-97f8-31a8d5b72322",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5910,11 +5940,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-66fa815f-eef5-4f93-9af3-7abe0774a8f5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e379450c-277c-47bb-bebb-cc03bda83583",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5923,11 +5953,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-765236e3-3dbe-4b87-bf79-cc48dc66805e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5587922e-2682-429f-868e-3c5d02f6dc83",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5936,11 +5966,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-7005bd40-99a6-4643-89e6-2de351fb1199",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f90d05a5-862f-4691-a4a8-fbf0ff8d8c3c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5949,11 +5979,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-df291b0a-3e13-4153-b106-5a8878e9b069",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d0940d61-a733-4769-ad03-e4fd90605982",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5962,11 +5992,11 @@
             "code": "998313",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f4afdc36-9294-495c-9e4a-51929b9623ef",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8bdd420f-8255-4cfe-b287-9fa46abf10d0",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5975,11 +6005,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-007ea6dc-ec23-4cad-bb12-fd6a96e8d433",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-5af4ba0a-f300-4562-a2e6-7d872528f52e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -5988,11 +6018,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-8865b87e-4afb-4233-8306-315e0a6b5e91",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-41114971-5297-40b3-a191-99bf0f0ea1a5",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6001,11 +6031,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-0b2223dd-1781-47e9-9dc6-dd11398b7bfa",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d5dbbfb6-64e0-4999-92f5-03817b61ed3e",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6014,11 +6044,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f1dd584c-49b4-45e9-b9f8-8a393727e795",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-abb2663e-5828-4549-b2b2-336fd3735a3b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6027,11 +6057,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-08689dd9-e63a-4842-9562-0791a78ceb69",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8370c8bc-8132-4f8a-b042-cebd27b998a1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6040,11 +6070,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-e130f793-0517-4111-be56-359979b246ba",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-50fc65de-bb5f-4142-a3e3-bd5585c665cc",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6053,11 +6083,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-52e70965-1b4d-4eb4-bf79-76e5ee449fe6",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9181e965-e00b-45e2-9f43-4e6459105752",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6066,11 +6096,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-1031dd8a-6b8b-461c-b6f5-8752c76f9804",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d1138d7e-46ba-49a0-b7f5-3bfdba358cae",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6079,11 +6109,11 @@
             "code": "998313",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-2bf5e47b-9f2e-4fad-9566-1742348c99ff",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d83c6669-c7f6-495e-96a1-d697d07f6863",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6092,11 +6122,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-47eba941-9927-48f7-9256-f58fdb1f97dd",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b79108fd-8a81-43a6-ab0b-6aa52a5de0c1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6105,11 +6135,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-7e64c6e7-bb14-4d1c-971d-ec34be2c2df1",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-16279251-af44-430c-9b5a-a2d74ac257ea",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6118,11 +6148,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-ec499d28-1a65-4ca9-9f73-6ef9968c7eb5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-3f3dc54c-d83d-41ad-99e2-ce325054d1fa",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6131,11 +6161,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-ad11556f-3e77-450d-a7cf-5b64531705c2",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d5e4667b-d049-48ea-81ee-97809a75cc88",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6144,11 +6174,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-d5b3415a-f3ff-498a-a570-38de0f82027e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6aa6a405-6e5a-4640-8ec0-98af7a5aa6b5",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6157,11 +6187,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f2903a99-b194-44aa-b2bf-ddb860d12464",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-dbe389c0-d79a-41f3-90da-80fd79b95306",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6170,11 +6200,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-4eae9847-a4f6-458a-9561-c82266216aa8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6c2e1f69-83a1-405e-913d-39726d242b6c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6183,11 +6213,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-776e05a9-e6b4-4491-90cf-656805909fd9",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-7d445190-b20b-4dcc-8e67-555b44355107",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6196,11 +6226,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-896abc47-7e19-4615-a866-c440cca0a17d",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-1b680a7b-4a6d-4616-a77e-d1dc09afe367",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6209,11 +6239,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-e53e5a03-9411-438e-9853-35da6e1fe5b5",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-b6752673-3c3f-426c-bf41-fc43ed1b14b3",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6222,11 +6252,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-31ddaf87-2e3f-4c15-9442-9c34febdc283",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a7debf38-339f-469d-a3c3-0c46a51e1c65",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6235,11 +6265,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-688047a2-8e73-45c9-b186-cc0d2770c38b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e8ee2939-1458-42a9-83e3-216559a10e37",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6248,11 +6278,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-32269cb2-8d51-42c7-abed-ba973f6cea81",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-66996f67-c2d7-4fb6-8799-5ec7ff06c6df",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6261,11 +6291,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-6a3e5dde-4989-488b-9f80-82fa0ec80642",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8911a8c7-b8d6-496e-8349-ac175694cdf1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6274,11 +6304,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-1f11182c-0192-4bdc-b5f6-a97fb8de2b7b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-a7fff8d5-23c3-4b70-b191-89374133b6a8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6287,11 +6317,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-05af92f0-0617-4293-9bfe-045db47645b7",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-2a120f90-44cf-49cd-8319-8ea72c5872d5",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6300,11 +6330,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-b1daae43-cf2b-4295-8547-aa8e102fc665",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-90b4f8d3-01cd-4567-8148-fbfd665c3b89",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6313,11 +6343,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-c961210f-ed7d-4f8b-9879-72e0dcd39593",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e42046b1-3b90-4449-a8c6-b46e5fa1e9bf",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6326,11 +6356,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-4bc8a2c8-c731-4413-9a3e-e6693dcf243f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-939ac350-7c51-4011-9074-fd04f71fa3ed",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6339,11 +6369,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-636f2f41-4f7f-46fe-ac14-d9be0f9b3617",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-df577e43-cb65-4a94-a865-3d3d5bccbcfb",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6352,11 +6382,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-eb4078ca-1163-4b49-9890-5531af59607a",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-63df0976-01da-4c8b-b71a-394f57277f4b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6365,11 +6395,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-af248efa-4b22-4380-bd10-8f0c53a1b347",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e78a822a-fb75-4b4a-88af-9d5f5043a696",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6378,11 +6408,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-7c0629a0-0c25-4910-a2e3-2f3977dae259",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-611516b5-de06-4462-91db-c45d06edb3a1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6391,11 +6421,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f1533f8e-b7d2-45d2-aa8e-04ed4647d07b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-70c4d3f4-e522-41ba-bf6f-18b96ffa3f33",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6404,11 +6434,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-cd681e5d-e4f9-4a04-b9d4-16a919744a2e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ee53a7b8-062b-45ab-89e0-17af8a8f8f75",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6417,11 +6447,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-62e835c0-ec4a-4ee8-9d3a-4f7ca0d34500",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-bc121764-670b-4299-9d28-c772fe4696d9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6430,11 +6460,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-26212748-6979-4fb8-933f-8ebeb137e573",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-78386159-bb8c-4e09-8e5a-6d30b2cb8be3",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6443,11 +6473,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f5f813a0-1857-4c36-bb97-bfa8c0fb77b4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-901d069c-0a07-4c04-866d-20cd568bc596",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6456,11 +6486,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-4f429060-957c-45e5-92a8-521fa6026d36",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-be40ebf4-d9b5-4231-a05d-7fa4e812e387",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6469,11 +6499,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-8a653879-5020-4b5f-84a3-06db99299d5e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-49cfcd63-844b-438e-802b-0c448e6b6d6c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6482,11 +6512,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-e1b45c9a-9760-44d8-b88e-d66ad2db0bb8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-855fb43c-e52e-45e4-8da5-1a879e35fcf9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6495,11 +6525,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f7c19b74-fabb-4e7c-8198-8c5015f363f0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-2f81b457-2bdf-451c-bafd-dae4f63f755d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6508,11 +6538,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-e11ac8d0-a1fa-422d-a128-3e179e70db1b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-6df22c1b-5027-4010-8f24-54510344d1ce",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6521,11 +6551,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-b37c5e87-7229-4964-8634-8290c92e9ca1",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-bfc63c5e-0f3f-4945-95d1-c7c9fff5d01a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6534,11 +6564,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-5234c13a-0191-43c3-b90c-32491c0cc466",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ce8abb08-85e4-454a-9709-9841a250119f",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6547,11 +6577,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-ea3209e7-1638-4a3e-a3fc-4a09cfec13d8",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0bab4a06-e32f-432f-be36-527bca678185",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6560,11 +6590,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-b7a13754-1584-4d12-8fcd-a277c7cfece3",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-1be1dccc-61ca-4670-ae8a-8feed1aa811a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6573,11 +6603,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-58dda608-5fd9-4577-93df-3cc6b29e0bb4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-80cfba5d-7fe3-4063-85af-03c49ff2b1d7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6586,11 +6616,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-3f710ec5-852a-41c5-b200-34d75ed96782",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-9a9515a7-55ec-4ba3-89f2-85ed8bfaa14c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6599,11 +6629,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-f2acaf8c-283c-4628-a3b1-0c11e882f8bc",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-edad3364-6946-4f31-aa88-1ae1501fde97",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6612,11 +6642,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-6e5ebe9d-3b74-4381-83e8-1cd8dc80f97c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-84b67dd3-b371-4c4e-975e-88b6d2717bbd",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6625,11 +6655,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-d2b66958-6933-4836-979f-eccc82b97145",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-660c661c-25f0-460b-85a8-fbca6f57c7e3",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6638,11 +6668,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-02d476da-78fb-4182-a72c-d96b4a64e37f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-8fa3f9cf-7fe9-4c28-bc15-838165318c26",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6651,11 +6681,11 @@
             "code": null,
             "by": "JUDGED"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-0728e647-7847-4d84-9f87-c7110ba2a18b",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-708b3409-5d8b-401a-be03-3494ad732469",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6664,11 +6694,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-64ef46ee-1f30-43c6-9856-1dcd8678f545",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-e7d351eb-72d4-477e-a3c0-201e86e569b9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6677,11 +6707,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-c9126699-ae00-450d-b155-130734bccf16",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-ade1c097-152b-4c11-b7cd-4ce41503632a",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6690,11 +6720,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-5cc10c7d-bc84-4bc1-b0ac-c2f15df22033",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-bb63823b-26e1-439f-a254-b9068a79b75c",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6703,11 +6733,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-b2550a2c-845f-403c-a99f-d2e0dc334bfc",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-231a22a7-4f43-4571-9ed1-4e722d8cc5fa",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6716,11 +6746,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-44754674-9c37-4c13-81fe-3400bec2733f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-f842188b-e849-4c23-a113-32840c256a20",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6729,11 +6759,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-043a8c51-3126-4be6-9161-e91396ea3afa",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-d528670d-374e-4145-b701-0f17bdd715b6",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6742,11 +6772,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-4c8e28a9-da67-4653-82c9-f0e313847f04",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-0498ea24-7314-465a-93de-88ba797112c1",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "TAX",
@@ -6755,11 +6785,11 @@
             "code": "998212",
             "by": "RULE"
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         },
         {
-          "id": "aud-7323c30b-b4f6-4444-b19b-eb773831ae9e",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "aud-435fefed-d038-498c-9b2d-724d9f4c654d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "actorType": "SYSTEM",
           "actorId": "harness",
           "action": "CLOSE",
@@ -6767,16 +6797,16 @@
             "records": 81,
             "groups": 22
           },
-          "createdAt": "2026-09-05T05:04:06.968Z"
+          "createdAt": "2026-09-05T10:19:24.076Z"
         }
       ]
     },
     "ledger": {
-      "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+      "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
       "items": [
         {
-          "id": "exc-b5ba19fb-bbe6-4c01-bd9e-39416198371f",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-aaea0f4e-7df2-45cc-9334-7d6ac7ca0feb",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR1001DUP",
           "recordJson": {
             "id": "rec:bank-utr:UTR1001DUP",
@@ -6800,11 +6830,13 @@
           "actualPaise": 3045408,
           "variancePaise": 0,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-8f9dbbf4-2d67-4d6c-bece-d2bb573805e6",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-4539d16e-5ece-47be-bb3f-2afcb408ad4b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR1002DUP",
           "recordJson": {
             "id": "rec:bank-utr:UTR1002DUP",
@@ -6828,11 +6860,13 @@
           "actualPaise": 2296624,
           "variancePaise": 0,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.961Z"
+          "createdAt": "2026-09-05T10:19:24.070Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-c0475155-f848-4e73-af50-5bd213e55030",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-8b662abd-9f6b-4858-8126-75d40587e771",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTRDUPB",
           "recordJson": {
             "id": "rec:bank-utr:UTRDUPB",
@@ -6856,11 +6890,13 @@
           "actualPaise": 500000,
           "variancePaise": 0,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.962Z"
+          "createdAt": "2026-09-05T10:19:24.070Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-f8a0407a-0eaa-4bab-851c-d56b6bdf4289",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-19e2766b-f5ee-4dac-ab4f-6b75795e62d9",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:razorpay-gateway:pay_14",
           "recordJson": {
             "id": "rec:razorpay-gateway:pay_14",
@@ -6890,11 +6926,13 @@
           "actualPaise": 0,
           "variancePaise": 1128904,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.965Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-596315cc-fa3b-43e6-9336-1dee2398bd91",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-d1261a0e-faf5-4249-918f-d9ebe3f5747b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR1014",
           "recordJson": {
             "id": "rec:bank-utr:UTR1014",
@@ -6922,11 +6960,13 @@
           "actualPaise": 0,
           "variancePaise": 1128704,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-860fa642-610f-4adb-b0f9-66962a909c30",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-49b24144-36c4-4509-9345-31dd1522a2f7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:razorpay-gateway:pay_15",
           "recordJson": {
             "id": "rec:razorpay-gateway:pay_15",
@@ -6956,11 +6996,13 @@
           "actualPaise": 0,
           "variancePaise": 832585,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-9b4afe8e-ed40-4fd5-9cea-2891edf81c00",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-43586605-e9aa-451d-af4e-855a458042e8",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR1015",
           "recordJson": {
             "id": "rec:bank-utr:UTR1015",
@@ -6988,11 +7030,13 @@
           "actualPaise": 0,
           "variancePaise": 832385,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-b4e58cdc-2e80-4206-bd04-2d00333a9ab4",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-a4192620-bd7a-433e-a6ab-c54bb112057d",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:razorpay-gateway:payPART",
           "recordJson": {
             "id": "rec:razorpay-gateway:payPART",
@@ -7022,11 +7066,13 @@
           "actualPaise": 0,
           "variancePaise": 1000000,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-45975baa-015b-467d-be64-0e608ca4c37c",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-68b9f85e-7c82-4fc1-9ca4-e83c86107974",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTRPART",
           "recordJson": {
             "id": "rec:bank-utr:UTRPART",
@@ -7054,11 +7100,13 @@
           "actualPaise": 0,
           "variancePaise": 600000,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.074Z",
+          "resolutionStatus": "OPEN",
+          "critical": true
         },
         {
-          "id": "exc-80f9925d-ab0c-434a-b28f-52863b19ca29",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-8264a84c-749a-49af-a79a-328edacaded7",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR9001",
           "recordJson": {
             "id": "rec:bank-utr:UTR9001",
@@ -7078,11 +7126,13 @@
           "confidence": 0.65,
           "expectedPaise": 4340826,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         },
         {
-          "id": "exc-d65de36b-5a6c-4781-87e1-9d9ee34308a0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-9bac3e66-45b5-40c3-98a7-3fbb3304421b",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR9002",
           "recordJson": {
             "id": "rec:bank-utr:UTR9002",
@@ -7102,11 +7152,13 @@
           "confidence": 0.5,
           "expectedPaise": 4340806,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.966Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         },
         {
-          "id": "exc-96ba9deb-0dad-4bda-9bc6-66480df95a73",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-5831fe29-fb57-4710-8402-b7edea8653ab",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR8001",
           "recordJson": {
             "id": "rec:bank-utr:UTR8001",
@@ -7126,11 +7178,13 @@
           "confidence": 0.5,
           "expectedPaise": 12345,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         },
         {
-          "id": "exc-727fc208-16a5-492f-8f97-d6efbf5a4ea6",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-42c5937d-dee3-435c-93c1-09898377dc26",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR8002",
           "recordJson": {
             "id": "rec:bank-utr:UTR8002",
@@ -7150,11 +7204,13 @@
           "confidence": 0.5,
           "expectedPaise": 67890,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         },
         {
-          "id": "exc-7154b622-cc34-440a-a822-501c18bbe9bb",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-f75184d6-da1a-4a38-9cf5-594c5195b5af",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR8003",
           "recordJson": {
             "id": "rec:bank-utr:UTR8003",
@@ -7174,11 +7230,13 @@
           "confidence": 0.5,
           "expectedPaise": 111222,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         },
         {
-          "id": "exc-863ccab4-116d-457c-8d1f-d2da2c6a8821",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "id": "exc-a2858dec-74fc-4c14-8eca-a5c4a4a99f31",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "recordId": "rec:bank-utr:UTR8004",
           "recordJson": {
             "id": "rec:bank-utr:UTR8004",
@@ -7198,7 +7256,9 @@
           "confidence": 0.5,
           "expectedPaise": 345678,
           "status": "OPEN",
-          "createdAt": "2026-09-05T05:04:06.967Z"
+          "createdAt": "2026-09-05T10:19:24.075Z",
+          "resolutionStatus": "OPEN",
+          "critical": false
         }
       ]
     },
@@ -7206,7 +7266,7 @@
       "entries": [
         {
           "id": "led-grp-rec:bank-utr:UTR1001-rec:erp-orders:ORD-1-rec:gst-invoices:INV-1-rec:razorpay-gateway:pay_1-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 3045408,
@@ -7220,7 +7280,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1002-rec:erp-orders:ORD-2-rec:gst-invoices:INV-2-rec:razorpay-gateway:pay_2-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 2296624,
@@ -7234,7 +7294,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1003-rec:erp-orders:ORD-3-rec:gst-invoices:INV-3-rec:razorpay-gateway:pay_3-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 4277083,
@@ -7248,7 +7308,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1004-rec:erp-orders:ORD-4-rec:gst-invoices:INV-4-rec:razorpay-gateway:pay_4-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 3381697,
@@ -7262,7 +7322,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1005-rec:erp-orders:ORD-5-rec:gst-invoices:INV-5-rec:razorpay-gateway:pay_5-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 956588,
@@ -7276,7 +7336,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1006-rec:erp-orders:ORD-6-rec:gst-invoices:INV-6-rec:razorpay-gateway:pay_6-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 2680303,
@@ -7290,7 +7350,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1007-rec:erp-orders:ORD-7-rec:razorpay-gateway:pay_7-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 1438817,
@@ -7304,7 +7364,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1008-rec:erp-orders:ORD-8-rec:razorpay-gateway:pay_8-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 3161249,
@@ -7318,7 +7378,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1009-rec:razorpay-gateway:pay_9-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 4340826,
@@ -7332,7 +7392,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1010-rec:razorpay-gateway:pay_10-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 2414354,
@@ -7346,7 +7406,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1012-rec:razorpay-gateway:pay_12-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 3551824,
@@ -7360,7 +7420,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1013-rec:razorpay-gateway:pay_13-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 3033803,
@@ -7374,7 +7434,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2016-rec:razorpay-gateway:feeNS16-rec:razorpay-gateway:payNS16-CustomerReceivable-10000-10000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 10000,
@@ -7388,7 +7448,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2016-rec:razorpay-gateway:feeNS16-rec:razorpay-gateway:payNS16-FeeIncome-177-177",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 177,
@@ -7402,7 +7462,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2016-rec:razorpay-gateway:feeNS16-rec:razorpay-gateway:payNS16-TaxPayable-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 0,
@@ -7416,7 +7476,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2016-rec:razorpay-gateway:feeNS16-rec:razorpay-gateway:payNS16-Bank-9823-9823",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 9823,
@@ -7430,7 +7490,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2017-rec:razorpay-gateway:feeNS17-rec:razorpay-gateway:payNS17-CustomerReceivable-10000-10000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 10000,
@@ -7444,7 +7504,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2017-rec:razorpay-gateway:feeNS17-rec:razorpay-gateway:payNS17-FeeIncome-177-177",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 177,
@@ -7458,7 +7518,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2017-rec:razorpay-gateway:feeNS17-rec:razorpay-gateway:payNS17-TaxPayable-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 0,
@@ -7472,7 +7532,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2017-rec:razorpay-gateway:feeNS17-rec:razorpay-gateway:payNS17-Bank-9823-9823",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 9823,
@@ -7486,7 +7546,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2018-rec:razorpay-gateway:feeNS18-rec:razorpay-gateway:payNS18-CustomerReceivable-10000-10000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 10000,
@@ -7500,7 +7560,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2018-rec:razorpay-gateway:feeNS18-rec:razorpay-gateway:payNS18-FeeIncome-250-250",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 250,
@@ -7514,7 +7574,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2018-rec:razorpay-gateway:feeNS18-rec:razorpay-gateway:payNS18-TaxPayable-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 0,
@@ -7528,7 +7588,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR2018-rec:razorpay-gateway:feeNS18-rec:razorpay-gateway:payNS18-Bank-9750-9750",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 9750,
@@ -7542,7 +7602,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRGST-rec:razorpay-gateway:feeGST-rec:razorpay-gateway:payGST-CustomerReceivable-1000000-1000000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 1000000,
@@ -7556,7 +7616,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRGST-rec:razorpay-gateway:feeGST-rec:razorpay-gateway:payGST-FeeIncome-15000-15000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 15000,
@@ -7570,7 +7630,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRGST-rec:razorpay-gateway:feeGST-rec:razorpay-gateway:payGST-TaxPayable-2700-2700",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 2700,
@@ -7584,7 +7644,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRGST-rec:razorpay-gateway:feeGST-rec:razorpay-gateway:payGST-Bank-982300-982300",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 982300,
@@ -7598,7 +7658,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRREFN-rec:razorpay-gateway:payREFN-rec:razorpay-gateway:payREFN_R-CustomerReceivable-1000000-1000000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 1000000,
@@ -7612,7 +7672,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRREFN-rec:razorpay-gateway:payREFN-rec:razorpay-gateway:payREFN_R-FeeIncome-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 0,
@@ -7626,7 +7686,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRREFN-rec:razorpay-gateway:payREFN-rec:razorpay-gateway:payREFN_R-TaxPayable-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 0,
@@ -7640,7 +7700,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRREFN-rec:razorpay-gateway:payREFN-rec:razorpay-gateway:payREFN_R-Bank-800000-800000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 800000,
@@ -7654,7 +7714,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRADJN-rec:razorpay-gateway:payADJN-rec:razorpay-gateway:payADJN_A-CustomerReceivable-1000000-1000000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "CustomerReceivable",
           "debitPaise": 1000000,
@@ -7668,7 +7728,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRADJN-rec:razorpay-gateway:payADJN-rec:razorpay-gateway:payADJN_A-FeeIncome-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "FeeIncome",
           "debitPaise": 0,
@@ -7682,7 +7742,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRADJN-rec:razorpay-gateway:payADJN-rec:razorpay-gateway:payADJN_A-TaxPayable-0-0",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "TaxPayable",
           "debitPaise": 0,
@@ -7696,7 +7756,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRADJN-rec:razorpay-gateway:payADJN-rec:razorpay-gateway:payADJN_A-Bank-1200000-1200000",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 1200000,
@@ -7710,7 +7770,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRDUP-rec:razorpay-gateway:payDUP-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 500000,
@@ -7724,7 +7784,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRXA-rec:gst-invoices:INV-XA-rec:razorpay-gateway:payXA-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 1000000,
@@ -7738,7 +7798,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTRXB-rec:gst-invoices:INV-XB-rec:razorpay-gateway:payXB-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 1000000,
@@ -7752,7 +7812,7 @@
         },
         {
           "id": "led-grp-rec:bank-utr:UTR1011-rec:razorpay-gateway:pay_11-plain",
-          "runId": "run-11f402bd-caff-49d9-9404-4b1c42853445",
+          "runId": "run-607a798d-98fd-4aad-a339-18f48b632460",
           "book": "settlement",
           "account": "Bank",
           "debitPaise": 1149710,

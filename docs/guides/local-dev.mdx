@@ -3,7 +3,7 @@ title: "Local Development"
 description: "Run the ReconAI harness and Next.js app locally — scripts, optional Prisma, empty-env fallbacks."
 ---
 
-ReconAI is two packages: a framework-agnostic `harness/` engine and the `next-shadcn-admin-dashboard/` app (thin API + UI + worker). An empty `.env.local` is enough for the demo — Redis, OpenAI, Razorpay, and Postgres are all optional.
+ReconAI is two packages: a framework-agnostic `harness/` engine and the `app/` app (thin API + UI + worker). An empty `.env.local` is enough for the demo — Redis, OpenAI, Razorpay, and Postgres are all optional.
 
 ## Quick start
 
@@ -16,7 +16,7 @@ npm run batch          # prints measured summary
 npm run test:cov       # coverage gate
 
 # dashboard
-cd ../next-shadcn-admin-dashboard
+cd ../app
 cp .env.example .env.local
 npm i
 npm run dev            # http://localhost:3000
@@ -46,7 +46,7 @@ The harness has **zero runtime dependencies**. It is consumed by the app as `con
 
 ## App scripts
 
-Run from `next-shadcn-admin-dashboard/`:
+Run from `app/`:
 
 | Script | Command | What it does |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ Related: `npm run verify:reconcile` for reconcile-path verification; `npm test` 
 Durable Postgres is optional. When you want it:
 
 ```bash
-cd next-shadcn-admin-dashboard
+cd app
 # set DATABASE_URL in .env.local
 npx prisma db push
 # or apply SQL under supabase/

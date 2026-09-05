@@ -2,7 +2,7 @@
  * types.ts — ALL shared data shapes for the AI Finance Controller core engine.
  *
  * These types are the single source of truth for every module in `harness/src`,
- * and are mirrored by the app repo (`next-shadcn-admin-dashboard`). Currency is
+ * and are mirrored by the Next.js app (`app/`). Currency is
  * integer **paise**, signed: `+` inflow, `-` outflow. See SPEC §4/§5.
  */
 

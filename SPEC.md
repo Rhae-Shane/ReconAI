@@ -29,7 +29,7 @@
           └─────────────────────────────────────────────────────────────┘
 ```
 
-- **App repo:** `next-shadcn-admin-dashboard/` (Next.js 16 · React 19 · TS strict · Tailwind v4 · shadcn/ui `radix-nova` · Prisma 7 · Supabase). This is the UI/home for the dashboard, following its own `AGENTS.md` conventions.
+- **App repo:** `app/` (Next.js 16 · React 19 · TS strict · Tailwind v4 · shadcn/ui `radix-nova` · Prisma 7 · Supabase). This is the UI/home for the dashboard, following its own `AGENTS.md` conventions.
 - **Core:** `harness/` — framework-agnostic TypeScript engine shared by the agent and the app (no runtime deps; `vitest` only for tests). Interfaces with the app via shared data shapes.
 - **Spec:** this file — planning artifact. Code builds per `BUILD_PLAN.md`.
 
@@ -145,7 +145,7 @@ This keeps the ethics of the bar intact: we report exactly what we know and exac
 
 ## 4. Data model (Prisma)
 
-All models live in the existing Prisma setup of `next-shadcn-admin-dashboard/prisma/`.
+All models live in the existing Prisma setup of `app/prisma/`.
 
 ```
 Tenant 1─n CloseRun 1─n SourceBatch ── FinRecord[]
@@ -393,7 +393,7 @@ User: "Close today's books."
 
 ---
 
-## 7. API / route map (inside `next-shadcn-admin-dashboard`)
+## 7. API / route map (inside `app`)
 
 | Route | Purpose |
 |---|---|
@@ -408,7 +408,7 @@ User: "Close today's books."
 | `POST /api/close/agents/tools` | Direct tool invocation (internal, for the harness) |
 
 **Ops / worker:** when `REDIS_URL` is set, `POST /api/close/runs` enqueues onto the BullMQ `close-runs`
-queue and a separate worker process (`npm run worker` in `next-shadcn-admin-dashboard/`) consumes it,
+queue and a separate worker process (`npm run worker` in `app/`) consumes it,
 driving the LangGraph `StateGraph` (`ingest → reconcile → judge → settle → forecast → tax →
 fileExceptions → closeRun`) with a RedisSaver checkpointer and a Redis run-store. Without any Redis
 env the same run executes in-process (graceful degradation).

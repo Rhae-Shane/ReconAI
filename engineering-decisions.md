@@ -73,7 +73,7 @@ first-class.
 
 ## 10. Co-located dashboard screens
 
-**Decision:** Follow `next-shadcn-admin-dashboard/AGENTS.md` — page + `_components/` + sidebar
+**Decision:** Follow `app/AGENTS.md` — page + `_components/` + sidebar
 registration.
 
 **Why:** Keeps UI consistent with the shared admin shell used across related hackathon tracks.

@@ -33,8 +33,8 @@ not hide open exceptions: the report still surfaces every unresolved line.
 | ----- | ---- | ---- |
 | Core engine | `harness/src/core/` | Framework-free TypeScript; settlement math and matching |
 | Close orchestrator | `harness/src/core/close.ts` | `CloseEngine.run(batch)` wires the pipeline above |
-| LangGraph workflow | `next-shadcn-admin-dashboard/src/lib/close/graph.ts` | Stage order, revision loop, checkpointed close |
-| Ops queue | `next-shadcn-admin-dashboard/src/lib/ops/queue.ts` | BullMQ `close-runs` when Redis is configured |
+| LangGraph workflow | `app/src/lib/close/graph.ts` | Stage order, revision loop, checkpointed close |
+| Ops queue | `app/src/lib/ops/queue.ts` | BullMQ `close-runs` when Redis is configured |
 
 The graph nodes are a **workflow** over engine-computed data — they do not
 re-derive amounts:

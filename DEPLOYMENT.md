@@ -1,6 +1,6 @@
 # DEPLOYMENT.md — ReconAI
 
-Deploy the Next.js dashboard (`next-shadcn-admin-dashboard/`) and optionally a durable BullMQ
+Deploy the Next.js dashboard (`app/`) and optionally a durable BullMQ
 worker. The deterministic harness in `harness/` has **no runtime deps** and is linked into the app
 as `controller-harness` (`file:../harness`).
 
@@ -22,7 +22,7 @@ npm test
 npm run batch
 
 # dashboard + API
-cd ../next-shadcn-admin-dashboard
+cd ../app
 cp .env.example .env.local   # fill what you need
 npm i
 npm run dev                  # http://localhost:3000
@@ -31,13 +31,13 @@ npm run dev                  # http://localhost:3000
 Optional durable worker (requires `REDIS_URL`):
 
 ```bash
-cd next-shadcn-admin-dashboard
+cd app
 npm run worker
 ```
 
 ## 2. Environment variables
 
-Copy from `next-shadcn-admin-dashboard/.env.example`. Summary:
+Copy from `app/.env.example`. Summary:
 
 | Variable | Required for | If unset |
 |---|---|---|
@@ -54,7 +54,7 @@ Never prefix Razorpay secrets with `NEXT_PUBLIC_`.
 ## 3. Database (optional)
 
 ```bash
-cd next-shadcn-admin-dashboard
+cd app
 # set DATABASE_URL in .env.local
 npx prisma db push
 # or apply SQL under supabase/
@@ -65,7 +65,7 @@ Schema lives in `prisma/schema.prisma` and mirrors `harness/src/core/types.ts`.
 ## 4. Vercel (recommended for the web app)
 
 1. Import **https://github.com/Rhae-Shane/ReconAI**.
-2. **Root Directory:** `next-shadcn-admin-dashboard`.
+2. **Root Directory:** `app`.
 3. Enable **Include source files outside of the Root Directory in the Build Step** so
    `file:../harness` resolves.
 4. Framework Preset: Next.js. Build: `npm run build`. Install: `npm install`.
@@ -96,7 +96,7 @@ For queued / durable closes:
 2. Run the worker on a long-lived host (Railway, Fly.io, Render, a VM):
 
 ```bash
-cd next-shadcn-admin-dashboard
+cd app
 npm i
 npm run worker
 ```
@@ -108,7 +108,7 @@ npm run worker
 GitHub Actions (`.github/workflows/ci.yml`) runs:
 
 1. `harness` — install, test
-2. `next-shadcn-admin-dashboard` — install, lint, typecheck, unit tests, ops verify, production build
+2. `app` — install, lint, typecheck, unit tests, ops verify, production build
 
 ## 7. Production checklist
 

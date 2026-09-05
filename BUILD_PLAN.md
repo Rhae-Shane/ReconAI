@@ -1,7 +1,7 @@
 # BUILD_PLAN.md — ReconAI (Settlement Reconciliation Controller)
 
 > Implementation roadmap for the finance-ops closing loop. The **dashboard repo is
-> `next-shadcn-admin-dashboard/`** (follow its `AGENTS.md`); the accuracy-critical engine lives in
+> `app/`** (follow its `AGENTS.md`); the accuracy-critical engine lives in
 > **`harness/`** (framework-agnostic, no runtime deps). Every phase has an exit gate — nothing
 > advances until the gate passes.
 
@@ -131,7 +131,7 @@ breakdown `Matched: 66 · Partial: 2 · Unresolved: 13`; labels test locks the c
 **Goal:** the recruiting + arbitration loop over the deterministic core.
 
 **Step list (met):**
-1. In the app repo `next-shadcn-admin-dashboard/`, `src/lib/close/tools.ts` — Zod-schematized tools.
+1. In the app repo `app/`, `src/lib/close/tools.ts` — Zod-schematized tools.
 2. `src/lib/close/agent.ts` — Vercel AI SDK loop wiring the tools to the engine (works headless when
    `OPENAI_API_KEY` is absent).
 3. `src/lib/close/claude-judge.ts` — `ClaudeJudge` implementing the `Judge` interface.
@@ -176,7 +176,7 @@ rule-based HSN/category assignment with judge fallback; tests green.
 **Goal:** durable, queued close runs that still work locally with zero infra.
 
 **Step list (met):**
-1. `next-shadcn-admin-dashboard/src/lib/ops/redis.ts` — Upstash Redis client (`@upstash/redis`,
+1. `app/src/lib/ops/redis.ts` — Upstash Redis client (`@upstash/redis`,
    `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`) for app reads/cache + run-store, and the
    ioredis TCP endpoint (`REDIS_URL`) for BullMQ + the LangGraph checkpointer. All accessors are
    safe no-ops when unconfigured.
@@ -212,7 +212,7 @@ synchronously in-process (graceful degradation).
 |---|---|---|
 | `SPEC.md`, `BUILD_PLAN.md` | main agent | planning artifacts |
 | `harness/` (engine + CLI + tests) | subagent A | framework-agnostic core, measured accuracy, semantic matcher |
-| `next-shadcn-admin-dashboard/` agent + API + UI + ops | subagent B | tool layer, routes, screens, Redis/LangGraph/BullMQ worker |
+| `app/` agent + API + UI + ops | subagent B | tool layer, routes, screens, Redis/LangGraph/BullMQ worker |
 | `README.md` | main agent | demo script + operations guide |
 
 *End of BUILD_PLAN — phases build on each other; run `npm test` / `npm run batch` at every gate.*

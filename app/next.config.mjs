@@ -17,7 +17,14 @@ const nextConfig = {
   transpilePackages: ["controller-harness"],
   // Avoid bundling Floating UI into the RSC graph under the `react-server`
   // react-dom condition (that build omits `flushSync`).
-  serverExternalPackages: ["@floating-ui/react-dom", "@floating-ui/dom", "@floating-ui/core"],
+  serverExternalPackages: [
+    "@floating-ui/react-dom",
+    "@floating-ui/dom",
+    "@floating-ui/core",
+    "exceljs",
+    "pdf-lib",
+    "rimraf",
+  ],
   turbopack: {
     root: appRoot,
   },

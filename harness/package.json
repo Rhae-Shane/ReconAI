@@ -1,0 +1,26 @@
+{
+  "name": "controller-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Framework-agnostic core engine for the AI Finance Controller (reconcile, settle, forecast, tax, audit, close). Zero runtime dependencies.",
+  "scripts": {
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "build": "tsc -p tsconfig.build.json",
+    "batch": "tsx src/cli/run-batch.ts",
+    "agent": "tsx src/cli/agent-driver.ts",
+    "gen-batch": "tsx src/cli/generate-batch.ts",
+    "bench": "tsx src/cli/benchmark.ts",
+    "benchmark": "tsx src/cli/benchmark.ts"
+  },
+  "exports": {
+    "./control/*": "./dist/control/*.js",
+    "./core/*": "./dist/core/*.js"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsx": "^4.19.2",
+    "vitest": "^2.1.8"
+  }
+}

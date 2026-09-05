@@ -1,0 +1,80 @@
+---
+title: "Quickstart"
+description: "Run the ReconAI harness batch and open the Close Cockpit in under 2 minutes."
+---
+
+## Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+Local demo works with an empty `.env.local` — the engine falls back to in-memory storage and `HeuristicJudge`.
+
+## 1. Run the harness
+
+Framework-agnostic core — no runtime deps, fully testable with empty env:
+
+```bash
+cd harness
+npm i
+npm test
+npm run batch
+```
+
+**Expected batch output** (labeled synthetic set, locked by tests):
+
+```
+records=81 · sources=4 · matched=66 · partial=2 · unresolved=13
+resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
+```
+
+Use `npm run test:cov` when you need the coverage gate.
+
+## 2. Start the dashboard
+
+```bash
+cd next-shadcn-admin-dashboard
+cp .env.example .env.local
+npm i
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+Supabase, Redis, OpenAI, and Razorpay keys are optional. Fill only what you need in `.env.local`.
+
+## 3. Optional durable worker
+
+Default close runs execute in-process (zero infra). With `REDIS_URL` set, start the BullMQ worker:
+
+```bash
+cd next-shadcn-admin-dashboard
+npm run worker
+```
+
+The worker is idle-safe without `REDIS_URL`; it consumes the `close-runs` queue when Redis is configured. See [Deployment](/guides/deployment) for the full env table.
+
+## 2-minute demo
+
+1. **Harness** — `npm run batch` in `harness/` shows real measured numbers, not a slide.
+2. **Close Cockpit** (`/dashboard/close`) — start a run; KPIs climb.
+3. **Run Detail** (`/dashboard/close/[runId]`) — match-rate bars, confidence distribution, reconciliation grid. Click a match for the why-chip (e.g. `exact:utr`, conf `0.99`).
+4. **Exception List** (`/dashboard/close/exceptions`) — reason codes + rationale; residuals stay visible with confidence.
+5. **Settlement Q&A + Forecast** (`/dashboard/close/settlement`, `/dashboard/close/forecast`) — cited answers; 7-day cash band grounded in matched lags.
+
+## UI map
+
+| Screen | Route |
+| --- | --- |
+| Close Cockpit | `/dashboard/close` |
+| Run Detail | `/dashboard/close/[runId]` |
+| Exceptions | `/dashboard/close/exceptions` |
+| Settlement Q&A | `/dashboard/close/settlement` |
+| Forecast | `/dashboard/close/forecast` |
+| Tax | `/dashboard/close/tax` |
+
+## Next
+
+- [Authentication & roles](/authentication) — Supabase auth and owner / accountant / viewer
+- [How It Works](/concepts/how-it-works) — FinanceCore pipeline
+- [Deployment](/guides/deployment) — Vercel, Redis, and production env

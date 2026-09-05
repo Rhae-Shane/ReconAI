@@ -1,0 +1,11 @@
+{
+  "name": "reconai-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Workspace root so Vercel can detect Next.js while building app/ + harness/",
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  }
+}

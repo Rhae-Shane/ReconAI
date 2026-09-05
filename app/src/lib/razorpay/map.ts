@@ -52,6 +52,29 @@ export interface RazorpayDispute {
   created_at?: number;
 }
 
+/** Settlement recon dump row from `GET /settlements/recon/:id`. */
+export interface RazorpayReconItem {
+  entity_id?: string;
+  type?: string;
+  debit?: number;
+  credit?: number;
+  amount?: number;
+  currency?: string;
+  fee?: number;
+  tax?: number;
+  on_hold?: boolean;
+  settled?: boolean;
+  created_at?: number;
+  settled_at?: number;
+  settlement_id?: string;
+  payment_id?: string;
+  credit_type?: string;
+  description?: string | null;
+  notes?: Record<string, string>;
+  payment_method?: string;
+  payment_method_type?: string;
+}
+
 function unixToIso(unix?: number): string {
   if (!unix || !Number.isFinite(unix)) return new Date().toISOString();
   return new Date(unix * 1000).toISOString();

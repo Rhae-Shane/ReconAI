@@ -960,20 +960,20 @@ export async function getReportFromStore(runId: string): Promise<CloseReport | n
   try {
     const { loadCloseRunFromPrisma } = await import("./prisma-store");
     const fromDb = await loadCloseRunFromPrisma(runId);
-    if (fromDb && fromDb.records.length > 0) {
+    if (fromDb?.records && fromDb.records.length > 0) {
       const dataset = repairDataset(
         {
           records: fromDb.records,
-          groups: fromDb.groups,
-          flaps: fromDb.flaps,
-          exceptions: fromDb.exceptions,
-          settlements: fromDb.settlements,
+          groups: fromDb.groups ?? [],
+          flaps: fromDb.flaps ?? [],
+          exceptions: fromDb.exceptions ?? [],
+          settlements: fromDb.settlements ?? [],
           forecast: fromDb.forecast,
-          taxMatches: fromDb.taxMatches,
-          audit: fromDb.audit,
-          sources: fromDb.sources,
+          taxMatches: fromDb.taxMatches ?? [],
+          audit: fromDb.audit ?? [],
+          sources: fromDb.sources ?? [],
           totals: fromDb.meta.totals,
-          groundedRecords: fromDb.groups.length,
+          groundedRecords: (fromDb.groups ?? []).length,
         },
         runId,
       );

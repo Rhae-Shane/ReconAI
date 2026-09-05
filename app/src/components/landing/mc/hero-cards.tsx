@@ -7,12 +7,15 @@ import Image from "next/image";
 import { Cursor } from "@lobehub/icons";
 import { Save } from "lucide-react";
 import { RiClaudeLine } from "react-icons/ri";
-import { SiGooglegemini, SiOpenai } from "react-icons/si";
+import { SiGooglegemini, SiOpenaigym } from "react-icons/si";
 
 import { useInView } from "@/components/landing/mc/lib/use-in-view";
 import { useReducedMotion } from "@/components/landing/mc/lib/use-reduced-motion";
 
 import { useLanding } from "../landing-context";
+
+// react-icons/si no longer exports SiOpenai.
+const SiOpenai = SiOpenaigym;
 
 // Pre-defined line styles to avoid Math.random during render
 const CODE_LINE_STYLES = [

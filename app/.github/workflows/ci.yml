@@ -10,6 +10,9 @@ jobs:
   ci:
     name: lint, type-check, test, build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,8 +22,17 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            harness/package-lock.json
 
-      - name: Install dependencies
+      - name: Install + build harness
+        working-directory: harness
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install app dependencies
         run: npm ci
 
       - name: Lint
@@ -36,4 +48,4 @@ jobs:
         run: npm run verify:ops
 
       - name: Production build
-        run: npx next build
+        run: npm run build

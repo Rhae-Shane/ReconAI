@@ -6,7 +6,7 @@
  * then asserts buildReconcileSummary returns the expected counts, sums, payout
  * schedule and match-type breakdown. Run: `npm run verify:reconcile` (or tsx).
  */
-import { buildReconcileSummary } from "@/app/api/close/reconcile/route";
+import { buildReconcileSummary } from "@/lib/close/reconcile-summary";
 import type {
   CloseRunMeta,
   ExceptionRecord,

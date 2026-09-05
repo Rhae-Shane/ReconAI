@@ -38,12 +38,14 @@ jobs:
           cache-dependency-path: |
             app/package-lock.json
             harness/package-lock.json
-      - name: "Install harness (file dependency)"
+      - name: "Install + build harness (file dependency)"
         working-directory: harness
-        run: npm ci
+        run: |
+          npm ci
+          npm run build
       - run: npm ci
       - run: npx biome check .
       - run: npx tsc --noEmit
       - run: npx vitest run
       - run: npm run verify:ops
-      - run: npx next build
+      - run: npm run build

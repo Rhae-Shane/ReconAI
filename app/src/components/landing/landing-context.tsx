@@ -2,7 +2,7 @@
 
 import { createContext, type ReactNode, useContext } from "react";
 
-import type { LandingContent } from "../types";
+import type { LandingContent } from "./types";
 
 const LandingContext = createContext<LandingContent | null>(null);
 

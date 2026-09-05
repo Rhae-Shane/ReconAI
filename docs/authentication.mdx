@@ -1,0 +1,56 @@
+---
+title: "Authentication & roles"
+description: "Optional Supabase auth, app roles (owner / accountant / viewer), and safe env configuration for ReconAI."
+---
+
+## Overview
+
+Supabase Auth is **optional**. The local demo works without signing in — seed and in-memory paths keep the close loop usable with an empty `.env.local`.
+
+When Supabase is configured, route guards read the acting user's role from the session and enforce write vs read access on close APIs.
+
+## Roles
+
+Roles are ordered **owner > accountant > viewer**. They come from the Supabase user's `app_metadata.role` (or `user_metadata.role`).
+
+| Role | Can do |
+| --- | --- |
+| **owner** | Full access — ingest, sync, resolve, finalize, read |
+| **accountant** | Write-capable close ops — upload, sync, sign-off, read |
+| **viewer** | Read reports and settlement Q&A; cannot ingest or sync |
+
+Examples from product routes:
+
+- Upload / Razorpay sync (write) → `owner` or `accountant`
+- Settlement chat (read) → `owner`, `accountant`, or `viewer`
+
+If a signed-in user has no role set, the app falls back to `DEFAULT_ROLE` (default `owner`) so local bootstrap stays usable. Pin `DEFAULT_ROLE=viewer` in production for least privilege until roles are provisioned.
+
+## Secrets
+
+Never expose Razorpay secrets with a `NEXT_PUBLIC_` prefix. Keep them server-only:
+
+| Variable | Client-safe? |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes (public anon URL) |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes (anon key) |
+| `RAZORPAY_KEY_ID` | No — server only |
+| `RAZORPAY_KEY_SECRET` | No — server only |
+| `RAZORPAY_WEBHOOK_SECRET` | No — server only |
+
+## Supabase env vars
+
+Copy from `next-shadcn-admin-dashboard/.env.example`:
+
+| Variable | Purpose | If unset |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | Auth skipped; seed / in-memory paths |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public anon key for browser + server client | Same |
+
+These are the public anon credentials — safe to expose to the browser. Add `DATABASE_URL` separately when you want Prisma → Postgres persistence.
+
+## Best practices
+
+- Provision real roles in `app_metadata` for any shared or production deploy
+- Keep Razorpay and OpenAI keys server-side only
+- Use the in-memory / HeuristicJudge path for demos; add Redis and keys when you need durability and residual LLM judging

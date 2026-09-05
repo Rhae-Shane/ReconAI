@@ -1,0 +1,73 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "ReconAI",
+  "logo": {
+    "light": "/logo.svg",
+    "dark": "/logo.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0F766E",
+    "light": "#14B8A6",
+    "dark": "#0D9488"
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Rhae-Shane/ReconAI"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/Rhae-Shane/ReconAI"
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": ["index", "quickstart", "authentication"]
+      },
+      {
+        "group": "Concepts",
+        "pages": [
+          "concepts/how-it-works",
+          "concepts/matching",
+          "concepts/exceptions",
+          "concepts/financecore"
+        ]
+      },
+      {
+        "group": "Close Loop",
+        "pages": ["close-loop/overview"]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/local-dev",
+          "guides/deployment",
+          "guides/demo-script",
+          "guides/razorpay-integration"
+        ]
+      },
+      {
+        "group": "Engineering",
+        "pages": [
+          "engineering/architecture",
+          "engineering/decisions",
+          "engineering/roadmap"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "pages": ["api-reference/overview"]
+      }
+    ]
+  }
+}

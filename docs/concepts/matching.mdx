@@ -1,0 +1,80 @@
+---
+title: "Matching"
+description: "Deterministic-first MatchType labels, settlement identity in paise, and residual judgment."
+---
+
+Every reconciliation decision carries an explicit `MatchType`. Finance teams
+read that label as “what we actually did with these records.” Matching is
+**deterministic-first**: keys and settlement math run before any residual
+judge.
+
+Types are defined in `harness/src/core/types.ts`. The engine that applies them
+is `ReconciliationEngine` in `harness/src/core/reconcile.ts`.
+
+## MatchType
+
+| MatchType | Meaning |
+| --------- | ------- |
+| `EXACT` | Same primary key (e.g. UTR / gateway ref) and amount within exact threshold |
+| `NORMALIZED` | Normalized reference key match within normalized threshold / tolerance |
+| `FEE_NETTED` | Settlement identity holds with gateway fee legs present |
+| `REFUND_NETTED` | Identity holds with refund legs driving the net |
+| `ADJUSTMENT_NETTED` | Identity holds with adjustment legs present |
+| `PARTIAL` | Some signals matched — not enough to resolve → usually `PARTIAL_FLAP` |
+| `FUZZY` | Residual resolved by `HeuristicJudge` (reproducible, no model) |
+| `AI_RESOLVED` | Residual resolved by the OpenAI-backed residual judge |
+| `UNRESOLVED` | Filed to the exception ledger with a `ReasonCode` |
+
+`MatchMethod` (`EXACT` | `NORMALIZED` | `JUDGED` | `NETTED`) describes *how*
+the group was formed; `MatchType` is the explainable decision label on the
+group and each `MatchLink`.
+
+## Settlement Identity
+
+Netted matches must satisfy the P0 identity in integer **paise** (never
+floats):
+
+```text
+gross − fee − tax_on_fee − refund + adjustment = settlement
+```
+
+Captured on `NettingBreakdown`:
+
+| Field | Role |
+| ----- | ---- |
+| `grossPaise` | Base payment / invoice amount (abs) |
+| `feePaise` | Gateway FEE records (abs) |
+| `taxOnFeePaise` | Tax on those fees (`FEE.feeTaxPaise`, abs) |
+| `refundPaise` | REFUND records (abs) |
+| `adjustmentPaise` | ADJUSTMENT records (signed) |
+| `netExpectedPaise` | `gross − fee − taxOnFee − refund + adjustment` |
+| `actualSettlementPaise` | Settlement / bank-UTR legs (abs) |
+| `variancePaise` | `actualSettlement − netExpected` (≈ 0 when balanced) |
+
+Nothing is guessed: a component only nets when it actually contains the
+driving FEE / REFUND / ADJUSTMENT records **and** the identity balances within
+`paiseTolerance`. Otherwise it stays an amount conflict (`AMOUNT_MISMATCH`),
+not a silent merge.
+
+## Deterministic First, Judge Last
+
+Order of operations:
+
+1. **Compiled rules** (optional) → exact key groups → normalized key groups.
+2. **Netting** for components whose raw amounts disagree but settlement math
+   explains the gap (`FEE_NETTED` / `REFUND_NETTED` / `ADJUSTMENT_NETTED`).
+3. **Residual flaps** → candidates for the judge.
+4. Judge assigns `FUZZY` or `AI_RESOLVED`, or files an exception
+   (`UNRESOLVED` + reason code).
+
+Optional semantic signal (`SemanticMatcher` in `harness/src/core/semantic.ts`)
+can enrich residual scoring. Default is n-gram; OpenAI embeddings are opt-in
+when `OPENAI_API_KEY` is set. Semantic matching never invents a primary key
+match ahead of the deterministic passes.
+
+## What Matching Does Not Do
+
+- Inflate match rate by dropping hard cases.
+- Use floating-point money.
+- Let the LLM invent fee, tax, or settlement amounts — those come from records
+  already on the group.

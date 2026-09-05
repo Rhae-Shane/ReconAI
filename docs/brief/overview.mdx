@@ -1,0 +1,66 @@
+---
+title: "1. Executive Summary"
+description: "ReconAI full project brief — product identity, track bar, and one-sentence definition."
+---
+
+# ReconAI — Full Project Brief
+
+**Track 04 · AI Finance Controller · Run the books and the cash position**
+
+This Full Brief is the long-form product + engineering document (≈10 pages). Use the sidebar under **Full Brief** for the rest of the sections.
+
+## Product identity
+
+| Field | Value |
+| --- | --- |
+| **Product name** | ReconAI (Settlement Reconciliation Controller) |
+| **Hackathon track** | AI Finance Controller — run the books and the cash position |
+| **Repo** | [github.com/Rhae-Shane/ReconAI](https://github.com/Rhae-Shane/ReconAI) |
+| **Local folder** | `AI Finance Controller/` |
+| **License** | MIT © 2026 Rhae-Shane / ReconAI |
+| **Default branch** | `main` |
+| **Demo batch** | 81 records · 4 sources · 81.48% resolved · precision/recall = 1.00 |
+| **Build status** | Phases 0–6 complete (engine → agent → UI → Redis/LangGraph → hardening) |
+
+## One sentence
+
+An agent that takes a messy multi-source finance batch (≥50 records; ours is **81**), reconciles it across gateway / bank / ERP / GST, settles, forecasts cash, maps tax, and ships a **Close Report** with match rate + precision/recall + an **honest exception list** — nothing silently dropped.
+
+## The track bar
+
+> Throughput plus measured accuracy plus an honest exception list. One cherry-picked match proves nothing.
+
+ReconAI was designed so that bar is **engineered in**, not bolted on: deterministic matching first, LLM only on residual ambiguity, ground-truth labels for precision/recall, and every unresolved row filed with a structured reason code — never silently dropped.
+
+## Why it exists (the bar)
+
+The track’s “why now” is: **verification, not generation**, is the bottleneck. Reconciliation / settlement / forecasting are still manual.
+
+| Deliverable | How you prove it |
+| --- | --- |
+| **Throughput** | Full 81-record close in well under a second; scalable via BullMQ |
+| **Measured accuracy** | Ground-truth labels → match rate, precision, recall |
+| **Honest exceptions** | Every unresolved row gets a reason code + rationale |
+
+### Locked audited baseline (tests enforce this)
+
+```
+records=81 · sources=4 · matched=66 · partial=2 · unresolved=13
+resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
+```
+
+## Continue reading
+
+| Page | Contents |
+| --- | --- |
+| [2. Why It Exists](/brief/why-it-exists) | Why now, track directions, design thesis |
+| [3. Closing the Books](/brief/closing-the-books) | What a close run means / non-goals |
+| [4. Repository](/brief/repository) | Layout + harness vs app split |
+| [5. Tech Stack](/brief/tech-stack) | Full stack + graceful degradation |
+| [6. Domain Model](/brief/domain-model) | Types, FinRecord, tolerances, netting |
+| [7. FinanceCore](/brief/financecore) | Module-by-module pipeline |
+| [8. Batch & Agent](/brief/batch-and-agent) | Synthetic batch, tools, daily-close narrative |
+| [9. Database](/brief/database) | Prisma models, Redis roles |
+| [10. UI & API](/brief/ui-and-api) | Screens + selected routes |
+| [11. Ops & Deploy](/brief/ops-and-deploy) | Local, env, Vercel, CI |
+| [12. Decisions & Demo](/brief/decisions-demo) | Phases, demo script, risks, bottom line |

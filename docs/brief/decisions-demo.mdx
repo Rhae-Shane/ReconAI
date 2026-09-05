@@ -1,0 +1,95 @@
+---
+title: "12. Decisions, Demo & Bottom Line"
+description: "Engineering choices, phases 0–6, 2-minute demo, risks/backlog, and Track 04 bottom line."
+---
+
+## 14. Engineering decisions (why we built it this way)
+
+| # | Decision | Why |
+| --- | --- | --- |
+| 1 | Deterministic-first, LLM last | Finance needs audit trails; models hallucinate matches |
+| 2 | Harness vs app split | Accuracy gated without UI noise |
+| 3 | Integer paise | Netting identity must not float-break |
+| 4 | Honest exceptions over inflated match rate | Wins the track bar |
+| 5 | Graceful Redis / OpenAI / Razorpay | Reviewers run with empty env |
+| 6 | BullMQ + LangGraph only when Redis set | Demo path ≠ prod fork |
+| 7 | Ground-truth labeled batch | Measured precision/recall |
+| 8 | Prisma optional | Persistence ≠ proof of math |
+| 9 | Razorpay as adapter | Real formats without forcing live money |
+| 10 | Co-located dashboard screens | Consistent with shared hackathon admin shell |
+
+Also see [Engineering Decisions](/engineering/decisions).
+
+## 15. Build history (phases 0–6)
+
+| Phase | Outcome |
+| --- | --- |
+| 0 | FinanceCore scaffold + Vitest + batch runner |
+| 1 | 81-record labeled batch + fee netting + measured metrics |
+| 2 | Agent tools + residual judge + headless agent-driver |
+| 3 | Forecast + tax + semantic matcher |
+| 4 | Close UI screens + CSV upload APIs |
+| 5 | Redis / BullMQ / LangGraph worker + graceful fallback |
+| 6 | Honesty drills, coverage gate, README/ops polish |
+
+## 16. Demo script (2 minutes)
+
+1. `npm run batch` in `harness/` → print real `81 / 66 / 2 / 13 / 81.48%`
+2. **Close Cockpit** → start a run; KPIs climb
+3. **Run Detail** → match-rate bars, confidence, why-chip (`exact:utr`, conf `0.99`)
+4. **Exception List** → reason codes + expected vs actual; agent files `LOW_CONFIDENCE` live
+5. **Settlement Q&A + Forecast** → cited answers; 7-day cash grounded in matched lags
+
+Longer walkthrough: [2-Minute Demo](/guides/demo-script).
+
+## 17. Risks, mitigations, and backlog
+
+### Mitigated risks
+
+| Risk | Mitigation |
+| --- | --- |
+| Cherry-picked accuracy | Labels + honesty tests |
+| LLM hallucination | Deterministic-first + thresholds in code |
+| No API key | `HeuristicJudge` |
+| Synthetic-only skepticism | Real-shaped formats + Razorpay adapters |
+
+### Post-hackathon backlog (`product-improvements.md`)
+
+Multi-tenant isolation, server-side RBAC, signed `CloseReport` exports, webhook idempotency ledger, real bank parsers (MT940/CAMT), fee schedules per MID, chargebacks, scheduled daily close, Slack digests, 10k+ shard uploads.
+
+See [Roadmap](/engineering/roadmap).
+
+---
+
+## 18. Bottom line
+
+You did **not** build “an LLM that matches payments.”
+
+You built a **finance-ops close agent** with:
+
+- a tested **deterministic core**
+- optional AI **only on residuals**
+- a measured **81-record** demo (**81.48%** resolved, **P/R = 1.0**)
+- an explicit **exception list** — exactly what Track 04 asks for
+
+**Stack in one breath:** TypeScript harness (zero runtime deps) + Next.js 16 dashboard + Prisma/Supabase (optional) + Upstash/BullMQ/LangGraph (optional) + OpenAI residual judge (optional) + Razorpay test adapters — organized so the demo works with empty env and the math stays reproducible under CI.
+
+**That is Track 04 answered completely:** throughput + measured accuracy + an honest exception list.
+
+---
+
+### Challenge checklist
+
+| Requirement | Covered? |
+| --- | --- |
+| 50+ synthetic records | Yes — 81 labeled, 4 sources |
+| One closed finance-ops loop | Yes — ingest → close report |
+| Report match rate | Yes — CLI + UI + `CloseReport` |
+| Exceptions it could not resolve | Yes — structured reason codes |
+| Multi-source reconciliation | Yes |
+| Settlement Q&A | Yes |
+| Forward cash forecast | Yes |
+| Tax-line matcher | Yes |
+| Throughput + measured accuracy + honesty | Yes — tests lock baseline |
+
+Back to [1. Executive Summary](/brief/overview) · short map: [Track 04](/track-04).

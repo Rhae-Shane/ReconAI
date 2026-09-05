@@ -1,0 +1,66 @@
+---
+title: "Tech Stack"
+description: "What ReconAI uses end-to-end — harness, Next.js app, LLM, ops, auth, and what stays optional."
+---
+
+ReconAI splits **accuracy-critical engine code** (`harness/`) from a **thin Next.js surface** (`app/`). Optional services degrade gracefully so local demo and CI stay green with an empty env.
+
+## Layers
+
+| Layer | Choice | Role |
+| --- | --- | --- |
+| Core engine | TypeScript in `harness/` — zero runtime deps | Matching, netting, settle, forecast, tax, exceptions, close |
+| Tests / CLI | Vitest · `batch` · `benchmark` · `gen-batch` · `agent` | Measured baseline, coverage gate, headless runs |
+| App framework | Next.js App Router · React · TypeScript strict | Close Cockpit UI + REST API |
+| UI | Tailwind · shadcn/ui · recharts · tanstack table | Grids, KPI charts, exception drawers |
+| Agent / residual LLM | OpenAI (`OPENAI_API_KEY`) via residual judge + settlement chat | Residual flaps + narration only |
+| Orchestration | LangGraph StateGraph · optional RedisSaver | Close stage order + revision loop |
+| Queue | BullMQ + `npm run worker` when `REDIS_URL` set | Durable close-runs; else in-process |
+| Cache / rate limit | Upstash Redis REST (optional) | Run store + rate limiting |
+| Auth | Supabase Auth (`owner` / `accountant` / `viewer`) | Session + role gates |
+| Persistence | Prisma + Postgres (optional) | Mirrors harness types when configured |
+| Payments adapter | Razorpay test mode + HMAC webhooks (optional) | Live sync; CSV / synthetic remain first-class |
+
+## Where the LLM is used (and where it is not)
+
+| Path | Uses LLM? | Notes |
+| --- | --- | --- |
+| Exact / normalized / netting match | **No** | Pure rules + paise identity |
+| Residual flaps without `OPENAI_API_KEY` | **No** | `HeuristicJudge` + n-gram semantic |
+| Residual flaps with key | **Yes** | OpenAI residual judge → may emit `AI_RESOLVED` |
+| Settlement Q&A | **Yes** (optional) | Streams cited answers; deterministic fallback if no key |
+| Tax category residual | **Maybe** | Rules first; judge fallback for ambiguous descriptions |
+| Fee / tax / settlement amounts | **Never** | Always from ingested records via FinanceCore |
+| Match rate / precision / recall | **Never** | Computed from labels + engine outcomes |
+
+Philosophy: **LLM-everywhere is the trap.** The model arbitrates residual ambiguity and narrates; it does not fudge numbers. See [Engineering Decisions](/engineering/decisions).
+
+## Env knobs (optional = demo still works)
+
+| Variable | Enables | Without it |
+| --- | --- | --- |
+| `OPENAI_API_KEY` | Residual LLM judge, chat, embeddings | HeuristicJudge + n-gram |
+| `REDIS_URL` | BullMQ queue + durable checkpoints | In-process close |
+| Supabase URL / keys | Auth + Postgres | Local / in-memory demo path |
+| Razorpay keys | Sync + payment links + webhooks | CSV upload + synthetic batch |
+
+Full tables: [Deployment](/guides/deployment) · [Local Dev](/guides/local-dev).
+
+## Repo layout
+
+```
+AI Finance Controller/
+├── docs/          # This Mintlify site
+├── harness/       # FinanceCore — framework-agnostic
+├── app/           # Next.js UI + API + worker
+├── SPEC.md        # Full planning artifact
+├── architecture.md
+└── BUILD_PLAN.md  # Phase gates 0–6
+```
+
+## Related
+
+- [Track 04](/track-04) — brief ↔ product ↔ use mapping
+- [Architecture](/engineering/architecture) — system shape + pipeline
+- [FinanceCore](/concepts/financecore) — modules and judge modes
+- [API Overview](/api-reference/overview) — route map

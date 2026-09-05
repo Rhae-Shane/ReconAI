@@ -1,0 +1,50 @@
+---
+title: "5. Tech Stack"
+description: "Full stack table — core, Next.js, AI, LangGraph, BullMQ, Supabase, Razorpay, tests, docs, deploy."
+---
+
+| Layer | Choice | Why |
+| --- | --- | --- |
+| Core engine | Pure TypeScript, zero runtime deps | Headless, CI-friendly, reproducible |
+| App framework | Next.js 16 App Router, React 19, TS strict | Server Components + co-located `_components/` |
+| UI | shadcn/ui, Tailwind v4, Lucide, Recharts, TanStack Table, Zustand, Sonner, Vaul, cmdk | Shared admin shell patterns |
+| AI | Vercel AI SDK (`ai`) + OpenAI (`@ai-sdk/openai`) | Residual judge, settlement chat, embeddings |
+| Agent graph | LangGraph StateGraph + optional RedisSaver | Durable multi-step close when Redis is on |
+| Queue | BullMQ + ioredis (`REDIS_URL`) | Queued close runs + horizontal workers |
+| App Redis | Upstash REST (`@upstash/redis`) | Run-store, rate limit, cache |
+| DB | Prisma 7 + Postgres (Supabase) | Optional persistence; mirrors harness types |
+| Auth | Supabase Auth (`@supabase/ssr`) | Roles for cockpit / exception resolve |
+| Payments | Razorpay test keys + HMAC webhooks | Live sync optional; CSV/synthetic first-class |
+| Money | Signed integer paise (BigInt in DB) | No float rounding in netting |
+| Lint / format | Biome + Husky | Fast checks |
+| Tests | Vitest (harness + app), Playwright smoke, coverage gate | Accuracy locked by tests |
+| Docs | Mintlify (`docs/`) | Get Started / Concepts / Close Loop / Full Brief / API |
+| Deploy | Vercel (`app/` root) + optional long-lived worker host | Zero-infra demo path |
+
+## Where the LLM is used
+
+| Path | Uses LLM? | Notes |
+| --- | --- | --- |
+| Exact / normalized / netting | **No** | Pure rules + paise identity |
+| Residual without `OPENAI_API_KEY` | **No** | `HeuristicJudge` + n-gram |
+| Residual with key | **Yes** | OpenAI residual judge → may emit `AI_RESOLVED` |
+| Settlement Q&A | **Yes** (optional) | Streamed citations; deterministic fallback |
+| Tax residual descriptions | **Maybe** | Rules first; judge fallback |
+| Fee / tax / settlement amounts | **Never** | Always from records via FinanceCore |
+| Match rate / P/R | **Never** | Labels + engine outcomes |
+
+**Philosophy:** LLM-everywhere is the trap. The model arbitrates residual ambiguity and narrates; it does not fudge numbers.
+
+## Graceful degradation
+
+Empty `.env.local` still runs the demo — `HeuristicJudge`, in-memory/in-process close, no Redis required.
+
+| Variable | Enables | Without it |
+| --- | --- | --- |
+| `OPENAI_API_KEY` | Residual LLM, chat, embeddings | HeuristicJudge + n-gram |
+| `REDIS_URL` | BullMQ + LangGraph checkpoints | In-process close |
+| Upstash REST | Run-store, rate limit | No-ops / memory |
+| Supabase / `DATABASE_URL` | Auth + Postgres | Seed / in-memory |
+| Razorpay keys | Sync + webhooks | CSV + 81-record batch |
+
+Next: [6. Domain Model](/brief/domain-model).

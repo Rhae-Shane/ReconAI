@@ -1,0 +1,38 @@
+---
+title: "3. Closing the Books"
+description: "What a ReconAI close run means — the eight-stage loop and deliberate non-goals."
+---
+
+A **close run** is one audited pass over a batch:
+
+1. **Ingest** — normalize heterogeneous exports into `FinRecord`
+2. **Reconcile** — exact → normalized → fee/refund/adjustment netting
+3. **Judge** — residual flaps only (`HeuristicJudge` or OpenAI residual judge)
+4. **Settle** — bind matches to settlement batches; compute lag
+5. **Forecast** — project 7-day cash from matched settlement lags
+6. **Tax** — map lines to HSN/category (rules, then judge fallback)
+7. **Exceptions + audit** — file unresolved with reason codes; append-only events
+8. **CloseReport** — totals, breakdown, unresolved lines, precision/recall
+
+Every assertion (CLI, API, agent tool) goes through **FinanceCore**.
+
+## Settlement math identity
+
+Integer **paise** only — never floats:
+
+```text
+gross − fee − tax_on_fee − refund + adjustment = settlement
+```
+
+## Out of scope (deliberate)
+
+| Not this project | Why |
+| --- | --- |
+| Full double-entry GL posting as the primary product | Ledger helpers exist; the win is verification + close report |
+| GST filing submission to the tax portal | Tax **matching** is in scope; e-filing is not |
+| Multi-tenant SaaS billing platform | Control/finance APIs exist; track bar is the close loop |
+| Real bank rails / live money | Razorpay **test** adapters + CSV/synthetic first-class |
+
+Adapters exist for Razorpay test mode; **synthetic + CSV remain first-class**.
+
+Next: [4. Repository](/brief/repository).

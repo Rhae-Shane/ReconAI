@@ -1,0 +1,53 @@
+---
+title: "9. Database & Persistence"
+description: "Optional Prisma/Supabase models, money as BigInt paise, and the two Redis roles."
+---
+
+## 10.1 Optional by design
+
+The close loop works from **in-memory / Redis run-store** for demos. Prisma/Supabase persist runs for production-like use.
+
+Persistence is **valuable**, not on the critical path for proving the math.
+
+```bash
+cd app
+# set DATABASE_URL
+npx prisma db push
+# or SQL under supabase/
+```
+
+Schema: `app/prisma/schema.prisma` — mirrors `harness/src/core/types.ts` (types are the authority). Money = signed **BigInt** paise.
+
+SQL also under `app/supabase/migrations/` (`0001_init.sql`, `0002_seed.sql`).
+
+## 10.2 Prisma models (high level)
+
+| Model | Purpose |
+| --- | --- |
+| `CloseRun` | One close loop; status; optional full dataset JSON snapshot |
+| `FinRecord` | Normalized rows; unique `(runId, source, sourceRef)` |
+| `MatchGroup` / `MatchLink` | Groups + membership + matchedOn / why |
+| `Netting` | Full fee/refund/adjustment arithmetic |
+| `Settlement` | Settlement legs + lag + status |
+| `ForecastDatum` | Forward cash points |
+| `TaxCategory` / `TaxLineMatch` | HSN taxonomy + line classifications |
+| `Exception` | Honest ledger + enrichment + reviewer fields (`OPEN` → `REVIEWED` / `OVERRIDDEN` / `RESOLVED`) |
+| `AuditEvent` | Append-only provenance |
+| `CloseReport` | Terminal JSON totals / breakdown / unresolved |
+| `FinanceConfig` | Tenant tolerances / thresholds |
+
+## 10.3 Redis roles (two different uses)
+
+| Vars | Role |
+| --- | --- |
+| `UPSTASH_REDIS_REST_URL` / `TOKEN` | App run-store, rate limiter, cache |
+| `REDIS_URL` (TCP / ioredis) | BullMQ queue + LangGraph RedisSaver + worker |
+
+Without them → **in-process synchronous** closes.
+
+| Mode | When | Behavior |
+| --- | --- | --- |
+| In-process | No `REDIS_URL` | Sync closes in the API |
+| Queued | `REDIS_URL` + `npm run worker` | BullMQ + LangGraph checkpoints |
+
+Next: [10. UI & API](/brief/ui-and-api).

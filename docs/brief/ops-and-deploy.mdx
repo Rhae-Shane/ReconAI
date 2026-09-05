@@ -1,0 +1,57 @@
+---
+title: "11. Ops & Deploy"
+description: "Local run commands, environment variables, Vercel setup, and GitHub Actions CI."
+---
+
+## 13.1 Local
+
+```bash
+# Engine (empty env is fine)
+cd harness
+npm i
+npm test
+npm run batch
+npm run benchmark
+
+# Dashboard
+cd ../app
+cp .env.example .env.local
+npm i
+npm run dev
+
+# optional durable worker:
+npm run worker   # needs REDIS_URL
+```
+
+## 13.2 Environment variables
+
+| Variable | Needed for | If unset |
+| --- | --- | --- |
+| Supabase URL / anon key | Auth + persisted app data | Seed / in-memory |
+| `DATABASE_URL` | Prisma Postgres | Skip DB |
+| Upstash REST URL/token | Run-store, rate limit | No-ops |
+| `REDIS_URL` | BullMQ + LangGraph + worker | In-process closes |
+| `OPENAI_API_KEY` | Residual LLM, chat, embeddings | HeuristicJudge + n-gram |
+| Razorpay key/secret/webhook | Live test sync + webhooks | CSV / 81-record batch |
+| `CLOSE_ORG_ID` / GSTIN / display name | Demo merchant branding | Defaults (e.g. Rhae) |
+
+**Never** prefix Razorpay secrets with `NEXT_PUBLIC_`.
+
+## 13.3 Vercel
+
+1. Import the ReconAI repo
+2. **Root Directory:** `app`
+3. Include files outside root so `file:../harness` resolves
+4. Set env vars; deploy
+5. Webhook: `https://<domain>/api/webhooks/razorpay`
+
+See [Deployment](/guides/deployment) for the full checklist.
+
+## 13.4 CI
+
+GitHub Actions roughly:
+
+1. `harness` — install + test
+2. `app` — install, lint, typecheck, unit tests, ops verify, production build
+
+Next: [12. Decisions & Demo](/brief/decisions-demo).

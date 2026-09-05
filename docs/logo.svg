@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#0F766E"/>
+  <rect width="64" height="64" rx="14" fill="#E8613C"/>
   <text
     x="32"
     y="44"
     text-anchor="middle"
-    font-family="system-ui, -apple-system, Segoe UI, sans-serif"
+    font-family="Space Grotesk, system-ui, -apple-system, Segoe UI, sans-serif"
     font-size="36"
     font-weight="700"
     fill="#FFFFFF"

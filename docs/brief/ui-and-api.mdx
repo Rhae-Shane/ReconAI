@@ -1,0 +1,64 @@
+---
+title: "10. UI & API"
+description: "Close Cockpit screens, demo flow, selected API routes, and LangGraph node order."
+---
+
+## 11. Application UI map
+
+Built on the Next.js admin shell (`AGENTS.md` co-location: page + `_components/` + sidebar).
+
+| Screen | Route | What you see |
+| --- | --- | --- |
+| Close Cockpit | `/dashboard/close` | Runs list, KPIs, start run, CSV upload, Razorpay sync card |
+| Run Detail | `/dashboard/close/[runId]` | Match-rate bars, confidence distribution, reconciliation grid, why-chips |
+| Exceptions | `/dashboard/close/exceptions` | Reason codes, rationale, resolve/override drawer |
+| Settlement Q&A | `/dashboard/close/settlement` | Chat over settled ledger with citations |
+| Forecast | `/dashboard/close/forecast` | 7-day cash band grounded in matched lags |
+| Tax | `/dashboard/close/tax` | HSN/category matches + confidence |
+| Plus | billing, metrics, trust, diff | Ops / trust / run-to-run comparison |
+
+Landing/marketing lives under `app/(external)` with a branded landing experience.
+
+### Demo flow (UI)
+
+Start run → KPIs climb → match-rate bars / confidence / why-chips (`exact:utr`, conf `0.99`) → exception list with reason codes → settlement Q&A + 7-day cash forecast.
+
+---
+
+## 12. API surface (selected)
+
+| Route | Purpose |
+| --- | --- |
+| `POST /api/close/runs` | Start close (sync or enqueue BullMQ) |
+| `GET /api/close/runs/:id` | Status + progress + metrics |
+| `POST /api/close/runs/:id` | Finalize → terminal `CloseReport` |
+| `GET /api/close/runs/:id/report` | Fetch / download report |
+| `POST /api/close/upload` | CSV upload (≤10 MiB, rate-limited) → `{ runId, report }` |
+| `GET /api/close/exceptions` | Filterable exception list |
+| `POST /api/close/exceptions/:id/resolve` | Accountant resolve/override (audited) |
+| `POST /api/close/agents/chat` | Streaming settlement Q&A |
+| `POST /api/close/agents/tools` | Direct tool invocation |
+| `POST /api/close/razorpay/sync` | Pull Razorpay test data |
+| `POST /api/webhooks/razorpay` | HMAC: `payment.captured`, `refund.processed`, `settlement.processed` |
+| `GET /api/health` | `{ service: "reconai", … }` |
+
+### Control / finance
+
+`/api/control/*`, `/api/finance/*` — policy, approvals, audit verify, GST, ledger, FX, metrics, dossier export.
+
+### Extra surface beyond the core loop
+
+- **Control plane:** approvals, SoD, materiality, policy, audit-chain verify
+- **Finance APIs:** dossier, FX, GST, ledger, metrics
+- **Razorpay:** sync, payment links, webhooks
+- **CSV upload** for real-format batches without live money
+
+### LangGraph node order (when queued)
+
+```text
+ingest → reconcile → judge → settle → forecast → tax → fileExceptions → closeRun
+```
+
+Full route map: [API Overview](/api-reference/overview).
+
+Next: [11. Ops & Deploy](/brief/ops-and-deploy).

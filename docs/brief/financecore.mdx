@@ -1,0 +1,81 @@
+---
+title: "7. FinanceCore Pipeline"
+description: "Module-by-module close funnel — ingest through close, plus the control plane."
+---
+
+Every CLI command, API route, and agent tool assertion flows through this funnel.
+
+## 7.1 Ingest (`ingest.ts`)
+
+- Normalizes gateway / bank / ERP / GST rows into `FinRecord`
+- Idempotent on `(source, sourceRef)`
+- Duplicate source refs → `DUPLICATE` exceptions
+- Also detects content duplicates (same source/amount/date/counterparty even if refs differ)
+
+## 7.2 Reconcile (`reconcile.ts`)
+
+Ordered deterministic passes:
+
+1. **Exact keys** — union-find over `utr:` / `gateway:` / `order:` / `invoice` keys → confidence ~1.0 (or 0.98 if amounts differ within tolerance)
+2. **Normalized keys** — case/space/punctuation strip + leading-zero collapse (`UTR00123` → `UTR123`) → confidence 0.95
+3. **Netting** — amount disagreement explained by fee/refund/adjustment math → `FEE_NETTED` / `REFUND_NETTED` / `ADJUSTMENT_NETTED` @ 0.98
+4. **Conflicts / flaps** — beyond tolerance and unexplained → conflicted set or residual for the judge; **never** a silent fake match
+
+## 7.3 Judge (`judge.ts` + `semantic.ts`)
+
+| Mode | Behavior |
+| --- | --- |
+| Default `HeuristicJudge` | Fully reproducible, no API key |
+| Optional OpenAI residual judge | Ambiguous candidates → may emit `AI_RESOLVED` |
+| Optional semantic boost (residual only) | `NgramSemanticMatcher` (offline default) or `EmbeddingSemanticMatcher` (OpenAI when keyed) |
+
+Below `resolveThreshold` → `PARTIAL` / `UNRESOLVED` + exception — never guessed “done”.
+
+## 7.4 Settle (`settle.ts`)
+
+- Binds matched groups to settlement batches
+- Computes settlement lag vs value date
+- Exposes a queryable ledger for Settlement Q&A
+
+## 7.5 Forecast (`forecast.ts`)
+
+- Projects next-day / 7-day cash from matched inflows/outflows and historical lag distribution
+- Confidence band grounded in matched lags (`reconciledIn` flag)
+
+## 7.6 Tax (`tax.ts`)
+
+- Rule-based HSN / category map first
+- Judge fallback for ambiguous descriptions
+- Output: category + confidence + `RULE` | `JUDGED`
+
+## 7.7 Exceptions (`exception.ts`) + Audit (`audit.ts`)
+
+- Every unresolved record → `ExceptionRecord` with reason code, rationale, candidates, expected/actual/variance enrichment
+- Append-only `AuditEvent`s (`INGEST` / `MATCH` / `JUDGE` / `SETTLE` / `FORECAST` / `TAX` / `EXCEPTION` / `CLOSE`)
+- Exception list integrity is **tested** — empty-because-hidden fails the bar
+
+## 7.8 Close (`close.ts`)
+
+`CloseEngine.run(batch)` orchestrates the full loop and emits `CloseReport`:
+
+- Totals + per-source stats
+- Explicit breakdown: `{ records, matched, partial, unresolved, matchRate }`
+- `UnresolvedLine[]` (expected vs actual vs reason vs confidence)
+- Precision / recall vs ground-truth labels
+- Confidence bins, audit count, judge metadata
+
+Also wires supporting pieces: double-entry ledger helpers, allocation solver, optional compiled DSL rules.
+
+## 7.9 Control plane (`harness/src/control/`)
+
+Beyond core matching:
+
+| Capability | Role |
+| --- | --- |
+| Policy | Configurable finance rules |
+| Materiality | Critical exceptions (e.g. large `AMOUNT_MISMATCH`, duplicates) |
+| SoD | Resolver ≠ approver on critical items |
+| Approval workflow | Pending / approved / rejected |
+| Audit chain | Verify integrity of the event trail |
+
+Next: [8. Batch & Agent](/brief/batch-and-agent).

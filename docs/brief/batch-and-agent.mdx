@@ -1,0 +1,101 @@
+---
+title: "8. Batch & Agent"
+description: "Locked 81-record baseline, how accuracy is measured, adversarial tests, and agent tool surface."
+---
+
+## 8.1 Batch composition
+
+| Item | Detail |
+| --- | --- |
+| File | `harness/data/batch.json` (`batch-42-81`) |
+| Seed | Fixed → reproducible demo numbers |
+| Size | **81** records across **4** sources |
+| Formats | Mirror real Razorpay / bank / ERP / GST exports |
+| Planted cases | Clean matches, pass-tolerance, fee-netted legs, amount mismatches, orphans (`NO_KEY`), content duplicates, near-misses for the judge |
+
+## 8.2 Locked audited outcomes (asserted by tests)
+
+```
+records     = 81
+sources     = 4   (razorpay-gateway · bank-utr · erp-orders · gst-invoices)
+matched     = 66
+partial     = 2
+unresolved  = 13
+resolved    = 81.48%
+exceptions  = 15   (each with ReasonCode — never hidden)
+precision   = 1.00
+recall      = 1.00
+```
+
+## 8.3 How accuracy is measured
+
+The generator emits ground-truth labels (`expectedGroupKey`, `expectedStatus`: `MATCHED` | `EXCEPTION`).
+
+`CloseEngine` computes precision/recall on the judged subset against those labels — **match rate is measured, not assumed**.
+
+## 8.4 Adversarial & invariant locks
+
+Vitest suites include:
+
+- `close.test.ts`, `labels.test.ts`, `honesty.test.ts`, `semantic.test.ts`
+- `adversarial.test.ts` / `adversarial-suite.test.ts` — cross-match traps, fee coincidence, partial payment, duplicate, one-invoice-once
+- `invariant.test.ts` — partition, netting identity, disjoint consumption, exception→audit, no bare-fuzzy merges
+- Plus agent, allocation, evaluation, explain, ledger, model, policy, scale, SoD tests
+
+CLI:
+
+```bash
+cd harness
+npm run batch
+npm run benchmark
+npm run test:cov
+```
+
+---
+
+## 9. Agent design
+
+### 9.1 Philosophy
+
+The agent **narrates, explains, and files exceptions**. It does not invent matches outside FinanceCore tools.
+
+> You are the finance controller. You never guess a match — you assign confidence and file exceptions when unsure. Decisive numbers are computed by the engine, not by you.
+
+### 9.2 Tool surface (all route through FinanceCore)
+
+| Tool | Kind | Module |
+| --- | --- | --- |
+| `ingestSource` | action | `IngestService` |
+| `runReconciliation` | action | `ReconciliationEngine` |
+| `judgeCandidates` | decision | Judge (+ optional semantic) |
+| `settlementQuery` | read | `SettlementService` |
+| `forecastWindow` | read | `CashForecaster` |
+| `matchTaxLine` | decision | `TaxMatcher` |
+| `fileException` | action | `ExceptionLedger` |
+| `closeRun` | terminal | `CloseEngine` |
+
+**Hard rules:**
+
+- Matches / resolutions only via tools
+- Every decision returns confidence + reason
+- `closeRun` refuses to finalize with unresolved work left silent
+- All tools emit audit events
+
+### 9.3 Daily-close narrative (demo)
+
+```text
+User: "Close today's books."
+  → ingest 4 sources (81 records)
+  → exact + normalized + netting
+  → judge residual only
+  → fileException(unresolved)
+  → settlement Q&A + forecast(7) + tax match
+  → DONE: 66/81 matched (81.48%), 2 partial, 13 unresolved + report
+```
+
+| Path | How |
+| --- | --- |
+| Headless | `harness` → `npm run agent` (`agent-driver.ts`) |
+| App | Streaming chat at `/api/close/agents/chat` + tool invocation routes |
+
+Next: [9. Database](/brief/database).

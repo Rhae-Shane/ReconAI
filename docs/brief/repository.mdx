@@ -1,0 +1,40 @@
+---
+title: "4. Repository Architecture"
+description: "Repo layout, harness vs app split, and why accuracy-critical math is package-isolated."
+---
+
+```text
+ReconAI/
+├── harness/                 # Framework-agnostic core engine (zero runtime deps)
+│   ├── src/core/            # ingest, reconcile, judge, settle, forecast, tax, …
+│   ├── src/control/         # policy, SoD, materiality, audit-chain, approval
+│   ├── src/cli/             # batch, gen-batch, agent, benchmark
+│   ├── data/batch.json      # locked 81-record synthetic set
+│   └── tests/               # Vitest unit + integration + adversarial
+├── app/                     # Next.js UI + API + optional BullMQ worker
+│   ├── prisma/              # Postgres schema (mirrors harness types)
+│   ├── supabase/            # SQL migrations
+│   ├── src/app/…/dashboard/close/   # Close cockpit screens
+│   ├── src/app/api/close/   # Close APIs
+│   └── src/worker/          # Durable close-run consumer
+├── docs/                    # Mintlify documentation site
+├── SPEC.md                  # Full planning artifact
+├── BUILD_PLAN.md            # Phase gates 0–6
+├── architecture.md
+├── engineering-decisions.md
+├── DEPLOYMENT.md
+└── product-improvements.md  # Post-hackathon backlog
+```
+
+Local checkout folder name may be `AI Finance Controller/`; GitHub repo is **ReconAI**.
+
+## 4.1 Why two packages?
+
+| Package | Role |
+| --- | --- |
+| `harness/` (`controller-harness`) | Accuracy-critical math; Vitest without Next/Prisma/React |
+| `app/` (`reconai`) | Thin dashboard + APIs + ops; imports `file:../harness` |
+
+**Split on purpose:** accuracy-critical math lives in `harness/` so Vitest can gate it without Next/Prisma/React. The app is a thin UI/API shell. Dashboard churn cannot silently break settlement math. CI gates the engine independently.
+
+Next: [5. Tech Stack](/brief/tech-stack).

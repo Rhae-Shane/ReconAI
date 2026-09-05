@@ -1,0 +1,56 @@
+---
+title: "2. Why It Exists"
+description: "Track why-now, all four example directions mapped to product surfaces, and the deterministic-first thesis."
+---
+
+## 2.1 The 2026 “why now”
+
+Payment **generation** is fast. **Verification** is still slow. Merchants and finance teams still reconcile by hand across:
+
+- Gateway captures (Razorpay payments, fees, refunds)
+- Bank statement lines (UTR)
+- ERP / order systems
+- GST invoices / HSN lines
+
+That gap — matching one money movement across four systems — is exactly **agent + data** work, and it is where **trust** matters more than clever text generation.
+
+## 2.2 Example directions from the track (all covered)
+
+| Direction | Where it lives in ReconAI |
+| --- | --- |
+| Multi-source reconciliation | `ReconciliationEngine` + Close Cockpit / Run Detail |
+| Settlement Q&A agent | Settlement screen + `POST /api/close/agents/chat` |
+| Forward cash forecaster | `CashForecaster` + `/dashboard/close/forecast` |
+| Tax-line matcher | `TaxMatcher` + `/dashboard/close/tax` |
+
+ReconAI does not pick one direction — it closes **all four** inside one finance-ops loop.
+
+## 2.3 Design thesis in one line
+
+**Deterministic-first, LLM-last.** Rules make reproducible matches; the model only judges what rules cannot; anything below threshold becomes a **visible** exception.
+
+### Why this wins for judges
+
+1. Exact “why now” — verification bottleneck, not another chat UI.
+2. The bar is engineered in — measured metrics + honesty tests.
+3. Full loop — raw batch → Close Report, not a single toy match.
+4. Trustworthy — LLM never invents settlement math; FinanceCore is the chokepoint.
+
+## Data sources (4)
+
+| Source | Role | Cross keys |
+| --- | --- | --- |
+| `razorpay-gateway` | Payments, fees, refunds | `pay_…`, UTR |
+| `bank-utr` | Bank statement lines | UTR |
+| `erp-orders` | ERP orders | `ORD-…`, gateway ref |
+| `gst-invoices` | GST invoices | order ref |
+
+Synthetic batch: `harness/data/batch.json` (`batch-42-81`), fixed seed, labeled for precision/recall.
+
+## Match types & reason codes (quick reference)
+
+**Match types:** `EXACT`, `NORMALIZED`, `FEE_NETTED`, `REFUND_NETTED`, `ADJUSTMENT_NETTED`, `PARTIAL`, `FUZZY`, `AI_RESOLVED`, `UNRESOLVED`.
+
+**Exception reason codes:** `NO_KEY`, `AMOUNT_MISMATCH`, `PARTIAL_FLAP`, `DATE_SKEW`, `LOW_CONFIDENCE`, `DUPLICATE` (plus `UNKNOWN_SOURCE`).
+
+Next: [3. Closing the Books](/brief/closing-the-books).

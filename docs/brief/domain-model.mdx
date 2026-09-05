@@ -1,0 +1,74 @@
+---
+title: "6. Domain Model & Money"
+description: "Canonical types, FinRecord, FinanceConfig tolerances, and the P0 settlement netting identity."
+---
+
+## 6.1 Canonical types (`harness/src/core/types.ts`)
+
+Types are the **single source of truth**. Prisma enums/models mirror them; the app must not redefine them.
+
+### Sources (`SourceKind`)
+
+- `razorpay-gateway`
+- `bank-utr`
+- `erp-orders`
+- `gst-invoices`
+
+### Record kinds (`RecordKind`)
+
+`PAYMENT` · `SETTLEMENT` · `REFUND` · `FEE` · `INVOICE` · `CHARGEBACK` · `ADJUSTMENT`
+
+### Match types (`MatchType`)
+
+`EXACT` · `NORMALIZED` · `FEE_NETTED` · `REFUND_NETTED` · `ADJUSTMENT_NETTED` · `PARTIAL` · `FUZZY` · `AI_RESOLVED` · `UNRESOLVED`
+
+### Exception reason codes (`ReasonCode`)
+
+`NO_KEY` · `AMOUNT_MISMATCH` · `PARTIAL_FLAP` · `DATE_SKEW` · `LOW_CONFIDENCE` · `DUPLICATE` · `UNKNOWN_SOURCE`
+
+## 6.2 FinRecord (normalized row)
+
+Every raw export becomes a `FinRecord` with:
+
+| Field | Role |
+| --- | --- |
+| `source` + `sourceRef` | Idempotency key within a run |
+| `amountPaise` | Signed (+ inflow, − outflow) |
+| Cross keys | `utr`, `gatewayRef` (`pay_…`), `orderRef` (`ORD-…`) |
+| `feeTaxPaise` | Optional on FEE rows (GST on gateway fee) |
+| `raw` | Original row preserved verbatim |
+
+## 6.3 Finance tolerances (`FinanceConfig` defaults)
+
+| Rule | Default | Meaning |
+| --- | --- | --- |
+| `paiseTolerance` | `50` | ≤ ₹0.50 difference allowed (fee/rounding) |
+| `dateWindowDays` | `1` | Value dates within 1 day |
+| `resolveThreshold` | `0.7` | Min judge confidence to resolve residual |
+| `exactThreshold` | `1.0` | Hard key equality |
+| `normalizedThreshold` | `0.95` | Post-normalization key equality |
+| `maxExceptionAge` | `5` | Flag stale open exceptions for humans |
+
+## 6.4 Settlement netting identity (P0 review rule)
+
+```text
+netExpected = gross − gatewayFee − taxOnFee − refund + adjustment
+variance    = actualSettlement − netExpected   (≈ 0 when balanced)
+```
+
+**Netting never guesses a fee.** It only fires when FEE / REFUND / ADJUSTMENT records are actually present and the arithmetic balances within tolerance.
+
+Groups carry a full `NettingBreakdown`:
+
+| Field | Role |
+| --- | --- |
+| `grossPaise` | Base payment / invoice amount (abs) |
+| `feePaise` | Gateway FEE records (abs) |
+| `taxOnFeePaise` | Tax on those fees (`FEE.feeTaxPaise`, abs) |
+| `refundPaise` | REFUND records (abs) |
+| `adjustmentPaise` | ADJUSTMENT records (signed) |
+| `netExpectedPaise` | `gross − fee − taxOnFee − refund + adjustment` |
+| `actualSettlementPaise` | Settlement / bank-UTR legs (abs) |
+| `variancePaise` | `actualSettlement − netExpected` |
+
+Next: [7. FinanceCore](/brief/financecore).

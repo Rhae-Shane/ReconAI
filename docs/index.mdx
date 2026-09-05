@@ -5,7 +5,9 @@ description: "ReconAI is a settlement reconciliation controller for finance ops 
 
 ## What is ReconAI?
 
-ReconAI is a settlement reconciliation controller for Razorpay merchants.
+ReconAI is the **Track 04 — AI Finance Controller** build: *run the books and the cash position*.
+
+It closes one finance-ops loop across a 50+ (we ship **81**) labeled synthetic batch — reporting match rate, matched / partial / unresolved breakdown, and an honest exception list. See [Track 04](/track-04) for the full brief ↔ product ↔ tech ↔ use map.
 
 It reconciles payments, settlements, and invoices the way a finance team actually does:
 
@@ -65,16 +67,16 @@ resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
 ## Next steps
 
 <CardGroup cols={2}>
+  <Card title="Full Project Brief" icon="book" href="/brief/overview">
+    ~10-page product + engineering brief — identity, pipeline, stack, DB, UI, demo, bottom line.
+  </Card>
+  <Card title="Track 04" icon="flag" href="/track-04">
+    Challenge brief, why now, the bar, and how product / tech / use map to it.
+  </Card>
   <Card title="Quickstart" icon="rocket" href="/quickstart">
     Run the harness batch and open the Close Cockpit in under 2 minutes.
   </Card>
-  <Card title="How It Works" icon="gear" href="/concepts/how-it-works">
-    Follow the FinanceCore pipeline from ingest to CloseReport.
-  </Card>
-  <Card title="API Reference" icon="code" href="/api-reference/overview">
-    Close-run, upload, Razorpay sync, and settlement endpoints.
-  </Card>
-  <Card title="Deployment" icon="cloud" href="/guides/deployment">
-    Local, Vercel, Redis worker, and environment setup.
+  <Card title="Tech Stack" icon="layer-group" href="/engineering/stack">
+    Harness, Next.js, LLM usage, Redis, Supabase, Razorpay — what is optional.
   </Card>
 </CardGroup>

@@ -1,25 +1,47 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "ReconAI",
+  "description": "Settlement reconciliation controller — deterministic matching first, honest exceptions, measured accuracy.",
   "logo": {
     "light": "/logo.svg",
-    "dark": "/logo.svg"
+    "dark": "/logo.svg",
+    "href": "https://github.com/Rhae-Shane/ReconAI"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0F766E",
-    "light": "#14B8A6",
-    "dark": "#0D9488"
+    "primary": "#E8613C",
+    "light": "#F08A6A",
+    "dark": "#C94E2E"
   },
   "appearance": {
     "default": "system"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Space Grotesk",
+      "weight": 600
+    },
+    "body": {
+      "family": "Inter",
+      "weight": 400
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "background": {
+    "decoration": "gradient"
   },
   "navbar": {
     "links": [
       {
         "label": "GitHub",
         "href": "https://github.com/Rhae-Shane/ReconAI"
+      },
+      {
+        "label": "App",
+        "href": "https://github.com/Rhae-Shane/ReconAI/tree/main/app"
       }
     ]
   },
@@ -32,7 +54,24 @@
     "groups": [
       {
         "group": "Get Started",
-        "pages": ["index", "quickstart", "authentication"]
+        "pages": ["index", "track-04", "quickstart", "authentication"]
+      },
+      {
+        "group": "Full Brief",
+        "pages": [
+          "brief/overview",
+          "brief/why-it-exists",
+          "brief/closing-the-books",
+          "brief/repository",
+          "brief/tech-stack",
+          "brief/domain-model",
+          "brief/financecore",
+          "brief/batch-and-agent",
+          "brief/database",
+          "brief/ui-and-api",
+          "brief/ops-and-deploy",
+          "brief/decisions-demo"
+        ]
       },
       {
         "group": "Concepts",
@@ -60,6 +99,7 @@
         "group": "Engineering",
         "pages": [
           "engineering/architecture",
+          "engineering/stack",
           "engineering/decisions",
           "engineering/roadmap"
         ]

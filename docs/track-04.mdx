@@ -1,0 +1,141 @@
+---
+title: "Track 04 — AI Finance Controller"
+description: "How ReconAI maps the hackathon brief — product, tech, and operator use — from why-now through the measured close bar."
+---
+
+## The brief
+
+**Track:** AI Finance Controller · *Run the books and the cash position*
+
+Build an agent that closes **one finance-ops loop** across a **50+ record batch** of synthetic data, reporting its **match rate** and the **exceptions it could not resolve**.
+
+| Brief line | ReconAI answer |
+| --- | --- |
+| Why now | Verification capacity — not generation speed — is the bottleneck. Reconciliation, settlement, and forecasting are still done by hand. |
+| Example directions | Multi-source reconciliation · Settlement Q&A agent · Forward cash forecaster · Tax-line matcher — **all four**, in one close loop |
+| The bar | Throughput + **measured** accuracy + an **honest** exception list. One cherry-picked match proves nothing. |
+
+Locked baseline (81 records, 4 sources — exceeds the 50+ bar):
+
+```
+records=81 · sources=4 · matched=66 · partial=2 · unresolved=13
+resolved=81.48% · exceptions=15 · precision=1.00 · recall=1.00
+```
+
+---
+
+## Product side — what we sell
+
+### Why this wins
+
+1. **Exact “why now”.** Matching one payment across gateway, bank UTR, ERP, and GST is pure verification work. ReconAI automates that loop with an auditable trail.
+2. **The bar is engineered in.** Deterministic matching first → residual judge → confidence + reason on every decision → published match rate / precision / recall → structured exceptions. Nothing hidden.
+3. **Full loop, not a toy match.** Ingest → reconcile → settle Q&A → forecast cash → tax-map → close report. One narrative from messy batch to signed-off books.
+4. **Trustworthy by design.** The LLM never invents settlement math. FinanceCore records provenance; unresolved work is a first-class artifact.
+
+### Example directions → product surfaces
+
+| Brief direction | Product surface | Where |
+| --- | --- | --- |
+| Multi-source reconciliation | Exact → normalized → netting → residual judge across gateway / bank / ERP / GST | `ReconciliationEngine` + Close Cockpit / Run Detail |
+| Settlement Q&A agent | Cited chat over the settled ledger | `/dashboard/close/settlement` · `POST /api/close/agents/chat` |
+| Forward cash forecaster | 7-day cash band from matched settlement lags | `/dashboard/close/forecast` · `CashForecaster` |
+| Tax-line matcher | HSN / category rules + judge fallback | `/dashboard/close/tax` · `TaxMatcher` |
+
+### The bar — three deliverables
+
+| Deliverable | Meaning | Evidence |
+| --- | --- | --- |
+| **Throughput** | Full audited batch well under a second; queue scales to thousands | `npm run batch` · `npm run benchmark` · BullMQ worker |
+| **Measured accuracy** | Match rate + precision / recall vs ground-truth labels | `CloseReport` · harness tests lock the baseline |
+| **Honest exceptions** | Explicit matched / partial / unresolved + per-record reason codes | Exception List UI · `ExceptionLedger` · never silent drops |
+
+---
+
+## Tech side — how we solve it
+
+### Architecture in one picture
+
+```
+CSV / synthetic batch / Razorpay sync
+        │
+        ▼
+   Next.js app (UI + API + optional LangGraph worker)
+        │
+        ▼
+   FinanceCore (harness/) — single audited funnel
+   Ingest → Reconcile → Judge → Settle → Forecast → Tax → Exceptions → CloseReport
+```
+
+### Deterministic-first, LLM last
+
+| Stage | Who decides | LLM? |
+| --- | --- | --- |
+| Exact / normalized key match | Rules | No |
+| Fee / refund / adjustment netting | Paise identity math | No |
+| Residual flaps | `HeuristicJudge` (default) or OpenAI residual judge | Only if key set |
+| Settlement amounts / fees | Source records | **Never** invented by the model |
+| Settlement Q&A narration | OpenAI stream or deterministic fallback | Narrates engine facts |
+| Tax residual descriptions | Rules first, judge fallback | Residual only |
+
+**Rule:** every agent tool / API / CLI call routes through FinanceCore. The model does not compute `gross − fee − tax − refund + adjustment`.
+
+### Stack (summary)
+
+| Layer | Choice |
+| --- | --- |
+| Core | Framework-free TypeScript in `harness/` (Vitest-gated) |
+| App | Next.js App Router · React · Tailwind · shadcn/ui |
+| Agent / residual LLM | OpenAI via app judge + settlement chat (`OPENAI_API_KEY` optional) |
+| Orchestration | LangGraph close graph; BullMQ when `REDIS_URL` set |
+| Auth / data | Supabase Auth + optional Prisma/Postgres |
+| Integrations | Razorpay test sync + HMAC webhooks (optional) |
+
+Full detail: [Tech Stack](/engineering/stack). Pipeline depth: [How It Works](/concepts/how-it-works) · [FinanceCore](/concepts/financecore) · [Architecture](/engineering/architecture).
+
+---
+
+## Use side — how an operator runs the loop
+
+### 2-minute path
+
+1. `cd harness && npm run batch` — show measured numbers (not a slide).
+2. Open `/dashboard/close` — start a run; KPIs climb.
+3. Run Detail — match-rate bars, why-chips (`exact:utr`, conf `0.99`).
+4. Exceptions — reason codes + rationale still visible.
+5. Settlement Q&A + Forecast — cited answers; lag-grounded cash band.
+
+### Operator map
+
+| Job | Screen |
+| --- | --- |
+| Start / upload / sync | Close Cockpit |
+| Inspect matches | Run Detail |
+| Clear residuals | Exception List |
+| Ask “what settled?” | Settlement Q&A |
+| Tomorrow’s cash | Forecast |
+| GST / ITC lines | Tax |
+| Deterministic vs AI share | Metrics |
+| Honesty board | Trust |
+
+Roles (`owner` / `accountant` / `viewer`): [Authentication](/authentication). Demo narrative: [2-Minute Demo](/guides/demo-script).
+
+---
+
+## Challenge checklist
+
+| Requirement | Covered? |
+| --- | --- |
+| 50+ synthetic records | Yes — 81 labeled records, 4 sources |
+| One closed finance-ops loop | Yes — ingest → close report |
+| Report match rate | Yes — CLI + UI + `CloseReport` |
+| Exceptions it could not resolve | Yes — structured reason codes, never dropped |
+| Multi-source reconciliation | Yes |
+| Settlement Q&A | Yes |
+| Forward cash forecast | Yes |
+| Tax-line matcher | Yes |
+| Throughput + measured accuracy + honesty | Yes — tests lock baseline |
+
+For the long-form (~10 page) product + engineering document covering identity, repo, stack, domain, FinanceCore, batch, agent, DB, UI/API, ops, phases, and bottom line, see the **[Full Project Brief](/brief/overview)**.
+
+For backlog beyond the hackathon loop, see [Roadmap](/engineering/roadmap). Planning artifact on disk: repo-root `SPEC.md`.

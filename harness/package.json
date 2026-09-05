@@ -8,7 +8,6 @@
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
     "build": "tsc -p tsconfig.build.json",
-    "prepare": "npm run build",
     "batch": "tsx src/cli/run-batch.ts",
     "agent": "tsx src/cli/agent-driver.ts",
     "gen-batch": "tsx src/cli/generate-batch.ts",

@@ -3,7 +3,6 @@ import {
   Calculator,
   Coins,
   CreditCard,
-  Gauge,
   GitCompare,
   ListTodo,
   type LucideIcon,
@@ -82,12 +81,6 @@ export const sidebarItems: NavGroup[] = [
         title: "Settlement",
         url: "/dashboard/close/settlement",
         icon: Coins,
-      },
-      {
-        id: "close-forecast",
-        title: "Cash Forecast",
-        url: "/dashboard/close/forecast",
-        icon: Gauge,
       },
       {
         id: "close-tax",

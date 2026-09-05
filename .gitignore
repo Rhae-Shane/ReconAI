@@ -32,3 +32,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log/
 .claude/
+
+# generated docs search mirror (runtime uses search-data.js)
+docs/search-index.json
+
+.vercel
+.env*
+
+sample-uploads/
+FULL_DOCS_BUNDLE.md
+

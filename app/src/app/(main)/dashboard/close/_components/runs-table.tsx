@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { format, parseISO } from "date-fns";
@@ -59,6 +60,8 @@ function ResolvedCell({ run }: { run: CloseRunMeta }) {
 }
 
 export function RunsTable({ runs }: { runs: CloseRunMeta[] }) {
+  const router = useRouter();
+
   const columns = useMemo<ColumnDef<CloseRunMeta>[]>(
     () => [
       {
@@ -114,7 +117,7 @@ export function RunsTable({ runs }: { runs: CloseRunMeta[] }) {
         id: "actions",
         header: () => <div className="flex w-full justify-end" />,
         cell: ({ row }) => (
-          <div className="flex w-full justify-end">
+          <div className="flex w-full justify-end" onClick={(e) => e.stopPropagation()}>
             <Button asChild size="icon-sm" variant="ghost" aria-label={`Open run ${row.original.id}`}>
               <Link href={`/dashboard/close/${row.original.id}`}>
                 <ArrowUpRight />
@@ -150,7 +153,20 @@ export function RunsTable({ runs }: { runs: CloseRunMeta[] }) {
         <TableBody>
           {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="h-14 hover:bg-muted/20 [&>:not(:last-child)]:border-r">
+              <TableRow
+                key={row.id}
+                className="h-14 cursor-pointer hover:bg-muted/20 [&>:not(:last-child)]:border-r"
+                onClick={() => router.push(`/dashboard/close/${row.original.id}`)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    router.push(`/dashboard/close/${row.original.id}`);
+                  }
+                }}
+                tabIndex={0}
+                role="link"
+                aria-label={`Open run ${row.original.id}`}
+              >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id} className="px-4 align-middle">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

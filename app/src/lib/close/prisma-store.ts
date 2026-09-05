@@ -304,6 +304,25 @@ export async function listCloseRunsFromPrisma(): Promise<CloseRunMeta[]> {
   return rows.map(metaFromRow);
 }
 
+/** Delete a close run and cascading children from Postgres. */
+export async function deleteCloseRunFromPrisma(runId: string): Promise<boolean> {
+  const pool = getPool();
+  if (!pool) return false;
+  await ensureDatasetColumn();
+  // Clear children first — some envs lack ON DELETE CASCADE on fin_records.
+  await pool.query("DELETE FROM match_links WHERE group_id LIKE $1", [`${runId}:%`]).catch(() => undefined);
+  await pool.query("DELETE FROM match_groups WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM exceptions WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM audit_events WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM settlements WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM forecast WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM tax_line_matches WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM fin_records WHERE run_id = $1", [runId]).catch(() => undefined);
+  await pool.query("DELETE FROM close_reports WHERE run_id = $1", [runId]).catch(() => undefined);
+  const result = await pool.query(`DELETE FROM close_runs WHERE id = $1`, [runId]);
+  return (result.rowCount ?? 0) > 0;
+}
+
 export async function loadCloseRunFromPrisma(runId: string): Promise<RunDetail | null> {
   const pool = getPool();
   if (!pool) return null;

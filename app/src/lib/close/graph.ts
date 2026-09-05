@@ -68,7 +68,10 @@ const CloseState = Annotation.Root({
   settlements: Annotation<Settlement[]>({ reducer: (a, b) => b ?? a, default: () => [] }),
   forecast: Annotation<ForecastDatum[]>({ reducer: (a, b) => b ?? a, default: () => [] }),
   taxMatches: Annotation<TaxLineMatch[]>({ reducer: (a, b) => b ?? a, default: () => [] }),
-  audit: Annotation<AuditEvent[]>({ reducer: (a, b) => b ?? a, default: () => [] }),
+  audit: Annotation<AuditEvent[]>({
+    reducer: (a, b) => (b && b.length ? [...a, ...b] : a),
+    default: () => [],
+  }),
   exceptions: Annotation<ExceptionRecord[]>({ reducer: (a, b) => b ?? a, default: () => [] }),
   revisions: Annotation<number>({ reducer: (a, b) => (a ?? 0) + (b ?? 0), default: () => 0 }),
   report: Annotation<CloseReport | null>({ reducer: (a, b) => b ?? a, default: () => null }),

@@ -33,6 +33,8 @@ import {
 } from "@/components/ui/chart";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { KpiHint } from "../_components/kpi-hint";
+
 interface RunMetrics {
   runId: string;
   status: string;
@@ -94,12 +96,14 @@ const radialConfig = {
 function KpiTile({
   icon: Icon,
   label,
+  hint,
   value,
   sub,
   tone = "neutral",
 }: {
   icon: typeof Sparkles;
   label: string;
+  hint: string;
   value: string;
   sub: string;
   tone?: "good" | "warn" | "neutral";
@@ -108,7 +112,9 @@ function KpiTile({
     <Card className="gap-4 overflow-hidden rounded-none border-0 border-foreground/10 ring-0">
       <CardHeader className="flex-row items-center gap-2 space-y-0">
         <Icon className="size-4 text-muted-foreground" />
-        <CardTitle className="font-normal text-muted-foreground text-sm">{label}</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">
+          <KpiHint hint={hint}>{label}</KpiHint>
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex items-end justify-between">
         <div className="space-y-1">
@@ -227,6 +233,7 @@ export default function MetricsPage() {
             <KpiTile
               icon={ShieldCheck}
               label="Resolved"
+              hint="Share of the latest run’s records that matched or settled successfully."
               value={latest ? `${latest.resolvedPct.toFixed(1)}%` : "—"}
               sub={latest ? `latest · ${shortRun(latest.runId)}` : "no data"}
               tone={latest && latest.resolvedPct >= 70 ? "good" : "warn"}
@@ -234,6 +241,7 @@ export default function MetricsPage() {
             <KpiTile
               icon={Bot}
               label="Deterministic"
+              hint="Share resolved by rules alone — no LLM call was needed."
               value={latest ? `${latest.deterministicResolvedPct.toFixed(1)}%` : "—"}
               sub="resolved without an LLM call"
               tone={latest && latest.deterministicResolvedPct >= 50 ? "good" : "neutral"}
@@ -241,6 +249,7 @@ export default function MetricsPage() {
             <KpiTile
               icon={Sparkles}
               label="LLM calls avoided"
+              hint="Matches that skipped the model because deterministic rules were enough."
               value={latest ? `${latest.llmCallsAvoided}` : "—"}
               sub={win ? `${win.llmCallsAvoided} across ${win.runs} runs` : "this run"}
               tone="good"
@@ -248,6 +257,7 @@ export default function MetricsPage() {
             <KpiTile
               icon={AlertTriangle}
               label="Exceptions"
+              hint="Lines still needing human review on the latest run (and across the demo window)."
               value={latest ? `${latest.exceptions}` : "—"}
               sub={win ? `${win.exceptions} across window` : "this run"}
               tone={latest && latest.exceptions > 0 ? "warn" : "good"}

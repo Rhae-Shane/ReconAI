@@ -89,6 +89,11 @@ export function NavMain({ items }: NavMainProps) {
       return item.subItems.some((sub) => path.startsWith(sub.url));
     }
 
+    // Close Cockpit redirects to /runs — keep it highlighted on the cockpit surface.
+    if (item.id === "close") {
+      return path === "/dashboard/close" || path === "/dashboard/close/runs";
+    }
+
     return path === item.url;
   };
 

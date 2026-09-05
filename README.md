@@ -23,9 +23,11 @@ Mintlify docs (same pattern as MemContext): Get Started, Concepts, Close Loop, G
 
 ```bash
 cd docs
-npx mintlify dev   # local preview if Mintlify CLI is installed
+npx mintlify dev   # local preview (uses next free port if 3000 is taken)
+node build-search-index.mjs   # refresh local Ctrl+K search after adding/editing MDX
 ```
 
+Local preview search works offline via `local-search.js` (no `mint login` required). Hosted Mintlify search still needs CLI login + a Mintlify deployment.
 ## Layout
 
 ```

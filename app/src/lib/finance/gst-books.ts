@@ -84,8 +84,8 @@ export function internalPurchaseRows(records: FinRecord[]): GstB2bRow[] {
 }
 
 /**
- * GSTR-2B from a portal export (uploaded) or, when none is stored, from the same
- * gateway fee invoices — those tax amounts come from the PSP API, not a placeholder GSTIN.
+ * GSTR-2B stand-in when no portal export is stored: GST purchase invoices plus
+ * gateway fee tax invoices (same keys internal books use for matching).
  */
 export function gstr2bFromRecords(records: FinRecord[]): GstB2bRow[] {
   const fromFile = records
@@ -104,9 +104,8 @@ export function gstr2bFromRecords(records: FinRecord[]): GstB2bRow[] {
         },
       ];
     });
-  if (fromFile.length > 0) return fromFile;
 
-  return records
+  const fromFees = records
     .filter((r) => r.kind === "FEE")
     .map((r) => {
       const tax = typeof r.raw?.feeTaxPaise === "number" ? Math.abs(r.raw.feeTaxPaise) : 0;
@@ -120,6 +119,8 @@ export function gstr2bFromRecords(records: FinRecord[]): GstB2bRow[] {
       };
     })
     .filter((r) => r.totalPaise > 0);
+
+  return [...fromFile, ...fromFees];
 }
 
 export interface OutwardSupply {

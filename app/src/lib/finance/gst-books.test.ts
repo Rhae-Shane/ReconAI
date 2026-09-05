@@ -40,6 +40,28 @@ describe("gst-books", () => {
     expect(twoB[0].source).toBe("gstr2b");
   });
 
+  it("includes both GST purchase invoices and fee invoices in the 2B stand-in", () => {
+    const records = [
+      rec({
+        id: "gst1",
+        source: "gst",
+        kind: "INVOICE",
+        sourceRef: "INV-1",
+        amountPaise: 118000,
+        raw: { gstin: "27ABCDE1234F1Z5", gstPaise: 18000 },
+      }),
+      rec({
+        id: "fee1",
+        kind: "FEE",
+        sourceRef: "fee_pay_1",
+        amountPaise: -2360,
+        raw: { paymentId: "pay_1", feePaise: 2360, feeTaxPaise: 360, gstin: RAZORPAY_GSTIN },
+      }),
+    ];
+    const twoB = gstr2bFromRecords(records);
+    expect(twoB.map((r) => r.invoiceNo).sort()).toEqual(["INV-1", "RZP-FEE-pay_1"]);
+  });
+
   it("builds GSTR-1 outward supplies from captured payments", () => {
     const supplies = outwardSupplies([
       rec({ id: "p1", kind: "PAYMENT", sourceRef: "pay_1", amountPaise: 118000, raw: { gstin: "27AABCR0001R1Z5" } }),

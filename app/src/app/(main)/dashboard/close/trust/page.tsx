@@ -1,6 +1,7 @@
 import { ensureLiveClose } from "@/lib/close/store";
 import { getTrustSnapshot } from "@/lib/close/trust";
 
+import { KpiHint } from "../_components/kpi-hint";
 import { TrustBoard } from "./_components/trust-board";
 
 export default async function TrustPage() {
@@ -18,7 +19,11 @@ export default async function TrustPage() {
       </div>
 
       <div className="rounded-xl border bg-card px-4 py-3 ring-1 ring-foreground/10">
-        <p className="text-muted-foreground text-xs uppercase tracking-wide">Records processed</p>
+        <p className="text-muted-foreground text-xs uppercase tracking-wide">
+          <KpiHint hint="Total lines from the trust snapshot’s source run — the measured base for match and exception rates below.">
+            Records processed
+          </KpiHint>
+        </p>
         <p className="font-semibold text-3xl tabular-nums tracking-tight">{snap.records}</p>
         {snap.runId && <p className="mt-1 text-muted-foreground text-xs">Source run · {snap.runId}</p>}
       </div>

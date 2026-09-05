@@ -4,14 +4,18 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { MatchBreakdown } from "@/lib/close/types";
 
+import { KpiHint } from "./kpi-hint";
+
 function StatTile({
   label,
+  hint,
   value,
   sub,
   icon: Icon,
   tone,
 }: {
   label: string;
+  hint: string;
   value: string;
   sub: string;
   icon: typeof CheckCircle2;
@@ -21,7 +25,9 @@ function StatTile({
     <Card className="gap-4 overflow-hidden rounded-none border-0 border-foreground/10 ring-0">
       <CardHeader className="flex-row items-center gap-2 space-y-0">
         <Icon className="size-4 text-muted-foreground" />
-        <CardTitle className="font-normal text-muted-foreground text-sm">{label}</CardTitle>
+        <CardTitle className="font-normal text-muted-foreground text-sm">
+          <KpiHint hint={hint}>{label}</KpiHint>
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex items-end justify-between">
         <div className="space-y-1">
@@ -53,6 +59,7 @@ export function OutcomeKpis({ breakdown }: { breakdown?: MatchBreakdown }) {
         <StatTile
           icon={CheckCircle2}
           label="Matched"
+          hint="Records linked cleanly across sources — no residual doubt left for review."
           value={count(breakdown?.matched)}
           sub={available ? "linked cleanly" : "not yet available"}
           tone="good"
@@ -60,6 +67,7 @@ export function OutcomeKpis({ breakdown }: { breakdown?: MatchBreakdown }) {
         <StatTile
           icon={HandCoins}
           label="Partial"
+          hint="Near-matches held open until amount, date, or UTR gaps are resolved."
           value={count(breakdown?.partial)}
           sub={available ? "near-match, held open" : "not yet available"}
           tone="neutral"
@@ -67,6 +75,7 @@ export function OutcomeKpis({ breakdown }: { breakdown?: MatchBreakdown }) {
         <StatTile
           icon={AlertTriangle}
           label="Unresolved"
+          hint="Could not be matched — filed as exceptions for an accountant to review."
           value={count(breakdown?.unresolved)}
           sub={available ? "filed as exceptions" : "not yet available"}
           tone={available && (breakdown?.unresolved ?? 0) > 0 ? "warn" : "neutral"}
@@ -74,6 +83,7 @@ export function OutcomeKpis({ breakdown }: { breakdown?: MatchBreakdown }) {
         <StatTile
           icon={Target}
           label="Match rate"
+          hint="Percentage of records that resolved (matched) in this run’s breakdown."
           value={rate}
           sub={available ? "of records resolved" : "not yet available"}
           tone="neutral"

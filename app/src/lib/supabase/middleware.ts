@@ -46,7 +46,7 @@ export async function updateSession(request: NextRequest) {
 
   if (isAuthPage && user) {
     const url = request.nextUrl.clone();
-    url.pathname = "/dashboard/close";
+    url.pathname = "/dashboard/close/runs";
     url.search = "";
     return NextResponse.redirect(url);
   }

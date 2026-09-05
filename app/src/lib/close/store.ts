@@ -1,5 +1,6 @@
 import { addDays, differenceInSeconds, formatISO, subDays } from "date-fns";
 
+import { razorpayGstin } from "./org";
 import { DEFAULT_FINANCE_CONFIG } from "./config";
 import type { PersistedRunMeta } from "./run-store";
 import type {
@@ -73,6 +74,15 @@ const HSN_CATEGORIES = [
   { code: "3004", label: "Pharmaceuticals", j: 4 },
 ];
 
+/** Format-valid supplier GSTINs for synthetic GST invoices (not live GSTN registrations). */
+const SUPPLIER_GSTINS = [
+  "27ABCDE1234F1Z5",
+  "29AABCT1332L1ZV",
+  "07AABCR1121A1Z5",
+  "24AABCU9603R1ZM",
+  "33AAACW3775F1Z8",
+];
+
 const SOURCE_NAMES: Record<string, string> = {
   gateway: "Razorpay Gateway",
   bank: "Bank UTR",
@@ -105,8 +115,20 @@ const runs = new Map<string, RunState>();
 /* Dataset generation (deterministic, ground-truth-labeled)            */
 /* ------------------------------------------------------------------ */
 
-export function buildDataset(runId: string, startedAt: number): Dataset {
-  const rnd = mulberry32(runId.length * 7919 + 13);
+export interface BuildDatasetOptions {
+  /** Override PRNG seed so same-length run ids still produce distinct batches. */
+  seed?: number;
+  /** Matched multi-source movements (default 42 → ~140+ records with exceptions). */
+  matchedMovements?: number;
+  orphans?: number;
+  amountMismatches?: number;
+  duplicates?: number;
+  nearMisses?: number;
+  gstOrphans?: number;
+}
+
+export function buildDataset(runId: string, startedAt: number, opts?: BuildDatasetOptions): Dataset {
+  const rnd = mulberry32(opts?.seed ?? runId.length * 7919 + 13);
   const records: FinRecord[] = [];
   const groups: MatchGroup[] = [];
   const flaps: Flap[] = [];
@@ -147,7 +169,7 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
     });
 
   // A matched movement appears across gateway + bank + erp (+ gst for a subset).
-  const matchedMovements = 42;
+  const matchedMovements = opts?.matchedMovements ?? 42;
   const linkedRecordIds = new Set<string>();
 
   for (let i = 0; i < matchedMovements; i += 1) {
@@ -160,22 +182,46 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
     const hasGst = i % 7 === 0;
     const links: MatchLink[] = [];
 
-    const gw = makeRecord("gateway", `pay_${runId}_${100000 + i}`, m, ts, cparty);
+    const paymentId = `pay_${runId}_${100000 + i}`;
+    const gw = makeRecord("gateway", paymentId, m, ts, cparty);
+    records.push(gw);
     const bk = makeRecord("bank", utr, m, ts, cparty);
+    records.push(bk);
     const erp = makeRecord("erp", `ORD-${45000 + i}`, m, ts, cparty, "PAYMENT", "Online order");
-    records.push(gw, bk, erp);
+    records.push(erp);
+    // Fee total includes tax on fee (~2% + 18% GST) — same shape as Razorpay mapPayment.
+    const feeTotal = Math.max(118, Math.round(m * 0.0236));
+    const feeTax = Math.round(feeTotal - feeTotal / 1.18);
+    const fee = makeRecord("gateway", `fee_${paymentId}`, -feeTotal, ts, "Razorpay", "FEE", "Razorpay fee + tax on fee");
+    fee.raw = {
+      paymentId,
+      feePaise: feeTotal,
+      feeTaxPaise: feeTax,
+      gstin: razorpayGstin(),
+    };
+    records.push(fee);
     links.push(
       { recordId: gw.id, matchedOn: "gatewayRef" },
       { recordId: bk.id, matchedOn: "utr" },
       { recordId: erp.id, matchedOn: "normalizedRef" },
+      { recordId: fee.id, matchedOn: "gatewayRef", matchType: "FEE_NETTED" },
     );
     linkedRecordIds.add(gw.id);
     linkedRecordIds.add(bk.id);
     linkedRecordIds.add(erp.id);
+    linkedRecordIds.add(fee.id);
 
     if (hasGst) {
       const hsn = HSN_CATEGORIES[i % HSN_CATEGORIES.length];
       const gst = makeRecord("gst", `INV-${32000 + i}`, m, ts, cparty, "INVOICE", hsn.label);
+      const taxable = Math.round(m / 1.18);
+      const gstPaise = m - taxable;
+      gst.raw = {
+        ref: gst.sourceRef,
+        gstin: SUPPLIER_GSTINS[i % SUPPLIER_GSTINS.length],
+        gstPaise,
+        hsn: hsn.code,
+      };
       records.push(gst);
       links.push({ recordId: gst.id, matchedOn: "amountWindow" });
       linkedRecordIds.add(gst.id);
@@ -269,7 +315,8 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
   };
 
   // Orphans: bank rows with no gateway match (NO_KEY).
-  for (let i = 0; i < 8; i += 1) {
+  const orphanCount = opts?.orphans ?? 8;
+  for (let i = 0; i < orphanCount; i += 1) {
     fileException(
       "bank",
       `UTR${pad(9001000 + i)}`,
@@ -280,7 +327,8 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
   }
 
   // Amount mismatches beyond tolerance (AMOUNT_MISMATCH).
-  for (let i = 0; i < 5; i += 1) {
+  const mismatchCount = opts?.amountMismatches ?? 5;
+  for (let i = 0; i < mismatchCount; i += 1) {
     fileException(
       "bank",
       `UTR${pad(9002000 + i)}`,
@@ -291,7 +339,8 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
   }
 
   // Duplicate UTRs (DUPLICATE).
-  for (let i = 0; i < 3; i += 1) {
+  const duplicateCount = opts?.duplicates ?? 3;
+  for (let i = 0; i < duplicateCount; i += 1) {
     fileException(
       "bank",
       `UTR${pad(9003000 + i)}`,
@@ -302,7 +351,8 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
   }
 
   // Near-duplicates only a judge could disambiguate, resolved below threshold (LOW_CONFIDENCE / PARTIAL_FLAP).
-  for (let i = 0; i < 4; i += 1) {
+  const nearMissCount = opts?.nearMisses ?? 4;
+  for (let i = 0; i < nearMissCount; i += 1) {
     const a = amount();
     const src = i % 2 === 0 ? "bank" : "erp";
     const linkCandidate = linkedRecordIds[Symbol.iterator]();
@@ -327,15 +377,58 @@ export function buildDataset(runId: string, startedAt: number): Dataset {
     }
   }
 
-  // GST-only invoices with no matched gateway/bank record (NO_KEY).
-  for (let i = 0; i < 2; i += 1) {
-    fileException(
-      "gst",
-      `INV-${55000 + i}`,
-      amount(),
-      "NO_KEY",
-      "GST invoice present with no corresponding settlement or payment record in the window.",
-    );
+  // GST-only invoices with no matched gateway/bank record (NO_KEY) — still carry a GSTIN for tax books.
+  const gstOrphanCount = opts?.gstOrphans ?? 2;
+  for (let i = 0; i < gstOrphanCount; i += 1) {
+    const amt = amount();
+    const ts = dayTs(0);
+    const invNo = `INV-${55000 + i}`;
+    const taxable = Math.round(amt / 1.18);
+    const rec: FinRecord = {
+      id: `rec_gst_${records.length}`,
+      source: "gst",
+      sourceName: SOURCE_NAMES.gst,
+      kind: "INVOICE",
+      sourceRef: invNo,
+      ts,
+      amountPaise: amt,
+      currency: "INR",
+      counterparty: "Unknown Merchant",
+      description: "Unmatched GST purchase invoice",
+      raw: {
+        ref: invNo,
+        gstin: SUPPLIER_GSTINS[(i + 2) % SUPPLIER_GSTINS.length],
+        gstPaise: amt - taxable,
+      },
+    };
+    records.push(rec);
+    exceptions.push({
+      id: `exc_${exceptions.length}`,
+      runId,
+      recordId: rec.id,
+      recordJson: { ...rec.raw, ref: invNo },
+      reasonCode: "NO_KEY",
+      rationale: "GST invoice present with no corresponding settlement or payment record in the window.",
+      candidateIds: [],
+      status: "OPEN",
+      createdAt: ts,
+      resolutionStatus: "OPEN",
+      critical: false,
+      confidence: defaultExceptionConfidence("NO_KEY"),
+      expectedPaise: Math.abs(amt),
+      actualPaise: 0,
+      variancePaise: Math.abs(amt),
+    });
+    audit.push({
+      id: `audit_exc_${audit.length}`,
+      runId,
+      actorType: "AGENT",
+      actorId: "close-agent",
+      action: "EXCEPTION",
+      recordId: rec.id,
+      detail: { reasonCode: "NO_KEY", confidence: 0.5 },
+      createdAt: ts,
+    });
   }
 
   /* ---------------- Forecast (7 days) ---------------- */
@@ -1542,6 +1635,166 @@ export function runFromUpload(records: FinRecord[]): { runId: string; report: Cl
   };
   runs.set(runId, state);
   return { runId, report: buildReport(runId, state) };
+}
+
+/** Apply residual AI (or heuristic) judgment over flaps before the close graph runs. */
+async function applyAiJudgeToDataset(dataset: Dataset, runId: string): Promise<{ dataset: Dataset; aiJudgments: number }> {
+  if (dataset.flaps.length === 0) return { dataset, aiJudgments: 0 };
+
+  const { ClaudeJudge } = await import("./claude-judge");
+  const { recordAiDecision } = await import("./ai-decision-log");
+  const judge = new ClaudeJudge();
+  const threshold = DEFAULT_FINANCE_CONFIG.resolveThreshold;
+  const matchedIds = new Set(dataset.groups.flatMap((g) => g.links.map((l) => l.recordId)));
+  const groups = [...dataset.groups];
+  const remainingFlaps: Flap[] = [];
+  let aiJudgments = 0;
+  let gi = groups.length;
+
+  for (const flap of dataset.flaps) {
+    const decision = await judge.decide({
+      recordIds: flap.recordIds,
+      amountPaise: flap.amountPaise,
+      sources: ["gateway", "bank", "erp", "gst"],
+      hint: flap.reason,
+    });
+    if (decision.confidence < threshold) {
+      remainingFlaps.push(flap);
+      continue;
+    }
+    aiJudgments += 1;
+    for (const id of flap.recordIds) matchedIds.add(id);
+    groups.push({
+      id: `grp_ai_${gi++}`,
+      runId,
+      key: `ai:${flap.id}`,
+      method: "JUDGED",
+      matchType: "AI_RESOLVED",
+      confidence: decision.confidence,
+      reason: decision.reason,
+      amountPaise: flap.amountPaise,
+      ts: new Date().toISOString(),
+      links: flap.recordIds.map((recordId) => ({
+        recordId,
+        matchedOn: "normalizedRef" as const,
+        matchType: "AI_RESOLVED" as const,
+      })),
+    });
+    if (decision.provenance) {
+      recordAiDecision(decision.provenance, {
+        runId,
+        recordIds: flap.recordIds,
+        matchType: "AI_RESOLVED",
+      });
+    }
+  }
+
+  const exceptions = dataset.exceptions.filter((e) => !e.recordId || !matchedIds.has(e.recordId));
+  const matched = matchedIds.size;
+  const totals: RunTotals = {
+    ...dataset.totals,
+    matched,
+    exceptions: exceptions.length,
+    resolvedPct: dataset.records.length ? (matched / dataset.records.length) * 100 : 0,
+    groups: groups.length,
+    judged: groups.filter((g) => g.method === "JUDGED").length,
+  };
+
+  return {
+    aiJudgments,
+    dataset: {
+      ...dataset,
+      groups,
+      flaps: remainingFlaps,
+      exceptions,
+      totals,
+      groundedRecords: matched,
+    },
+  };
+}
+
+/**
+ * Full close loop for CSV / adapter uploads:
+ * reconcile → AI judge residuals → LangGraph
+ * (ingest → reconcile → judge → settle → forecast → tax → fileExceptions → closeRun).
+ */
+export async function runFullPipelineFromUpload(records: FinRecord[]): Promise<{
+  runId: string;
+  report: CloseReport;
+  nodeOrder: string[];
+  aiJudgments: number;
+  status: string;
+}> {
+  seed();
+  const runId = `run_upload_${Date.now()}`;
+  const now = Date.now();
+  let dataset = reconcileUpload(runId, now, records);
+  const judged = await applyAiJudgeToDataset(dataset, runId);
+  dataset = judged.dataset;
+
+  runs.set(runId, {
+    meta: toMeta(runId, "RUNNING", dataset.totals, now),
+    dataset,
+  });
+
+  const { runCloseGraph } = await import("./graph");
+  const graph = await runCloseGraph({
+    runId,
+    provider: () => dataset,
+  });
+
+  // Ensure every graph stage has a durable audit event for the cockpit / run-trace UI.
+  const seen = new Set<string>();
+  const fromOrder: AuditEvent[] = [];
+  const actionForNode: Record<string, AuditEvent["action"]> = {
+    ingest: "INGEST",
+    reconcile: "MATCH",
+    judge: "JUDGE",
+    settle: "SETTLE",
+    forecast: "FORECAST",
+    tax: "TAX",
+    fileExceptions: "EXCEPTION",
+    closeRun: "CLOSE",
+  };
+  for (const node of graph.nodeOrder) {
+    const action = actionForNode[node];
+    if (!action || seen.has(action)) continue;
+    seen.add(action);
+    fromOrder.push({
+      id: `audit_${action}_${runId}`,
+      runId,
+      actorType: "AGENT",
+      actorId: "ops-graph",
+      action,
+      detail: { stage: node, aiJudgments: judged.aiJudgments },
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  const exceptionAudit = dataset.audit.filter((a) => a.action === "EXCEPTION" && a.recordId);
+  dataset = {
+    ...dataset,
+    audit: [...fromOrder, ...exceptionAudit],
+  };
+
+  const finishedAt = Date.now();
+  const status = (graph.status === "DONE" || graph.report ? "DONE" : "FAILED") as RunStatus;
+  const report =
+    graph.report ??
+    buildReport(runId, { meta: toMeta(runId, status, dataset.totals, now, finishedAt), dataset });
+  const state: RunState = {
+    meta: toMeta(runId, status, dataset.totals, now, finishedAt),
+    dataset,
+  };
+  runs.set(runId, state);
+
+  return {
+    runId,
+    report,
+    nodeOrder: graph.nodeOrder,
+    aiJudgments: judged.aiJudgments,
+    status,
+  };
 }
 
 export { allRecords as getAllRecords, SOURCE_NAMES };

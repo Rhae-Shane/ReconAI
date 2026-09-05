@@ -7,7 +7,7 @@ import { parseBankStatement } from "@/lib/close/bank-parse";
 import { parseCsvUpload } from "@/lib/close/csv";
 import { applyColumnMapping, type ColumnMapping } from "@/lib/close/csv-map";
 import { needsSharding, SHARD_SIZE, shardRecords } from "@/lib/close/shard";
-import { persistCloseArtifacts, runFromUpload } from "@/lib/close/store";
+import { persistCloseArtifacts, runFullPipelineFromUpload } from "@/lib/close/store";
 import { parsedRowsToGst2b } from "@/lib/finance/gst-books";
 import { saveGstr2b } from "@/lib/finance/gst-store";
 import { getRatelimit } from "@/lib/ops/ratelimit";
@@ -52,24 +52,27 @@ function tryJsonBody(raw: string): {
 }
 
 async function finishRun(
-  records: Parameters<typeof runFromUpload>[0],
+  records: Parameters<typeof runFullPipelineFromUpload>[0],
   actor: string,
   extra: Record<string, unknown> = {},
 ) {
   const shards = shardRecords(records);
-  const { runId, report } = runFromUpload(records);
+  const { runId, report, nodeOrder, aiJudgments, status } = await runFullPipelineFromUpload(records);
   await persistCloseArtifacts(runId, report);
   await recordAudit({
     actor,
     role: actor,
     action: "upload:run",
     target: runId,
-    detail: `${records.length} records`,
+    detail: `${records.length} records · pipeline=${nodeOrder.join(">")} · ai=${aiJudgments}`,
   });
   return NextResponse.json(
     {
       runId,
       report,
+      nodeOrder,
+      aiJudgments,
+      status,
       shards: shards.length,
       shardSize: SHARD_SIZE,
       sharded: needsSharding(records.length),

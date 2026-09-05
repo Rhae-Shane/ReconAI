@@ -12,7 +12,7 @@ import { buildDataset } from "@/lib/close/store";
  * canonical output of the deterministic generator, NOT guesses:
  *
  *   - revisions  = 3  (== MAX_REVISIONS: the bounded exception loop always exhausts its passes)
- *   - records    = 154
+ *   - records    = 196 (154 base + 42 Razorpay fee+tax invoices for tax/2B books)
  *   - openExceptions = 18 (of 22 filed; the honesty control surfaces these in the final report)
  *
  * If a future change to the deterministic generator or the graph shifts ANY of these numbers, this
@@ -20,7 +20,7 @@ import { buildDataset } from "@/lib/close/store";
  */
 const GOLDEN = {
   revisions: 3 as const,
-  records: 154 as const,
+  records: 196 as const,
   openExceptions: 18 as const,
 };
 

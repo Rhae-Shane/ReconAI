@@ -46,7 +46,7 @@ function StatusBanner({ snap }: { snap: TrustSnapshot }) {
             </div>
           </div>
           <Button asChild size="sm">
-            <Link href="/dashboard/close">Open cockpit</Link>
+            <Link href="/dashboard/close/runs">Open all runs</Link>
           </Button>
         </CardContent>
       </Card>

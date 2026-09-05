@@ -2,12 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { Loader2, MessageSquare, Send } from "lucide-react";
+import { Bot, Loader2, MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 
 interface ChatItem {
   id: string;
@@ -41,7 +49,7 @@ function TypingDots() {
   );
 }
 
-export function SettlementChat() {
+function ChatPanel() {
   const [messages, setMessages] = useState<ChatItem[]>([
     {
       id: "welcome",
@@ -123,8 +131,8 @@ export function SettlementChat() {
   }
 
   return (
-    <div className="flex h-full min-h-[420px] flex-col">
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto p-4">
+    <div className="flex h-full min-h-0 flex-col">
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-1 py-2">
         <div className="flex flex-col gap-3">
           <AnimatePresence initial={false}>
             {messages.map((m) => {
@@ -139,7 +147,7 @@ export function SettlementChat() {
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[min(80%,36rem)] whitespace-pre-wrap break-words rounded-xl px-3 py-2 text-sm leading-relaxed ${
+                    className={`max-w-[min(85%,28rem)] whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
                       m.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
                     }`}
                   >
@@ -159,7 +167,7 @@ export function SettlementChat() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 border-t p-3">
+      <div className="flex flex-col gap-2 border-t pt-3">
         <div className="flex flex-wrap items-center gap-2">
           {SUGGESTIONS.map((s) => (
             <button
@@ -181,7 +189,7 @@ export function SettlementChat() {
           {engine === "openai" && !busy && <Badge className="self-center">OpenAI</Badge>}
           {engine === "fallback" && !busy && (
             <Badge variant="outline" className="self-center">
-              engine fallback (no API key)
+              engine fallback
             </Badge>
           )}
         </div>
@@ -192,11 +200,10 @@ export function SettlementChat() {
             void send(input);
           }}
         >
-          <MessageSquare className="size-4 shrink-0 text-muted-foreground" />
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={busy ? "Wait for the current reply…" : "Ask about the settled ledger…"}
+            placeholder={busy ? "Wait for the current reply…" : "Ask about UTRs, lag, or totals…"}
             className="flex-1"
             disabled={busy}
             aria-busy={busy}
@@ -207,5 +214,77 @@ export function SettlementChat() {
         </form>
       </div>
     </div>
+  );
+}
+
+/** Corner capsule — opens the settlement analyst in a chat modal. */
+export function SettlementChat() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <div className="pointer-events-none fixed right-5 bottom-5 z-40 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
+        <AnimatePresence>
+          {!open && (
+            <motion.button
+              type="button"
+              initial={{ opacity: 0, scale: 0.85, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 8 }}
+              transition={{ type: "spring", stiffness: 420, damping: 28 }}
+              onClick={() => setOpen(true)}
+              className={cn(
+                "pointer-events-auto group relative flex items-center gap-2.5 overflow-hidden rounded-full",
+                "border border-border/60 bg-background pr-4 pl-2.5 py-2 shadow-lg",
+                "transition-colors hover:bg-muted/80",
+              )}
+              aria-label="Open settlement analyst chat"
+            >
+              <span className="relative flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
+                <Bot className="size-5" />
+                <Sparkles className="absolute -top-0.5 -right-0.5 size-3.5 text-amber-400 drop-shadow" />
+              </span>
+              <span className="flex flex-col items-start text-left leading-tight">
+                <span className="font-medium text-sm">Settlement analyst</span>
+                <span className="text-muted-foreground text-xs">Ask about UTRs &amp; lag</span>
+              </span>
+              <MessageCircle className="size-4 text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          showCloseButton={false}
+          className="flex h-[min(640px,85vh)] max-w-lg flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
+        >
+          <DialogHeader className="flex-row items-center gap-3 space-y-0 border-b px-4 py-3 text-left">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
+              <Bot className="size-5" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <DialogTitle className="text-base">Settlement analyst</DialogTitle>
+              <DialogDescription className="text-xs">
+                UTRs, settlement lag, and daily totals over the settled ledger.
+              </DialogDescription>
+            </div>
+            <Button
+              type="button"
+              size="icon"
+              variant="ghost"
+              className="shrink-0"
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+            >
+              <X className="size-4" />
+            </Button>
+          </DialogHeader>
+          <div className="min-h-0 flex-1 px-4 pb-4 pt-2">
+            <ChatPanel />
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

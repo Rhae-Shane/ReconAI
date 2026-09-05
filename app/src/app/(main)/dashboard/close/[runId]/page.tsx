@@ -1,8 +1,9 @@
 import { revalidatePath } from "next/cache";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { format, parseISO } from "date-fns";
-import { CheckCircle2, FileSpreadsheet, FileText, FileType2, PenLine } from "lucide-react";
+import { ArrowLeft, CheckCircle2, FileSpreadsheet, FileText, FileType2, PenLine } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,13 @@ export default async function RunDetailPage({ params }: { params: Promise<{ runI
   }
 
   const title = (
-    <div className="flex flex-col gap-0.5">
+    <div className="flex flex-col gap-1">
+      <Button asChild size="sm" variant="ghost" className="-ml-2 w-fit text-muted-foreground">
+        <Link href="/dashboard/close/runs">
+          <ArrowLeft data-icon="inline-start" />
+          All runs
+        </Link>
+      </Button>
       <div className="flex items-center gap-3">
         <h1 className="text-3xl tracking-tight">{run.meta.id}</h1>
         {runStatusBadge(run.meta.status)}

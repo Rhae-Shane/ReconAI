@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, ReactNode, Fragment } from "react";
-import { Copy, Check, ArrowRight, Circle } from "lucide-react";
+import { Fragment, type ReactNode, useState } from "react";
+
+import { ArrowRight, Check, Circle, Copy } from "lucide-react";
+
 import { useLanding } from "../landing-context";
 
 // Warm, on-brand syntax palette matching the reference
@@ -84,7 +86,7 @@ function highlightShellish(source: string): ReactNode[] {
     let k = 0;
     const parts: ReactNode[] = [];
     // detect "key = ..." style TOML lines
-    const tomlMatch = /^(\s*)([A-Za-z0-9_.\-\[\]]+)(\s*=\s*)/.exec(line);
+    const tomlMatch = /^(\s*)([A-Za-z0-9_.\-[\]]+)(\s*=\s*)/.exec(line);
     if (tomlMatch) {
       parts.push(tomlMatch[1]);
       parts.push(
@@ -134,10 +136,7 @@ function highlightShellish(source: string): ReactNode[] {
         continue;
       }
       // cURL flag: -X, -H, --long
-      if (
-        ch === "-" &&
-        (i === 0 || line[i - 1] === " " || line[i - 1] === "\t")
-      ) {
+      if (ch === "-" && (i === 0 || line[i - 1] === " " || line[i - 1] === "\t")) {
         let j = i + 1;
         if (line[j] === "-") j++;
         while (j < line.length && /[A-Za-z0-9_-]/.test(line[j])) j++;
@@ -186,9 +185,7 @@ function highlightShellish(source: string): ReactNode[] {
 
 function highlightSnippet(source: string, fileName: string): ReactNode[] {
   const looksJson = source.trimStart().startsWith("{");
-  return looksJson &&
-    !fileName.startsWith("POST") &&
-    !fileName.startsWith("GET")
+  return looksJson && !fileName.startsWith("POST") && !fileName.startsWith("GET")
     ? highlightJson(source)
     : highlightShellish(source);
 }
@@ -224,19 +221,16 @@ export function HowItWorks() {
   };
 
   return (
-    <section
-      id="how-it-works"
-      className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 overflow-hidden"
-    >
+    <section id="how-it-works" className="overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Centered header — badge pill + heading + subtitle */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="mb-12 text-center sm:mb-16">
           {/* Glowing Setup badge */}
-          <div className="flex justify-center mb-6">
+          <div className="mb-6 flex justify-center">
             <div className="group relative">
               <div
                 aria-hidden
-                className="absolute -top-px -left-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -top-px -left-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at top left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 30%, transparent 70%)",
@@ -244,32 +238,30 @@ export function HowItWorks() {
               />
               <div
                 aria-hidden
-                className="absolute -bottom-px -right-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -right-px -bottom-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 30%, transparent 70%)",
                 }}
               />
               <div className="absolute -inset-0.5 rounded-full border border-white/10" />
-              <div className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/95 backdrop-blur-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span className="relative z-10 text-xs sm:text-sm text-foreground font-medium">
-                  Setup
-                </span>
+              <div className="relative inline-flex items-center gap-2 rounded-full bg-surface/95 px-4 py-2 backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                <span className="relative z-10 font-medium text-foreground text-xs sm:text-sm">Setup</span>
               </div>
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight leading-[1.1]">
+          <h2 className="font-bold font-display text-3xl leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
             {content.howTitle}
           </h2>
 
-          <p className="mt-5 text-base sm:text-lg text-foreground-muted/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto mt-5 max-w-2xl text-base text-foreground-muted/80 leading-relaxed sm:text-lg">
             {content.howSub}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           {/* LEFT — toggle + steps + CTA */}
           <div>
             {/* Numbered steps — shiny glass badges, center-aligned with first line */}
@@ -277,10 +269,10 @@ export function HowItWorks() {
               {steps.map((step) => (
                 <div key={step.num} className="flex items-start gap-4 sm:gap-5">
                   {/* Glass number badge — tighter, aligned with text baseline */}
-                  <div className="relative shrink-0 mt-0.5">
+                  <div className="relative mt-0.5 shrink-0">
                     <div
                       aria-hidden
-                      className="absolute -top-[0.5px] -left-[0.5px] w-5 h-5 rounded-lg"
+                      className="absolute -top-[0.5px] -left-[0.5px] h-5 w-5 rounded-lg"
                       style={{
                         background:
                           "radial-gradient(ellipse at top left, rgba(232,97,60,0.6) 0%, rgba(232,97,60,0.15) 25%, transparent 70%)",
@@ -288,22 +280,20 @@ export function HowItWorks() {
                     />
                     <div
                       aria-hidden
-                      className="absolute -bottom-[0.5px] -right-[0.5px] w-5 h-5 rounded-lg"
+                      className="absolute -right-[0.5px] -bottom-[0.5px] h-5 w-5 rounded-lg"
                       style={{
                         background:
                           "radial-gradient(ellipse at bottom right, rgba(232,97,60,0.4) 0%, rgba(232,97,60,0.08) 30%, transparent 70%)",
                       }}
                     />
-                    <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center text-[11px] font-mono text-accent bg-accent/10 border border-accent/20">
+                    <div className="relative flex h-8 w-8 items-center justify-center rounded-lg border border-accent/20 bg-accent/10 font-mono text-[11px] text-accent sm:h-9 sm:w-9">
                       <span className="relative z-10">{step.num}</span>
                     </div>
                   </div>
 
                   {/* Text — flows naturally, badge sits next to first line */}
-                  <p className="flex-1 text-sm sm:text-base leading-7 sm:leading-8">
-                    <span className="font-semibold text-foreground">
-                      {step.title}
-                    </span>{" "}
+                  <p className="flex-1 text-sm leading-7 sm:text-base sm:leading-8">
+                    <span className="font-semibold text-foreground">{step.title}</span>{" "}
                     <span className="text-foreground-muted">{step.body}</span>
                   </p>
                 </div>
@@ -312,17 +302,14 @@ export function HowItWorks() {
 
             {/* Full setup guide CTA — glass pill */}
             <div className="mt-10">
-              <a
-                href={content.loginHref}
-                className="group relative inline-block"
-              >
+              <a href={content.loginHref} className="group relative inline-block">
                 <div className="absolute -inset-0.5 rounded-xl border border-white/8" />
-                <div className="relative flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface/60 backdrop-blur-sm border border-white/[0.08] transition-all group-hover:border-white/15 group-hover:bg-surface/80">
+                <div className="relative flex items-center justify-center gap-2 rounded-xl border border-white/[0.08] bg-surface/60 px-6 py-3 backdrop-blur-sm transition-all group-hover:border-white/15 group-hover:bg-surface/80">
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/[0.04] via-transparent to-transparent" />
-                  <span className="text-sm sm:text-base text-foreground font-display font-semibold relative z-10">
+                  <span className="relative z-10 font-display font-semibold text-foreground text-sm sm:text-base">
                     Login
                   </span>
-                  <ArrowRight className="w-4 h-4 text-foreground relative z-10 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="relative z-10 h-4 w-4 text-foreground transition-transform group-hover:translate-x-1" />
                 </div>
               </a>
             </div>
@@ -333,7 +320,7 @@ export function HowItWorks() {
             {/* Border glow - top left */}
             <div
               aria-hidden
-              className="absolute -top-px -left-px w-28 h-20 rounded-2xl"
+              className="absolute -top-px -left-px h-20 w-28 rounded-2xl"
               style={{
                 background:
                   "radial-gradient(ellipse at top left, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 40%, transparent 70%)",
@@ -342,7 +329,7 @@ export function HowItWorks() {
             {/* Border glow - bottom right */}
             <div
               aria-hidden
-              className="absolute -bottom-px -right-px w-28 h-20 rounded-2xl"
+              className="absolute -right-px -bottom-px h-20 w-28 rounded-2xl"
               style={{
                 background:
                   "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, transparent 70%)",
@@ -352,38 +339,36 @@ export function HowItWorks() {
             {/* Soft ambient accent glow behind panel */}
             <div
               aria-hidden
-              className="absolute -inset-8 rounded-3xl blur-3xl opacity-40 pointer-events-none"
+              className="pointer-events-none absolute -inset-8 rounded-3xl opacity-40 blur-3xl"
               style={{
-                background:
-                  "radial-gradient(ellipse at 70% 30%, rgba(232,97,60,0.18) 0%, transparent 60%)",
+                background: "radial-gradient(ellipse at 70% 30%, rgba(232,97,60,0.18) 0%, transparent 60%)",
               }}
             />
 
             {/* Main panel */}
-            <div className="relative rounded-2xl bg-surface/50 backdrop-blur-md border border-white/[0.08] shadow-2xl shadow-black/40 overflow-hidden">
+            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-surface/50 shadow-2xl shadow-black/40 backdrop-blur-md">
               {/* Inner gradient overlay */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent rounded-2xl pointer-events-none"
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.04] via-transparent to-transparent"
               />
 
               {/* Snippet tabs row — shiny pill switcher inside panel */}
-              <div className="relative p-3 sm:p-4 border-b border-white/[0.06]">
-                <div className="relative flex items-center p-1 rounded-xl bg-background/40 border border-white/[0.06]">
+              <div className="relative border-white/[0.06] border-b p-3 sm:p-4">
+                <div className="relative flex items-center rounded-xl border border-white/[0.06] bg-background/40 p-1">
                   {/* Sliding indicator — equal slices, aligned to each button */}
                   <div
-                    className="absolute top-1 bottom-1 rounded-lg transition-all duration-300 ease-out overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.5)] pointer-events-none"
+                    className="pointer-events-none absolute top-1 bottom-1 overflow-hidden rounded-lg shadow-[0_2px_10px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out"
                     style={{
                       width: `calc((100% - 8px) / ${snippets.length})`,
                       left: `calc(4px + ${selectedIdx} * ((100% - 8px) / ${snippets.length}))`,
-                      background:
-                        "linear-gradient(180deg, rgba(42,42,42,0.95) 0%, rgba(24,24,24,0.95) 100%)",
+                      background: "linear-gradient(180deg, rgba(42,42,42,0.95) 0%, rgba(24,24,24,0.95) 100%)",
                       border: "1px solid rgba(255,255,255,0.08)",
                     }}
                   >
                     <div
                       aria-hidden
-                      className="absolute top-0 left-0 right-0 h-px"
+                      className="absolute top-0 right-0 left-0 h-px"
                       style={{
                         background:
                           "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
@@ -392,20 +377,17 @@ export function HowItWorks() {
                   </div>
                   {snippets.map((snip, i) => (
                     <button
+                      type="button"
                       key={snip.id}
                       onClick={() => {
                         setSelectedIdx(i);
                         setCopied(false);
                       }}
-                      className={`relative z-10 flex-1 cursor-pointer flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-300 ${
-                        selectedIdx === i
-                          ? "text-foreground"
-                          : "text-foreground-muted hover:text-foreground"
+                      className={`relative z-10 flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg px-3 py-1.5 font-medium text-xs transition-colors duration-300 sm:px-4 sm:py-2 sm:text-sm ${
+                        selectedIdx === i ? "text-foreground" : "text-foreground-muted hover:text-foreground"
                       }`}
                     >
-                      {snip.icon && (
-                        <span className="shrink-0">{snip.icon}</span>
-                      )}
+                      {snip.icon && <span className="shrink-0">{snip.icon}</span>}
                       <span className="whitespace-nowrap">{snip.name}</span>
                     </button>
                   ))}
@@ -413,26 +395,25 @@ export function HowItWorks() {
               </div>
 
               {/* Filename + copy button row */}
-              <div className="relative px-4 sm:px-5 py-3 flex items-center justify-between border-b border-white/[0.06]">
-                <span className="text-xs sm:text-sm text-foreground-subtle font-mono truncate">
-                  {current.fileName}
-                </span>
+              <div className="relative flex items-center justify-between border-white/[0.06] border-b px-4 py-3 sm:px-5">
+                <span className="truncate font-mono text-foreground-subtle text-xs sm:text-sm">{current.fileName}</span>
                 <button
+                  type="button"
                   onClick={handleCopy}
-                  className={`relative cursor-pointer shrink-0 flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all ${
+                  className={`relative flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs transition-all ${
                     copied
-                      ? "text-accent border-accent/20 bg-accent/10"
-                      : "text-foreground-subtle border-white/[0.08] hover:text-foreground hover:bg-white/5"
+                      ? "border-accent/20 bg-accent/10 text-accent"
+                      : "border-white/[0.08] text-foreground-subtle hover:bg-white/5 hover:text-foreground"
                   }`}
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5" />
+                      <Check className="h-3.5 w-3.5" />
                       <span>Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5" />
+                      <Copy className="h-3.5 w-3.5" />
                       <span>Copy</span>
                     </>
                   )}
@@ -440,23 +421,19 @@ export function HowItWorks() {
               </div>
 
               {/* Code body — warm syntax highlighting */}
-              <div className="relative overflow-x-auto max-w-[85vw] sm:max-w-none">
-                <pre className="p-5 sm:p-6 text-xs sm:text-sm font-mono leading-relaxed min-h-[280px] sm:min-h-[300px]">
-                  <code className="whitespace-pre">
-                    {highlightSnippet(current.config, current.fileName)}
-                  </code>
+              <div className="relative max-w-[85vw] overflow-x-auto sm:max-w-none">
+                <pre className="min-h-[280px] p-5 font-mono text-xs leading-relaxed sm:min-h-[300px] sm:p-6 sm:text-sm">
+                  <code className="whitespace-pre">{highlightSnippet(current.config, current.fileName)}</code>
                 </pre>
               </div>
 
               {/* Footer status row */}
-              <div className="relative px-4 sm:px-5 py-3 border-t border-white/[0.06] flex items-center justify-between bg-background/20">
+              <div className="relative flex items-center justify-between border-white/[0.06] border-t bg-background/20 px-4 py-3 sm:px-5">
                 <div className="flex items-center gap-2">
-                  <Circle className="w-2 h-2 fill-accent text-accent" />
-                  <span className="text-xs text-foreground-muted">
-                    {content.howSub}
-                  </span>
+                  <Circle className="h-2 w-2 fill-accent text-accent" />
+                  <span className="text-foreground-muted text-xs">{content.howSub}</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-foreground-subtle font-mono hidden sm:block">
+                <span className="hidden font-mono text-[10px] text-foreground-subtle sm:block sm:text-xs">
                   Razorpay test mode
                 </span>
               </div>

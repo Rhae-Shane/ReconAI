@@ -1,6 +1,7 @@
 "use client";
 
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
+
 import { Lock, MousePointer2, Plus, RefreshCcw, Search, Shield } from "lucide-react";
 
 function CursorIcon({ className }: { className?: string }) {
@@ -49,9 +50,18 @@ function GeminiColorIcon({ className }: { className?: string }) {
         d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"
         fill="#3186FF"
       />
-      <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#mc-gemini-0)" />
-      <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#mc-gemini-1)" />
-      <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#mc-gemini-2)" />
+      <path
+        d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"
+        fill="url(#mc-gemini-0)"
+      />
+      <path
+        d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"
+        fill="url(#mc-gemini-1)"
+      />
+      <path
+        d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"
+        fill="url(#mc-gemini-2)"
+      />
     </svg>
   );
 }
@@ -98,8 +108,7 @@ function ZedMark() {
 
 function IntelligentMemoryVisual() {
   const gridSize = 7;
-  const getDistanceFromCenter = (row: number, col: number) =>
-    Math.sqrt((row - 3) ** 2 + (col - 3) ** 2);
+  const getDistanceFromCenter = (row: number, col: number) => Math.sqrt((row - 3) ** 2 + (col - 3) ** 2);
 
   const getOpacity = (row: number, col: number) => {
     const dist = getDistanceFromCenter(row, col);
@@ -169,11 +178,11 @@ function SemanticRetrievalVisual() {
             border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
-          <p className="mb-1 text-[11px] font-medium text-white/90">Query:</p>
-          <p className="text-[9px] leading-relaxed text-white/70">
+          <p className="mb-1 font-medium text-[11px] text-white/90">Query:</p>
+          <p className="text-[9px] text-white/70 leading-relaxed">
             Score this <span className="text-white/90">checkout</span> for fraud.
           </p>
-          <p className="mt-1 text-[9px] leading-relaxed text-white/50">Looking at velocity and amount…</p>
+          <p className="mt-1 text-[9px] text-white/50 leading-relaxed">Looking at velocity and amount…</p>
         </div>
         <div className="relative z-20 mx-1 flex flex-col items-center">
           <div className="h-24 w-px bg-linear-to-b from-transparent via-white/30 to-transparent" />
@@ -189,11 +198,11 @@ function SemanticRetrievalVisual() {
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <p className="mb-1 text-[11px] font-medium text-[#E8613C]/90">Found:</p>
-          <p className="text-[9px] leading-relaxed text-white/60">
-            <span className="text-[10px] text-[#E8613C]/80">Policy hit</span> amount cap + denylist
+          <p className="mb-1 font-medium text-[#E8613C]/90 text-[11px]">Found:</p>
+          <p className="text-[9px] text-white/60 leading-relaxed">
+            <span className="text-[#E8613C]/80 text-[10px]">Policy hit</span> amount cap + denylist
           </p>
-          <p className="mt-1 text-[9px] leading-relaxed text-white/40">Verdict: block, audit row written.</p>
+          <p className="mt-1 text-[9px] text-white/40 leading-relaxed">Verdict: block, audit row written.</p>
         </div>
       </div>
     </div>
@@ -228,7 +237,7 @@ function AutoUpdatesVisual() {
           </div>
           <div className="absolute right-2.5 bottom-2.5 left-2.5">
             <div
-              className="rounded-md px-2 py-1.5 text-center text-[7px] font-medium text-white"
+              className="rounded-md px-2 py-1.5 text-center font-medium text-[7px] text-white"
               style={{
                 background:
                   "linear-gradient(145deg, rgba(232, 97, 60, 0.9) 0%, rgba(201, 78, 46, 0.85) 50%, rgba(170, 60, 35, 0.8) 100%)",
@@ -258,7 +267,7 @@ function AutoUpdatesVisual() {
         </div>
       </div>
       <div className="absolute top-1/2 right-0 flex -translate-y-1/2 flex-col items-center">
-        <p className="mb-2 text-[7px] tracking-wide text-white/40">Policy gates</p>
+        <p className="mb-2 text-[7px] text-white/40 tracking-wide">Policy gates</p>
         <div className="relative h-28 w-28">
           <div
             className="absolute top-0 right-4 w-24 rounded-lg p-2 opacity-40"
@@ -301,11 +310,11 @@ function AutoUpdatesVisual() {
                 <RefreshCcw className="size-3 text-[#E8613C]" />
               </div>
               <div>
-                <p className="text-[9px] font-medium text-white/90">Latest</p>
+                <p className="font-medium text-[9px] text-white/90">Latest</p>
                 <p className="text-[7px] text-white/50">Just now</p>
               </div>
             </div>
-            <div className="text-[7px] font-medium text-[#E8613C]/80">v3: denylist + nonce</div>
+            <div className="font-medium text-[#E8613C]/80 text-[7px]">v3: denylist + nonce</div>
           </div>
         </div>
       </div>
@@ -339,7 +348,10 @@ function PowerfulSearchVisual() {
         <div className="absolute top-[76px] left-1/2 size-2 -translate-x-1/2 rounded-full bg-[#E8613C]/80 shadow-[0_0_6px_rgba(232,97,60,0.6)]" />
       </div>
       <div className="absolute top-22 left-28 -translate-x-1/2 rotate-180">
-        <div className="relative h-14 w-20 rounded-xl" style={glass("linear-gradient(145deg, rgba(65,65,65,1) 0%, rgba(40,40,40,0.7) 100%)")}>
+        <div
+          className="relative h-14 w-20 rounded-xl"
+          style={glass("linear-gradient(145deg, rgba(65,65,65,1) 0%, rgba(40,40,40,0.7) 100%)")}
+        >
           <Search className="absolute -top-2 -left-2 size-6 rotate-180 text-white/80" />
         </div>
         <div className="absolute -top-4 left-1/2 h-4 w-px -translate-x-1/2 bg-linear-to-t from-white/20 to-transparent" />

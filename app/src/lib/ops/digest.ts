@@ -2,10 +2,10 @@
  * Slack / email digest of open exceptions for the current close.
  */
 
+import { formatPaise } from "@/lib/close/config";
 import { orgDisplayName } from "@/lib/close/org";
 import type { ExceptionRecord } from "@/lib/close/types";
 import { emitEvent } from "@/lib/events";
-import { formatPaise } from "@/lib/close/config";
 
 export interface ExceptionDigest {
   org: string;

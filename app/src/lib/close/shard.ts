@@ -1,5 +1,3 @@
-import type { FinRecord } from "@/lib/close/types";
-
 /** Chunk large uploads so parse/progress stays live above ~10k rows. */
 export const SHARD_SIZE = 2500;
 
@@ -26,7 +24,14 @@ export interface ShardProgress {
   updatedAt: string;
 }
 
-export function shardProgress(id: string, total: number, parsed: number, shardIndex: number, shards: number, stage: ShardProgress["stage"]): ShardProgress {
+export function shardProgress(
+  id: string,
+  total: number,
+  parsed: number,
+  shardIndex: number,
+  shards: number,
+  stage: ShardProgress["stage"],
+): ShardProgress {
   return {
     id,
     total,

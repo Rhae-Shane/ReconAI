@@ -1,5 +1,5 @@
-import { DEFAULT_FINANCE_CONFIG } from "./config";
 import { buildAiDecisionProvenance, RECONCILIATION_PROMPT_VERSION } from "./ai-provenance";
+import { DEFAULT_FINANCE_CONFIG } from "./config";
 import { embeddingSimilarity, openaiKey } from "./openai-embeddings";
 import type { Judge, JudgeCandidacy, JudgeDecision } from "./types";
 

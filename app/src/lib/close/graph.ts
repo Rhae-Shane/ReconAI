@@ -1,10 +1,10 @@
 import { Annotation, END, MemorySaver, START, StateGraph } from "@langchain/langgraph";
 import type { BaseCheckpointSaver } from "@langchain/langgraph-checkpoint";
-import { RedisJsonSaver } from "./redis-checkpointer";
 
 import { createLogger } from "@/lib/obs/logger";
 import { tlsRedisUrl } from "@/lib/ops/redis";
 
+import { RedisJsonSaver } from "./redis-checkpointer";
 import type {
   AuditEvent,
   CloseReport,

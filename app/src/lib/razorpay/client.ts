@@ -1,4 +1,4 @@
-import { razorpayAuthHeader, razorpayConfig, type RazorpayConfig } from "./config";
+import { type RazorpayConfig, razorpayAuthHeader, razorpayConfig } from "./config";
 import type { RazorpayDispute, RazorpayPayment, RazorpayReconItem, RazorpayRefund, RazorpaySettlement } from "./map";
 
 /**
@@ -99,7 +99,9 @@ export async function pullRazorpayBatch(
     getJson<ListEnvelope<RazorpayPayment>>(cfg, `/payments?count=${count}`),
     getJson<ListEnvelope<RazorpaySettlement>>(cfg, `/settlements?count=${count}`),
     getJson<ListEnvelope<RazorpayRefund>>(cfg, `/refunds?count=${count}`),
-    getJson<ListEnvelope<RazorpayDispute>>(cfg, `/disputes?count=${count}`).catch(() => ({ items: [] as RazorpayDispute[] })),
+    getJson<ListEnvelope<RazorpayDispute>>(cfg, `/disputes?count=${count}`).catch(() => ({
+      items: [] as RazorpayDispute[],
+    })),
   ]);
 
   const recon: RazorpayReconItem[] = [];

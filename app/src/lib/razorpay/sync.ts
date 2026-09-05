@@ -1,5 +1,5 @@
-import type { CloseReport, FinRecord } from "@/lib/close/types";
 import { runFromUpload } from "@/lib/close/store";
+import type { CloseReport, FinRecord } from "@/lib/close/types";
 
 import { pullRazorpayBatch } from "./client";
 import { inboxTake } from "./inbox";
@@ -28,7 +28,10 @@ function mergeRecords(...lists: FinRecord[][]): FinRecord[] {
 
 export async function collectRazorpayRecords(
   env: Record<string, string | undefined> = process.env,
-): Promise<{ records: FinRecord[]; pulled: Awaited<ReturnType<typeof pullRazorpayBatch>>; inbox: number } | { error: "empty" | "unconfigured" }> {
+): Promise<
+  | { records: FinRecord[]; pulled: Awaited<ReturnType<typeof pullRazorpayBatch>>; inbox: number }
+  | { error: "empty" | "unconfigured" }
+> {
   const pulled = await pullRazorpayBatch(env);
   const inbox = inboxTake();
 

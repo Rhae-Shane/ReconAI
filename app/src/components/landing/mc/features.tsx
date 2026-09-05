@@ -1,15 +1,14 @@
 "use client";
 
-import {
-  Search,
-  RefreshCcw,
-  Plus,
-} from "lucide-react";
-import { GrTopCorner } from "react-icons/gr";
-import { ReactNode } from "react";
-import { BsFillCursorFill } from "react-icons/bs";
-import { IoLockClosed, IoShield } from "react-icons/io5";
+import type { ReactNode } from "react";
+
 import Image from "next/image";
+
+import { Plus, RefreshCcw, Search } from "lucide-react";
+import { BsFillCursorFill } from "react-icons/bs";
+import { GrTopCorner } from "react-icons/gr";
+import { IoLockClosed, IoShield } from "react-icons/io5";
+
 import { useLanding } from "../landing-context";
 
 interface BentoCardProps {
@@ -19,32 +18,25 @@ interface BentoCardProps {
   className?: string;
 }
 
-function BentoCard({
-  title,
-  description,
-  children,
-  className = "",
-}: BentoCardProps) {
+function BentoCard({ title, description, children, className = "" }: BentoCardProps) {
   return (
-    <div className={`relative group ${className}`}>
+    <div className={`group relative ${className}`}>
       {/* Top Card with Visual - shorter aspect ratio */}
-      <div className="relative rounded-xl border border-white/10 bg-border-hover/30 overflow-hidden aspect-[4/3]">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-border-hover/30">
         {/* L-shaped corner brackets using GrTopCorner */}
-        <div className="absolute inset-0 pointer-events-none bg-background/80 rounded-xl border border-white/10 m-2">
+        <div className="pointer-events-none absolute inset-0 m-2 rounded-xl border border-white/10 bg-background/80">
           {/* Top Left */}
-          <GrTopCorner className="absolute top-2 left-2 w-4 h-4 text-foreground-muted" />
+          <GrTopCorner className="absolute top-2 left-2 h-4 w-4 text-foreground-muted" />
           {/* Top Right */}
-          <GrTopCorner className="absolute top-2 right-2 w-4 h-4 text-foreground-muted rotate-90" />
+          <GrTopCorner className="absolute top-2 right-2 h-4 w-4 rotate-90 text-foreground-muted" />
           {/* Bottom Right */}
-          <GrTopCorner className="absolute bottom-2 right-2 w-4 h-4 text-foreground-muted rotate-180" />
+          <GrTopCorner className="absolute right-2 bottom-2 h-4 w-4 rotate-180 text-foreground-muted" />
           {/* Bottom Left */}
-          <GrTopCorner className="absolute bottom-2 left-2 w-4 h-4 text-foreground-muted -rotate-90" />
+          <GrTopCorner className="absolute bottom-2 left-2 h-4 w-4 -rotate-90 text-foreground-muted" />
         </div>
 
         {/* Visual Content */}
-        <div className="relative w-full h-full flex items-center justify-center p-6">
-          {children}
-        </div>
+        <div className="relative flex h-full w-full items-center justify-center p-6">{children}</div>
       </div>
 
       {/* Bottom Folder Shape - Coral with glass effect */}
@@ -54,18 +46,11 @@ function BentoCard({
           viewBox="0 0 300 120"
           fill="none"
           preserveAspectRatio="none"
-          className="w-full h-auto relative z-10 drop-shadow-[0_8px_24px_rgba(232,97,60,0.3)]"
+          className="relative z-10 h-auto w-full drop-shadow-[0_8px_24px_rgba(232,97,60,0.3)]"
         >
           <defs>
             {/* Coral/Orange gradient with glass effect - lower opacity */}
-            <linearGradient
-              id="folderGradientFeature"
-              x1="0"
-              y1="0"
-              x2="300"
-              y2="120"
-              gradientUnits="userSpaceOnUse"
-            >
+            <linearGradient id="folderGradientFeature" x1="0" y1="0" x2="300" y2="120" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#E8613C" stopOpacity="0.85" />
               <stop offset="100%" stopColor="#C94E2E" stopOpacity="0.75" />
             </linearGradient>
@@ -83,27 +68,13 @@ function BentoCard({
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
             {/* Top edge glow gradient - horizontal */}
-            <linearGradient
-              id="folderEdgeGlowFeature"
-              x1="0"
-              y1="0"
-              x2="140"
-              y2="0"
-              gradientUnits="userSpaceOnUse"
-            >
+            <linearGradient id="folderEdgeGlowFeature" x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="white" stopOpacity="0.6" />
               <stop offset="40%" stopColor="white" stopOpacity="0.25" />
               <stop offset="100%" stopColor="white" stopOpacity="0.05" />
             </linearGradient>
             {/* Left edge glow gradient - vertical */}
-            <linearGradient
-              id="folderEdgeGlowLeft"
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="120"
-              gradientUnits="userSpaceOnUse"
-            >
+            <linearGradient id="folderEdgeGlowLeft" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="white" stopOpacity="0.6" />
               <stop offset="40%" stopColor="white" stopOpacity="0.2" />
               <stop offset="100%" stopColor="white" stopOpacity="0" />
@@ -128,20 +99,13 @@ function BentoCard({
             fill="none"
           />
           {/* Left edge highlight going down */}
-          <path
-            d="M0 12 V112"
-            stroke="url(#folderEdgeGlowLeft)"
-            strokeWidth="1.5"
-            fill="none"
-          />
+          <path d="M0 12 V112" stroke="url(#folderEdgeGlowLeft)" strokeWidth="1.5" fill="none" />
         </svg>
 
         {/* Text content */}
-        <div className="absolute inset-0 flex flex-col justify-center px-4 pt-8 pb-4 z-20">
-          <h3 className="text-base sm:text-xl font-semibold mb-1 text-white ">
-            {title}
-          </h3>
-          <p className="text-sm leading-tight text-white/70">{description}</p>
+        <div className="absolute inset-0 z-20 flex flex-col justify-center px-4 pt-8 pb-4">
+          <h3 className="mb-1 font-semibold text-base text-white sm:text-xl">{title}</h3>
+          <p className="text-sm text-white/70 leading-tight">{description}</p>
         </div>
       </div>
     </div>
@@ -155,7 +119,7 @@ function IntelligentMemoryVisual() {
 
   // Get distance from center (3,3)
   const getDistanceFromCenter = (row: number, col: number) => {
-    return Math.sqrt(Math.pow(row - 3, 2) + Math.pow(col - 3, 2));
+    return Math.sqrt((row - 3) ** 2 + (col - 3) ** 2);
   };
 
   // Determine opacity based on distance - center bright, edges fade
@@ -176,10 +140,10 @@ function IntelligentMemoryVisual() {
   };
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       {/* Radial fade background - positioned top right */}
       <div
-        className="absolute -top-12 -right-12 w-32 h-32"
+        className="absolute -top-12 -right-12 h-32 w-32"
         style={{
           background:
             "radial-gradient(circle at center, rgba(232,97,60,0.2) 0%, rgba(232,97,60,0.08) 40%, transparent 70%)",
@@ -187,7 +151,7 @@ function IntelligentMemoryVisual() {
       />
 
       {/* Glass tile grid - positioned top right */}
-      <div className="absolute -top-12 -right-12  grid grid-cols-7 gap-[3px]">
+      <div className="absolute -top-12 -right-12 grid grid-cols-7 gap-[3px]">
         {Array.from({ length: gridSize * gridSize }).map((_, i) => {
           const row = Math.floor(i / gridSize);
           const col = i % gridSize;
@@ -198,7 +162,7 @@ function IntelligentMemoryVisual() {
           return (
             <div
               key={i}
-              className="w-9 h-9 rounded-[3px]"
+              className="h-9 w-9 rounded-[3px]"
               style={{
                 background: highlight
                   ? `linear-gradient(145deg, 
@@ -218,10 +182,10 @@ function IntelligentMemoryVisual() {
                 opacity: opacity < 0.1 ? opacity : 1,
               }}
             >
-              {dist == 0 && (
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <Plus className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-white/80" />
-                  <BsFillCursorFill className="absolute -bottom-4 -right-4 transform -rotate-90 -translate-x-1/2 -translate-y-1/2 w-4 h-4 text-white/80" />
+              {dist === 0 && (
+                <div className="relative flex h-full w-full items-center justify-center">
+                  <Plus className="absolute top-1/2 left-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 transform text-white/80" />
+                  <BsFillCursorFill className="absolute -right-4 -bottom-4 h-4 w-4 -translate-x-1/2 -translate-y-1/2 -rotate-90 transform text-white/80" />
                 </div>
               )}
             </div>
@@ -234,62 +198,50 @@ function IntelligentMemoryVisual() {
 
 function SemanticRetrievalVisual() {
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-visible">
+    <div className="relative flex h-full w-full items-center justify-center overflow-visible">
       {/* Split glass cards container */}
       <div className="relative flex scale-110 items-center">
         {/* Left card - User query */}
         <div
-          className="relative w-28 h-32 rounded-l-lg p-2 mr-[-8px] z-10"
+          className="relative z-10 mr-[-8px] h-32 w-28 rounded-l-lg p-2"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(60,60,60,0.6) 0%, rgba(40,40,40,0.4) 100%)",
+            background: "linear-gradient(135deg, rgba(60,60,60,0.6) 0%, rgba(40,40,40,0.4) 100%)",
             backdropFilter: "blur(8px)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 20px rgba(0,0,0,0.3)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 20px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
           <div className="py-1">
-            <p className="text-[11px] text-white/90 font-medium mb-1">Intent:</p>
+            <p className="mb-1 font-medium text-[11px] text-white/90">Intent:</p>
             <p className="text-[9px] text-white/70 leading-relaxed">
-              Should this <span className="text-white/90">charge</span> go
-              through?
+              Should this <span className="text-white/90">charge</span> go through?
             </p>
-            <p className="text-[9px] text-white/50 mt-1 leading-relaxed">
-              Checking policy and risk gates...
-            </p>
+            <p className="mt-1 text-[9px] text-white/50 leading-relaxed">Checking policy and risk gates...</p>
           </div>
         </div>
 
         {/* Center divider with glow dot */}
-        <div className="relative z-20 flex flex-col items-center mx-1">
-          <div className="w-[1px] h-24 bg-linear-to-b from-transparent via-white/30 to-transparent" />
-          <div className="w-2 h-2 rounded-full bg-white/80 shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-          <div className="w-[1px] h-24 bg-linear-to-b from-transparent via-white/30 to-transparent" />
+        <div className="relative z-20 mx-1 flex flex-col items-center">
+          <div className="h-24 w-[1px] bg-linear-to-b from-transparent via-white/30 to-transparent" />
+          <div className="h-2 w-2 rounded-full bg-white/80 shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+          <div className="h-24 w-[1px] bg-linear-to-b from-transparent via-white/30 to-transparent" />
         </div>
 
         {/* Right card - Semantic match */}
         <div
-          className="relative w-28 h-32 rounded-r-lg p-3 ml-[-8px]"
+          className="relative ml-[-8px] h-32 w-28 rounded-r-lg p-3"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(50,50,50,0.5) 0%, rgba(30,30,30,0.3) 100%)",
+            background: "linear-gradient(135deg, rgba(50,50,50,0.5) 0%, rgba(30,30,30,0.3) 100%)",
             backdropFilter: "blur(8px)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.08), 0 4px 20px rgba(0,0,0,0.3)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.08), 0 4px 20px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          <p className="text-[11px] text-[#E8613C]/90 font-medium mb-1">
-            Verdict:
-          </p>
+          <p className="mb-1 font-medium text-[#E8613C]/90 text-[11px]">Verdict:</p>
           <p className="text-[9px] text-white/60 leading-relaxed">
-            <span className="text-[#E8613C]/80 text-[10px]">PaymentCore</span>{" "}
-            allow · within cap
+            <span className="text-[#E8613C]/80 text-[10px]">PaymentCore</span> allow · within cap
           </p>
-          <p className="text-[9px] text-white/40 mt-1 leading-relaxed">
-            Model never talks to Razorpay...
-          </p>
+          <p className="mt-1 text-[9px] text-white/40 leading-relaxed">Model never talks to Razorpay...</p>
         </div>
       </div>
     </div>
@@ -298,27 +250,13 @@ function SemanticRetrievalVisual() {
 
 function PowerfulSearchVisual() {
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       {/* Flowing wave lines */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 200 150"
-        preserveAspectRatio="none"
-      >
+      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 200 150" preserveAspectRatio="none">
         {/* Wave line 1 */}
-        <path
-          d="M0 70 Q50 50, 100 70 T200 70"
-          fill="none"
-          stroke="rgba(255,255,255,0.1)"
-          strokeWidth="1"
-        />
+        <path d="M0 70 Q50 50, 100 70 T200 70" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         {/* Wave line 2 */}
-        <path
-          d="M0 120 Q50 100, 100 120 T200 120"
-          fill="none"
-          stroke="rgba(255,255,255,0.08)"
-          strokeWidth="1"
-        />
+        <path d="M0 120 Q50 100, 100 120 T200 120" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
       </svg>
 
       {/* Glass cards with connection dots */}
@@ -326,19 +264,17 @@ function PowerfulSearchVisual() {
       {/* Card 1 - Top left with Search icon */}
       <div className="absolute top-2 left-4">
         <div
-          className="w-16 h-12 rounded-lg flex items-center justify-center"
+          className="flex h-12 w-16 items-center justify-center rounded-lg"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(60,60,60,0.5) 0%, rgba(35,35,35,0.4) 100%)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
+            background: "linear-gradient(145deg, rgba(60,60,60,0.5) 0%, rgba(35,35,35,0.4) 100%)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.1)",
           }}
-        ></div>
+        />
         {/* Connection line down */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-12 w-[1px] h-6 bg-gradient-to-b from-white/20 to-transparent" />
+        <div className="absolute top-12 left-1/2 h-6 w-[1px] -translate-x-1/2 bg-gradient-to-b from-white/20 to-transparent" />
         {/* Connection dot */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[70px] w-2.5 h-2.5 rounded-full bg-[#E8613C] shadow-[0_0_8px_rgba(232,97,60,0.8)]">
+        <div className="absolute top-[70px] left-1/2 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#E8613C] shadow-[0_0_8px_rgba(232,97,60,0.8)]">
           <div className="absolute inset-0.5 rounded-full bg-[#E8613C]/60" />
         </div>
       </div>
@@ -346,57 +282,51 @@ function PowerfulSearchVisual() {
       {/* Card 2 - Top right */}
       <div className="absolute top-8 right-6">
         <div
-          className="w-14 h-10 rounded-lg"
+          className="h-10 w-14 rounded-lg"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(55,55,55,0.5) 0%, rgba(30,30,30,0.4) 100%)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.08), 0 4px 15px rgba(0,0,0,0.3)",
+            background: "linear-gradient(145deg, rgba(55,55,55,0.5) 0%, rgba(30,30,30,0.4) 100%)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.08), 0 4px 15px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.08)",
           }}
         />
         {/* Connection line down */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-10 w-[1px] h-10 bg-gradient-to-b from-white/15 to-transparent" />
+        <div className="absolute top-10 left-1/2 h-10 w-[1px] -translate-x-1/2 bg-gradient-to-b from-white/15 to-transparent" />
         {/* Connection dot */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[76px] w-2 h-2 rounded-full bg-[#E8613C]/80 shadow-[0_0_6px_rgba(232,97,60,0.6)]" />
+        <div className="absolute top-[76px] left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#E8613C]/80 shadow-[0_0_6px_rgba(232,97,60,0.6)]" />
       </div>
 
       {/* Card 3 - Center */}
-      <div className="absolute rotate-180 top-22 left-28 -translate-x-1/2">
+      <div className="absolute top-22 left-28 -translate-x-1/2 rotate-180">
         <div
-          className="w-20 h-14 rounded-xl"
+          className="h-14 w-20 rounded-xl"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(65,65,65,1) 0%, rgba(40,40,40,0.7) 100%)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
+            background: "linear-gradient(145deg, rgba(65,65,65,1) 0%, rgba(40,40,40,0.7) 100%)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
-          <Search className="w-6 h-6 absolute -top-2 -left-2 rotate-180 text-foreground" />
+          <Search className="absolute -top-2 -left-2 h-6 w-6 rotate-180 text-foreground" />
         </div>
         {/* Connection line up */}
-        <div className="absolute left-1/2 -translate-x-1/2 -top-4 w-[1px] h-4 bg-gradient-to-t from-white/20 to-transparent" />
+        <div className="absolute -top-4 left-1/2 h-4 w-[1px] -translate-x-1/2 bg-gradient-to-t from-white/20 to-transparent" />
         {/* Connection dot top */}
-        <div className="absolute left-1/2 -translate-x-1/2 -top-5 w-2 h-2 rounded-full bg-[#E8613C]/90 shadow-[0_0_8px_rgba(232,97,60,1)]" />
+        <div className="absolute -top-5 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#E8613C]/90 shadow-[0_0_8px_rgba(232,97,60,1)]" />
       </div>
 
       {/* Card 4 - Bottom right */}
-      <div className="absolute rotate-180 bottom-14 right-2">
+      <div className="absolute right-2 bottom-14 rotate-180">
         <div
-          className="w-12 h-10 rounded-lg"
+          className="h-10 w-12 rounded-lg"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(50,50,50,0.4) 0%, rgba(28,28,28,0.3) 100%)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.06), 0 4px 15px rgba(0,0,0,0.3)",
+            background: "linear-gradient(145deg, rgba(50,50,50,0.4) 0%, rgba(28,28,28,0.3) 100%)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.06), 0 4px 15px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.06)",
           }}
         />
         {/* Connection line up */}
-        <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-[1px] h-6 bg-gradient-to-t from-white/15 to-transparent" />
+        <div className="absolute -top-6 left-1/2 h-6 w-[1px] -translate-x-1/2 bg-gradient-to-t from-white/15 to-transparent" />
         {/* Connection dot */}
-        <div className="absolute left-1/2 -translate-x-1/2 -top-7 w-2 h-2 rounded-full bg-[#E8613C]/60 shadow-[0_0_5px_rgba(232,97,60,0.4)]" />
+        <div className="absolute -top-7 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#E8613C]/60 shadow-[0_0_5px_rgba(232,97,60,0.4)]" />
       </div>
     </div>
   );
@@ -404,43 +334,39 @@ function PowerfulSearchVisual() {
 
 function AutoUpdatesVisual() {
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       {/* Left card - Settings card with skeleton, fading on left */}
-      <div className="absolute scale-125 left-2 top-1/2 -translate-y-1/2">
+      <div className="absolute top-1/2 left-2 -translate-y-1/2 scale-125">
         <div
-          className="w-28 h-32 rounded-xl overflow-hidden p-2.5 relative"
+          className="relative h-32 w-28 overflow-hidden rounded-xl p-2.5"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(55,55,55,0.6) 0%, rgba(35,35,35,0.5) 100%)",
-            boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
+            background: "linear-gradient(145deg, rgba(55,55,55,0.6) 0%, rgba(35,35,35,0.5) 100%)",
+            boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3)",
             border: "1px solid rgba(255,255,255,0.1)",
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
+            maskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
           }}
         >
           {/* Skeleton header */}
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-5 h-5 rounded bg-white/10" />
+          <div className="mb-3 flex items-center gap-2">
+            <div className="h-5 w-5 rounded bg-white/10" />
             <div className="flex-1">
-              <div className="h-1.5 w-12 bg-white/15 rounded mb-1" />
-              <div className="h-1 w-8 bg-white/10 rounded" />
+              <div className="mb-1 h-1.5 w-12 rounded bg-white/15" />
+              <div className="h-1 w-8 rounded bg-white/10" />
             </div>
           </div>
 
           {/* Skeleton content lines */}
-          <div className="space-y-2 mb-3">
-            <div className="h-1.5 w-full bg-white/10 rounded" />
-            <div className="h-1.5 w-4/5 bg-white/8 rounded" />
-            <div className="h-1.5 w-3/5 bg-white/6 rounded" />
+          <div className="mb-3 space-y-2">
+            <div className="h-1.5 w-full rounded bg-white/10" />
+            <div className="h-1.5 w-4/5 rounded bg-white/8" />
+            <div className="h-1.5 w-3/5 rounded bg-white/6" />
           </div>
 
           {/* Button at bottom - Coral glowing like + button */}
-          <div className="absolute bottom-2.5 left-2.5 right-2.5">
+          <div className="absolute right-2.5 bottom-2.5 left-2.5">
             <div
-              className="rounded-md px-2 py-1.5 text-[7px] text-white font-medium text-center"
+              className="rounded-md px-2 py-1.5 text-center font-medium text-[7px] text-white"
               style={{
                 background:
                   "linear-gradient(145deg, rgba(232, 97, 60, 0.9) 0%, rgba(201, 78, 46, 0.85) 50%, rgba(170, 60, 35, 0.8) 100%)",
@@ -454,40 +380,30 @@ function AutoUpdatesVisual() {
         </div>
 
         {/* Cursor pointer */}
-        <div className="absolute bottom-0 right-0 translate-x-1 translate-y-1">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="white"
-            className="drop-shadow-lg opacity-90"
-          >
+        <div className="absolute right-0 bottom-0 translate-x-1 translate-y-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" className="opacity-90 drop-shadow-lg">
             <path d="M4 4l16 8-8 2-2 8z" />
           </svg>
         </div>
       </div>
 
       {/* Center sync icon */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 ml-4 -translate-y-1/2 z-10">
+      <div className="absolute top-1/2 left-1/2 z-10 ml-4 -translate-x-1/2 -translate-y-1/2">
         <div
-          className="w-9 h-9 rounded-full flex items-center justify-center"
+          className="flex h-9 w-9 items-center justify-center rounded-full"
           style={{
-            background:
-              "linear-gradient(145deg, rgba(25,25,25,0.95) 0%, rgba(15,15,15,0.98) 100%)",
-            boxShadow:
-              "0 4px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1)",
+            background: "linear-gradient(145deg, rgba(25,25,25,0.95) 0%, rgba(15,15,15,0.98) 100%)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1)",
             border: "1px solid rgba(255,255,255,0.15)",
           }}
         >
-          <RefreshCcw className="w-4 h-4 text-[#E8613C]" strokeWidth={2.5} />
+          <RefreshCcw className="h-4 w-4 text-[#E8613C]" strokeWidth={2.5} />
         </div>
       </div>
 
       {/* Right side - Stacked memory cards */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col items-center">
-        <p className="text-[7px] text-white/40 mb-2 tracking-wide">
-          Live updates
-        </p>
+      <div className="absolute top-1/2 right-0 flex -translate-y-1/2 flex-col items-center">
+        <p className="mb-2 text-[7px] text-white/40 tracking-wide">Live updates</p>
 
         {/* Card stack container */}
         <div className="relative h-28 w-28">
@@ -495,15 +411,14 @@ function AutoUpdatesVisual() {
           <div
             className="absolute top-0 right-4 w-24 rounded-lg p-2"
             style={{
-              background:
-                "linear-gradient(145deg, rgba(35,35,35,0.3) 0%, rgba(25,25,25,0.2) 100%)",
+              background: "linear-gradient(145deg, rgba(35,35,35,0.3) 0%, rgba(25,25,25,0.2) 100%)",
               border: "1px solid rgba(255,255,255,0.05)",
               opacity: 0.4,
             }}
           >
-            <div className="flex items-center gap-1.5 mb-1">
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="h-1 w-10 bg-white/10 rounded" />
+            <div className="mb-1 flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-full bg-white/10" />
+              <div className="h-1 w-10 rounded bg-white/10" />
             </div>
             <div className="text-[6px] text-white/30">v1: Intent queued</div>
           </div>
@@ -512,17 +427,16 @@ function AutoUpdatesVisual() {
           <div
             className="absolute top-6 right-2 w-24 rounded-lg p-2"
             style={{
-              background:
-                "linear-gradient(145deg, rgba(45,45,45,0.5) 0%, rgba(30,30,30,0.4) 100%)",
+              background: "linear-gradient(145deg, rgba(45,45,45,0.5) 0%, rgba(30,30,30,0.4) 100%)",
               border: "1px solid rgba(255,255,255,0.08)",
               opacity: 0.7,
             }}
           >
-            <div className="flex items-center gap-1.5 mb-1">
-              <div className="w-3.5 h-3.5 rounded-full bg-white/15 flex items-center justify-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
+            <div className="mb-1 flex items-center gap-1.5">
+              <div className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-white/15">
+                <div className="h-1.5 w-1.5 rounded-full bg-white/30" />
               </div>
-              <div className="h-1 w-12 bg-white/15 rounded" />
+              <div className="h-1 w-12 rounded bg-white/15" />
             </div>
             <div className="text-[6px] text-white/40">v2: Policy hold</div>
           </div>
@@ -531,25 +445,21 @@ function AutoUpdatesVisual() {
           <div
             className="absolute top-12 right-0 w-26 rounded-lg p-2.5"
             style={{
-              background:
-                "linear-gradient(145deg, rgba(55,55,55,0.7) 0%, rgba(40,40,40,1) 100%)",
-              boxShadow:
-                "0 4px 15px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)",
+              background: "linear-gradient(145deg, rgba(55,55,55,0.7) 0%, rgba(40,40,40,1) 100%)",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)",
               border: "1px solid rgba(255,255,255,0.12)",
             }}
           >
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="w-5 h-5 rounded-full bg-[#E8613C]/20 flex items-center justify-center">
-                <RefreshCcw className="w-3 h-3 text-[#E8613C]" />
+            <div className="mb-1.5 flex items-center gap-2">
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E8613C]/20">
+                <RefreshCcw className="h-3 w-3 text-[#E8613C]" />
               </div>
               <div>
-                <p className="text-[9px] text-white/90 font-medium">Latest</p>
+                <p className="font-medium text-[9px] text-white/90">Latest</p>
                 <p className="text-[7px] text-white/50">Just now</p>
               </div>
             </div>
-            <div className="text-[7px] text-[#E8613C]/80 font-medium">
-              v3: Capture allowed
-            </div>
+            <div className="font-medium text-[#E8613C]/80 text-[7px]">v3: Capture allowed</div>
           </div>
         </div>
       </div>
@@ -559,28 +469,28 @@ function AutoUpdatesVisual() {
 
 function EncryptedPrivateVisual() {
   return (
-    <div className="relative w-full h-full scale-130 flex items-center justify-center overflow-hidden">
+    <div className="relative flex h-full w-full scale-130 items-center justify-center overflow-hidden">
       {/* Layered shields - outer to inner, progressively more opaque */}
 
       {/* Shield 5 - Outermost, most faded */}
-      <IoShield className="absolute w-44 h-44 text-[#E8613C]/[0.03]" />
+      <IoShield className="absolute h-44 w-44 text-[#E8613C]/[0.03]" />
 
       {/* Shield 4 */}
-      <IoShield className="absolute w-36 h-36 text-[#E8613C]/[0.06]" />
+      <IoShield className="absolute h-36 w-36 text-[#E8613C]/[0.06]" />
 
       {/* Shield 3 */}
-      <IoShield className="absolute w-28 h-28 text-[#E8613C]/[0.1]" />
+      <IoShield className="absolute h-28 w-28 text-[#E8613C]/[0.1]" />
 
       {/* Shield 2 */}
-      <IoShield className="absolute w-20 h-20 text-[#E8613C]/[0.18]" />
+      <IoShield className="absolute h-20 w-20 text-[#E8613C]/[0.18]" />
 
       {/* Shield 1 - Main shield, most opaque */}
       <div className="relative">
-        <IoShield className="w-14 h-14 text-[#E8613C]/30" />
+        <IoShield className="h-14 w-14 text-[#E8613C]/30" />
 
         {/* Lock icon in center */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <IoLockClosed className="w-5 h-5 text-white/90" />
+          <IoLockClosed className="h-5 w-5 text-white/90" />
         </div>
       </div>
     </div>
@@ -610,36 +520,15 @@ const DroidIcon = ({ className }: { className?: string }) => (
 const GeminiColorIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className}>
     <defs>
-      <linearGradient
-        gradientUnits="userSpaceOnUse"
-        id="gemini-fill-0"
-        x1="7"
-        x2="11"
-        y1="15.5"
-        y2="12"
-      >
+      <linearGradient gradientUnits="userSpaceOnUse" id="gemini-fill-0" x1="7" x2="11" y1="15.5" y2="12">
         <stop stopColor="#08B962" />
         <stop offset="1" stopColor="#08B962" stopOpacity="0" />
       </linearGradient>
-      <linearGradient
-        gradientUnits="userSpaceOnUse"
-        id="gemini-fill-1"
-        x1="8"
-        x2="11.5"
-        y1="5.5"
-        y2="11"
-      >
+      <linearGradient gradientUnits="userSpaceOnUse" id="gemini-fill-1" x1="8" x2="11.5" y1="5.5" y2="11">
         <stop stopColor="#F94543" />
         <stop offset="1" stopColor="#F94543" stopOpacity="0" />
       </linearGradient>
-      <linearGradient
-        gradientUnits="userSpaceOnUse"
-        id="gemini-fill-2"
-        x1="3.5"
-        x2="17.5"
-        y1="13.5"
-        y2="12"
-      >
+      <linearGradient gradientUnits="userSpaceOnUse" id="gemini-fill-2" x1="3.5" x2="17.5" y1="13.5" y2="12">
         <stop stopColor="#FABC12" />
         <stop offset=".46" stopColor="#FABC12" stopOpacity="0" />
       </linearGradient>
@@ -666,94 +555,53 @@ const GeminiColorIcon = ({ className }: { className?: string }) => (
 function CrossToolSyncVisual() {
   // Grid configuration: 5 columns x 4 rows
   // null = empty cell, string = icon type
-  type IconType =
-    | "claude"
-    | "openai"
-    | "copilot"
-    | "vscode"
-    | "gemini"
-    | "cursor"
-    | "opencode"
-    | "droid"
-    | "zed";
+  type IconType = "claude" | "openai" | "copilot" | "vscode" | "gemini" | "cursor" | "opencode" | "droid" | "zed";
   type CellConfig = { icon: IconType; opacity: number } | null;
 
   const grid: CellConfig[][] = [
     // Row 0 (top)
-    [
-      null,
-      { icon: "copilot", opacity: 1 },
-      null,
-      { icon: "cursor", opacity: 1 },
-      null,
-    ],
+    [null, { icon: "copilot", opacity: 1 }, null, { icon: "cursor", opacity: 1 }, null],
     // Row 1
-    [
-      { icon: "gemini", opacity: 1 },
-      null,
-      { icon: "claude", opacity: 1 },
-      null,
-      { icon: "openai", opacity: 1 },
-    ],
+    [{ icon: "gemini", opacity: 1 }, null, { icon: "claude", opacity: 1 }, null, { icon: "openai", opacity: 1 }],
     // Row 2 - center row
-    [
-      null,
-      { icon: "opencode", opacity: 1 },
-      null,
-      { icon: "droid", opacity: 1 },
-      null,
-    ],
+    [null, { icon: "opencode", opacity: 1 }, null, { icon: "droid", opacity: 1 }, null],
     // Row 3 (bottom)
-    [
-      { icon: "vscode", opacity: 1 },
-      null,
-      { icon: "zed", opacity: 1 },
-      null,
-      { icon: "claude", opacity: 1 },
-    ],
+    [{ icon: "vscode", opacity: 1 }, null, { icon: "zed", opacity: 1 }, null, { icon: "claude", opacity: 1 }],
   ];
 
   const getIcon = (type: IconType) => {
     switch (type) {
       case "claude":
-        return <span className="text-xs font-bold text-[#D97757]">C</span>;
+        return <span className="font-bold text-[#D97757] text-xs">C</span>;
       case "openai":
-        return <span className="text-xs font-bold text-[#10A37F]">AI</span>;
+        return <span className="font-bold text-[#10A37F] text-xs">AI</span>;
       case "copilot":
-        return <span className="text-xs font-bold text-white">GH</span>;
+        return <span className="font-bold text-white text-xs">GH</span>;
       case "vscode":
-        return <span className="text-xs font-bold text-[#007ACC]">VS</span>;
+        return <span className="font-bold text-[#007ACC] text-xs">VS</span>;
       case "gemini":
-        return <GeminiColorIcon className="w-5 h-5" />;
+        return <GeminiColorIcon className="h-5 w-5" />;
       case "cursor":
-        return <CursorIcon className="w-5 h-5 text-white" />;
+        return <CursorIcon className="h-5 w-5 text-white" />;
       case "opencode":
-        return <OpenCodeIcon className="w-5 h-5 text-white" />;
+        return <OpenCodeIcon className="h-5 w-5 text-white" />;
       case "droid":
-        return <DroidIcon className="w-5 h-5 text-[#E8613C]" />;
+        return <DroidIcon className="h-5 w-5 text-[#E8613C]" />;
       case "zed":
-        return (
-          <Image
-            src="/zed.png"
-            alt="Zed"
-            width={20}
-            height={20}
-            className="w-5 h-5"
-          />
-        );
+        return <Image src="/zed.png" alt="Zed" width={20} height={20} className="h-5 w-5" />;
       default:
         return null;
     }
   };
 
   return (
-    <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
       {/* 5x4 Grid */}
       <div className="grid scale-125 grid-cols-5 gap-2">
         {grid.flat().map((cell, i) => (
           <div
             key={i}
-            className="w-9 h-9 rounded-lg flex items-center justify-center"
+            className="flex h-9 w-9 items-center justify-center rounded-lg"
             style={{
               opacity: cell ? cell.opacity : 0.9,
               background: cell
@@ -762,9 +610,7 @@ function CrossToolSyncVisual() {
               boxShadow: cell
                 ? "0 4px 12px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1)"
                 : "inset 0 1px 1px rgba(255,255,255,0.03)",
-              border: cell
-                ? "1px solid rgba(255,255,255,0.1)"
-                : "1px solid rgba(255,255,255,0.03)",
+              border: cell ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(255,255,255,0.03)",
             }}
           >
             {cell && getIcon(cell.icon)}
@@ -792,15 +638,15 @@ export function Features() {
   }));
 
   return (
-    <section id="features" className="py-20 sm:py-28 px-4 sm:px-6">
+    <section id="features" className="px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-14">
+        <div className="mb-12 text-center sm:mb-14">
           {/* Glowing badge pill */}
-          <div className="flex justify-center mb-6">
+          <div className="mb-6 flex justify-center">
             <div className="group relative">
               {/* Border glow spot - top left */}
               <div
-                className="absolute -top-px -left-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -top-px -left-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at top left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 30%, transparent 70%)",
@@ -808,7 +654,7 @@ export function Features() {
               />
               {/* Border glow spot - bottom right */}
               <div
-                className="absolute -bottom-px -right-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -right-px -bottom-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 30%, transparent 70%)",
@@ -819,36 +665,28 @@ export function Features() {
               <div className="absolute -inset-0.5 rounded-full border border-white/10" />
 
               {/* Main container */}
-              <div className="relative inline-flex items-center px-4 py-2 rounded-full bg-surface/95 backdrop-blur-sm">
+              <div className="relative inline-flex items-center rounded-full bg-surface/95 px-4 py-2 backdrop-blur-sm">
                 {/* Inner glow - top left */}
-                <div className="absolute top-0 left-0 w-16 h-10 bg-white/5 rounded-full blur-xl -translate-x-1/3 -translate-y-1/2" />
+                <div className="absolute top-0 left-0 h-10 w-16 -translate-x-1/3 -translate-y-1/2 rounded-full bg-white/5 blur-xl" />
                 {/* Inner glow - bottom right */}
-                <div className="absolute bottom-0 right-0 w-16 h-10 bg-white/5 rounded-full blur-xl translate-x-1/3 translate-y-1/2" />
+                <div className="absolute right-0 bottom-0 h-10 w-16 translate-x-1/3 translate-y-1/2 rounded-full bg-white/5 blur-xl" />
 
                 {/* Text */}
-                <span className="relative z-10 text-xs sm:text-sm text-foreground font-medium">
-                  How It helps
-                </span>
+                <span className="relative z-10 font-medium text-foreground text-xs sm:text-sm">How It helps</span>
               </div>
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 tracking-tight leading-[1.1]">
+          <h2 className="mb-4 font-bold font-display text-3xl leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
             {content.featuresTitle}
           </h2>
-          <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto">
-            {content.featuresSub}
-          </p>
+          <p className="mx-auto max-w-2xl text-base text-foreground-muted sm:text-lg">{content.featuresSub}</p>
         </div>
 
         {/* Bento Grid - 3:3 Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {items.map((feature) => (
-            <BentoCard
-              key={feature.title}
-              title={feature.title}
-              description={feature.description}
-            >
+            <BentoCard key={feature.title} title={feature.title} description={feature.description}>
               {feature.visual}
             </BentoCard>
           ))}

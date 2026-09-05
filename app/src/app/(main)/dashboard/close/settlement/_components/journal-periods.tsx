@@ -97,7 +97,7 @@ export function JournalPeriods() {
           {periods.map((p) => (
             <div key={p.id} className="flex items-center justify-between rounded-lg border px-3 py-2">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium">{p.label}</span>
+                <span className="font-medium text-sm">{p.label}</span>
                 <Badge variant={p.status === "open" ? "secondary" : "outline"}>{p.status}</Badge>
               </div>
               {p.status === "open" ? (
@@ -111,7 +111,7 @@ export function JournalPeriods() {
               )}
             </div>
           ))}
-          <p className="text-muted-foreground mt-1 text-xs">
+          <p className="mt-1 text-muted-foreground text-xs">
             Closing a period locks it - postings into closed periods are rejected.
           </p>
           <Button size="sm" disabled={posting || busy} onClick={() => void postRun()}>
@@ -162,7 +162,7 @@ export function JournalPeriods() {
                   <Badge variant="destructive">out of balance</Badge>
                 )}
               </div>
-              <p className="text-muted-foreground mt-2 text-xs">
+              <p className="mt-2 text-muted-foreground text-xs">
                 Posting to the journal and closing periods requires an owner or accountant role.
               </p>
             </>

@@ -23,7 +23,14 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { type ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface RunMetrics {
@@ -183,7 +190,12 @@ export default function MetricsPage() {
     const win = data.window;
     if (!win) return [];
     return [
-      { key: "deterministic", name: "Deterministic", value: win.deterministicResolved, fill: "var(--color-deterministic)" },
+      {
+        key: "deterministic",
+        name: "Deterministic",
+        value: win.deterministicResolved,
+        fill: "var(--color-deterministic)",
+      },
       { key: "ai", name: "AI-judged", value: win.aiResolved, fill: "var(--color-ai)" },
       { key: "exceptions", name: "Exceptions", value: win.exceptions, fill: "var(--color-exceptions)" },
     ].filter((d) => d.value > 0);
@@ -324,7 +336,7 @@ export default function MetricsPage() {
                       y="48%"
                       textAnchor="middle"
                       dominantBaseline="middle"
-                      className="fill-foreground text-2xl font-semibold"
+                      className="fill-foreground font-semibold text-2xl"
                     >
                       {healthScore}%
                     </text>
@@ -355,7 +367,14 @@ export default function MetricsPage() {
                 <ChartContainer config={mixConfig} className="mx-auto aspect-square h-44">
                   <PieChart>
                     <ChartTooltip content={<ChartTooltipContent nameKey="name" hideLabel />} />
-                    <Pie data={mixData} dataKey="value" nameKey="name" innerRadius={40} outerRadius={68} strokeWidth={2}>
+                    <Pie
+                      data={mixData}
+                      dataKey="value"
+                      nameKey="name"
+                      innerRadius={40}
+                      outerRadius={68}
+                      strokeWidth={2}
+                    >
                       {mixData.map((d) => (
                         <Cell key={d.key} fill={d.fill} />
                       ))}

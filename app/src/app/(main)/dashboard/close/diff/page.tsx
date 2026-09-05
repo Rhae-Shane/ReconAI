@@ -50,10 +50,12 @@ export default function CloseDiffPage() {
     <div className="flex flex-col gap-4">
       <div>
         <h1 className="text-3xl tracking-tight">Run vs previous</h1>
-        <p className="text-muted-foreground text-sm">Match-rate and exception regression between the latest two closes.</p>
+        <p className="text-muted-foreground text-sm">
+          Match-rate and exception regression between the latest two closes.
+        </p>
       </div>
 
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && <p className="text-destructive text-sm">{error}</p>}
 
       {diff && (
         <>
@@ -67,7 +69,7 @@ export default function CloseDiffPage() {
             ].map((s) => (
               <Card key={s.label}>
                 <CardHeader className="pb-1">
-                  <CardTitle className="text-muted-foreground text-xs font-normal">{s.label}</CardTitle>
+                  <CardTitle className="font-normal text-muted-foreground text-xs">{s.label}</CardTitle>
                 </CardHeader>
                 <CardContent className="text-xl tabular-nums">{s.value}</CardContent>
               </Card>

@@ -1,16 +1,10 @@
 "use client";
 
 import { type ReactNode, useEffect, useState } from "react";
+
 import Link from "next/link";
-import {
-  ArrowRight,
-  ChevronDown,
-  Copy,
-  Check,
-  Menu,
-  ShieldCheck,
-  X,
-} from "lucide-react";
+
+import { ArrowRight, Check, ChevronDown, Copy, Menu, ShieldCheck, X } from "lucide-react";
 
 import { FEATURE_VISUALS } from "./feature-visuals";
 import { HeroShader } from "./hero-shader";
@@ -52,7 +46,7 @@ function Badge({ children }: { children: string }) {
         >
           <span className="size-1.5 rounded-full bg-[#e8613c]" />
         </span>
-        <span className="text-xs font-medium tracking-tight sm:text-sm">{children}</span>
+        <span className="font-medium text-xs tracking-tight sm:text-sm">{children}</span>
       </div>
     </div>
   );
@@ -90,13 +84,25 @@ function FolderCard({
         <div className="relative flex h-full items-center justify-center p-6">{children}</div>
       </div>
       <div className="relative -mt-4">
-        <svg viewBox="0 0 300 120" fill="none" preserveAspectRatio="none" className="relative z-10 h-auto w-full drop-shadow-[0_8px_24px_rgba(232,97,60,0.3)]">
+        <svg
+          viewBox="0 0 300 120"
+          fill="none"
+          preserveAspectRatio="none"
+          className="relative z-10 h-auto w-full drop-shadow-[0_8px_24px_rgba(232,97,60,0.3)]"
+        >
           <defs>
             <linearGradient id={`${gid}g`} x1="0" y1="0" x2="300" y2="120" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#E8613C" stopOpacity="0.85" />
               <stop offset="100%" stopColor="#C94E2E" stopOpacity="0.75" />
             </linearGradient>
-            <radialGradient id={`${gid}s`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(30 10) scale(100 80)">
+            <radialGradient
+              id={`${gid}s`}
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(30 10) scale(100 80)"
+            >
               <stop offset="0%" stopColor="white" stopOpacity="0.3" />
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
@@ -111,8 +117,8 @@ function FolderCard({
           />
         </svg>
         <div className="absolute inset-0 z-20 flex flex-col justify-center px-4 pt-8 pb-4">
-          <h3 className="mb-1 text-base font-semibold text-white sm:text-xl">{title}</h3>
-          <p className="text-sm leading-tight text-white/70">{description}</p>
+          <h3 className="mb-1 font-semibold text-base text-white sm:text-xl">{title}</h3>
+          <p className="text-sm text-white/70 leading-tight">{description}</p>
         </div>
       </div>
     </div>
@@ -157,7 +163,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
               >
                 <ShieldCheck className="size-4 text-[#e8613c]" />
               </div>
-              <span className="text-lg font-semibold">{content.name}</span>
+              <span className="font-semibold text-lg">{content.name}</span>
             </Link>
             <div className="hidden items-center gap-8 md:flex">
               {NAV.map((item) => (
@@ -174,7 +180,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
             </button>
           </div>
           {menu && (
-            <div className="space-y-1 border-t border-white/10 py-3 md:hidden">
+            <div className="space-y-1 border-white/10 border-t py-3 md:hidden">
               {NAV.map((item) => (
                 <a
                   key={item.name}
@@ -223,16 +229,16 @@ export function LandingPage({ content }: { content: LandingContent }) {
               <div className="mc-fade my-6 flex justify-center">
                 <Badge>{content.badge}</Badge>
               </div>
-              <h1 className="font-display mc-fade mc-delay-1 text-4xl leading-[1.1] font-bold tracking-tight sm:text-5xl lg:text-7xl">
+              <h1 className="mc-fade mc-delay-1 font-bold font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-7xl">
                 {content.headline}
                 <br />
                 <span className="mc-muted">{content.headlineMuted}</span>
               </h1>
-              <p className="mc-fade mc-delay-2 mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+              <p className="mc-fade mc-delay-2 mx-auto mt-5 max-w-2xl text-sm text-white/70 leading-relaxed sm:text-base">
                 {content.subhead}
               </p>
               <div className="mc-fade mc-delay-3 mt-8 flex justify-center gap-3">
-                <a href="#features" className="mc-btn-glass px-6 py-3 text-sm font-display">
+                <a href="#features" className="mc-btn-glass px-6 py-3 font-display text-sm">
                   Features
                 </a>
                 <CoralLogin href={content.loginHref} className="px-6 py-3" />
@@ -247,7 +253,10 @@ export function LandingPage({ content }: { content: LandingContent }) {
               {[0, 1].map((dup) => (
                 <div key={dup} className="flex shrink-0 gap-10 px-5">
                   {content.marquee.map((item) => (
-                    <span key={`${dup}-${item}`} className="text-lg font-medium whitespace-nowrap text-white/70 sm:text-2xl">
+                    <span
+                      key={`${dup}-${item}`}
+                      className="whitespace-nowrap font-medium text-lg text-white/70 sm:text-2xl"
+                    >
                       {item}
                     </span>
                   ))}
@@ -263,7 +272,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
               <div className="mb-6 flex justify-center">
                 <Badge>How it helps</Badge>
               </div>
-              <h2 className="font-display mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="mb-4 font-bold font-display text-3xl tracking-tight sm:text-4xl lg:text-5xl">
                 {content.featuresTitle}
               </h2>
               <p className="mc-muted mx-auto max-w-2xl text-base sm:text-lg">{content.featuresSub}</p>
@@ -284,7 +293,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
               <div className="mb-6 flex justify-center">
                 <Badge>Setup</Badge>
               </div>
-              <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="font-bold font-display text-3xl tracking-tight sm:text-4xl lg:text-5xl">
                 {content.howTitle}
               </h2>
               <p className="mc-muted mx-auto mt-5 max-w-2xl text-base sm:text-lg">{content.howSub}</p>
@@ -294,7 +303,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
                 <div className="space-y-4">
                   {content.steps.map((step) => (
                     <div key={step.num} className="flex items-start gap-4">
-                      <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-[#e8613c]/20 bg-[#e8613c]/10 font-mono text-[11px] text-[#e8613c]">
+                      <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-[#e8613c]/20 bg-[#e8613c]/10 font-mono text-[#e8613c] text-[11px]">
                         {step.num}
                       </div>
                       <p className="text-sm leading-8 sm:text-base">
@@ -317,7 +326,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
                   }}
                 />
                 <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111]/50 shadow-2xl backdrop-blur-md">
-                  <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
+                  <div className="flex items-center justify-between border-white/[0.06] border-b px-5 py-3">
                     <span className="mc-subtle font-mono text-xs">{content.snippetFile}</span>
                     <button
                       type="button"
@@ -343,12 +352,14 @@ export function LandingPage({ content }: { content: LandingContent }) {
               <div className="mb-6">
                 <Badge>FAQ</Badge>
               </div>
-              <h2 className="font-display mb-3 text-3xl font-bold tracking-tight lg:text-4xl">
+              <h2 className="mb-3 font-bold font-display text-3xl tracking-tight lg:text-4xl">
                 Frequently Asked
                 <br />
                 <span className="mc-muted">Questions</span>
               </h2>
-              <p className="mc-muted mb-8 max-w-sm text-sm sm:text-base">Login when you are ready to run the console.</p>
+              <p className="mc-muted mb-8 max-w-sm text-sm sm:text-base">
+                Login when you are ready to run the console.
+              </p>
               <CoralLogin href={content.loginHref} className="px-6 py-3" />
             </div>
             <div className="space-y-3 lg:col-span-8">
@@ -376,7 +387,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className={`text-sm font-medium sm:text-base ${open ? "text-white" : "mc-muted"}`}>
+                        <span className={`font-medium text-sm sm:text-base ${open ? "text-white" : "mc-muted"}`}>
                           {faq.q}
                         </span>
                       </div>
@@ -399,7 +410,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
         <section className="px-4 py-20 sm:px-6 sm:pt-16 sm:pb-28">
           <div className="relative mx-auto max-w-6xl">
             <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111]/40 p-8 backdrop-blur-md sm:p-12 lg:p-14">
-              <h2 className="font-display mb-3 text-2xl font-bold tracking-tight sm:text-4xl">{content.ctaTitle}</h2>
+              <h2 className="mb-3 font-bold font-display text-2xl tracking-tight sm:text-4xl">{content.ctaTitle}</h2>
               <p className="mc-muted mb-6 max-w-md text-sm sm:text-base">{content.ctaBody}</p>
               <CoralLogin href={content.loginHref} className="px-6 py-3" />
             </div>
@@ -416,14 +427,14 @@ export function LandingPage({ content }: { content: LandingContent }) {
                 <div className="flex size-8 items-center justify-center rounded-lg border border-white/10 bg-[#111]/80">
                   <ShieldCheck className="size-4 text-[#e8613c]" />
                 </div>
-                <span className="text-lg font-semibold">{content.name}</span>
+                <span className="font-semibold text-lg">{content.name}</span>
               </Link>
               <p className="mc-muted mt-4 text-sm leading-relaxed">{content.footerBlurb}</p>
               <p className="mc-subtle mt-4 text-xs">Razorpay hackathon</p>
             </div>
             <div className="flex gap-16">
               <div>
-                <h3 className="mb-4 text-sm font-semibold">Product</h3>
+                <h3 className="mb-4 font-semibold text-sm">Product</h3>
                 <ul className="space-y-3">
                   {NAV.map((item) => (
                     <li key={item.name}>
@@ -444,7 +455,7 @@ export function LandingPage({ content }: { content: LandingContent }) {
         </div>
         <div className="relative h-16 overflow-hidden sm:h-24 lg:h-36">
           <h2
-            className="font-display absolute top-0 left-1/2 -translate-x-1/2 text-[4.5rem] leading-[0.85] font-bold tracking-tighter whitespace-nowrap select-none sm:text-[6rem] lg:text-[10rem]"
+            className="absolute top-0 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-bold font-display text-[4.5rem] leading-[0.85] tracking-tighter sm:text-[6rem] lg:text-[10rem]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 40%, transparent 100%)",

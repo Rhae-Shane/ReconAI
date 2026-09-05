@@ -1,14 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  ResponsiveContainer,
-} from "recharts";
+
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 const data = [
   { type: "Approved", count: 847, fill: "#3a3a3a" },
@@ -25,28 +19,24 @@ export function ClassificationChart() {
   // We rely on the bar's category sitting in the last slot of the X axis.
   const highlightedPercent = useMemo(() => {
     const total = data.reduce((sum, d) => sum + d.count, 0);
-    return ((HIGHLIGHTED!.count / total) * 100).toFixed(1);
+    return ((HIGHLIGHTED?.count / total) * 100).toFixed(1);
   }, []);
 
   return (
-    <div className="flex flex-col h-full justify-center px-4 py-6 sm:px-6 sm:py-8 select-none">
+    <div className="flex h-full select-none flex-col justify-center px-4 py-6 sm:px-6 sm:py-8">
       <div className="mb-4">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-foreground-subtle">
-          Decision distribution
-        </p>
-        <p className="font-mono text-[10px] text-foreground-subtle/60 mt-0.5">
-          Last 30 days
-        </p>
+        <p className="font-mono text-[10px] text-foreground-subtle uppercase tracking-wider">Decision distribution</p>
+        <p className="mt-0.5 font-mono text-[10px] text-foreground-subtle/60">Last 30 days</p>
       </div>
 
       <div
-        className="relative w-full focus:outline-none [&_*]:!outline-none [&_svg]:focus:outline-none"
+        className="[&_*]:!outline-none relative w-full focus:outline-none [&_svg]:focus:outline-none"
         style={{ height: 280 }}
         tabIndex={-1}
       >
         {/* Highlight column behind the rightmost bar */}
         <div
-          className="absolute pointer-events-none z-0"
+          className="pointer-events-none absolute z-0"
           style={{
             top: 0,
             bottom: 28,
@@ -61,51 +51,36 @@ export function ClassificationChart() {
 
         {/* Static callout label positioned above the rightmost bar */}
         <div
-          className="absolute z-20 pointer-events-none"
+          className="pointer-events-none absolute z-20"
           style={{
             top: 28,
             right: "9%",
             animation: "callout-float 3s ease-in-out infinite",
           }}
         >
-          <div className="rounded-lg bg-surface-elevated/95 backdrop-blur-md border border-white/[0.08] px-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-foreground-muted mb-0.5">
-              {HIGHLIGHTED!.type}
+          <div className="rounded-lg border border-white/[0.08] bg-surface-elevated/95 px-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.5)] backdrop-blur-md">
+            <p className="mb-0.5 font-mono text-[10px] text-foreground-muted uppercase tracking-wider">
+              {HIGHLIGHTED?.type}
             </p>
-            <p className="font-mono text-xs text-foreground font-semibold">
-              {HIGHLIGHTED!.count.toLocaleString()} events
+            <p className="font-mono font-semibold text-foreground text-xs">
+              {HIGHLIGHTED?.count.toLocaleString()} events
             </p>
-            <p className="font-mono text-[9px] text-accent mt-0.5">
-              {highlightedPercent}% of total
-            </p>
+            <p className="mt-0.5 font-mono text-[9px] text-accent">{highlightedPercent}% of total</p>
           </div>
           {/* Connecting tick mark down to the bar */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 w-px"
+            className="absolute left-1/2 w-px -translate-x-1/2"
             style={{
               top: "100%",
               height: 12,
-              background:
-                "linear-gradient(to bottom, rgba(232,97,60,0.6), transparent)",
+              background: "linear-gradient(to bottom, rgba(232,97,60,0.6), transparent)",
             }}
           />
         </div>
 
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          className="relative z-10"
-        >
-          <BarChart
-            data={data}
-            margin={{ top: 8, right: 8, left: -12, bottom: 4 }}
-            barCategoryGap="28%"
-          >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="#1f1f1f"
-              vertical={false}
-            />
+        <ResponsiveContainer width="100%" height="100%" className="relative z-10">
+          <BarChart data={data} margin={{ top: 8, right: 8, left: -12, bottom: 4 }} barCategoryGap="28%">
+            <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
             <XAxis
               dataKey="type"
               axisLine={false}

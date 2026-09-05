@@ -2,7 +2,15 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { isRazorpayConfigured, razorpayConfig } from "./config";
 import { inboxClear, inboxList, inboxPush, inboxTake } from "./inbox";
-import { applyRecon, fillTestModeBankLegs, mapDispute, mapPayment, mapRefund, mapSettlement, mapWebhookEvent } from "./map";
+import {
+  applyRecon,
+  fillTestModeBankLegs,
+  mapDispute,
+  mapPayment,
+  mapRefund,
+  mapSettlement,
+  mapWebhookEvent,
+} from "./map";
 import { computeRazorpaySignature, verifyRazorpaySignature } from "./webhook";
 
 afterEach(() => {
@@ -122,7 +130,9 @@ describe("map Razorpay entities → FinRecord", () => {
   });
 
   it("stamps settlementId from recon onto payment rows", () => {
-    const rows = applyRecon(mapPayment({ id: "pay_1", amount: 100 }), [{ payment_id: "pay_1", settlement_id: "setl_9" }]);
+    const rows = applyRecon(mapPayment({ id: "pay_1", amount: 100 }), [
+      { payment_id: "pay_1", settlement_id: "setl_9" },
+    ]);
     expect(rows[0]?.raw?.settlementId).toBe("setl_9");
   });
 });

@@ -1,5 +1,5 @@
-import { createClient } from "@/lib/supabase/server";
 import { orgIdFromUser } from "@/lib/close/org";
+import { createClient } from "@/lib/supabase/server";
 
 /**
  * Route-level authorization guard.

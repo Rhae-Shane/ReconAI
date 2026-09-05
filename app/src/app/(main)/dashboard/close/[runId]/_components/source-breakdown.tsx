@@ -36,21 +36,9 @@ export function SourceBreakdown({ sources }: { sources: SourceStat[] }) {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <ChartContainer config={chartConfig} className="h-44 w-full">
-          <BarChart
-            accessibilityLayer
-            layout="vertical"
-            data={data}
-            margin={{ top: 4, right: 12, left: 4, bottom: 0 }}
-          >
+          <BarChart accessibilityLayer layout="vertical" data={data} margin={{ top: 4, right: 12, left: 4, bottom: 0 }}>
             <CartesianGrid horizontal={false} />
-            <YAxis
-              dataKey="sourceName"
-              type="category"
-              axisLine={false}
-              tickLine={false}
-              tickMargin={8}
-              width={72}
-            />
+            <YAxis dataKey="sourceName" type="category" axisLine={false} tickLine={false} tickMargin={8} width={72} />
             <XAxis
               type="number"
               domain={[0, 100]}

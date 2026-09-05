@@ -30,8 +30,11 @@ const mixConfig = {
 } satisfies ChartConfig;
 
 function shortRunId(id: string) {
-  const cleaned = id.replace(/^demo_w/, "W").replace(/^demo_/, "").replace(/_/g, " ");
-  return cleaned.length > 10 ? cleaned.slice(0, 9) + "…" : cleaned;
+  const cleaned = id
+    .replace(/^demo_w/, "W")
+    .replace(/^demo_/, "")
+    .replace(/_/g, " ");
+  return cleaned.length > 10 ? `${cleaned.slice(0, 9)}…` : cleaned;
 }
 
 export function CockpitAnalytics({ runs }: { runs: CloseRunMeta[] }) {

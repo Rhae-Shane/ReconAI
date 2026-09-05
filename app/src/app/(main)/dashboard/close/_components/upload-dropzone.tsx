@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MAP_TARGETS, type ColumnMapping } from "@/lib/close/csv-map";
+import { type ColumnMapping, MAP_TARGETS } from "@/lib/close/csv-map";
 import type { CloseReport } from "@/lib/close/types";
 
 interface UploadResult {
@@ -72,7 +72,9 @@ export function UploadDropzone() {
       if (!res.ok) throw new Error((data as { error?: string }).error ?? "Upload failed");
       if ((data as UploadResult).runId) {
         setResult(data as UploadResult);
-        toast.success(`Reconciled into ${(data as UploadResult).runId}${(data as UploadResult).sharded ? " (sharded)" : ""}.`);
+        toast.success(
+          `Reconciled into ${(data as UploadResult).runId}${(data as UploadResult).sharded ? " (sharded)" : ""}.`,
+        );
       } else {
         toast.success("Parsed source file.");
       }
@@ -165,7 +167,7 @@ export function UploadDropzone() {
 
         {showMap && headers.length > 0 && (
           <div className="space-y-2 rounded-lg border p-3">
-            <p className="text-sm font-medium">Column mapper</p>
+            <p className="font-medium text-sm">Column mapper</p>
             <div className="grid gap-2 sm:grid-cols-2">
               {MAP_TARGETS.map((target) => (
                 <label key={target} className="flex items-center justify-between gap-2 text-xs">
@@ -185,7 +187,11 @@ export function UploadDropzone() {
                 </label>
               ))}
             </div>
-            <Button size="sm" disabled={uploading || !mapping.sourceRef || !mapping.amount} onClick={() => void applyMap()}>
+            <Button
+              size="sm"
+              disabled={uploading || !mapping.sourceRef || !mapping.amount}
+              onClick={() => void applyMap()}
+            >
               Reconcile with this map
             </Button>
           </div>

@@ -1,7 +1,6 @@
-import { createHash, randomUUID } from "node:crypto";
-
 import { DEFAULT_FINANCE_CONFIG } from "./config";
 import type { AiDecisionProvenance, JudgeCandidacy } from "./types";
+import { createHash, randomUUID } from "node:crypto";
 
 /** Prompt / system-instruction version stamped on every model-backed residual decision. */
 export const RECONCILIATION_PROMPT_VERSION = "reconciliation-v3";

@@ -81,8 +81,7 @@ for (const u of users) {
     // Already exists → reset password + role via list+update if we can find the id
     const listed = await admin(`/admin/users?email=${encodeURIComponent(u.email)}`, { method: "GET" });
     const found =
-      listed.json?.users?.find((row) => row.email === u.email) ??
-      (listed.json?.email === u.email ? listed.json : null);
+      listed.json?.users?.find((row) => row.email === u.email) ?? (listed.json?.email === u.email ? listed.json : null);
     if (found?.id) {
       const updated = await admin(`/admin/users/${found.id}`, {
         method: "PUT",

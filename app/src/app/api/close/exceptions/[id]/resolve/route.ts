@@ -5,7 +5,7 @@ import { isCriticalException } from "controller-harness/control/sod";
 import { recordAudit } from "@/lib/audit";
 import { currentUserActor, denied, requireRole } from "@/lib/authz";
 import { getFinanceConfig } from "@/lib/close/config";
-import { resolveException, submitExceptionResolution, listExceptions } from "@/lib/close/store";
+import { listExceptions, resolveException, submitExceptionResolution } from "@/lib/close/store";
 
 export const runtime = "nodejs";
 
@@ -34,10 +34,7 @@ export async function POST(request: Request, { params }: Params) {
   };
 
   const identity = await currentUserActor();
-  const actor =
-    (typeof body.actor === "string" && body.actor.trim()) ||
-    identity?.actor ||
-    verdict.role;
+  const actor = (typeof body.actor === "string" && body.actor.trim()) || identity?.actor || verdict.role;
 
   const existing = listExceptions().find((e) => e.id === id);
   if (!existing) {
@@ -72,7 +69,7 @@ export async function POST(request: Request, { params }: Params) {
     return NextResponse.json(
       {
         error:
-          "Provide action: \"submit\" or status: REVIEWED | OVERRIDDEN | RESOLVED. Use POST .../approve for owner approval.",
+          'Provide action: "submit" or status: REVIEWED | OVERRIDDEN | RESOLVED. Use POST .../approve for owner approval.',
       },
       { status: 400 },
     );
@@ -92,9 +89,7 @@ export async function POST(request: Request, { params }: Params) {
     role: verdict.role,
     action: critical ? "exceptions:submit-resolution" : "exceptions:resolve",
     target: id,
-    detail: critical
-      ? `PENDING_APPROVAL by ${actor}`
-      : `RESOLVED by ${actor} (non-critical)`,
+    detail: critical ? `PENDING_APPROVAL by ${actor}` : `RESOLVED by ${actor} (non-critical)`,
   });
 
   return NextResponse.json({

@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   }
 
   const period = (body as { period?: NewFiscalPeriod }).period;
-  if (!period || !period.id) {
+  if (!period?.id) {
     return NextResponse.json({ error: "period (with id) required" }, { status: 400 });
   }
   const ok = await upsertPeriod(period);

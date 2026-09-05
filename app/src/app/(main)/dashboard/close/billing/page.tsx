@@ -69,7 +69,7 @@ export default function BillingPage() {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="pb-1">
-            <CardTitle className="text-xs font-normal text-muted-foreground">Plan</CardTitle>
+            <CardTitle className="font-normal text-muted-foreground text-xs">Plan</CardTitle>
           </CardHeader>
           <CardContent className="flex items-center gap-2">
             <span className="text-xl">{usage?.plan.name ?? "—"}</span>
@@ -78,7 +78,7 @@ export default function BillingPage() {
         </Card>
         <Card>
           <CardHeader className="pb-1">
-            <CardTitle className="text-xs font-normal text-muted-foreground">Closes</CardTitle>
+            <CardTitle className="font-normal text-muted-foreground text-xs">Closes</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-xl tabular-nums">
@@ -89,7 +89,7 @@ export default function BillingPage() {
         </Card>
         <Card>
           <CardHeader className="pb-1">
-            <CardTitle className="text-xs font-normal text-muted-foreground">Rows ingested</CardTitle>
+            <CardTitle className="font-normal text-muted-foreground text-xs">Rows ingested</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-xl tabular-nums">
@@ -100,7 +100,7 @@ export default function BillingPage() {
         </Card>
         <Card>
           <CardHeader className="pb-1">
-            <CardTitle className="text-xs font-normal text-muted-foreground">Filings / journals</CardTitle>
+            <CardTitle className="font-normal text-muted-foreground text-xs">Filings / journals</CardTitle>
           </CardHeader>
           <CardContent className="text-xl tabular-nums">
             {usage?.gstFilings ?? 0} · {usage?.journalPosts ?? 0}
@@ -109,7 +109,7 @@ export default function BillingPage() {
       </div>
 
       {usage?.overageCloses || usage?.overageRows ? (
-        <p className="text-sm text-amber-700 dark:text-amber-300">
+        <p className="text-amber-700 text-sm dark:text-amber-300">
           Overage this month: {usage.overageCloses} closes, {usage.overageRows} rows.
         </p>
       ) : null}
@@ -121,7 +121,12 @@ export default function BillingPage() {
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">
           {(["starter", "growth", "scale"] as const).map((id) => (
-            <Button key={id} size="sm" variant={usage?.plan.id === id ? "default" : "outline"} onClick={() => void switchPlan(id)}>
+            <Button
+              key={id}
+              size="sm"
+              variant={usage?.plan.id === id ? "default" : "outline"}
+              onClick={() => void switchPlan(id)}
+            >
               {id}
             </Button>
           ))}

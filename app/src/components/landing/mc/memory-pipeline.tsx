@@ -1,13 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { ClassificationChart } from "./classification-chart";
-import { useLanding } from "../landing-context";
 
-const NeuralGlobe = dynamic(
-  () => import("./neural-globe").then((m) => m.NeuralGlobe),
-  { ssr: false },
-);
+import { useLanding } from "../landing-context";
+import { ClassificationChart } from "./classification-chart";
+
+const NeuralGlobe = dynamic(() => import("./neural-globe").then((m) => m.NeuralGlobe), { ssr: false });
 
 function FadedSubCard({
   className,
@@ -53,15 +51,12 @@ function FadedSubCard({
         )`;
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden ${className ?? ""}`}>
+    <div className={`relative overflow-hidden rounded-2xl ${className ?? ""}`}>
       {/* Background — gradient tint that dissolves seamlessly into the page bg */}
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{ background: bgGradient }}
-      />
+      <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ background: bgGradient }} />
       {/* Border — masked: kept side + top/bottom solid, faded side dissolves */}
       <div
-        className="absolute inset-0 rounded-2xl pointer-events-none z-30 border border-white/10"
+        className="pointer-events-none absolute inset-0 z-30 rounded-2xl border border-white/10"
         style={{
           WebkitMaskImage: borderMask,
           maskImage: borderMask,
@@ -75,38 +70,28 @@ function FadedSubCard({
 function SavePipelineCard() {
   const content = useLanding();
   return (
-    <div className="absolute top-6 left-4 sm:top-16 sm:-left-6 z-20 w-[calc(100%-2rem)] sm:w-[340px] max-w-[360px]">
-      <div className="relative rounded-xl bg-surface-elevated/95 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-5 sm:p-6">
-        <div className="flex items-center justify-between mb-5">
-          <h3 className="text-sm font-semibold text-foreground">
-            Control path
-          </h3>
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">
+    <div className="absolute top-6 left-4 z-20 w-[calc(100%-2rem)] max-w-[360px] sm:top-16 sm:-left-6 sm:w-[340px]">
+      <div className="relative rounded-xl border border-white/[0.08] bg-surface-elevated/95 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-6">
+        <div className="mb-5 flex items-center justify-between">
+          <h3 className="font-semibold text-foreground text-sm">Control path</h3>
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/20 bg-emerald-500/15 px-2 py-0.5 font-bold font-mono text-[9px] text-emerald-400 uppercase tracking-wider">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-pulse-subtle absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-pulse-subtle rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
             Live
           </span>
         </div>
 
-        <p className="font-mono text-[9px] uppercase tracking-widest text-foreground-subtle mb-4">
-          Steps
-        </p>
+        <p className="mb-4 font-mono text-[9px] text-foreground-subtle uppercase tracking-widest">Steps</p>
 
         {content.steps.map((step) => (
           <div key={step.num} className="mb-5 last:mb-0">
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="font-mono text-[10px] text-foreground-subtle tracking-wider">
-                {step.num}
-              </span>
-              <h4 className="text-[13px] font-semibold text-foreground">
-                {step.title}
-              </h4>
+            <div className="mb-1.5 flex items-center gap-2">
+              <span className="font-mono text-[10px] text-foreground-subtle tracking-wider">{step.num}</span>
+              <h4 className="font-semibold text-[13px] text-foreground">{step.title}</h4>
             </div>
-            <p className="text-[11px] text-foreground-muted leading-relaxed pl-6">
-              {step.body}
-            </p>
+            <p className="pl-6 text-[11px] text-foreground-muted leading-relaxed">{step.body}</p>
           </div>
         ))}
       </div>
@@ -117,16 +102,16 @@ function SavePipelineCard() {
 export function MemoryPipeline() {
   const content = useLanding();
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6">
+    <section className="px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header — identical to original */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="mb-12 text-center sm:mb-16">
           {/* Glowing badge pill — matches Features / Pricing / FAQ sections */}
-          <div className="flex justify-center mb-6">
+          <div className="mb-6 flex justify-center">
             <div className="group relative">
               {/* Border glow spot - top left */}
               <div
-                className="absolute -top-px -left-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -top-px -left-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at top left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 30%, transparent 70%)",
@@ -134,7 +119,7 @@ export function MemoryPipeline() {
               />
               {/* Border glow spot - bottom right */}
               <div
-                className="absolute -bottom-px -right-px w-16 h-9 rounded-full blur-[1px]"
+                className="absolute -right-px -bottom-px h-9 w-16 rounded-full blur-[1px]"
                 style={{
                   background:
                     "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.15) 30%, transparent 70%)",
@@ -145,33 +130,29 @@ export function MemoryPipeline() {
               <div className="absolute -inset-0.5 rounded-full border border-white/10" />
 
               {/* Main container */}
-              <div className="relative inline-flex items-center px-4 py-2 rounded-full bg-surface/95 backdrop-blur-sm">
+              <div className="relative inline-flex items-center rounded-full bg-surface/95 px-4 py-2 backdrop-blur-sm">
                 {/* Inner glow - top left */}
-                <div className="absolute top-0 left-0 w-16 h-10 bg-white/5 rounded-full blur-xl -translate-x-1/3 -translate-y-1/2" />
+                <div className="absolute top-0 left-0 h-10 w-16 -translate-x-1/3 -translate-y-1/2 rounded-full bg-white/5 blur-xl" />
                 {/* Inner glow - bottom right */}
-                <div className="absolute bottom-0 right-0 w-16 h-10 bg-white/5 rounded-full blur-xl translate-x-1/3 translate-y-1/2" />
+                <div className="absolute right-0 bottom-0 h-10 w-16 translate-x-1/3 translate-y-1/2 rounded-full bg-white/5 blur-xl" />
 
                 {/* Text */}
-                <span className="relative z-10 text-xs sm:text-sm text-foreground font-medium">
-                  Under the Hood
-                </span>
+                <span className="relative z-10 font-medium text-foreground text-xs sm:text-sm">Under the Hood</span>
               </div>
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 tracking-tight leading-[1.1]">
+          <h2 className="mb-4 font-bold font-display text-3xl leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
             {content.howTitle}
           </h2>
-          <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto">
-            {content.howSub}
-          </p>
+          <p className="mx-auto max-w-2xl text-base text-foreground-muted sm:text-lg">{content.howSub}</p>
         </div>
 
         {/* Save Panel — top-fading border frame, no card fill */}
         <div className="relative mb-4 pt-6">
           {/* Top-only border that fades out on left and right */}
           <div
-            className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+            className="pointer-events-none absolute top-0 right-0 left-0 h-px"
             style={{
               background:
                 "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.12) 80%, transparent 100%)",
@@ -179,20 +160,19 @@ export function MemoryPipeline() {
           />
           {/* Soft top vignette glow under the border */}
           <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 pointer-events-none"
+            className="pointer-events-none absolute top-0 left-1/2 h-24 w-3/4 -translate-x-1/2"
             style={{
-              background:
-                "radial-gradient(ellipse at top, rgba(255,255,255,0.04) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse at top, rgba(255,255,255,0.04) 0%, transparent 70%)",
             }}
           />
 
           {/* Mobile: static card only */}
-          <div className="block sm:hidden relative z-10 p-4">
+          <div className="relative z-10 block p-4 sm:hidden">
             <SavePipelineCardInline />
           </div>
 
           {/* Tablet (sm-lg): chart sub-card + overlay points card */}
-          <div className="hidden sm:block lg:hidden relative">
+          <div className="relative hidden sm:block lg:hidden">
             <FadedSubCard className="min-h-[460px]">
               <ClassificationChart />
             </FadedSubCard>
@@ -200,18 +180,12 @@ export function MemoryPipeline() {
           </div>
 
           {/* Desktop: chart sub-card + globe sub-card side-by-side, points card overlays both */}
-          <div className="hidden lg:block relative">
+          <div className="relative hidden lg:block">
             <div className="grid grid-cols-12 gap-4">
-              <FadedSubCard
-                fadeSide="left"
-                className="col-span-7 min-h-[460px]"
-              >
+              <FadedSubCard fadeSide="left" className="col-span-7 min-h-[460px]">
                 <ClassificationChart />
               </FadedSubCard>
-              <FadedSubCard
-                fadeSide="right"
-                className="col-span-5 min-h-[460px] flex items-center justify-center"
-              >
+              <FadedSubCard fadeSide="right" className="col-span-5 flex min-h-[460px] items-center justify-center">
                 <NeuralGlobe />
               </FadedSubCard>
             </div>
@@ -225,7 +199,7 @@ export function MemoryPipeline() {
           <SearchCard />
           {/* Bottom hairline that fades on left and right — mirrors the top one above the Save panel */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-px pointer-events-none"
+            className="pointer-events-none absolute right-0 bottom-0 left-0 h-px"
             style={{
               background:
                 "linear-gradient(to right, transparent 0%, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.12) 80%, transparent 100%)",
@@ -233,10 +207,9 @@ export function MemoryPipeline() {
           />
           {/* Soft bottom vignette glow under the hairline */}
           <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 pointer-events-none"
+            className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-3/4 -translate-x-1/2"
             style={{
-              background:
-                "radial-gradient(ellipse at bottom, rgba(255,255,255,0.04) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse at bottom, rgba(255,255,255,0.04) 0%, transparent 70%)",
             }}
           />
         </div>
@@ -281,15 +254,12 @@ function SearchCard() {
   )`;
 
   return (
-    <div className="relative rounded-2xl overflow-hidden">
+    <div className="relative overflow-hidden rounded-2xl">
       {/* Background fill — gradient tint that dissolves seamlessly */}
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{ background: bgGradient }}
-      />
+      <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ background: bgGradient }} />
       {/* Border — top + bottom hairlines, left/right fade out */}
       <div
-        className="absolute inset-0 rounded-2xl pointer-events-none z-30 border border-white/10"
+        className="pointer-events-none absolute inset-0 z-30 rounded-2xl border border-white/10"
         style={{
           WebkitMaskImage: borderMask,
           maskImage: borderMask,
@@ -298,11 +268,9 @@ function SearchCard() {
 
       <div className="relative z-10 p-6 sm:p-8">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-6">
-          <h3 className="text-xl font-semibold text-foreground">
-            Decision path
-          </h3>
-          <span className="font-mono text-sm uppercase tracking-widest text-foreground-subtle">
+        <div className="mb-6 flex items-center gap-2">
+          <h3 className="font-semibold text-foreground text-xl">Decision path</h3>
+          <span className="font-mono text-foreground-subtle text-sm uppercase tracking-widest">
             · {content.featuresSub}
           </span>
         </div>
@@ -311,17 +279,13 @@ function SearchCard() {
         <div className="space-y-5">
           {searchSteps.map((step, i) => (
             <div key={step.title}>
-              <div className="flex items-center gap-2 mb-1.5">
+              <div className="mb-1.5 flex items-center gap-2">
                 <span className="font-mono text-[10px] text-foreground-subtle tracking-wider">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h4 className="text-[13px] font-semibold text-foreground">
-                  {step.title}
-                </h4>
+                <h4 className="font-semibold text-[13px] text-foreground">{step.title}</h4>
               </div>
-              <p className="text-[11px] text-foreground-muted leading-relaxed pl-6">
-                {step.description}
-              </p>
+              <p className="pl-6 text-[11px] text-foreground-muted leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
@@ -334,26 +298,20 @@ function SavePipelineCardInline() {
   const content = useLanding();
   return (
     <div className="relative">
-      <div className="flex items-center justify-between mb-5">
-        <h3 className="text-sm font-semibold text-foreground">Control path</h3>
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">
+      <div className="mb-5 flex items-center justify-between">
+        <h3 className="font-semibold text-foreground text-sm">Control path</h3>
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/20 bg-emerald-500/15 px-2 py-0.5 font-bold font-mono text-[9px] text-emerald-400 uppercase tracking-wider">
           Live
         </span>
       </div>
-      <p className="font-mono text-[9px] uppercase tracking-widest text-foreground-subtle mb-4">
-        Steps
-      </p>
+      <p className="mb-4 font-mono text-[9px] text-foreground-subtle uppercase tracking-widest">Steps</p>
       {content.steps.map((step) => (
         <div key={step.num} className="mb-5 last:mb-0">
-          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="font-mono text-[10px] text-foreground-subtle tracking-wider">
-              {step.num}
-            </span>
-            <h4 className="text-[13px] font-semibold text-foreground">{step.title}</h4>
+          <div className="mb-1.5 flex flex-wrap items-center gap-2">
+            <span className="font-mono text-[10px] text-foreground-subtle tracking-wider">{step.num}</span>
+            <h4 className="font-semibold text-[13px] text-foreground">{step.title}</h4>
           </div>
-          <p className="text-[11px] text-foreground-muted leading-relaxed pl-6">
-            {step.body}
-          </p>
+          <p className="pl-6 text-[11px] text-foreground-muted leading-relaxed">{step.body}</p>
         </div>
       ))}
     </div>

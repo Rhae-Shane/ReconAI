@@ -79,7 +79,7 @@ function StatusBanner({ snap }: { snap: TrustSnapshot }) {
         <div className="flex items-center gap-3">
           <ShieldX className="size-6 text-amber-700 dark:text-amber-300" />
           <div>
-            <p className="font-semibold tracking-wide text-amber-900 dark:text-amber-200">CLOSE STATUS · BLOCKED</p>
+            <p className="font-semibold text-amber-900 tracking-wide dark:text-amber-200">CLOSE STATUS · BLOCKED</p>
             <p className="text-muted-foreground text-sm">
               {snap.openExceptions} open exception{snap.openExceptions === 1 ? "" : "s"} need human review before
               sign-off.
@@ -94,17 +94,7 @@ function StatusBanner({ snap }: { snap: TrustSnapshot }) {
   );
 }
 
-function OutcomeRow({
-  ok,
-  warn,
-  label,
-  value,
-}: {
-  ok?: boolean;
-  warn?: boolean;
-  label: string;
-  value: number;
-}) {
+function OutcomeRow({ ok, warn, label, value }: { ok?: boolean; warn?: boolean; label: string; value: number }) {
   return (
     <div className="flex items-center justify-between gap-3 rounded-lg border bg-muted/30 px-3 py-2.5">
       <span className="flex items-center gap-2 text-sm">
@@ -117,7 +107,7 @@ function OutcomeRow({
         )}
         {label}
       </span>
-      <span className="font-medium tabular-nums text-lg leading-none">{value}</span>
+      <span className="font-medium text-lg tabular-nums leading-none">{value}</span>
     </div>
   );
 }
@@ -158,7 +148,14 @@ export function TrustBoard({ snap }: { snap: TrustSnapshot }) {
             <ChartContainer config={outcomeConfig} className="mx-auto aspect-square h-44 w-full max-w-[11rem]">
               <PieChart>
                 <ChartTooltip content={<ChartTooltipContent nameKey="name" hideLabel />} />
-                <Pie data={outcomeData} dataKey="value" nameKey="name" innerRadius={42} outerRadius={68} strokeWidth={2}>
+                <Pie
+                  data={outcomeData}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={42}
+                  outerRadius={68}
+                  strokeWidth={2}
+                >
                   {outcomeData.map((d) => (
                     <Cell key={d.key} fill={d.fill} />
                   ))}
@@ -221,9 +218,7 @@ export function TrustBoard({ snap }: { snap: TrustSnapshot }) {
                 value={snap.status === "VERIFIED" ? "VERIFIED ✓" : snap.status === "BLOCKED" ? "BLOCKED" : "—"}
                 tone={snap.status === "VERIFIED" ? "good" : snap.status === "BLOCKED" ? "warn" : "neutral"}
                 hint={
-                  snap.status === "VERIFIED"
-                    ? "all exceptions cleared"
-                    : `${snap.openExceptions} open · human gate`
+                  snap.status === "VERIFIED" ? "all exceptions cleared" : `${snap.openExceptions} open · human gate`
                 }
               />
             </div>

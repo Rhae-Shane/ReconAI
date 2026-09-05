@@ -50,10 +50,12 @@ export function orgProfile(): OrgProfile {
   };
 }
 
-export function orgIdFromUser(user: {
-  app_metadata?: Record<string, unknown>;
-  user_metadata?: Record<string, unknown>;
-} | null): string {
+export function orgIdFromUser(
+  user: {
+    app_metadata?: Record<string, unknown>;
+    user_metadata?: Record<string, unknown>;
+  } | null,
+): string {
   const raw = user?.app_metadata?.org_id ?? user?.user_metadata?.org_id;
   if (typeof raw === "string" && raw.trim()) return raw.trim();
   return defaultCloseOrgId();

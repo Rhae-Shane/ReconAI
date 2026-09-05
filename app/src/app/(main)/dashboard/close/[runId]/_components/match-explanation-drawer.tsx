@@ -176,16 +176,16 @@ function AiBody({ expl }: { expl: MatchExplanation }) {
           <Row label="Engine" value="Deterministic → AI Judge" />
           <Row label="Model" value={expl.provenance.model} />
           <Row label="Prompt" value={expl.provenance.promptVersion} />
-          <Row label="Decision ID" value={<span className="font-mono text-xs">{expl.provenance.decisionId.slice(0, 12)}…</span>} />
+          <Row
+            label="Decision ID"
+            value={<span className="font-mono text-xs">{expl.provenance.decisionId.slice(0, 12)}…</span>}
+          />
           <Row
             label="Input hash"
             value={<span className="font-mono text-xs">{expl.provenance.inputHash.slice(0, 12)}…</span>}
           />
           <Row label="Confidence" value={<ConfidenceTone value={expl.provenance.confidence} />} />
-          <Row
-            label="Human review"
-            value={expl.provenance.humanReviewRequired ? "Required" : "Not required"}
-          />
+          <Row label="Human review" value={expl.provenance.humanReviewRequired ? "Required" : "Not required"} />
         </div>
       )}
 

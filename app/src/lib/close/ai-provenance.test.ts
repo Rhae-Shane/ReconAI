@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 import { describe, expect, it } from "vitest";
 
 import { clearAiDecisions, listAiDecisions, recordAiDecision } from "./ai-decision-log";
@@ -10,6 +8,7 @@ import {
   stableStringify,
 } from "./ai-provenance";
 import type { JudgeCandidacy } from "./types";
+import { createHash } from "node:crypto";
 
 const fixedCandidacy: JudgeCandidacy = {
   recordIds: ["rec_a", "rec_b"],

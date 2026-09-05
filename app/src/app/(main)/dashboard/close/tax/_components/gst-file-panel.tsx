@@ -78,7 +78,7 @@ export function GstFilePanel() {
         </div>
         {(data?.filings ?? []).length > 0 && (
           <ul className="space-y-1 text-xs">
-            {data!.filings!.slice(0, 8).map((f) => (
+            {data?.filings?.slice(0, 8).map((f) => (
               <li key={f.id} className="flex flex-wrap items-center gap-2">
                 <Badge variant="secondary">{f.kind}</Badge>
                 <span>{f.period}</span>

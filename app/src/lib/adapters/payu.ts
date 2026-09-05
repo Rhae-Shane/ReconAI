@@ -28,7 +28,9 @@ export const payuAdapter: SourceAdapter = {
     const parsed: ParsedRow[] = [];
     if (rows.length === 0) return { source: "gateway", rows: parsed, errors };
 
-    const headerIdx = rows.findIndex((r) => r.some((c) => ["mihpayid", "txnid", "payuid"].some((h) => norm(c).includes(h))));
+    const headerIdx = rows.findIndex((r) =>
+      r.some((c) => ["mihpayid", "txnid", "payuid"].some((h) => norm(c).includes(h))),
+    );
     if (headerIdx < 0) {
       errors.push({ row: 1, message: "No PayU header (need mihpayid / txnid)" });
       return { source: "gateway", rows: parsed, errors };

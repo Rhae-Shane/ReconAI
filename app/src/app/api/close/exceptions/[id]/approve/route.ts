@@ -4,11 +4,7 @@ import { assertSegregationOfDuties, isCriticalException } from "controller-harne
 
 import { recordAudit } from "@/lib/audit";
 import { currentUserActor, denied, requireRole } from "@/lib/authz";
-import {
-  approveExceptionResolution,
-  listExceptions,
-  rejectExceptionResolution,
-} from "@/lib/close/store";
+import { approveExceptionResolution, listExceptions, rejectExceptionResolution } from "@/lib/close/store";
 
 export const runtime = "nodejs";
 
@@ -35,10 +31,7 @@ export async function POST(request: Request, { params }: Params) {
   };
 
   const identity = await currentUserActor();
-  const actor =
-    (typeof body.actor === "string" && body.actor.trim()) ||
-    identity?.actor ||
-    verdict.role;
+  const actor = (typeof body.actor === "string" && body.actor.trim()) || identity?.actor || verdict.role;
 
   const existing = listExceptions().find((e) => e.id === id);
   if (!existing) {
@@ -49,10 +42,7 @@ export async function POST(request: Request, { params }: Params) {
 
   if (action === "reject") {
     if (existing.resolutionStatus !== "PENDING_APPROVAL") {
-      return NextResponse.json(
-        { error: "Only PENDING_APPROVAL resolutions can be rejected." },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "Only PENDING_APPROVAL resolutions can be rejected." }, { status: 400 });
     }
     if (existing.resolvedBy && existing.resolvedBy === actor) {
       return NextResponse.json(
@@ -125,10 +115,10 @@ export async function POST(request: Request, { params }: Params) {
     audited: true,
     sod: {
       critical: isCriticalException(exc!),
-      resolutionStatus: exc!.resolutionStatus,
-      resolvedBy: exc!.resolvedBy,
-      approvedBy: exc!.approvedBy,
+      resolutionStatus: exc?.resolutionStatus,
+      resolvedBy: exc?.resolvedBy,
+      approvedBy: exc?.approvedBy,
     },
-    note: `Exception ${id} approved by ${actor}; resolvedBy=${exc!.resolvedBy} (SoD satisfied).`,
+    note: `Exception ${id} approved by ${actor}; resolvedBy=${exc?.resolvedBy} (SoD satisfied).`,
   });
 }

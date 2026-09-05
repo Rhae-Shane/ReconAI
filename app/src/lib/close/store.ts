@@ -903,9 +903,7 @@ export async function listRunsFromStore(): Promise<CloseRunMeta[]> {
     }
   }
 
-  return Array.from(byId.values()).sort(
-    (a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime(),
-  );
+  return Array.from(byId.values()).sort((a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime());
 }
 
 /**
@@ -1280,7 +1278,9 @@ function reconcileUpload(runId: string, startedAt: number, records: FinRecord[])
     lagDays: 0,
   }));
 
-  const inflow = records.filter((r) => matchedIds.has(r.id) && r.amountPaise > 0).reduce((a, r) => a + r.amountPaise, 0);
+  const inflow = records
+    .filter((r) => matchedIds.has(r.id) && r.amountPaise > 0)
+    .reduce((a, r) => a + r.amountPaise, 0);
   const forecast: ForecastDatum[] = Array.from({ length: 7 }, (_, day) => {
     const d = addDays(runDay, day);
     return {
@@ -1327,7 +1327,12 @@ export function datasetFromRecords(runId: string, records: FinRecord[], startedA
   return reconcileUpload(runId, startedAt, records);
 }
 
-export function putRunState(runId: string, dataset: Dataset, startedAt = Date.now(), finishedAt = Date.now()): CloseRunMeta {
+export function putRunState(
+  runId: string,
+  dataset: Dataset,
+  startedAt = Date.now(),
+  finishedAt = Date.now(),
+): CloseRunMeta {
   const meta = toMeta(runId, "DONE", dataset.totals, startedAt, finishedAt);
   runs.set(runId, { meta, dataset });
   return meta;

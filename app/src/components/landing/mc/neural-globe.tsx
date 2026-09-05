@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  memo,
-  useRef,
-  useMemo,
-  useState,
-  useEffect,
-  type ReactElement,
-} from "react";
+import { memo, type ReactElement, useEffect, useMemo, useRef, useState } from "react";
+
+import { Html, Line, PerspectiveCamera } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Line, Html, PerspectiveCamera } from "@react-three/drei";
 import type { Group, Mesh } from "three";
 
 const TOTAL_NODES = 90;
@@ -90,11 +84,7 @@ const ActiveNode = memo(function ActiveNode({
     <group position={position}>
       <mesh ref={meshRef}>
         <sphereGeometry args={[0.05, 16, 16]} />
-        <meshStandardMaterial
-          color="#e8613c"
-          emissive="#e8613c"
-          emissiveIntensity={0.5}
-        />
+        <meshStandardMaterial color="#e8613c" emissive="#e8613c" emissiveIntensity={0.5} />
       </mesh>
       <mesh ref={ringRef}>
         <ringGeometry args={[0.075, 0.088, 24]} />
@@ -161,10 +151,8 @@ const LabelChip = memo(function LabelChip({
         transform: isVisible ? "translateY(0px)" : "translateY(4px)",
       }}
     >
-      <div className="px-2 py-1 rounded-md bg-accent border border-accent/30 backdrop-blur-sm whitespace-nowrap pointer-events-none select-none ml-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-white font-medium">
-          {text}
-        </p>
+      <div className="pointer-events-none ml-3 select-none whitespace-nowrap rounded-md border border-accent/30 bg-accent px-2 py-1 backdrop-blur-sm">
+        <p className="font-medium font-mono text-[9px] text-white uppercase tracking-wider">{text}</p>
       </div>
     </Html>
   );
@@ -185,17 +173,9 @@ const StaticGeometry = memo(function StaticGeometry({
     () =>
       nodes.map((node, i) =>
         node.isActive ? (
-          <ActiveNode
-            key={`node-${i}`}
-            position={node.position}
-            offset={node.offset}
-          />
+          <ActiveNode key={`node-${i}`} position={node.position} offset={node.offset} />
         ) : (
-          <InactiveNode
-            key={`node-${i}`}
-            position={node.position}
-            size={0.02 + (i % 3) * 0.008}
-          />
+          <InactiveNode key={`node-${i}`} position={node.position} size={0.02 + (i % 3) * 0.008} />
         ),
       ),
     [nodes],
@@ -204,12 +184,7 @@ const StaticGeometry = memo(function StaticGeometry({
   const renderedLines = useMemo<ReactElement[]>(
     () =>
       connections.map((conn, i) => (
-        <ConnectionLine
-          key={`line-${i}`}
-          start={conn.start}
-          end={conn.end}
-          isActive={conn.isActive}
-        />
+        <ConnectionLine key={`line-${i}`} start={conn.start} end={conn.end} isActive={conn.isActive} />
       )),
     [connections],
   );
@@ -219,12 +194,7 @@ const StaticGeometry = memo(function StaticGeometry({
       {/* Wireframe sphere guide */}
       <mesh>
         <sphereGeometry args={[SPHERE_RADIUS, 32, 16]} />
-        <meshBasicMaterial
-          wireframe
-          color="#2a2a2a"
-          transparent
-          opacity={0.85}
-        />
+        <meshBasicMaterial wireframe color="#2a2a2a" transparent opacity={0.85} />
       </mesh>
 
       {renderedLines}
@@ -236,9 +206,7 @@ const StaticGeometry = memo(function StaticGeometry({
 // ---------- Label layer (re-renders on cycle, isolated from geometry) ----------
 
 function LabelLayer({ positions }: { positions: [number, number, number][] }) {
-  const [visibleLabels, setVisibleLabels] = useState<Set<number>>(
-    () => new Set([0]),
-  );
+  const [visibleLabels, setVisibleLabels] = useState<Set<number>>(() => new Set([0]));
 
   useEffect(() => {
     const pickNext = () => {
@@ -256,12 +224,7 @@ function LabelLayer({ positions }: { positions: [number, number, number][] }) {
   return (
     <>
       {positions.map((pos, i) => (
-        <LabelChip
-          key={LABELS[i]}
-          position={pos}
-          text={LABELS[i] ?? ""}
-          isVisible={visibleLabels.has(i)}
-        />
+        <LabelChip key={LABELS[i]} position={pos} text={LABELS[i] ?? ""} isVisible={visibleLabels.has(i)} />
       ))}
     </>
   );
@@ -327,10 +290,7 @@ function GlobeScene() {
 
   return (
     <group ref={groupRef}>
-      <StaticGeometry
-        nodes={sceneData.nodes}
-        connections={sceneData.connections}
-      />
+      <StaticGeometry nodes={sceneData.nodes} connections={sceneData.connections} />
       <LabelLayer positions={sceneData.labelPositions} />
     </group>
   );
@@ -340,12 +300,8 @@ function GlobeScene() {
 
 export const NeuralGlobe = memo(function NeuralGlobe() {
   return (
-    <div className="w-full h-[380px] lg:h-[440px]">
-      <Canvas
-        gl={{ alpha: true, antialias: true }}
-        style={{ background: "transparent" }}
-        dpr={[1, 2]}
-      >
+    <div className="h-[380px] w-full lg:h-[440px]">
+      <Canvas gl={{ alpha: true, antialias: true }} style={{ background: "transparent" }} dpr={[1, 2]}>
         <PerspectiveCamera position={[0, 0, 8.5]} fov={40} makeDefault />
         <ambientLight intensity={0.5} />
         <pointLight position={[8, 6, 8]} intensity={0.7} />

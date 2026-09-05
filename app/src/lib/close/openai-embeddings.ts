@@ -7,13 +7,7 @@
  */
 
 export function openaiKey(explicit?: string): string {
-  return (
-    explicit ??
-    process.env.OPENAI_API_KEY ??
-    process.env.CHATGPT_API_KEY ??
-    process.env.EMBEDDINGS_API_KEY ??
-    ""
-  );
+  return explicit ?? process.env.OPENAI_API_KEY ?? process.env.CHATGPT_API_KEY ?? process.env.EMBEDDINGS_API_KEY ?? "";
 }
 
 export const OPENAI_EMBEDDING_MODEL = "text-embedding-3-small";

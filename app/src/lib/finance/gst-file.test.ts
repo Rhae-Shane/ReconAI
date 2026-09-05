@@ -4,16 +4,19 @@ import { buildGstr1, draftFiling, hashPayload, markSubmitted } from "@/lib/finan
 
 describe("gst-file", () => {
   it("hashes GSTR-1 payload stably and marks sandbox submit", () => {
-    const payload = buildGstr1([
-      {
-        invoiceNo: "pay_1",
-        invoiceDate: "2026-09-01",
-        taxablePaise: 100000,
-        taxPaise: 18000,
-        totalPaise: 118000,
-        pos: "27",
-      },
-    ], "092026");
+    const payload = buildGstr1(
+      [
+        {
+          invoiceNo: "pay_1",
+          invoiceDate: "2026-09-01",
+          taxablePaise: 100000,
+          taxPaise: 18000,
+          totalPaise: 118000,
+          pos: "27",
+        },
+      ],
+      "092026",
+    );
     expect(payload.gstin).toBeTruthy();
     expect(Array.isArray(payload.b2cs)).toBe(true);
     const draft = draftFiling("GSTR1", payload, "092026");

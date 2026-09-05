@@ -63,7 +63,11 @@
       "correctness": {
         "noUndeclaredVariables": "error",
         "noNestedComponentDefinitions": "error",
-        "noUndeclaredDependencies": "error"
+        "noUndeclaredDependencies": "error",
+        "useHookAtTopLevel": "error"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
       },
       "nursery": {
         "useSortedClasses": "on",

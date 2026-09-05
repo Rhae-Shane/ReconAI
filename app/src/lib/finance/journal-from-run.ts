@@ -8,8 +8,8 @@
  *     = Cr GatewayReceivable + Cr Adjustments
  */
 
-import type { NewLedgerEntry } from "@/lib/finance/ledger";
 import type { MatchGroup, RunDetail } from "@/lib/close/types";
+import type { NewLedgerEntry } from "@/lib/finance/ledger";
 
 export const GL_ACCOUNTS = {
   bank: "Bank",
@@ -63,8 +63,10 @@ function fromNetted(periodId: string, runId: string, g: MatchGroup): NewLedgerEn
     line(periodId, runId, GL_ACCOUNTS.receivable, 0, gross, memo),
   ].filter((x): x is NewLedgerEntry => x !== null);
 
-  if (variance > 0) rows.push({ periodId, runId, account: GL_ACCOUNTS.variance, debitPaise: 0, creditPaise: variance, memo });
-  if (variance < 0) rows.push({ periodId, runId, account: GL_ACCOUNTS.variance, debitPaise: mag(variance), creditPaise: 0, memo });
+  if (variance > 0)
+    rows.push({ periodId, runId, account: GL_ACCOUNTS.variance, debitPaise: 0, creditPaise: variance, memo });
+  if (variance < 0)
+    rows.push({ periodId, runId, account: GL_ACCOUNTS.variance, debitPaise: mag(variance), creditPaise: 0, memo });
   return rows;
 }
 

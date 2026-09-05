@@ -17,8 +17,24 @@ import type {
   SourceStat,
 } from "@/lib/close/types";
 
-function rec(id: string, kind: FinRecord["kind"], amountPaise: number, source: SourceStat["source"], extra: Partial<FinRecord> = {}): FinRecord {
-  return { id, source, sourceName: source, kind, sourceRef: id, ts: "2026-08-14", amountPaise, currency: "INR", ...extra };
+function rec(
+  id: string,
+  kind: FinRecord["kind"],
+  amountPaise: number,
+  source: SourceStat["source"],
+  extra: Partial<FinRecord> = {},
+): FinRecord {
+  return {
+    id,
+    source,
+    sourceName: source,
+    kind,
+    sourceRef: id,
+    ts: "2026-08-14",
+    amountPaise,
+    currency: "INR",
+    ...extra,
+  };
 }
 
 function meta(): CloseRunMeta {
@@ -82,16 +98,30 @@ const orphanException: ExceptionRecord = {
 };
 
 const settlements: Settlement[] = [
-  { id: "stl_0", runId: "run_verify", settledAt: "2026-08-14T14:00:00.000Z", amountPaise: 982300, utrNumber: "UTR9", status: "RECEIVED", lagDays: 0 },
+  {
+    id: "stl_0",
+    runId: "run_verify",
+    settledAt: "2026-08-14T14:00:00.000Z",
+    amountPaise: 982300,
+    utrNumber: "UTR9",
+    status: "RECEIVED",
+    lagDays: 0,
+  },
 ];
 
 const forecast: ForecastDatum[] = [
-  { id: "f_0", runId: "run_verify", date: "2026-08-15", balancePaise: 982300, deltaPaise: 982300, confidence: 0.9, reconciledIn: true },
+  {
+    id: "f_0",
+    runId: "run_verify",
+    date: "2026-08-15",
+    balancePaise: 982300,
+    deltaPaise: 982300,
+    confidence: 0.9,
+    reconciledIn: true,
+  },
 ];
 
-const sources: SourceStat[] = [
-  { source: "bank", sourceName: "Bank UTR", records: 1, matched: 1, matchRate: 1 },
-];
+const sources: SourceStat[] = [{ source: "bank", sourceName: "Bank UTR", records: 1, matched: 1, matchRate: 1 }];
 
 const detail = {
   meta: meta(),
@@ -115,7 +145,7 @@ if (summary.amounts.totalVariance !== 0) {
   throw new Error(`variance should be 0, got ${summary.amounts.totalVariance}`);
 }
 // Counts: 1 invoice, 1 fee, 1 settlement.
-if (summary.counts.counts["INVOICE"] !== 1 || summary.counts.counts["FEE"] !== 1 || summary.counts.counts["SETTLEMENT"] !== 1) {
+if (summary.counts.counts.INVOICE !== 1 || summary.counts.counts.FEE !== 1 || summary.counts.counts.SETTLEMENT !== 1) {
   throw new Error(`unexpected counts: ${JSON.stringify(summary.counts.counts)}`);
 }
 // Payout schedule: one row, fully reconciled, zero shortfall.
@@ -123,7 +153,7 @@ if (summary.payoutSchedule.length !== 1 || summary.payoutSchedule[0].shortfall !
   throw new Error(`unexpected payout schedule: ${JSON.stringify(summary.payoutSchedule)}`);
 }
 // Match-type breakdown includes FEE_NETTED (group) + UNRESOLVED (orphan).
-if (summary.matchTypeBreakdown["FEE_NETTED"] !== 1 || summary.matchTypeBreakdown["UNRESOLVED"] !== 1) {
+if (summary.matchTypeBreakdown.FEE_NETTED !== 1 || summary.matchTypeBreakdown.UNRESOLVED !== 1) {
   throw new Error(`unexpected matchTypeBreakdown: ${JSON.stringify(summary.matchTypeBreakdown)}`);
 }
 // Missing payouts includes the orphan with the full expected amount.

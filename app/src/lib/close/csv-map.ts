@@ -2,10 +2,19 @@
  * Self-serve CSV column mapper: map arbitrary headers onto FinRecord fields.
  */
 
-import type { FinKind, FinRecord, SourceKind } from "@/lib/close/types";
 import { parseCsv, rupeeToPaise } from "@/lib/close/csv";
+import type { FinKind, FinRecord, SourceKind } from "@/lib/close/types";
 
-export const MAP_TARGETS = ["sourceRef", "amount", "date", "counterparty", "gstin", "kind", "utr", "description"] as const;
+export const MAP_TARGETS = [
+  "sourceRef",
+  "amount",
+  "date",
+  "counterparty",
+  "gstin",
+  "kind",
+  "utr",
+  "description",
+] as const;
 export type MapTarget = (typeof MAP_TARGETS)[number];
 
 export type ColumnMapping = Partial<Record<MapTarget, string>>;

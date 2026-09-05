@@ -2,12 +2,12 @@ import { Queue, Worker } from "bullmq";
 import IORedis from "ioredis";
 
 import { getRedisCheckpointer, runCloseGraph } from "@/lib/close/graph";
-import { datasetFromRecords, persistCloseArtifacts, putRunState } from "@/lib/close/store";
 import { saveRun } from "@/lib/close/run-store";
-import { collectRazorpayRecords } from "@/lib/razorpay/sync";
+import { datasetFromRecords, persistCloseArtifacts, putRunState } from "@/lib/close/store";
 import { emitEvent } from "@/lib/events";
 import { failedRunThresholdAlert, recordAlert } from "@/lib/ops/alerts";
 import { listFailedRuns, recordFailedRun } from "@/lib/ops/dlq";
+import { collectRazorpayRecords } from "@/lib/razorpay/sync";
 
 import { tlsRedisUrl } from "./redis";
 
@@ -137,7 +137,13 @@ export async function processRunJob(
   step(saved ? 95 : 100);
 
   const reportResolved = run.status === "DONE" && run.report !== null;
-  const result = { runId, status: run.status, reportResolved, openExceptions: run.openExceptions, revisions: run.revisions };
+  const result = {
+    runId,
+    status: run.status,
+    reportResolved,
+    openExceptions: run.openExceptions,
+    revisions: run.revisions,
+  };
   if (run.status === "DONE") {
     await emitEvent({
       type: "close.completed",
@@ -180,7 +186,7 @@ export function startCloseWorker(): Worker {
   });
   worker.on("failed", (job, err) => {
     console.error(`[worker] close-run ${job?.data?.runId} failed:`, err.message);
-    const reason = err?.message ?? String(err);
+    const _reason = err?.message ?? String(err);
     recordFailedRun({
       runId: job?.data?.runId ?? "unknown",
       failedAt: new Date().toISOString(),

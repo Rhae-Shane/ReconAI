@@ -1,7 +1,7 @@
 import { getReport, getRun, listExceptions, listRuns } from "@/lib/close/store";
 import type { MatchType, RunDetail } from "@/lib/close/types";
 
-const DETERMINISTIC_TYPES: ReadonlySet<MatchType> = new Set([
+const _DETERMINISTIC_TYPES: ReadonlySet<MatchType> = new Set([
   "EXACT",
   "NORMALIZED",
   "FEE_NETTED",
@@ -109,8 +109,7 @@ export function getTrustSnapshot(): TrustSnapshot {
   const records = breakdown?.records ?? latest.totals.records;
   const matched = breakdown?.matched ?? latest.totals.matched;
   const partial = breakdown?.partial ?? 0;
-  const humanReview =
-    listExceptions({ runId: latest.id }).length === 0 ? 0 : (breakdown?.unresolved ?? openExceptions);
+  const humanReview = listExceptions({ runId: latest.id }).length === 0 ? 0 : (breakdown?.unresolved ?? openExceptions);
   const matchRate = breakdown?.matchRate ?? latest.totals.resolvedPct / 100;
 
   return {

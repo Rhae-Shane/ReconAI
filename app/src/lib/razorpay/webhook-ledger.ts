@@ -1,6 +1,6 @@
-import { createHash } from "node:crypto";
-
 import { getPool } from "@/lib/db";
+
+import { createHash } from "node:crypto";
 
 async function ensureWebhookTable(): Promise<void> {
   const pool = getPool();
@@ -22,7 +22,11 @@ export function webhookEventId(raw: string, headerId: string | null): string {
 }
 
 /** Returns true when this Razorpay event was already ingested (duplicate delivery). */
-export async function claimWebhookEvent(eventId: string, event: string, raw: string): Promise<"claimed" | "duplicate" | "skipped"> {
+export async function claimWebhookEvent(
+  eventId: string,
+  event: string,
+  raw: string,
+): Promise<"claimed" | "duplicate" | "skipped"> {
   const pool = getPool();
   if (!pool) return "skipped";
   await ensureWebhookTable();

@@ -13,8 +13,6 @@ export function defaultExceptionConfidence(reason: ReasonCode): number {
       return 0.4;
     case "DATE_SKEW":
       return 0.5;
-    case "NO_KEY":
-    case "UNKNOWN_SOURCE":
     default:
       return 0.35;
   }
@@ -75,8 +73,7 @@ export function unresolvedLineFromException(
   exc: ExceptionRecord,
   fallback: { expectedPaise: number; actualPaise?: number; ref?: string; recordId?: string },
 ): UnresolvedLine {
-  const expectedPaise =
-    typeof exc.expectedPaise === "number" ? exc.expectedPaise : fallback.expectedPaise;
+  const expectedPaise = typeof exc.expectedPaise === "number" ? exc.expectedPaise : fallback.expectedPaise;
   const actualPaise = typeof exc.actualPaise === "number" ? exc.actualPaise : (fallback.actualPaise ?? 0);
   const resolved = isExceptionResolved(exc);
   return {

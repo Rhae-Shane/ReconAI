@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -15,10 +17,7 @@ import type { LandingContent } from "./types";
 
 export type AuthMode = "login" | "register" | "forgot" | "update";
 
-const COPY: Record<
-  AuthMode,
-  { kicker: string; title: string; subtitle: (name: string) => string }
-> = {
+const COPY: Record<AuthMode, { kicker: string; title: string; subtitle: (name: string) => string }> = {
   login: {
     kicker: "Sign in",
     title: "Welcome back",
@@ -84,7 +83,7 @@ function TextField({
 }) {
   return (
     <div className="space-y-2">
-      <label htmlFor={id} className="text-sm font-medium" style={fieldLabel}>
+      <label htmlFor={id} className="font-medium text-sm" style={fieldLabel}>
         {label}
       </label>
       <input
@@ -120,7 +119,7 @@ function PasswordField({
   return (
     <div className={label ? "space-y-2" : "relative"}>
       {label ? (
-        <label htmlFor={id} className="text-sm font-medium" style={fieldLabel}>
+        <label htmlFor={id} className="font-medium text-sm" style={fieldLabel}>
           {label}
         </label>
       ) : null}
@@ -141,7 +140,7 @@ function PasswordField({
           onClick={() => setVisible((v) => !v)}
           aria-label={visible ? "Hide password" : "Show password"}
           aria-pressed={visible}
-          className="absolute inset-y-0 right-0 flex items-center px-3 cursor-pointer transition-colors"
+          className="absolute inset-y-0 right-0 flex cursor-pointer items-center px-3 transition-colors"
           style={subtle}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = "#d4d4d4";
@@ -157,18 +156,12 @@ function PasswordField({
   );
 }
 
-function SubmitButton({
-  submitting,
-  children,
-}: {
-  submitting: boolean;
-  children: string;
-}) {
+function SubmitButton({ submitting, children }: { submitting: boolean; children: string }) {
   return (
     <button
       type="submit"
       disabled={submitting}
-      className="w-full h-11 text-sm font-medium rounded-xl inline-flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 disabled:pointer-events-none disabled:opacity-50"
+      className="inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl font-medium text-sm transition-all duration-200 disabled:pointer-events-none disabled:opacity-50"
       style={{ backgroundColor: "#fafafa", color: "#0a0a0a" }}
     >
       {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
@@ -181,7 +174,7 @@ function FormError({ message }: { message: string | null }) {
   if (!message) return null;
   return (
     <div
-      className="p-3 rounded-xl text-sm"
+      className="rounded-xl p-3 text-sm"
       style={{
         backgroundColor: "rgba(239, 68, 68, 0.1)",
         border: "1px solid rgba(239, 68, 68, 0.2)",
@@ -197,7 +190,7 @@ function FormNotice({ message }: { message: string | null }) {
   if (!message) return null;
   return (
     <div
-      className="p-3 rounded-xl text-sm"
+      className="rounded-xl p-3 text-sm"
       style={{
         backgroundColor: "rgba(34, 197, 94, 0.1)",
         border: "1px solid rgba(34, 197, 94, 0.25)",
@@ -261,15 +254,11 @@ function SignInForm({ redirectTo }: { redirectTo: string }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <p className="text-center lg:text-left text-[10px] uppercase tracking-[0.22em]" style={subtle}>
+      <p className="text-center text-[10px] uppercase tracking-[0.22em] lg:text-left" style={subtle}>
         Sign in
       </p>
       <FormNotice
-        message={
-          justRegistered
-            ? "Account created. Confirm your email if asked, then sign in here."
-            : null
-        }
+        message={justRegistered ? "Account created. Confirm your email if asked, then sign in here." : null}
       />
       <FormError message={error} />
       <TextField
@@ -283,24 +272,14 @@ function SignInForm({ redirectTo }: { redirectTo: string }) {
       />
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label htmlFor="login-password" className="text-sm font-medium" style={fieldLabel}>
+          <label htmlFor="login-password" className="font-medium text-sm" style={fieldLabel}>
             Password
           </label>
-          <Link
-            prefetch={false}
-            href="/auth/v1/forgot-password"
-            className="text-xs hover:underline"
-            style={muted}
-          >
+          <Link prefetch={false} href="/auth/v1/forgot-password" className="text-xs hover:underline" style={muted}>
             Forgot password?
           </Link>
         </div>
-        <PasswordField
-          id="login-password"
-          value={password}
-          onChange={setPassword}
-          disabled={submitting}
-        />
+        <PasswordField id="login-password" value={password} onChange={setPassword} disabled={submitting} />
       </div>
       <SubmitButton submitting={submitting}>Sign in</SubmitButton>
       <p className="text-center text-sm" style={muted}>
@@ -369,7 +348,7 @@ function RegisterForm({ redirectTo }: { redirectTo: string }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <p className="text-center lg:text-left text-[10px] uppercase tracking-[0.22em]" style={subtle}>
+      <p className="text-center text-[10px] uppercase tracking-[0.22em] lg:text-left" style={subtle}>
         Register
       </p>
       <FormError message={error} />
@@ -439,7 +418,7 @@ function ForgotForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <p className="text-center lg:text-left text-[10px] uppercase tracking-[0.22em]" style={subtle}>
+      <p className="text-center text-[10px] uppercase tracking-[0.22em] lg:text-left" style={subtle}>
         Reset
       </p>
       <FormError message={error} />
@@ -496,7 +475,7 @@ function UpdateForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <p className="text-center lg:text-left text-[10px] uppercase tracking-[0.22em]" style={subtle}>
+      <p className="text-center text-[10px] uppercase tracking-[0.22em] lg:text-left" style={subtle}>
         Update
       </p>
       <FormError message={error} />
@@ -539,17 +518,17 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
   const copy = COPY[mode];
 
   return (
-    <div className="relative w-full max-w-md lg:max-w-5xl animate-fade-in">
+    <div className="relative w-full max-w-md animate-fade-in lg:max-w-5xl">
       <div className="relative">
         <div
-          className="absolute -top-px -left-px w-32 h-24 rounded-2xl blur-[1px]"
+          className="absolute -top-px -left-px h-24 w-32 rounded-2xl blur-[1px]"
           style={{
             background:
               "radial-gradient(ellipse at top left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 30%, transparent 60%)",
           }}
         />
         <div
-          className="absolute -bottom-px -right-px w-24 h-20 rounded-2xl blur-[1px]"
+          className="absolute -right-px -bottom-px h-20 w-24 rounded-2xl blur-[1px]"
           style={{
             background:
               "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 30%, transparent 60%)",
@@ -557,30 +536,30 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
         />
 
         <div
-          className="relative rounded-2xl border border-white/10 backdrop-blur-xl overflow-hidden grid lg:grid-cols-[1.05fr_1fr]"
+          className="relative grid overflow-hidden rounded-2xl border border-white/10 backdrop-blur-xl lg:grid-cols-[1.05fr_1fr]"
           style={{
             backgroundColor: "rgba(17, 17, 17, 0.8)",
             boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
 
           <div
-            className="relative hidden lg:flex flex-col justify-between p-10 border-r border-white/10 overflow-hidden"
+            className="relative hidden flex-col justify-between overflow-hidden border-white/10 border-r p-10 lg:flex"
             style={{
               background:
                 "linear-gradient(155deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 45%, rgba(255,255,255,0) 100%)",
             }}
           >
             <div
-              className="absolute -top-24 -left-24 w-72 h-72 rounded-full pointer-events-none"
+              className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full"
               style={{
                 background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)",
                 filter: "blur(20px)",
               }}
             />
             <div
-              className="absolute bottom-0 right-0 w-56 h-56 rounded-full pointer-events-none"
+              className="pointer-events-none absolute right-0 bottom-0 h-56 w-56 rounded-full"
               style={{
                 background: "radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)",
                 filter: "blur(20px)",
@@ -590,36 +569,27 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
             <div className="relative">
               <div className="relative inline-flex">
                 <div
-                  className="absolute -top-[1px] -left-[1px] w-10 h-10 rounded-xl blur-[0.5px]"
+                  className="absolute -top-[1px] -left-[1px] h-10 w-10 rounded-xl blur-[0.5px]"
                   style={{
                     background:
                       "radial-gradient(ellipse at top left, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 30%, transparent 60%)",
                   }}
                 />
                 <div
-                  className="relative w-12 h-12 rounded-xl backdrop-blur-sm border border-white/15 flex items-center justify-center overflow-hidden"
+                  className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-white/15 backdrop-blur-sm"
                   style={{ backgroundColor: "rgba(17, 17, 17, 0.9)" }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-                  <Image
-                    src="/sign.png"
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 relative z-10"
-                  />
+                  <Image src="/sign.png" alt="" width={32} height={32} className="relative z-10 h-8 w-8" />
                 </div>
               </div>
 
-              <h2
-                className="mt-8 text-3xl font-bold tracking-tight leading-tight font-display"
-                style={bright}
-              >
+              <h2 className="mt-8 font-bold font-display text-3xl leading-tight tracking-tight" style={bright}>
                 {content.headline}
                 <br />
                 {content.headlineMuted}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed max-w-sm" style={muted}>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed" style={muted}>
                 {content.subhead}
               </p>
             </div>
@@ -627,7 +597,7 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
             <div className="relative space-y-3">
               {bullets.map((item) => (
                 <div key={item} className="flex items-center gap-2.5 text-sm" style={{ color: "#d4d4d4" }}>
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#86efac" }} />
+                  <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#86efac" }} />
                   {item}
                 </div>
               ))}
@@ -635,38 +605,32 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
           </div>
 
           <div className="relative p-6 sm:p-8 lg:p-10">
-            <div className="text-center mb-6 lg:hidden">
-              <div className="flex justify-center mb-4">
+            <div className="mb-6 text-center lg:hidden">
+              <div className="mb-4 flex justify-center">
                 <div className="relative">
                   <div
-                    className="absolute -top-[1px] -left-[1px] w-10 h-10 rounded-xl blur-[0.5px]"
+                    className="absolute -top-[1px] -left-[1px] h-10 w-10 rounded-xl blur-[0.5px]"
                     style={{
                       background:
                         "radial-gradient(ellipse at top left, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 30%, transparent 60%)",
                     }}
                   />
                   <div
-                    className="relative w-14 h-14 rounded-xl backdrop-blur-sm border border-white/15 flex items-center justify-center overflow-hidden"
+                    className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl border border-white/15 backdrop-blur-sm"
                     style={{ backgroundColor: "rgba(17, 17, 17, 0.9)" }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-                    <Image
-                      src="/sign.png"
-                      alt=""
-                      width={36}
-                      height={36}
-                      className="w-9 h-9 relative z-10"
-                    />
+                    <Image src="/sign.png" alt="" width={36} height={36} className="relative z-10 h-9 w-9" />
                   </div>
                 </div>
               </div>
-              <h1 className="text-xl font-bold tracking-tight font-display" style={bright}>
+              <h1 className="font-bold font-display text-xl tracking-tight" style={bright}>
                 {copy.title}
               </h1>
             </div>
 
-            <div className="hidden lg:block mb-6">
-              <h1 className="text-xl font-semibold tracking-tight" style={bright}>
+            <div className="mb-6 hidden lg:block">
+              <h1 className="font-semibold text-xl tracking-tight" style={bright}>
                 {copy.title}
               </h1>
               <p className="mt-1 text-sm" style={muted}>
@@ -676,7 +640,7 @@ function LoginCard({ mode, redirectTo }: { mode: AuthMode; redirectTo: string })
 
             <AuthForm mode={mode} redirectTo={redirectTo} />
 
-            <p className="mt-6 text-center lg:text-left text-xs" style={subtle}>
+            <p className="mt-6 text-center text-xs lg:text-left" style={subtle}>
               By continuing, you agree to our Terms of Service and Privacy Policy.
             </p>
           </div>
@@ -692,11 +656,11 @@ function LoginShell({ mode, redirectTo }: { mode: AuthMode; redirectTo: string }
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden p-4 sm:p-6 lg:p-8"
       style={{ backgroundColor: "#0a0a0a" }}
     >
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] pointer-events-none">
-        <div className="relative w-full h-full">
+      <div className="pointer-events-none absolute top-0 left-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px]">
+        <div className="relative h-full w-full">
           {leftDots.map((dot, i) => (
             <div
               key={`left-${i}`}
@@ -720,8 +684,8 @@ function LoginShell({ mode, redirectTo }: { mode: AuthMode; redirectTo: string }
         />
       </div>
 
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] pointer-events-none">
-        <div className="relative w-full h-full">
+      <div className="pointer-events-none absolute top-0 right-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px]">
+        <div className="relative h-full w-full">
           {rightDots.map((dot, i) => (
             <div
               key={`right-${i}`}

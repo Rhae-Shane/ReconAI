@@ -1,10 +1,17 @@
 "use client";
 
-import { Save } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Cursor } from "@lobehub/icons";
+
 import Image from "next/image";
+
+import { Cursor } from "@lobehub/icons";
+import { Save } from "lucide-react";
+import { RiClaudeLine } from "react-icons/ri";
+import { SiGooglegemini, SiOpenai } from "react-icons/si";
+
 import { useInView } from "@/components/landing/mc/lib/use-in-view";
+import { useReducedMotion } from "@/components/landing/mc/lib/use-reduced-motion";
+
 import { useLanding } from "../landing-context";
 
 // Pre-defined line styles to avoid Math.random during render
@@ -58,16 +65,14 @@ function MemoryCard({
 
   return (
     <div
-      className={`
-        absolute transition-all duration-700 ease-out
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+      className={`absolute transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}
         ${className}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Border glow - top left */}
       <div
-        className="absolute -top-px -left-px w-20 h-16 rounded-xl blur-[0.5px]"
+        className="absolute -top-px -left-px h-16 w-20 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at top left, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 30%, transparent 60%)",
@@ -75,42 +80,29 @@ function MemoryCard({
       />
       {/* Border glow - bottom right */}
       <div
-        className="absolute -bottom-px -right-px w-12 h-10 rounded-xl blur-[0.5px]"
+        className="absolute -right-px -bottom-px h-10 w-12 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 30%, transparent 60%)",
         }}
       />
-      <div
-        className="relative w-[150px] sm:w-[170px] h-50 sm:h-[230px] p-3 sm:p-4 rounded-xl
-        bg-surface border border-white/10
-        shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-        flex flex-col overflow-hidden"
-      >
+      <div className="relative flex h-50 w-[150px] flex-col overflow-hidden rounded-xl border border-white/10 bg-surface p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] sm:h-[230px] sm:w-[170px] sm:p-4">
         {/* Inner glow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
         <div className="flex">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h4 className="text-xs sm:text-sm font-medium text-foreground leading-tight">
-              {title}
-            </h4>
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <h4 className="font-medium text-foreground text-xs leading-tight sm:text-sm">{title}</h4>
             <span
-              className={`
-                text-[9px] font-mono px-1.5 py-0.5 rounded-full border
-                ${categoryColors[category] || categoryColors.preference}
+              className={`rounded-full border px-1.5 py-0.5 font-mono text-[9px] ${categoryColors[category] || categoryColors.preference}
               `}
             >
               {category}
             </span>
           </div>
         </div>
-        <p className="text-[10px] sm:text-xs text-foreground-muted leading-relaxed flex-1">
-          {content}
-        </p>
-        <div className="mt-auto pt-2 border-t border-border/50 flex items-center justify-between">
-          <span className="text-[8px] text-foreground-subtle font-mono">
-            mem_01
-          </span>
+        <p className="flex-1 text-[10px] text-foreground-muted leading-relaxed sm:text-xs">{content}</p>
+        <div className="mt-auto flex items-center justify-between border-border/50 border-t pt-2">
+          <span className="font-mono text-[8px] text-foreground-subtle">mem_01</span>
           <span className="text-[8px] text-foreground-subtle">now</span>
         </div>
       </div>
@@ -140,16 +132,14 @@ function FileCard({
 
   return (
     <div
-      className={`
-        absolute transition-all duration-700 ease-out
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+      className={`absolute transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}
         ${className}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Border glow - top left */}
       <div
-        className="absolute -top-px -left-px w-20 h-16 rounded-xl blur-[0.5px]"
+        className="absolute -top-px -left-px h-16 w-20 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at top left, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 30%, transparent 60%)",
@@ -157,40 +147,28 @@ function FileCard({
       />
       {/* Border glow - bottom right */}
       <div
-        className="absolute -bottom-px -right-px w-12 h-10 rounded-xl blur-[0.5px]"
+        className="absolute -right-px -bottom-px h-10 w-12 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 30%, transparent 60%)",
         }}
       />
-      <div
-        className="relative w-[140px] sm:w-[160px] h-[190px] sm:h-[220px] rounded-xl overflow-hidden
-        bg-surface-elevated border border-white/10
-        shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-        flex flex-col"
-      >
+      <div className="relative flex h-[190px] w-[140px] flex-col overflow-hidden rounded-xl border border-white/10 bg-surface-elevated shadow-[0_8px_32px_rgba(0,0,0,0.5)] sm:h-[220px] sm:w-[160px]">
         {/* Inner glow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
-        <div className="px-2.5 py-2 bg-background/80 border-b border-border flex items-center gap-2">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
+        <div className="flex items-center gap-2 border-border border-b bg-background/80 px-2.5 py-2">
           <div className="flex gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-error/60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-warning/60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-success/60" />
+            <div className="h-1.5 w-1.5 rounded-full bg-error/60" />
+            <div className="h-1.5 w-1.5 rounded-full bg-warning/60" />
+            <div className="h-1.5 w-1.5 rounded-full bg-success/60" />
           </div>
-          <span className="text-[8px] font-mono text-foreground-muted truncate">
-            {filename}
-          </span>
+          <span className="truncate font-mono text-[8px] text-foreground-muted">{filename}</span>
         </div>
-        <div className="p-2.5 font-mono text-[9px] space-y-1.5 flex-1">
+        <div className="flex-1 space-y-1.5 p-2.5 font-mono text-[9px]">
           {lineStyles.map((style, i) => (
             <div key={i} className="flex gap-1.5">
-              <span className="text-foreground-subtle w-2.5 text-right select-none">
-                {i + 1}
-              </span>
-              <div
-                className="h-2.5 rounded bg-foreground/5"
-                style={{ width: style.width, opacity: style.opacity }}
-              />
+              <span className="w-2.5 select-none text-right text-foreground-subtle">{i + 1}</span>
+              <div className="h-2.5 rounded bg-foreground/5" style={{ width: style.width, opacity: style.opacity }} />
             </div>
           ))}
         </div>
@@ -220,20 +198,17 @@ function FolderCard({
 
   return (
     <div
-      className={`
-        absolute
-        transition-all duration-700 ease-out
-        ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"}
+      className={`absolute transition-all duration-700 ease-out ${isVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-8 scale-95 opacity-0"}
         ${className}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Shiny Logo Container - positioned on top of folder */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[60px] sm:top-[70px] z-10">
+      <div className="absolute top-[60px] left-1/2 z-10 -translate-x-1/2 sm:top-[70px]">
         <div className="relative">
           {/* Border glow - top left */}
           <div
-            className="absolute -top-[1px] -left-[1px] w-8 h-8 rounded-xl blur-[0.5px]"
+            className="absolute -top-[1px] -left-[1px] h-8 w-8 rounded-xl blur-[0.5px]"
             style={{
               background:
                 "radial-gradient(ellipse at top left, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 30%, transparent 60%)",
@@ -241,41 +216,28 @@ function FolderCard({
           />
           {/* Border glow - bottom right */}
           <div
-            className="absolute -bottom-[1px] -right-[1px] w-6 h-6 rounded-xl blur-[0.5px]"
+            className="absolute -right-[1px] -bottom-[1px] h-6 w-6 rounded-xl blur-[0.5px]"
             style={{
               background:
                 "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 30%, transparent 60%)",
             }}
           />
           {/* Glass container with dark background */}
-          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-surface/95 backdrop-blur-sm border border-white/15 flex items-center justify-center overflow-hidden">
+          <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl border border-white/15 bg-surface/95 backdrop-blur-sm sm:h-16 sm:w-16">
             {/* Inner glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-            <Image
-              src="/sign.png"
-              alt=""
-              width={40}
-              height={40}
-              className="w-8 h-8 sm:w-10 sm:h-10 relative z-10"
-            />
+            <Image src="/sign.png" alt="" width={40} height={40} className="relative z-10 h-8 w-8 sm:h-10 sm:w-10" />
           </div>
         </div>
       </div>
       <svg
-        className="w-[280px] h-50 sm:w-[340px] sm:h-[240px] drop-shadow-[0_10px_30px_rgba(232,97,60,0.35)]"
+        className="h-50 w-[280px] drop-shadow-[0_10px_30px_rgba(232,97,60,0.35)] sm:h-[240px] sm:w-[340px]"
         viewBox="0 0 340 240"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient
-            id="folderGradient"
-            x1="170"
-            y1="28"
-            x2="170"
-            y2="228"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="folderGradient" x1="170" y1="28" x2="170" y2="228" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#E8613C" />
             <stop offset="100%" stopColor="#C94E2E" />
           </linearGradient>
@@ -293,27 +255,13 @@ function FolderCard({
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </radialGradient>
           {/* Top edge glow gradient - horizontal */}
-          <linearGradient
-            id="folderEdgeGlowHero"
-            x1="16"
-            y1="0"
-            x2="200"
-            y2="0"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="folderEdgeGlowHero" x1="16" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="white" stopOpacity="0.6" />
             <stop offset="40%" stopColor="white" stopOpacity="0.25" />
             <stop offset="100%" stopColor="white" stopOpacity="0.05" />
           </linearGradient>
           {/* Left edge glow gradient - vertical */}
-          <linearGradient
-            id="folderEdgeGlowLeftHero"
-            x1="0"
-            y1="20"
-            x2="0"
-            y2="228"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="folderEdgeGlowLeftHero" x1="0" y1="20" x2="0" y2="228" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="white" stopOpacity="0.6" />
             <stop offset="40%" stopColor="white" stopOpacity="0.2" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
@@ -373,12 +321,7 @@ function FolderCard({
           fill="none"
         />
         {/* Left edge highlight going down */}
-        <path
-          d="M16 20 V212"
-          stroke="url(#folderEdgeGlowLeftHero)"
-          strokeWidth="1.5"
-          fill="none"
-        />
+        <path d="M16 20 V212" stroke="url(#folderEdgeGlowLeftHero)" strokeWidth="1.5" fill="none" />
 
         {/* Folder name */}
         <text
@@ -411,13 +354,7 @@ function FolderCard({
 }
 
 // Plane/Email Card Component - VERTICAL/PORTRAIT shape (tall)
-function PlaneCard({
-  delay = 0,
-  className = "",
-}: {
-  delay?: number;
-  className?: string;
-}) {
+function PlaneCard({ delay = 0, className = "" }: { delay?: number; className?: string }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -427,16 +364,14 @@ function PlaneCard({
 
   return (
     <div
-      className={`
-        absolute transition-all duration-700 ease-out
-        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+      className={`absolute transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}
         ${className}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Border glow - top left */}
       <div
-        className="absolute -top-px -left-px w-16 h-12 rounded-xl blur-[0.5px]"
+        className="absolute -top-px -left-px h-12 w-16 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at top left, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 30%, transparent 60%)",
@@ -444,32 +379,22 @@ function PlaneCard({
       />
       {/* Border glow - bottom right */}
       <div
-        className="absolute -bottom-px -right-px w-10 h-8 rounded-xl blur-[0.5px]"
+        className="absolute -right-px -bottom-px h-8 w-10 rounded-xl blur-[0.5px]"
         style={{
           background:
             "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 30%, transparent 60%)",
         }}
       />
-      <div
-        className="relative w-[120px] sm:w-[140px] h-[160px] sm:h-[180px] p-3 rounded-xl
-        bg-gradient-to-br from-surface-elevated to-surface
-        border border-white/10
-        shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-        flex flex-col overflow-hidden"
-      >
+      <div className="relative flex h-[160px] w-[120px] flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-surface-elevated to-surface p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] sm:h-[180px] sm:w-[140px]">
         {/* Inner glow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none" />
-        <div className="flex gap-2 items-center mb-1">
-          <div className="w-9 h-9 sm:w-7 sm:h-7 rounded-md bg-accent/15 flex items-center justify-center mb-2">
-            <Save className="w-4 h-4 sm:w-4 sm:h-4 text-accent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent" />
+        <div className="mb-1 flex items-center gap-2">
+          <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-md bg-accent/15 sm:h-7 sm:w-7">
+            <Save className="h-4 w-4 text-accent sm:h-4 sm:w-4" />
           </div>
           <div className="">
-            <p className="text-[10px] sm:text-xs font-medium text-foreground">
-              Quick Save
-            </p>
-            <p className="text-[8px] sm:text-[9px] text-foreground-muted mb-2">
-              Instant sync
-            </p>
+            <p className="font-medium text-[10px] text-foreground sm:text-xs">Quick Save</p>
+            <p className="mb-2 text-[8px] text-foreground-muted sm:text-[9px]">Instant sync</p>
           </div>
         </div>
         <div className="space-y-1.5">
@@ -538,24 +463,21 @@ function AIBadge({
 
   return (
     <div
-      className={`
-        absolute flex flex-col items-center gap-1.5
-        transition-all duration-500 ease-out
-        ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}
+      className={`absolute flex flex-col items-center gap-1.5 transition-all duration-500 ease-out ${isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"}
         ${className}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Outer border with bright white shine on one corner */}
       <div
-        className="relative p-[0.5px] rounded-2xl"
+        className="relative rounded-2xl p-[0.5px]"
         style={{
           background: `linear-gradient(${borderGradientMap[shinePosition]}, #ffffff 0%, rgba(255,255,255,0.8) 15%, rgba(255,255,255,0.2) 35%, transparent 50%)`,
         }}
       >
         {/* Main badge */}
         <div
-          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center overflow-hidden"
+          className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl sm:h-14 sm:w-14"
           style={{
             background: backgroundStyle,
             boxShadow: `0 4px 16px ${bgColor}30`,
@@ -563,7 +485,7 @@ function AIBadge({
         >
           {/* Subtle shine spot */}
           <div
-            className={`absolute ${shinePositionMap[shinePosition]} w-8 h-8 rounded-full blur-lg opacity-30`}
+            className={`absolute ${shinePositionMap[shinePosition]} h-8 w-8 rounded-full opacity-30 blur-lg`}
             style={{ backgroundColor: "white" }}
           />
           {/* Very subtle top gradient for depth */}
@@ -574,12 +496,10 @@ function AIBadge({
             }}
           />
           {/* Icon */}
-          <Icon className="relative z-10 w-6 h-6 sm:w-8 sm:h-8 text-white" />
+          <Icon className="relative z-10 h-6 w-6 text-white sm:h-8 sm:w-8" />
         </div>
       </div>
-      <span className="text-[9px] sm:text-[10px] font-medium text-foreground-muted">
-        {name}
-      </span>
+      <span className="font-medium text-[9px] text-foreground-muted sm:text-[10px]">{name}</span>
     </div>
   );
 }
@@ -594,22 +514,15 @@ export function HeroCards() {
   const shouldAnimate = isInView && !prefersReducedMotion;
 
   return (
-    <div
-      ref={ref}
-      className="relative w-full h-[380px] sm:h-[420px] lg:h-[460px] flex items-center justify-center"
-    >
+    <div ref={ref} className="relative flex h-[380px] w-full items-center justify-center sm:h-[420px] lg:h-[460px]">
       {/* Card Stack Container */}
-      <div className="relative w-full scale-110 max-w-150 h-full flex items-center justify-center">
+      <div className="relative flex h-full w-full max-w-150 scale-110 items-center justify-center">
         {/* File Card - Left side, behind folder */}
         <FileCard
           filename="verdict.json"
           lines={7}
           delay={400}
-          className="
-            -translate-x-14 rotate-[-10deg] sm:-translate-x-25
-            translate-y-[-70px] sm:-translate-y-25
-            z-10
-          "
+          className="z-10 -translate-x-14 translate-y-[-70px] rotate-[-10deg] sm:-translate-x-25 sm:-translate-y-25"
         />
 
         {/* Memory Card - Right side, behind folder */}
@@ -618,21 +531,13 @@ export function HeroCards() {
           content="Amount caps and velocity live in code. The model never talks to Razorpay."
           category="decision"
           delay={500}
-          className="
-            translate-x-16 rotate-[20deg] md:rotate-[10deg] sm:translate-x-[80px]
-            translate-y-[-70px] sm:-translate-y-25
-            z-20
-          "
+          className="z-20 translate-x-16 translate-y-[-70px] rotate-[20deg] sm:translate-x-[80px] sm:-translate-y-25 md:rotate-[10deg]"
         />
 
         {/* Plane Card - Right bottom, behind folder */}
         <PlaneCard
           delay={650}
-          className="
-            translate-x-0 -rotate-3 sm:-translate-x-[30px]
-            translate-y-[-50px] sm:translate-y-[-90px]
-            z-30
-          "
+          className="z-30 translate-x-0 translate-y-[-50px] -rotate-3 sm:-translate-x-[30px] sm:translate-y-[-90px]"
         />
 
         {/* Folder - Center front */}
@@ -645,12 +550,7 @@ export function HeroCards() {
           bgColor="#D97757"
           shinePosition="tr"
           delay={850}
-          className="
-            -translate-x-[140px] sm:-translate-x-[225px]
-            -translate-y-[25px] sm:-translate-y-[130px]
-            rotate-[-12deg]
-            z-50
-          "
+          className="z-50 -translate-x-[140px] -translate-y-[25px] rotate-[-12deg] sm:-translate-x-[225px] sm:-translate-y-[130px]"
         />
 
         <AIBadge
@@ -659,12 +559,7 @@ export function HeroCards() {
           bgColor="#10A37F"
           shinePosition="tl"
           delay={950}
-          className="
-            translate-x-[140px] sm:translate-x-[205px]
-            -translate-y-[35px] sm:-translate-y-25
-            rotate-[20deg]
-            z-50
-          "
+          className="z-50 translate-x-[140px] -translate-y-[35px] rotate-[20deg] sm:translate-x-[205px] sm:-translate-y-25"
         />
 
         <AIBadge
@@ -674,37 +569,25 @@ export function HeroCards() {
           bgGradient="linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)"
           shinePosition="bl"
           delay={1050}
-          className="
-            translate-x-[130px] sm:translate-x-[175px]
-            translate-y-[110px] sm:translate-y-[70px]
-            rotate-[-15deg]
-            z-50
-          "
+          className="z-50 translate-x-[130px] translate-y-[110px] rotate-[-15deg] sm:translate-x-[175px] sm:translate-y-[70px]"
         />
 
         <AIBadge
-          icon={({ className }: { className?: string }) => (
-            <Cursor size={32} className={className} />
-          )}
+          icon={({ className }: { className?: string }) => <Cursor size={32} className={className} />}
           name="Cursor"
           bgColor="#1a1a1a"
           shinePosition="br"
           delay={1150}
-          className="
-            -translate-x-[130px] sm:-translate-x-[190px]
-            translate-y-25 sm:translate-y-[60px]
-            rotate-[-8deg]
-            z-50
-          "
+          className="z-50 -translate-x-[130px] translate-y-25 rotate-[-8deg] sm:-translate-x-[190px] sm:translate-y-[60px]"
         />
       </div>
 
       {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {PARTICLE_POSITIONS.map((particle, i) => (
           <div
             key={i}
-            className={`absolute w-1 h-1 rounded-full bg-accent/30 will-change-transform ${shouldAnimate ? "animate-float" : ""}`}
+            className={`absolute h-1 w-1 rounded-full bg-accent/30 will-change-transform ${shouldAnimate ? "animate-float" : ""}`}
             style={{
               left: particle.left,
               top: particle.top,

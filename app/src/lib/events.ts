@@ -110,7 +110,8 @@ async function post(url: string, payload: object, extraHeaders?: Record<string, 
       signal: AbortSignal.timeout(5000),
     });
   } catch {
-    if (process.env.EVENT_METHOD === "log") console.log(`[events] deliver failed ${(payload as AppEvent).type} -> ${url}`, payload);
+    if (process.env.EVENT_METHOD === "log")
+      console.log(`[events] deliver failed ${(payload as AppEvent).type} -> ${url}`, payload);
   }
 }
 

@@ -1,3 +1,4 @@
+import type { RunnableConfig } from "@langchain/core/runnables";
 import {
   BaseCheckpointSaver,
   type Checkpoint,
@@ -6,7 +7,6 @@ import {
   type CheckpointTuple,
   type PendingWrite,
 } from "@langchain/langgraph-checkpoint";
-import type { RunnableConfig } from "@langchain/core/runnables";
 import IORedis from "ioredis";
 
 import { tlsRedisUrl } from "@/lib/ops/redis";

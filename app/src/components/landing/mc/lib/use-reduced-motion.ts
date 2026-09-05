@@ -14,7 +14,7 @@ function getReducedMotionPreference(): boolean {
  * Subscribe to reduced motion preference changes
  */
 function subscribeToReducedMotion(callback: () => void): () => void {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") return () => undefined;
 
   const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   mediaQuery.addEventListener("change", callback);
@@ -37,9 +37,5 @@ function getServerSnapshot(): boolean {
  * Uses useSyncExternalStore for proper React 18+ integration
  */
 export function useReducedMotion(): boolean {
-  return useSyncExternalStore(
-    subscribeToReducedMotion,
-    getReducedMotionPreference,
-    getServerSnapshot,
-  );
+  return useSyncExternalStore(subscribeToReducedMotion, getReducedMotionPreference, getServerSnapshot);
 }

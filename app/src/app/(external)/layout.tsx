@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+
 import { Space_Grotesk } from "next/font/google";
 
 import "@/components/landing/landing.css";

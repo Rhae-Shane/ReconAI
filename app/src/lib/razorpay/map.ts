@@ -83,10 +83,7 @@ function record(input: {
   };
 }
 
-export function mapPayment(
-  pay: RazorpayPayment,
-  settlementId?: string,
-): FinRecord[] {
+export function mapPayment(pay: RazorpayPayment, settlementId?: string): FinRecord[] {
   const amount = Number(pay.amount ?? 0);
   if (!pay.id || !Number.isFinite(amount) || amount === 0) return [];
   if (pay.status && pay.status !== "captured") return [];
@@ -246,11 +243,16 @@ export function mapWebhookEvent(body: unknown): { event: string; records: FinRec
     const setl = envelope.payload?.settlement?.entity;
     return { event, records: setl ? mapSettlement(setl) : [] };
   }
-  if (event === "payment.dispute.created" || event === "dispute.created" || event === "payment.dispute.won" || event === "payment.dispute.lost") {
+  if (
+    event === "payment.dispute.created" ||
+    event === "dispute.created" ||
+    event === "payment.dispute.won" ||
+    event === "payment.dispute.lost"
+  ) {
     const dispute = (envelope.payload as { dispute?: { entity?: RazorpayDispute } } | undefined)?.dispute?.entity;
     return { event, records: dispute ? mapDispute(dispute) : [] };
   }
-  return { event: event || "unknown", records: [] };
+  return { event: event ?? "unknown", records: [] };
 }
 
 /** Stamp `raw.settlementId` on payment rows from a settlement recon dump. */

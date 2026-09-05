@@ -22,6 +22,7 @@ describe("demo close data hygiene", () => {
     const report = getReport("run_today");
     expect(report).not.toBeNull();
     expect(open.length).toBeGreaterThan(0);
+    expect(report).not.toBeNull();
     expect(report!.unresolved.length).toBeGreaterThan(0);
     // Every unresolved NEEDS_REVIEW line has a live exception.
     for (const line of report!.unresolved.filter((u) => u.status === "NEEDS_REVIEW")) {
@@ -35,7 +36,7 @@ describe("demo close data hygiene", () => {
     expect(meta.id).toBe("run_fresh_1");
     const today = getReport("run_today");
     expect(today).not.toBeNull();
-    expect(today!.totals.records).toBe(meta.totals.records);
+    expect(today?.totals.records).toBe(meta.totals.records);
   });
 
   it("repairDataset files missing exceptions for unmatched residuals", () => {
@@ -45,6 +46,7 @@ describe("demo close data hygiene", () => {
     expect(repaired.exceptions.length).toBeGreaterThan(0);
     putRunState("repair_me", repaired, 1_700_000_000_200, 1_700_000_000_200);
     const report = getReport("repair_me");
+    expect(report).not.toBeNull();
     expect(report!.unresolved.every((u) => u.status === "NEEDS_REVIEW")).toBe(true);
     for (const line of report!.unresolved) {
       expect(repaired.exceptions.some((e) => e.recordId === line.recordId)).toBe(true);

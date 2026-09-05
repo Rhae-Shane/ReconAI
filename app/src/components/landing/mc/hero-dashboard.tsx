@@ -14,14 +14,11 @@ import Image from "next/image";
  */
 export function HeroDashboard() {
   return (
-    <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6">
+    <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
       {/* atmospheric bloom behind the frame — subtle accent wash */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"
-      >
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
         <div
-          className="absolute w-[70%] h-[60%] rounded-full blur-[120px] opacity-40"
+          className="absolute h-[60%] w-[70%] rounded-full opacity-40 blur-[120px]"
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(232,97,60,0.18) 0%, rgba(232,97,60,0.05) 40%, transparent 70%)",
@@ -33,7 +30,7 @@ export function HeroDashboard() {
         {/* ground shadow — cast below */}
         <div
           aria-hidden
-          className="absolute left-[6%] right-[6%] -bottom-8 h-16 rounded-[50%] blur-2xl opacity-70"
+          className="absolute right-[6%] -bottom-8 left-[6%] h-16 rounded-[50%] opacity-70 blur-2xl"
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 40%, transparent 75%)",
@@ -43,10 +40,9 @@ export function HeroDashboard() {
         {/* STATIC AURORA RING — refined silver bevel with a whisper of accent */}
         <div
           aria-hidden
-          className="absolute -inset-[1.5px] rounded-[20px] overflow-hidden"
+          className="absolute -inset-[1.5px] overflow-hidden rounded-[20px]"
           style={{
-            WebkitMask:
-              "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+            WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             WebkitMaskComposite: "xor",
             maskComposite: "exclude",
             padding: "1.5px",
@@ -64,7 +60,7 @@ export function HeroDashboard() {
 
         {/* MAIN FRAME */}
         <div
-          className="relative rounded-[18px] overflow-hidden border border-white/10 bg-[#0a0a0a]"
+          className="relative overflow-hidden rounded-[18px] border border-white/10 bg-[#0a0a0a]"
           style={{
             boxShadow: [
               "0 40px 120px -20px rgba(0,0,0,0.9)",
@@ -77,7 +73,7 @@ export function HeroDashboard() {
           {/* top specular sweep — thin highlight along the top edge */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-px z-10"
+            className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px"
             style={{
               background:
                 "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 20%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.5) 80%, transparent 100%)",
@@ -86,17 +82,16 @@ export function HeroDashboard() {
           {/* top glass sheen */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-24 z-10"
+            className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24"
             style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%)",
+              background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%)",
             }}
           />
 
           {/* inner hairline bevel */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-[18px] z-10"
+            className="pointer-events-none absolute inset-0 z-10 rounded-[18px]"
             style={{
               boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
             }}
@@ -111,7 +106,7 @@ export function HeroDashboard() {
             height={1682}
             priority
             unoptimized
-            className="block w-full h-auto select-none"
+            className="block h-auto w-full select-none"
             draggable={false}
           />
         </div>

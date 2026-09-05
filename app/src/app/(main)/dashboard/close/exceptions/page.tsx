@@ -140,11 +140,7 @@ function ExceptionEvidenceRow({ exception }: { exception: ExceptionRecord }) {
         ...data,
         requestedBy: data.requestedBy ?? (action === "submit" ? DEMO_ACCOUNTANT : flow?.requestedBy),
       });
-      toast.success(
-        action === "submit"
-          ? `Submitted by ${DEMO_ACCOUNTANT} for approval`
-          : `Approved by ${DEMO_OWNER}`,
-      );
+      toast.success(action === "submit" ? `Submitted by ${DEMO_ACCOUNTANT} for approval` : `Approved by ${DEMO_OWNER}`);
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
@@ -238,10 +234,10 @@ function EvidenceApprovalPanel({ exceptions }: { exceptions: ExceptionRecord[] }
           Evidence &amp; approval
         </CardTitle>
         <CardDescription>
-          Attach proof to an open exception and drive the approval workflow. Segregation of duties:
-          submit as <span className="font-medium text-foreground">{DEMO_ACCOUNTANT}</span>, approve as{" "}
-          <span className="font-medium text-foreground">{DEMO_OWNER}</span> — the same actor can never do
-          both. Material variances still need dual approval.
+          Attach proof to an open exception and drive the approval workflow. Segregation of duties: submit as{" "}
+          <span className="font-medium text-foreground">{DEMO_ACCOUNTANT}</span>, approve as{" "}
+          <span className="font-medium text-foreground">{DEMO_OWNER}</span> — the same actor can never do both. Material
+          variances still need dual approval.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
@@ -280,10 +276,7 @@ export default function ExceptionsPage() {
 
   // Live ledger is source of truth. A frozen report must not keep "Needs human review"
   // (or a giant residual table) after the exception queue is empty — that reads as broken.
-  const displayUnresolved =
-    exceptions.length === 0
-      ? []
-      : reconcileUnresolvedWithExceptions(unresolved, exceptions);
+  const displayUnresolved = exceptions.length === 0 ? [] : reconcileUnresolvedWithExceptions(unresolved, exceptions);
   const open = exceptions.filter((e) => e.status === "OPEN").length;
   const needsReview = displayUnresolved.filter((u) => u.status === "NEEDS_REVIEW").length;
   const gateOpen = Math.max(open, needsReview);

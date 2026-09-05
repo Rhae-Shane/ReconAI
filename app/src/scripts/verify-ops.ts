@@ -74,7 +74,7 @@ async function verifyCleanRun() {
   assert.strictEqual(run.revisions, 0, "clean run must not run a revision pass");
   assert(run.report, "clean run should emit a report");
   console.log(
-    `[verify] clean run: status=${run.status} closeRun=1 revisions=0 exceptions=${run.report!.totals.exceptions}`,
+    `[verify] clean run: status=${run.status} closeRun=1 revisions=0 exceptions=${run.report?.totals.exceptions}`,
   );
 }
 

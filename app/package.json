@@ -20,9 +20,7 @@
     "worker": "node --env-file=.env.local ./node_modules/tsx/dist/cli.mjs src/worker/index.ts"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "biome check --write --no-errors-on-unmatched"
-    ]
+    "*.{js,ts,jsx,tsx}": ["biome check --write --no-errors-on-unmatched"]
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.40",
@@ -33,6 +31,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@fullcalendar/react": "^7.0.0",
     "@hookform/resolvers": "^5.4.0",
+    "@langchain/core": "^1.2.9",
     "@langchain/langgraph": "^1.4.12",
     "@langchain/langgraph-checkpoint": "^1.1.5",
     "@langchain/langgraph-checkpoint-redis": "^1.0.11",
@@ -98,6 +97,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/topojson-client": "^3.1.5",
     "babel-plugin-react-compiler": "^1.0.0",
+    "dotenv": "^17.4.2",
     "fast-check": "^4.9.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",

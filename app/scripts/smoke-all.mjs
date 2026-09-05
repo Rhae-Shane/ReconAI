@@ -2,9 +2,11 @@
  * One-shot smoke: sign in as demo owner, hit every API + UI route.
  * Prints METHOD PATH STATUS TIME snippet — no secrets.
  */
+
+import { createBrowserClient } from "@supabase/ssr";
+
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { createBrowserClient } from "@supabase/ssr";
 
 const envPath = resolve(import.meta.dirname, "..", ".env.local");
 const env = Object.fromEntries(
@@ -81,13 +83,12 @@ async function hit(method, path, { body, headers, timeoutMs, expect } = {}) {
     clearTimeout(t);
   }
   const ms = Date.now() - started;
-  const ok =
-    expect != null
-      ? expect.includes(status)
-      : status >= 200 && status < 400;
+  const ok = expect != null ? expect.includes(status) : status >= 200 && status < 400;
   results.push({ ok, method, path, status, ms, snippet });
   const mark = ok ? "PASS" : "FAIL";
-  console.log(`${mark} ${method.padEnd(6)} ${String(status).padStart(3)} ${String(ms).padStart(5)}ms  ${path}  ${snippet}`);
+  console.log(
+    `${mark} ${method.padEnd(6)} ${String(status).padStart(3)} ${String(ms).padStart(5)}ms  ${path}  ${snippet}`,
+  );
 }
 
 // --- public / unauth-shaped ---
@@ -230,7 +231,9 @@ const form = new FormData();
 form.append(
   "payments.csv",
   new Blob(
-    ["paymentId,orderId,amount,fee,settlementId,settlementDate\npay_smoke,ord_smoke,100.00,2.00,setl_smoke,2026-08-14\n"],
+    [
+      "paymentId,orderId,amount,fee,settlementId,settlementDate\npay_smoke,ord_smoke,100.00,2.00,setl_smoke,2026-08-14\n",
+    ],
     { type: "text/csv" },
   ),
   "payments.csv",
@@ -241,7 +244,9 @@ form.append(
   "settlements.csv",
 );
 await hit("POST", "/api/close/upload", { body: form, timeoutMs: 20000 });
-await hit("POST", "/api/ops/webhooks", { body: { url: "https://example.com/reconai-hook", events: ["close.completed"] } });
+await hit("POST", "/api/ops/webhooks", {
+  body: { url: "https://example.com/reconai-hook", events: ["close.completed"] },
+});
 await hit("DELETE", "/api/ops/webhooks", { body: { url: "https://example.com/reconai-hook" } });
 await hit("GET", "/api/close/razorpay/sync");
 await hit("POST", "/api/close/razorpay/sync", { timeoutMs: 20000 });

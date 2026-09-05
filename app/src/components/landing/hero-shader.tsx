@@ -73,7 +73,7 @@ export function HeroShader({ brand = "#e8613c" }: { brand?: string }) {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const gl =
-      (canvas.getContext("webgl", { antialias: false, alpha: false }) as WebGLRenderingContext | null) ||
+      (canvas.getContext("webgl", { antialias: false, alpha: false }) as WebGLRenderingContext | null) ??
       (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
     if (!gl) return;
 
@@ -98,6 +98,7 @@ export function HeroShader({ brand = "#e8613c" }: { brand?: string }) {
     gl.attachShader(prog, fs);
     gl.linkProgram(prog);
     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    // biome-ignore lint/correctness/useHookAtTopLevel: WebGLRenderingContext.useProgram, not a React hook
     gl.useProgram(prog);
 
     const buf = gl.createBuffer();
@@ -108,7 +109,15 @@ export function HeroShader({ brand = "#e8613c" }: { brand?: string }) {
     gl.vertexAttribPointer(locPos, 2, gl.FLOAT, false, 0, 0);
 
     const hex = brand.replace("#", "");
-    const n = parseInt(hex.length === 3 ? hex.split("").map((c) => c + c).join("") : hex, 16);
+    const n = parseInt(
+      hex.length === 3
+        ? hex
+            .split("")
+            .map((c) => c + c)
+            .join("")
+        : hex,
+      16,
+    );
     gl.uniform3f(
       gl.getUniformLocation(prog, "u_brand"),
       ((n >> 16) & 255) / 255,
@@ -134,9 +143,12 @@ export function HeroShader({ brand = "#e8613c" }: { brand?: string }) {
     ro.observe(canvas);
 
     let visible = true;
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) visible = e.isIntersecting;
-    }, { threshold: 0.01 });
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) visible = e.isIntersecting;
+      },
+      { threshold: 0.01 },
+    );
     io.observe(canvas);
 
     let raf = 0;

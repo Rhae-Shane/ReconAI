@@ -29,7 +29,9 @@ export const stripeAdapter: SourceAdapter = {
     const parsed: ParsedRow[] = [];
     if (rows.length === 0) return { source: "gateway", rows: parsed, errors };
 
-    const headerIdx = rows.findIndex((r) => r.some((c) => ["id", "amount", "created"].some((h) => norm(c).includes(h))));
+    const headerIdx = rows.findIndex((r) =>
+      r.some((c) => ["id", "amount", "created"].some((h) => norm(c).includes(h))),
+    );
     if (headerIdx < 0) {
       errors.push({ row: 1, message: "No Stripe payments header (need id, amount, created)" });
       return { source: "gateway", rows: parsed, errors };

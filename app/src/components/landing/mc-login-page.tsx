@@ -2,7 +2,7 @@ import { Space_Grotesk } from "next/font/google";
 
 import "@/components/landing/landing.css";
 
-import { McLoginView, type AuthMode } from "./mc-login-view";
+import { type AuthMode, McLoginView } from "./mc-login-view";
 import type { LandingContent } from "./types";
 
 const display = Space_Grotesk({

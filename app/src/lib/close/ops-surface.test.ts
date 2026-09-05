@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import { applyColumnMapping, detectHeaders, suggestMapping } from "@/lib/close/csv-map";
 import { diffReports } from "@/lib/close/run-diff";
-import { needsSharding, shardRecords, SHARD_SIZE } from "@/lib/close/shard";
-import { buildExceptionDigest } from "@/lib/ops/digest";
+import { needsSharding, SHARD_SIZE, shardRecords } from "@/lib/close/shard";
 import type { CloseReport, CloseRunMeta, ExceptionRecord } from "@/lib/close/types";
+import { buildExceptionDigest } from "@/lib/ops/digest";
 
 describe("csv-map", () => {
   it("suggests and applies a mapping onto FinRecords", () => {

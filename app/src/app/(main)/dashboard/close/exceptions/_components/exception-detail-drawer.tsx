@@ -61,12 +61,12 @@ export function ExceptionDetailDrawer({
 }) {
   const [busy, setBusy] = useState(false);
 
-  const critical = Boolean(exception?.critical) ||
+  const critical =
+    Boolean(exception?.critical) ||
     exception?.reasonCode === "AMOUNT_MISMATCH" ||
     exception?.reasonCode === "DUPLICATE";
   const pending = exception?.resolutionStatus === "PENDING_APPROVAL";
-  const fullyResolved =
-    exception?.status === "RESOLVED" && exception?.resolutionStatus === "APPROVED";
+  const fullyResolved = exception?.status === "RESOLVED" && exception?.resolutionStatus === "APPROVED";
 
   async function submitResolution() {
     if (!exception) return;
@@ -85,9 +85,7 @@ export function ExceptionDetailDrawer({
       const data = (await res.json()) as { exception?: ExceptionRecord; error?: string };
       if (!res.ok) throw new Error(data.error ?? "submit failed");
       toast.success(
-        critical
-          ? `Submitted by ${DEMO_ACCOUNTANT} — awaiting owner approval`
-          : `Resolved by ${DEMO_ACCOUNTANT}`,
+        critical ? `Submitted by ${DEMO_ACCOUNTANT} — awaiting owner approval` : `Resolved by ${DEMO_ACCOUNTANT}`,
       );
       onResolved(data.exception!);
       if (!critical) onOpenChange(false);
@@ -138,7 +136,7 @@ export function ExceptionDetailDrawer({
       });
       const data = (await res.json()) as { exception?: ExceptionRecord; error?: string };
       if (!res.ok) throw new Error(data.error ?? "override failed");
-      toast.success(`Exception ${data.exception!.id} marked OVERRIDDEN`);
+      toast.success(`Exception ${data.exception?.id} marked OVERRIDDEN`);
       onResolved(data.exception!);
       onOpenChange(false);
     } catch (e) {
@@ -225,11 +223,7 @@ export function ExceptionDetailDrawer({
             size="sm"
             disabled={busy || fullyResolved || pending}
             onClick={submitResolution}
-            title={
-              critical
-                ? `Submit as ${DEMO_ACCOUNTANT} → PENDING_APPROVAL`
-                : `Resolve as ${DEMO_ACCOUNTANT}`
-            }
+            title={critical ? `Submit as ${DEMO_ACCOUNTANT} → PENDING_APPROVAL` : `Resolve as ${DEMO_ACCOUNTANT}`}
           >
             Submit resolution
           </Button>

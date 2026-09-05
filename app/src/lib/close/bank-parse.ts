@@ -95,13 +95,13 @@ export function parseCamt053(text: string): FinRecord[] {
   for (const entry of entries) {
     const amt = entry.match(/<Amt[^>]*>([0-9.]+)<\/Amt>/i)?.[1];
     const cdtDbt = entry.match(/<(CdtDbtInd)>(CRDT|DBIT)<\/\1>/i)?.[2];
-    const bookg = entry.match(/<BookgDt>[\s\S]*?<Dt>([^<]+)<\/Dt>/i)?.[1]
-      ?? entry.match(/<ValDt>[\s\S]*?<Dt>([^<]+)<\/Dt>/i)?.[1];
+    const bookg =
+      entry.match(/<BookgDt>[\s\S]*?<Dt>([^<]+)<\/Dt>/i)?.[1] ?? entry.match(/<ValDt>[\s\S]*?<Dt>([^<]+)<\/Dt>/i)?.[1];
     const ref =
-      entry.match(/<AcctSvcrRef>([^<]+)<\/AcctSvcrRef>/i)?.[1]
-      ?? entry.match(/<NtryRef>([^<]+)<\/NtryRef>/i)?.[1]
-      ?? entry.match(/<EndToEndId>([^<]+)<\/EndToEndId>/i)?.[1]
-      ?? `CAMT_${i}`;
+      entry.match(/<AcctSvcrRef>([^<]+)<\/AcctSvcrRef>/i)?.[1] ??
+      entry.match(/<NtryRef>([^<]+)<\/NtryRef>/i)?.[1] ??
+      entry.match(/<EndToEndId>([^<]+)<\/EndToEndId>/i)?.[1] ??
+      `CAMT_${i}`;
     const paise = amt ? rupeeToPaise(amt) : 0;
     if (!paise) continue;
     const signed = cdtDbt === "DBIT" ? -paise : paise;
@@ -121,7 +121,10 @@ export function parseCamt053(text: string): FinRecord[] {
 }
 
 export function parseBankCsv(text: string): FinRecord[] {
-  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const lines = text
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter(Boolean);
   if (lines.length === 0) return [];
   const header = lines[0].toLowerCase();
   const hasHeader = /utr|amount|date|narration|ref/.test(header);

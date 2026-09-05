@@ -1,5 +1,6 @@
 "use client";
 
+import { LandingProvider } from "./landing-context";
 import { FAQ } from "./mc/faq";
 import { Features } from "./mc/features";
 import { FinalCTA } from "./mc/final-cta";
@@ -10,7 +11,6 @@ import { HowItWorks } from "./mc/how-it-works";
 import { LaunchVideo } from "./mc/launch-video";
 import { MemoryPipeline } from "./mc/memory-pipeline";
 import { UseCases } from "./mc/use-cases";
-import { LandingProvider } from "./landing-context";
 import type { LandingContent } from "./types";
 
 export function MemcontextLanding({ content }: { content: LandingContent }) {

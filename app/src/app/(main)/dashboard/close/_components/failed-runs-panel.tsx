@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -77,7 +77,7 @@ export function FailedRunsPanel() {
   const [failed, setFailed] = useState<FailedRun[]>([]);
   const [loading, setLoading] = useState(true);
 
-  async function load() {
+  const load = useCallback(async () => {
     try {
       const res = await fetch("/api/close/runs/failed");
       if (!res.ok) throw new Error("Failed to load");
@@ -88,11 +88,11 @@ export function FailedRunsPanel() {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     void load();
-  }, []);
+  }, [load]);
 
   return (
     <Card>
@@ -122,12 +122,16 @@ export function FailedRunsPanel() {
           <div>
             {failed.length >= FAILED_THRESHOLD && (
               <p className="mb-2 text-destructive text-xs">
-                {failed.length} failed runs - above the {FAILED_THRESHOLD} alert threshold. Consider
-                retrying or reviewing.
+                {failed.length} failed runs - above the {FAILED_THRESHOLD} alert threshold. Consider retrying or
+                reviewing.
               </p>
             )}
             {failed.map((run) => (
-              <FailedRunRow key={run.runId} run={run} onRetried={(runId) => setFailed((prev) => prev.filter((r) => r.runId !== runId))} />
+              <FailedRunRow
+                key={run.runId}
+                run={run}
+                onRetried={(runId) => setFailed((prev) => prev.filter((r) => r.runId !== runId))}
+              />
             ))}
           </div>
         )}

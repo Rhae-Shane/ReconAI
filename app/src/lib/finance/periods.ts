@@ -102,6 +102,17 @@ export async function reopenPeriod(id: string, by: string): Promise<{ ok: boolea
   if (period.status === "open") return { ok: false, reason: "period already open" };
 
   const at = new Date().toISOString();
+  const next = periods.map((x) =>
+    x.id === id
+      ? {
+          ...x,
+          status: "open" as const,
+          closedAt: undefined,
+          closedBy: undefined,
+          audit: [...(x.audit ?? []), { at, by, note: "reopened" }],
+        }
+      : x,
+  );
   return { ok: await writeStore<FiscalPeriod>(PERIODS_KEY, next) };
 }
 

@@ -1,20 +1,22 @@
 "use client";
 
-import { useMemo, type ReactElement } from "react";
+import { type ReactElement, useMemo } from "react";
+
 import { motion, type Variants } from "motion/react";
+
 import { useReducedMotion } from "@/components/landing/mc/lib/use-reduced-motion";
+
 import { useLanding } from "../landing-context";
 
 // ── Palette ──────────────────────────────────────────────────────────────
-const BRAND = "#A9432A";
+const _BRAND = "#A9432A";
 const BRAND_HI = "#D96B3F";
 const INK3 = "#1A1A1A";
 const LINE2 = "#333";
 
 // ── Projection (true 2:1 iso) ────────────────────────────────────────────
 const S = 26;
-const iso = (x: number, y: number, z: number, s = S) =>
-  [(x - y) * s, (x + y) * 0.5 * s - z * s] as const;
+const iso = (x: number, y: number, z: number, s = S) => [(x - y) * s, (x + y) * 0.5 * s - z * s] as const;
 
 function heroCardSub(description: string, status: string, maxChars: number) {
   const suffixLen = ` · ${status}`.length;
@@ -93,8 +95,7 @@ function cuboidPolys(c: Cuboid) {
     G = p(x1, y1, zT),
     H = p(x0, y1, zT);
 
-  const poly = (pts: readonly (readonly [number, number])[]) =>
-    pts.map(([x, y]) => `${x},${y}`).join(" ");
+  const poly = (pts: readonly (readonly [number, number])[]) => pts.map(([x, y]) => `${x},${y}`).join(" ");
 
   // In standard 2:1 iso (camera looking at +x,+y,+z), the visible side faces
   // are +x (front-right) and +y (front-left). We render those two plus top.
@@ -110,24 +111,9 @@ function renderCuboid(c: Cuboid, key: string) {
   const { top, left, right, tone } = cuboidPolys(c);
   return (
     <g key={key} strokeLinejoin="round">
-      <polygon
-        points={left}
-        fill={tone.left}
-        stroke={tone.stroke}
-        strokeWidth={tone.sw}
-      />
-      <polygon
-        points={right}
-        fill={tone.right}
-        stroke={tone.stroke}
-        strokeWidth={tone.sw}
-      />
-      <polygon
-        points={top}
-        fill={tone.top}
-        stroke={tone.stroke}
-        strokeWidth={tone.sw}
-      />
+      <polygon points={left} fill={tone.left} stroke={tone.stroke} strokeWidth={tone.sw} />
+      <polygon points={right} fill={tone.right} stroke={tone.stroke} strokeWidth={tone.sw} />
+      <polygon points={top} fill={tone.top} stroke={tone.stroke} strokeWidth={tone.sw} />
     </g>
   );
 }
@@ -310,8 +296,7 @@ export function HeroMemoryTower({
     const platePts = plateCorners.map(([x, y]) => `${x},${y}`).join(" ");
 
     // ── Layered slab side faces (brick-stack reading) ───────────────────
-    const toPolyStr = (pts: readonly (readonly [number, number])[]) =>
-      pts.map(([px, py]) => `${px},${py}`).join(" ");
+    const toPolyStr = (pts: readonly (readonly [number, number])[]) => pts.map(([px, py]) => `${px},${py}`).join(" ");
 
     // Back filler polygon — a solid panel behind the brick grid so that even
     // if a cell is slightly offset or stroked, we never reveal the page bg.
@@ -380,12 +365,7 @@ export function HeroMemoryTower({
           slabCells.push(
             <polygon
               key={`sr-${li}-${ci}`}
-              points={toPolyStr([
-                iso(half, a, zTop),
-                iso(half, b, zTop),
-                iso(half, b, zBot),
-                iso(half, a, zBot),
-              ])}
+              points={toPolyStr([iso(half, a, zTop), iso(half, b, zTop), iso(half, b, zBot), iso(half, a, zBot)])}
               fill={fill}
               stroke={SLAB_STROKE}
               strokeWidth={0.5}
@@ -409,12 +389,7 @@ export function HeroMemoryTower({
           slabCells.push(
             <polygon
               key={`sl-${li}-${ci}`}
-              points={toPolyStr([
-                iso(a, half, zTop),
-                iso(b, half, zTop),
-                iso(b, half, zBot),
-                iso(a, half, zBot),
-              ])}
+              points={toPolyStr([iso(a, half, zTop), iso(b, half, zTop), iso(b, half, zBot), iso(a, half, zBot)])}
               fill={fill}
               stroke={SLAB_STROKE}
               strokeWidth={0.5}
@@ -447,14 +422,7 @@ export function HeroMemoryTower({
     // face never overlaps the plate's top face in screen-space.
     const R = (cx: number, cy: number, s = 0.28, sy = s, h = s, dim = false) =>
       ({ cx, cy, z: GZ, span: s, spanY: sy, h, dim }) as FragSpec;
-    const STK = (
-      cx: number,
-      cy: number,
-      zBase: number,
-      s: number,
-      sy = s,
-      h = s,
-    ) =>
+    const STK = (cx: number, cy: number, zBase: number, s: number, sy = s, h = s) =>
       ({ cx, cy, z: GZ + zBase, span: s, spanY: sy, h, dim: true }) as FragSpec;
     const fragSpecs: FragSpec[] = [
       // RIGHT flank — hugs the +x edge of the plate
@@ -628,9 +596,7 @@ export function HeroMemoryTower({
       iso(groundHalf, groundHalf, GROUND_TOP_Z),
       iso(-groundHalf, groundHalf, GROUND_TOP_Z),
     ];
-    const groundTopPts = groundTopCorners
-      .map(([x, y]) => `${x},${y}`)
-      .join(" ");
+    const groundTopPts = groundTopCorners.map(([x, y]) => `${x},${y}`).join(" ");
     // Right face (+x) and Left face (+y) side panels
     const groundRightPts = [
       iso(groundHalf, -groundHalf, GROUND_TOP_Z),
@@ -678,24 +644,9 @@ export function HeroMemoryTower({
     }
     stageGround.push(
       <g key="ground" strokeLinejoin="round">
-        <polygon
-          points={groundLeftPts}
-          fill={GROUND_LEFT}
-          stroke={GROUND_STROKE}
-          strokeWidth={0.5}
-        />
-        <polygon
-          points={groundRightPts}
-          fill={GROUND_RIGHT}
-          stroke={GROUND_STROKE}
-          strokeWidth={0.5}
-        />
-        <polygon
-          points={groundTopPts}
-          fill={GROUND_TOP}
-          stroke={GROUND_STROKE}
-          strokeWidth={0.5}
-        />
+        <polygon points={groundLeftPts} fill={GROUND_LEFT} stroke={GROUND_STROKE} strokeWidth={0.5} />
+        <polygon points={groundRightPts} fill={GROUND_RIGHT} stroke={GROUND_STROKE} strokeWidth={0.5} />
+        <polygon points={groundTopPts} fill={GROUND_TOP} stroke={GROUND_STROKE} strokeWidth={0.5} />
         {groundLines}
       </g>,
     );
@@ -821,15 +772,7 @@ export function HeroMemoryTower({
           strokeDasharray="3 4"
           opacity={0.45}
         />
-        <circle
-          cx={capTop[0]}
-          cy={capTop[1]}
-          r={13}
-          fill="none"
-          stroke={BRAND_HI}
-          strokeWidth={1.2}
-          opacity={0.8}
-        />
+        <circle cx={capTop[0]} cy={capTop[1]} r={13} fill="none" stroke={BRAND_HI} strokeWidth={1.2} opacity={0.8} />
         <circle cx={capTop[0]} cy={capTop[1]} r={7} fill="#FFFFFF" />
       </g>,
     );
@@ -869,11 +812,7 @@ export function HeroMemoryTower({
       const cardData = positions.map((p, i) => ({
         ...p,
         label: feats[i]?.title ?? content.marquee[i] ?? content.name,
-        sub: heroCardSub(
-          feats[i]?.description ?? content.marquee[i] ?? "",
-          p.status,
-          SUB_MAX_CHARS,
-        ),
+        sub: heroCardSub(feats[i]?.description ?? content.marquee[i] ?? "", p.status, SUB_MAX_CHARS),
         icon: (
           <g transform="translate(14 16)">
             <rect width={20} height={20} rx={5} fill={p.dot} opacity={0.28} />
@@ -886,21 +825,9 @@ export function HeroMemoryTower({
         stageCards.push(
           <g key={`card-${i}`} transform={`translate(${c.x} ${c.y})`}>
             {/* Card base */}
-            <rect
-              width={CARD_W}
-              height={CARD_H}
-              rx={10}
-              fill={INK3}
-              stroke={LINE2}
-            />
+            <rect width={CARD_W} height={CARD_H} rx={10} fill={INK3} stroke={LINE2} />
             {/* Top-to-bottom glass sheen */}
-            <rect
-              width={CARD_W}
-              height={CARD_H}
-              rx={10}
-              fill="url(#heroCardShine)"
-              opacity={0.6}
-            />
+            <rect width={CARD_W} height={CARD_H} rx={10} fill="url(#heroCardShine)" opacity={0.6} />
             {/* Icon rendered directly on the card — no sub-container border */}
             {c.icon}
             <g clipPath="url(#heroCardClip)">
@@ -916,12 +843,7 @@ export function HeroMemoryTower({
                 {c.label}
               </text>
               {/* Feature · status verb — clipped so it cannot spill the rounded card */}
-              <text
-                x={44}
-                y={41}
-                fontFamily="Geist Mono, ui-monospace, monospace"
-                fontSize={10}
-              >
+              <text x={44} y={41} fontFamily="Geist Mono, ui-monospace, monospace" fontSize={10}>
                 <tspan fill="#9A9590">{c.sub}</tspan>
                 <tspan fill="#5A5550"> · </tspan>
                 <tspan fill="#BFBAB2">{c.status}</tspan>
@@ -947,10 +869,7 @@ export function HeroMemoryTower({
       const capsuleTarget = { x: capTop[0], y: capTop[1] };
 
       cardData.forEach((c, i) => {
-        const t =
-          cardTargets[i] === null
-            ? capsuleTarget
-            : incomingLandings[cardTargets[i] as number];
+        const t = cardTargets[i] === null ? capsuleTarget : incomingLandings[cardTargets[i] as number];
         const dx = t.x - (c.x + CARD_W / 2);
         // exit from the card's inner edge (side nearest the target)
         const x1 = dx > 0 ? c.x + CARD_W : c.x;
@@ -961,8 +880,7 @@ export function HeroMemoryTower({
 
         // Total path length so we can animate a pulse traveling along it.
         // The path is 3 segments: horizontal, vertical, horizontal.
-        const pathLen =
-          Math.abs(mx - x1) + Math.abs(t.y - y1) + Math.abs(t.x - mx);
+        const pathLen = Math.abs(mx - x1) + Math.abs(t.y - y1) + Math.abs(t.x - mx);
 
         // Pulse geometry: a short bright dash with a large gap, so only one
         // pulse is visible at a time. Travel direction is from card → target
@@ -1082,7 +1000,7 @@ export function HeroMemoryTower({
       _isoEls: isoEls,
       _cards: cards,
     };
-  }, [showCards, showIncoming, showBottomPill, prefersReducedMotion, content]);
+  }, [showCards, showIncoming, prefersReducedMotion, content]);
 
   // Entrance choreography — each stage fades + translates into place with a
   // stagger. Cubic-bezier easing feels "placed" rather than linear. Reduced
@@ -1136,30 +1054,17 @@ export function HeroMemoryTower({
   };
 
   return (
-    <svg
-      className={className}
-      viewBox="-480 -260 960 560"
-      preserveAspectRatio="xMidYMid meet"
-      aria-hidden="true"
-    >
+    <svg className={className} viewBox="-480 -260 960 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       {body.stageDefs}
 
       {/* Ground — fades up gently first so the stage exists before anything
           lands on it. */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeUp(D.ground, 14)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeUp(D.ground, 14)}>
         {body.stageGround}
       </motion.g>
 
       {/* Slab base + top plate — the memory-layer foundation grows upward. */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeUp(D.slab, 18)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeUp(D.slab, 18)}>
         {body.stageSlab}
       </motion.g>
 
@@ -1168,11 +1073,7 @@ export function HeroMemoryTower({
       </motion.g>
 
       {/* Scattered construction fragments. */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeUp(D.fragments, 6)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeUp(D.fragments, 6)}>
         {body.stageFragments}
       </motion.g>
 
@@ -1253,29 +1154,17 @@ export function HeroMemoryTower({
       </motion.g>
 
       {/* Incoming cubes + trails. */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeUp(D.incoming, -12)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeUp(D.incoming, -12)}>
         {body.stageIncoming}
       </motion.g>
 
       {/* Glow rings on the capstone. */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn(D.glow, 0.8)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeIn(D.glow, 0.8)}>
         {body.stageGlow}
       </motion.g>
 
       {/* Connector paths (dashed lines from cards to cubes/capstone). */}
-      <motion.g
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn(D.connectors, 0.7)}
-      >
+      <motion.g initial="hidden" animate="visible" variants={fadeIn(D.connectors, 0.7)}>
         {body.stageConnectors}
       </motion.g>
 

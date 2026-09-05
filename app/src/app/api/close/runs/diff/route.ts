@@ -29,7 +29,5 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "One or both runs were not found" }, { status: 404 });
   }
 
-  return NextResponse.json(
-    diffReports({ meta: aRun.meta, report: aReport }, { meta: bRun.meta, report: bReport }),
-  );
+  return NextResponse.json(diffReports({ meta: aRun.meta, report: aReport }, { meta: bRun.meta, report: bReport }));
 }

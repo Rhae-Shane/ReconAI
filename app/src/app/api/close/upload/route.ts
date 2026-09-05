@@ -6,7 +6,7 @@ import { denied, requireRole } from "@/lib/authz";
 import { parseBankStatement } from "@/lib/close/bank-parse";
 import { parseCsvUpload } from "@/lib/close/csv";
 import { applyColumnMapping, type ColumnMapping } from "@/lib/close/csv-map";
-import { needsSharding, shardRecords, SHARD_SIZE } from "@/lib/close/shard";
+import { needsSharding, SHARD_SIZE, shardRecords } from "@/lib/close/shard";
 import { persistCloseArtifacts, runFromUpload } from "@/lib/close/store";
 import { parsedRowsToGst2b } from "@/lib/finance/gst-books";
 import { saveGstr2b } from "@/lib/finance/gst-store";

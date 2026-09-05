@@ -5,11 +5,11 @@
  * signed (sha256) filing artifact for Rhae so the close package is auditable.
  */
 
-import { createHash } from "node:crypto";
-
 import { orgGstin, orgProfile } from "@/lib/close/org";
 import type { Gst2BReconcileResult, GstB2bRow } from "@/lib/finance/gst";
 import type { OutwardSupply } from "@/lib/finance/gst-books";
+
+import { createHash } from "node:crypto";
 
 export type GstReturnKind = "GSTR1" | "GSTR3B";
 
@@ -57,7 +57,12 @@ export function buildGstr1(supplies: OutwardSupply[], period = gstPeriod()): Rec
           pos: s.pos,
           rchrg: "N",
           inv_typ: "R",
-          itms: [{ num: 1, itm_det: { txval: s.taxablePaise / 100, rt: 18, camt: s.taxPaise / 200, samt: s.taxPaise / 200 } }],
+          itms: [
+            {
+              num: 1,
+              itm_det: { txval: s.taxablePaise / 100, rt: 18, camt: s.taxPaise / 200, samt: s.taxPaise / 200 },
+            },
+          ],
         },
       ],
     })),

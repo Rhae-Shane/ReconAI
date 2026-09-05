@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { journalBalances, journalFromRun } from "@/lib/finance/journal-from-run";
 import type { RunDetail } from "@/lib/close/types";
+import { journalBalances, journalFromRun } from "@/lib/finance/journal-from-run";
 
 function run(partial: Partial<RunDetail> & { groups: RunDetail["groups"] }): RunDetail {
   return {

@@ -375,7 +375,17 @@ async function persistRelationalChildren(db: Queryable, runId: string, dataset: 
     await db.query(
       `INSERT INTO match_groups (id, run_id, key, method, match_type, confidence, reason, amount_paise, value_date)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
-      [gid, runId, g.key, g.method, g.matchType, g.confidence, g.reason, Math.trunc(g.amountPaise), g.ts ? new Date(g.ts) : null],
+      [
+        gid,
+        runId,
+        g.key,
+        g.method,
+        g.matchType,
+        g.confidence,
+        g.reason,
+        Math.trunc(g.amountPaise),
+        g.ts ? new Date(g.ts) : null,
+      ],
     );
     let li = 0;
     for (const link of g.links) {
@@ -409,7 +419,16 @@ async function persistRelationalChildren(db: Queryable, runId: string, dataset: 
     await db.query(
       `INSERT INTO audit_events (id, run_id, actor_type, actor_id, action, record_id, detail, created_at)
        VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb,$8)`,
-      [a.id.startsWith(runId) ? a.id : `${runId}:${a.id}`, runId, a.actorType, a.actorId, a.action, a.recordId ?? null, JSON.stringify(a.detail ?? {}), a.createdAt],
+      [
+        a.id.startsWith(runId) ? a.id : `${runId}:${a.id}`,
+        runId,
+        a.actorType,
+        a.actorId,
+        a.action,
+        a.recordId ?? null,
+        JSON.stringify(a.detail ?? {}),
+        a.createdAt,
+      ],
     );
   }
 
@@ -417,7 +436,16 @@ async function persistRelationalChildren(db: Queryable, runId: string, dataset: 
     await db.query(
       `INSERT INTO settlements (id, run_id, group_keys, settled_at, amount_paise, utr, status, lag_days)
        VALUES ($1,$2,$3::jsonb,$4,$5,$6,$7,$8)`,
-      [`${runId}:${s.id}`, runId, JSON.stringify([]), s.settledAt, Math.trunc(s.amountPaise), s.utrNumber ?? null, s.status, s.lagDays ?? null],
+      [
+        `${runId}:${s.id}`,
+        runId,
+        JSON.stringify([]),
+        s.settledAt,
+        Math.trunc(s.amountPaise),
+        s.utrNumber ?? null,
+        s.status,
+        s.lagDays ?? null,
+      ],
     );
   }
 
@@ -425,7 +453,15 @@ async function persistRelationalChildren(db: Queryable, runId: string, dataset: 
     await db.query(
       `INSERT INTO forecast (id, run_id, date, balance_paise, delta_paise, confidence, reconciled_in)
        VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-      [`${runId}:${f.id}`, runId, f.date, Math.trunc(f.balancePaise), Math.trunc(f.deltaPaise), f.confidence, f.reconciledIn],
+      [
+        `${runId}:${f.id}`,
+        runId,
+        f.date,
+        Math.trunc(f.balancePaise),
+        Math.trunc(f.deltaPaise),
+        f.confidence,
+        f.reconciledIn,
+      ],
     );
   }
 
@@ -433,7 +469,16 @@ async function persistRelationalChildren(db: Queryable, runId: string, dataset: 
     await db.query(
       `INSERT INTO tax_line_matches (id, run_id, record_id, category_code, category_label, matched_by, confidence, reason)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
-      [`${runId}:${t.id}`, runId, `${runId}:${t.recordId}`, t.categoryCode ?? null, t.categoryLabel ?? null, t.matchedBy, t.confidence, t.reason],
+      [
+        `${runId}:${t.id}`,
+        runId,
+        `${runId}:${t.recordId}`,
+        t.categoryCode ?? null,
+        t.categoryLabel ?? null,
+        t.matchedBy,
+        t.confidence,
+        t.reason,
+      ],
     );
   }
 }

@@ -65,7 +65,7 @@ export default async function CloseCockpitPage() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-muted-foreground">Entities</span>
+            <span className="font-medium text-muted-foreground text-xs">Entities</span>
             <div className="flex flex-wrap gap-1.5">
               {entities.map((e) => (
                 <span
@@ -79,9 +79,9 @@ export default async function CloseCockpitPage() {
             </div>
           </div>
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-muted-foreground">FX rates</span>
+            <span className="font-medium text-muted-foreground text-xs">FX rates</span>
             {fxRates.length === 0 ? (
-              <p className="text-xs text-muted-foreground">No FX rates configured.</p>
+              <p className="text-muted-foreground text-xs">No FX rates configured.</p>
             ) : (
               <div className="flex flex-wrap gap-1.5">
                 {fxRates.map((r, i) => (
@@ -92,7 +92,7 @@ export default async function CloseCockpitPage() {
               </div>
             )}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             Conversions normalise every non-base amount to the base currency ({entities[0]?.baseCurrency ?? "INR"}{" "}
             paise).
           </p>

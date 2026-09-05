@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, RefObject, useCallback } from "react";
+import { type RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 interface UseInViewOptions {
   threshold?: number;
@@ -17,9 +17,7 @@ interface UseInViewReturn<T extends HTMLElement> {
  * Hook to detect when an element is in the viewport
  * Uses IntersectionObserver for performance
  */
-export function useInView<T extends HTMLElement = HTMLDivElement>(
-  options: UseInViewOptions = {},
-): UseInViewReturn<T> {
+export function useInView<T extends HTMLElement = HTMLDivElement>(options: UseInViewOptions = {}): UseInViewReturn<T> {
   const { threshold = 0, rootMargin = "0px", triggerOnce = false } = options;
   const ref = useRef<T | null>(null);
   const [isInView, setIsInView] = useState(false);

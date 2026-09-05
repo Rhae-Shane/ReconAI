@@ -114,11 +114,7 @@ function parseBrand(raw: string): [number, number, number] {
   const m = s.match(/rgba?\(([^)]+)\)/);
   if (m) {
     const parts = m[1].split(",").map((x) => parseFloat(x.trim()));
-    return [
-      (parts[0] || 0) / 255,
-      (parts[1] || 0) / 255,
-      (parts[2] || 0) / 255,
-    ];
+    return [(parts[0] || 0) / 255, (parts[1] || 0) / 255, (parts[2] || 0) / 255];
   }
   // fallback: terracotta
   return [232 / 255, 97 / 255, 60 / 255];
@@ -136,8 +132,7 @@ export function HeroShader() {
         antialias: false,
         premultipliedAlpha: false,
         alpha: false,
-      }) as WebGLRenderingContext | null) ||
-      (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
+      }) as WebGLRenderingContext | null) ?? (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
 
     if (!gl) return;
 
@@ -168,16 +163,13 @@ export function HeroShader() {
       console.warn("program link error", gl.getProgramInfoLog(prog));
       return;
     }
+    // biome-ignore lint/correctness/useHookAtTopLevel: WebGLRenderingContext.useProgram, not a React hook
     gl.useProgram(prog);
 
     // fullscreen triangle-pair
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(
-      gl.ARRAY_BUFFER,
-      new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
-      gl.STATIC_DRAW,
-    );
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
     const locPos = gl.getAttribLocation(prog, "a_pos");
     gl.enableVertexAttribArray(locPos);
     gl.vertexAttribPointer(locPos, 2, gl.FLOAT, false, 0, 0);
@@ -188,10 +180,7 @@ export function HeroShader() {
 
     // read brand color from CSS custom property --brand (fallback --accent)
     const cs = getComputedStyle(document.documentElement);
-    const rawBrand =
-      cs.getPropertyValue("--brand").trim() ||
-      cs.getPropertyValue("--accent").trim() ||
-      "#e8613c";
+    const rawBrand = cs.getPropertyValue("--brand").trim() || cs.getPropertyValue("--accent").trim() || "#e8613c";
     const brand = parseBrand(rawBrand);
     gl.uniform3f(locBrand, brand[0], brand[1], brand[2]);
 
@@ -245,11 +234,5 @@ export function HeroShader() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full"
-    />
-  );
+  return <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />;
 }

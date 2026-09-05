@@ -23,7 +23,10 @@ export function pickGstin(raw?: Record<string, unknown> | null): string | undefi
   return undefined;
 }
 
-function inrSplit(totalPaise: number, taxPaise?: number): { taxablePaise: number; taxPaise: number; totalPaise: number } {
+function inrSplit(
+  totalPaise: number,
+  taxPaise?: number,
+): { taxablePaise: number; taxPaise: number; totalPaise: number } {
   const total = Math.abs(totalPaise);
   if (taxPaise != null && Number.isFinite(taxPaise) && taxPaise >= 0 && taxPaise <= total) {
     return { taxablePaise: total - taxPaise, taxPaise, totalPaise: total };
@@ -48,7 +51,12 @@ export function internalPurchaseRows(records: FinRecord[]): GstB2bRow[] {
     if (r.source === "gst" && r.kind === "INVOICE") {
       const gstin = pickGstin(r.raw);
       if (!gstin) continue;
-      const tax = typeof r.raw?.gstPaise === "number" ? r.raw.gstPaise : typeof r.raw?.feeTaxPaise === "number" ? r.raw.feeTaxPaise : undefined;
+      const tax =
+        typeof r.raw?.gstPaise === "number"
+          ? r.raw.gstPaise
+          : typeof r.raw?.feeTaxPaise === "number"
+            ? r.raw.feeTaxPaise
+            : undefined;
       const split = inrSplit(r.amountPaise, tax);
       rows.push({
         supplierGstin: gstin,
@@ -141,7 +149,9 @@ export function outwardSupplies(records: FinRecord[]): OutwardSupply[] {
     });
 }
 
-export function parsedRowsToGst2b(rows: Array<{ extra?: Record<string, unknown>; sourceRef: string; ts: string; amountPaise: number }>): GstB2bRow[] {
+export function parsedRowsToGst2b(
+  rows: Array<{ extra?: Record<string, unknown>; sourceRef: string; ts: string; amountPaise: number }>,
+): GstB2bRow[] {
   return rows.flatMap((r) => {
     const gstin = pickGstin(r.extra);
     if (!gstin) return [];

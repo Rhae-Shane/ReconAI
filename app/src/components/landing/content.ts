@@ -39,7 +39,8 @@ export const landingContent: LandingContent = {
     },
     {
       title: "Webhook inbox",
-      description: "payment.captured, refund.processed, settlement.processed land in an inbox and flush into a close run.",
+      description:
+        "payment.captured, refund.processed, settlement.processed land in an inbox and flush into a close run.",
     },
     {
       title: "Honest metrics",

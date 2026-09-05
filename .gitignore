@@ -1,0 +1,34 @@
+# backups (approved for deletion in polish pass)
+.backup-pre-control/
+.backup-trim/
+**/.backup-trim/
+**/.backup-pre-control/
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.next/
+out/
+build/
+
+# test coverage + harness reports
+coverage/
+harness/report.json
+harness/report.csv
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+
+# tooling / OS
+.DS_Store
+*.pem
+.vercel
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log/
+.claude/

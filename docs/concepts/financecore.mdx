@@ -1,0 +1,77 @@
+---
+title: "FinanceCore"
+description: "The audited chokepoint: harness modules, shared types, and HeuristicJudge vs OpenAI residual judge."
+---
+
+**FinanceCore** is the single audited funnel for ReconAI. CLI batch runs, HTTP
+APIs, and agent tools all route engine work through it — the model (when
+present) narrates on top of engine-computed numbers; it does not invent
+settlement math.
+
+In code, the orchestrator is `CloseEngine` in `harness/src/core/close.ts`,
+composing the modules under `harness/src/core/`. The Next.js app imports that
+harness and optionally wraps the same stages in LangGraph
+(`src/lib/close/graph.ts`).
+
+## Why A Chokepoint
+
+| Concern | How FinanceCore handles it |
+| ------- | -------------------------- |
+| Reproducibility | Deterministic ingest → reconcile → netting before any LLM |
+| Auditability | `AuditEngine` events on every stage action |
+| Honesty | `ExceptionLedger` + `CloseReport.unresolved` never hide leftovers |
+| Separation | Framework-free harness; UI/ops stay thin |
+
+## Modules
+
+| Module | File | Role |
+| ------ | ---- | ---- |
+| `IngestService` | `ingest.ts` | Normalize rows → `FinRecord`; duplicate detection |
+| `ReconciliationEngine` | `reconcile.ts` | Exact / normalized / netting match groups + flaps |
+| `Judge` (`HeuristicJudge`) | `judge.ts` | Residual arbitration interface + default implementation |
+| `SemanticMatcher` | `semantic.ts` | Optional n-gram or embedding similarity for residuals |
+| `SettlementService` | `settle.ts` | Bind groups to settlements; lag stats; settle Q&A |
+| `CashForecaster` | `forecast.ts` | Cash projection from matched lag distribution |
+| `TaxMatcher` | `tax.ts` | Rule-based HSN/category match + judge fallback |
+| `AuditEngine` | `audit.ts` | Append-only stage audit events |
+| `ExceptionLedger` | `exception.ts` | Append-only honest exceptions |
+| `CloseEngine` | `close.ts` | Runs the full loop → `CloseReport` |
+
+Supporting pieces in the same tree include `config.ts` (tolerances /
+thresholds), `ledger.ts` (double-entry journal for netted groups), and
+`types.ts` (authoritative shapes).
+
+## Types Owned By The Harness
+
+`harness/src/core/types.ts` is the source of truth. The app mirrors these for
+API/UI; Prisma (optional) mirrors them for persistence.
+
+Important exports include:
+
+- Identity & money: `SourceKind`, `RecordKind`, `FinRecord`
+- Matching: `MatchType`, `MatchMethod`, `MatchGroup`, `MatchLink`, `NettingBreakdown`
+- Exceptions & close: `ReasonCode`, `ExceptionRecord`, `UnresolvedLine`, `MatchBreakdown`, `CloseReport`
+- Downstream: `Settlement`, `ForecastDatum`, `TaxLineMatch`, `AuditEvent`, `FinanceConfig`
+- Residual I/O: `Candidate`, `JudgeResult`
+
+All amounts are signed integer **paise**.
+
+## HeuristicJudge Vs OpenAI
+
+| Mode | When | Behavior |
+| ---- | ---- | -------- |
+| **HeuristicJudge** | Default / no API key | Deterministic residual scoring → `FUZZY` or a reason code |
+| **OpenAI residual judge** | `OPENAI_API_KEY` set | App `ClaudeJudge` (`claude-judge.ts`) uses OpenAI chat + embeddings → can emit `AI_RESOLVED` |
+
+Rules of the residual path:
+
+- Only **flaps** after deterministic matching reach the judge.
+- Confidence below `resolveThreshold` → exception (`LOW_CONFIDENCE` /
+  `PARTIAL_FLAP`, etc.), not a forced match.
+- Without `OPENAI_API_KEY`, the audited batch and local demo stay green on
+  `HeuristicJudge` + n-gram semantic fallback.
+- With the key, embeddings can enrich candidacy text; amounts still come from
+  the engine.
+
+Agent tools follow the same rule: every tool routes through FinanceCore; the
+LLM does not compute gross / fee / settlement legs.

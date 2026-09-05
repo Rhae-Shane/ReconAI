@@ -1,0 +1,107 @@
+---
+title: "API Overview"
+description: "Grouped ReconAI REST endpoints for close, exceptions, agents, Razorpay, finance, control, ops, and health."
+---
+
+Base path is the Next.js app origin (local: `http://localhost:3000`). Most close/finance/control routes require an authenticated Supabase session with role `owner`, `accountant`, or `viewer` as noted. Interactive OpenAPI can come later — this page is the route map.
+
+## Health
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/health` | Liveness probe — `{ ok, service: "reconai", time, checks: { redis, queue, razorpay } }` (no auth) |
+
+```bash
+curl http://localhost:3000/api/health
+```
+
+## Close
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `POST` | `/api/close/upload` | Upload payments / settlements / invoices CSV (multipart or raw) and start a run |
+| `GET` | `/api/close/runs` | List close runs (newest first) |
+| `POST` | `/api/close/runs` | Start a daily-close run (queued if `REDIS_URL` + worker; else in-process) |
+| `GET` | `/api/close/runs/[id]` | Run status, progress, partial metrics |
+| `POST` | `/api/close/runs/[id]` | **Finalize** — terminal step; emits `CloseReport` |
+| `GET` | `/api/close/runs/[id]/report` | Fetch the finalized close report |
+| `POST` | `/api/close/runs/[id]/post` | Post completed run to double-entry ledger (`periodId` required) |
+| `POST` | `/api/close/runs/[id]/retry` | Retry a failed run |
+| `GET` | `/api/close/runs/failed` | List failed runs |
+| `POST` | `/api/close/runs/schedule` | Schedule a close |
+| `GET` | `/api/close/reconcile` | Finance-team reading of a run (`?runId=`) — payouts, match-type breakdown |
+| `GET` | `/api/close/alerts` | Close alerts |
+
+## Exceptions
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/close/exceptions` | Honest exception list (`?reasonCode=&status=&runId=`) |
+| `POST` | `/api/close/exceptions/[id]/resolve` | Resolve / review / override (audited; never deleted) |
+| `GET` | `/api/close/exceptions/[id]/evidence` | Read exception evidence |
+| `POST` | `/api/close/exceptions/[id]/evidence` | Attach evidence |
+
+```bash
+# List open exceptions for a run
+curl "http://localhost:3000/api/close/exceptions?runId=run_today"
+```
+
+## Agents
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `POST` | `/api/close/agents/chat` | Streaming settlement Q&A (`text/plain` stream; OpenAI or deterministic fallback) |
+| `POST` | `/api/close/agents/tools` | Direct tool invoke `{ name, input, runId }` for harness / driver |
+
+## Razorpay
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/close/razorpay/sync` | Config status + inbox size (no secrets) |
+| `POST` | `/api/close/razorpay/sync` | Pull Razorpay data + flush webhook inbox into a close run |
+| `POST` | `/api/close/razorpay/payment-link` | Create a payment link (when configured) |
+| `POST` | `/api/webhooks/razorpay` | Razorpay Dashboard webhook — HMAC via `X-Razorpay-Signature` |
+
+Subscribed events: `payment.captured`, `refund.processed`, `settlement.processed`. See [Razorpay Integration](/guides/razorpay-integration).
+
+## Finance
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/finance/periods` | List fiscal periods |
+| `POST` | `/api/finance/periods` | Create/update period, or `closePeriod` / `reopenPeriod` |
+| `GET` | `/api/finance/ledger` | Query ledger entries |
+| `POST` | `/api/finance/ledger` | Post journal entries |
+| `GET` | `/api/finance/fx` | List FX rates |
+| `POST` | `/api/finance/fx` | Upsert FX rates |
+| `GET` | `/api/finance/metrics` | Aging / DSO–DPO style finance metrics |
+| `POST` | `/api/finance/gst/b2b` | GST B2B / GSTR-2B reconcile helper |
+| `GET` | `/api/finance/dossier/[runId]/export` | Export close dossier for a run |
+
+## Control
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `POST` | `/api/control/policy` | Evaluate policy engine (deterministic-first gate; AI never self-authorizes) |
+| `POST` | `/api/control/approvals` | Submit / act on approvals |
+| `POST` | `/api/control/approvals/workflow` | Multi-step approval workflow |
+| `POST` | `/api/control/materiality` | Materiality threshold evaluation |
+| `POST` | `/api/control/audit/verify` | Verify audit chain / integrity |
+
+## Ops
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/ops/webhooks` | List outbound app webhook endpoints |
+| `POST` | `/api/ops/webhooks` | Register webhook (`{ url, events? }`) — owner |
+| `DELETE` | `/api/ops/webhooks` | Remove a registered webhook |
+
+App event names include `close.completed`, `close.failed`, `alert`, `period.locked`.
+
+## Metrics (determinism dashboard)
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/metrics` | Deterministic vs AI-resolved KPIs for the seeded close graph (`?runs=a,b,c` for window series) |
+
+Powers `/dashboard/close/metrics`. No queue credentials required for the demo path.

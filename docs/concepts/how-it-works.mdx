@@ -1,0 +1,68 @@
+---
+title: "How It Works"
+description: "ReconAI close pipeline from ingest through honest close, and how it runs in-process or queued."
+---
+
+ReconAI matches gateway, bank UTR, ERP, and GST lines into one audited close.
+Every assertion (CLI, API, agent tool) flows through the same funnel in
+`harness/src/core/*`, orchestrated by `CloseEngine` and optionally by the
+LangGraph close graph in the app.
+
+Currency is integer **paise** (signed). Shared shapes live in
+`harness/src/core/types.ts`.
+
+## Pipeline
+
+| Stage | Module | What happens |
+| ----- | ------ | ------------ |
+| **Ingest** | `IngestService` | Normalize raw rows → `FinRecord`; idempotent on `source` + `sourceRef` |
+| **Reconcile** | `ReconciliationEngine` | Exact → normalized → fee/refund/adjustment netting → residual flaps |
+| **Judge** | `HeuristicJudge` / residual LLM | Arbitrate flaps only; file `ReasonCode` when confidence is low |
+| **Settle** | `SettlementService` | Bind match groups to settlement batches; lag stats; Q&A ledger |
+| **Forecast** | `CashForecaster` | Project cash from matched settlement-lag distribution |
+| **Tax** | `TaxMatcher` | HSN/category rules, with judge fallback for residual lines |
+| **Exceptions** | `ExceptionLedger` | Append-only honest list — never silent drops |
+| **Close** | `CloseEngine` / graph `closeRun` | Emit `CloseReport` with `MatchBreakdown` + per-record `UnresolvedLine[]` |
+
+Audit events are recorded along the way (`AuditEngine`). The close control does
+not hide open exceptions: the report still surfaces every unresolved line.
+
+## Where The Code Lives
+
+| Layer | Path | Role |
+| ----- | ---- | ---- |
+| Core engine | `harness/src/core/` | Framework-free TypeScript; settlement math and matching |
+| Close orchestrator | `harness/src/core/close.ts` | `CloseEngine.run(batch)` wires the pipeline above |
+| LangGraph workflow | `next-shadcn-admin-dashboard/src/lib/close/graph.ts` | Stage order, revision loop, checkpointed close |
+| Ops queue | `next-shadcn-admin-dashboard/src/lib/ops/queue.ts` | BullMQ `close-runs` when Redis is configured |
+
+The graph nodes are a **workflow** over engine-computed data — they do not
+re-derive amounts:
+
+```text
+ingest → reconcile → judge → settle → forecastCash → tax → fileExceptions → closeRun
+```
+
+`closeRun` is terminal: it finalizes only when exceptions are clear, or after
+`MAX_REVISIONS` passes (still with every open exception visible).
+
+## Run Modes
+
+| Mode | Trigger | Behavior |
+| ---- | ------- | -------- |
+| **In-process** | No `REDIS_URL` | `POST /api/close/runs` runs the close synchronously in the API process |
+| **Queued** | `REDIS_URL` set + `npm run worker` | BullMQ enqueues `close-run` jobs; worker runs LangGraph + optional RedisSaver |
+
+Without Redis, the default checkpointer is in-memory (`MemorySaver`). With a
+TCP `REDIS_URL` that supports RediSearch, the graph can use `RedisSaver` for
+durable checkpoints. Upstash REST vars for the run-store/rate limiter are
+independent of the worker TCP URL.
+
+## Recommended Mental Model
+
+1. Ingest and normalize every source into `FinRecord`.
+2. Resolve as much as possible with deterministic keys and settlement identity.
+3. Send only residual flaps to the judge.
+4. Settle, forecast, and tax-map from matched groups.
+5. File every leftover as an exception with a reason code.
+6. Close with a report that shows matched / partial / unresolved honestly.

@@ -41,8 +41,8 @@ const supabase = createBrowserClient(url, anon, {
 });
 
 const { data, error } = await supabase.auth.signInWithPassword({
-  email: "reconai.owner@superkalam.com",
-  password: "ReconAIDemo2026!",
+  email: "owner@omesh.com",
+  password: "omesh@123",
 });
 if (error || !data.session) {
   console.error("LOGIN_FAIL", error?.message ?? "no session");

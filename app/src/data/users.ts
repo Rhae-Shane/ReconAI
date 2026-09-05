@@ -2,18 +2,26 @@ export const users = [
   {
     id: "1",
     name: "Omesh Kumar",
-    username: "Rhae-Shane",
-    email: "hello@omesh.vercel.app",
+    username: "owner",
+    email: "owner@omesh.com",
     avatar: "https://github.com/Rhae-Shane.png",
-    role: "administrator",
+    role: "owner",
   },
   {
     id: "2",
-    name: "Operator",
-    username: "operator",
-    email: "ops@omesh.vercel.app",
+    name: "Accountant",
+    username: "accountant",
+    email: "accountant@omesh.com",
     avatar: "",
-    role: "admin",
+    role: "accountant",
+  },
+  {
+    id: "3",
+    name: "Viewer",
+    username: "viewer",
+    email: "viewer@omesh.com",
+    avatar: "",
+    role: "viewer",
   },
 ];
 

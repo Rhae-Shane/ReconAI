@@ -25,11 +25,11 @@ if (!url || !secret || !anon) {
   process.exit(1);
 }
 
-const PASSWORD = "ReconAIDemo2026!";
+const PASSWORD = "omesh@123";
 const users = [
-  { email: "reconai.owner@superkalam.com", role: "owner" },
-  { email: "reconai.accountant@superkalam.com", role: "accountant" },
-  { email: "reconai.viewer@superkalam.com", role: "viewer" },
+  { email: "owner@omesh.com", role: "owner" },
+  { email: "accountant@omesh.com", role: "accountant" },
+  { email: "viewer@omesh.com", role: "viewer" },
 ];
 
 async function admin(path, init) {
